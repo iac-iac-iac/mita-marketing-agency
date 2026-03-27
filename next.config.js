@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+
+const { withSentryConfig } = require('@sentry/nextjs');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -71,4 +77,30 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+module.exports = withSentryConfig(
+  withBundleAnalyzer(nextConfig),
+  {
+    // For all available options, see:
+    // https://github.com/getsentry/sentry-webpack-plugin#options
+
+    // Suppresses source map uploading logs during build
+    silent: true,
+
+    org: 'your-org',
+    project: 'direct-line',
+
+    // Only print logs for uploading source maps in CI
+    sourcemaps: {
+      disable: true,
+    },
+
+    // Automatically tree-shake Sentry logger statements to reduce bundle size
+    widenClientFileUpload: true,
+
+    // Enables performance monitoring
+    tracesSampleRate: 0.1,
+
+    // Enables monitoring of server-side rendering
+    tunnelRoute: '/monitoring-tunnel',
+  }
+);

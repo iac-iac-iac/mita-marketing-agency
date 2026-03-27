@@ -13,6 +13,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
+    "analyze": "cross-env ANALYZE=true npm run build",
     "test": "echo \"Tests coming soon\" && exit 0",
     "test:coverage": "echo \"Coverage coming soon\" && exit 0",
     "prepare": "node .husky/install.mjs",
@@ -29,6 +30,7 @@
   "type": "module",
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@sentry/nextjs": "^10.46.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/dompurify": "^3.0.5",
     "@types/mdx": "^2.0.13",
@@ -50,8 +52,10 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.2.1",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
+    "cross-env": "^10.1.0",
     "eslint": "^10.1.0",
     "eslint-config-next": "^16.2.1",
     "husky": "^9.1.7",
