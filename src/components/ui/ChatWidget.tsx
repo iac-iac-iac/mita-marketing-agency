@@ -23,7 +23,7 @@ export interface ChatWidgetProps {
  */
 export default function ChatWidget({
   botName = 'Ассистент Direct-line',
-  botAvatar = '🤖',
+  botAvatar = 'A',
   greetingMessage = 'Здравствуйте! Чем можем помочь?',
   position = 'bottom-right',
 }: ChatWidgetProps) {
@@ -137,7 +137,7 @@ export default function ChatWidget({
         `}
         style={{ marginBottom: isOpen ? '0' : '0' }}
       >
-        {isOpen ? '✕' : '💬'}
+        {isOpen ? '×' : '💭'}
       </motion.button>
 
       {/* Окно чата */}
@@ -226,7 +226,7 @@ export default function ChatWidget({
                   onClick={handleSendMessage}
                   className="px-4 py-2 bg-direct-primary hover:bg-direct-primary/90 text-white rounded-xl transition-colors"
                 >
-                  ➤
+                  →
                 </motion.button>
               </div>
             </div>

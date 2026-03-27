@@ -30,7 +30,7 @@ export default function OfflinePage() {
       >
         {/* Иконка */}
         <div className="text-6xl mb-6">
-          {isOnline ? '📡' : '📴'}
+          {isOnline ? '✓' : '×'}
         </div>
 
         {/* Заголовок */}

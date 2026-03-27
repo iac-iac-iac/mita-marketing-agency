@@ -107,12 +107,12 @@ export function logEnvValidation(): void {
   const result = validateEnv();
 
   if (result.warnings.length > 0) {
-    console.warn('\n⚠️  Предупреждения конфигурации:');
+    console.warn('\n[WARN] Предупреждения конфигурации:');
     result.warnings.forEach((w) => console.warn(`   - ${w}`));
   }
 
   if (result.errors.length > 0) {
-    console.error('\n❌ Ошибки конфигурации:');
+    console.error('\n[ERROR] Ошибки конфигурации:');
     result.errors.forEach((e) => console.error(`   - ${e}`));
     console.error('\nПриложение не может быть запущено с некорректной конфигурацией.');
     console.error('Исправьте ошибки и перезапустите сервер.\n');
@@ -124,6 +124,6 @@ export function logEnvValidation(): void {
   }
 
   if (result.valid && result.warnings.length === 0) {
-    console.log('\n✅ Конфигурация проверена без ошибок\n');
+    console.log('\n[OK] Конфигурация проверена без ошибок\n');
   }
 }

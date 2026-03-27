@@ -45,7 +45,7 @@ export default function PWAInstallPrompt() {
           <div className="glass p-4 rounded-2xl shadow-2xl">
             <div className="flex items-start gap-3">
               {/* Иконка */}
-              <div className="text-3xl">📲</div>
+              <div className="text-3xl">📥</div>
 
               {/* Контент */}
               <div className="flex-1">
@@ -77,9 +77,9 @@ export default function PWAInstallPrompt() {
               <button
                 onClick={handleClose}
                 className="text-white/60 hover:text-white transition-colors"
-              >
-                ✕
-              </button>
+                >
+                ×
+                </button>
             </div>
           </div>
         </motion.div>
