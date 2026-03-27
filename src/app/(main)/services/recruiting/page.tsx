@@ -51,21 +51,21 @@ export default function RecruitingPage() {
               label: 'Дней на закрытие вакансии',
               value: 14,
               suffix: ' дней',
-              icon: '🚀',
+              icon: 'R1',
               description: 'Средний срок подбора',
             },
             {
               label: 'Звонков в день',
               value: 200,
               suffix: '',
-              icon: '📞',
+              icon: 'R2',
               description: 'На одного рекрутера',
             },
             {
               label: 'Собеседований в неделю',
               value: 50,
               suffix: '',
-              icon: '👥',
+              icon: 'R3',
               description: 'С квалифицированными кандидатами',
             },
           ]}
@@ -124,7 +124,7 @@ export default function RecruitingPage() {
               position: 'Менеджер по продажам',
               deadline: '14 дней',
               result: '25 кандидатов',
-              icon: '💼',
+              icon: 'R4',
             },
             {
               niche: 'Производство',
@@ -138,7 +138,7 @@ export default function RecruitingPage() {
               position: 'Продавец-консультант',
               deadline: '10 дней',
               result: '40 кандидатов',
-              icon: '🛍️',
+              icon: 'R5',
             },
             {
               niche: 'Логистика',
@@ -158,7 +158,7 @@ export default function RecruitingPage() {
             {
               title: 'Замена кандидата',
               description: 'Если кандидат не прошёл испытательный срок, найдём замену бесплатно в течение 14 дней',
-              icon: '🔄',
+              icon: 'R6',
               color: 'blue',
             },
             {
@@ -198,17 +198,17 @@ export default function RecruitingPage() {
             {
               name: "Воронка кандидатов",
               description: "Построение полноценной воронки: от первичного контакта до выхода на работу. Контроль на каждом этапе",
-              icon: "🎯",
+              icon: 'R7',
             },
             {
               name: "Массовый обзвон",
               description: "Call-центр делает сотни звонков потенциальным кандидатам. Быстрый охват большой аудитории",
-              icon: "📞",
+              icon: 'R8',
             },
             {
               name: "Тестовые задания",
               description: "Проверка навыков кандидатов перед передачей клиенту. Только квалифицированные специалисты",
-              icon: "📝",
+              icon: 'R9',
             },
             {
               name: "Адаптация",
@@ -218,7 +218,7 @@ export default function RecruitingPage() {
             {
               name: "Составление сценария",
               description: "Разработка скриптов для обзвона кандидатов. Адаптация под конкретную вакансию",
-              icon: "📋",
+              icon: 'R10',
             },
             {
               name: "Интеграция с CRM",
