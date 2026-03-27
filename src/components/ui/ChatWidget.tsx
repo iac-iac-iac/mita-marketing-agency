@@ -20,12 +20,15 @@ export interface ChatWidgetProps {
 /**
  * Онлайн-чат виджет
  * Простой виджет для связи с клиентами
+ * 
+ * По умолчанию позиционируется слева (bottom-left),
+ * так как справа находится кнопка ScrollToTop
  */
 export default function ChatWidget({
   botName = 'Ассистент Direct-line',
   botAvatar = 'A',
   greetingMessage = 'Здравствуйте! Чем можем помочь?',
-  position = 'bottom-right',
+  position = 'bottom-left', // По умолчанию слева, чтобы не конфликтовать с ScrollToTop
 }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([

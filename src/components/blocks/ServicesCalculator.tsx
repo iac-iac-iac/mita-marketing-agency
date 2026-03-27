@@ -8,7 +8,6 @@ export interface ServiceOption {
   name: string;
   description: string;
   basePrice: number;
-  icon?: string;
 }
 
 export interface CalculatorOption {
@@ -42,21 +41,18 @@ export const serviceCategories: ServiceCategory[] = [
         name: 'Базовый пакет',
         description: 'Поиск лидов + первичная обработка',
         basePrice: 50000,
-        icon: 'L',
       },
       {
         id: 'pro',
         name: 'PRO пакет',
         description: 'Расширенный поиск + CRM интеграция',
         basePrice: 100000,
-        icon: 'P',
       },
       {
         id: 'enterprise',
         name: 'Enterprise',
         description: 'Полный цикл + персональный менеджер',
         basePrice: 200000,
-        icon: 'E',
       },
     ],
   },
@@ -69,21 +65,18 @@ export const serviceCategories: ServiceCategory[] = [
         name: 'Входящие звонки',
         description: 'Обработка входящих заявок',
         basePrice: 30000,
-        icon: 'In',
       },
       {
         id: 'outbound',
         name: 'Исходящие звонки',
         description: 'Холодные и тёплые звонки',
         basePrice: 40000,
-        icon: 'Out',
       },
       {
         id: 'mixed',
         name: 'Смешанный',
         description: 'Входящие + исходящие',
         basePrice: 60000,
-        icon: 'Mix',
       },
     ],
   },
@@ -96,21 +89,18 @@ export const serviceCategories: ServiceCategory[] = [
         name: 'Стартовый',
         description: '5 объявлений в месяц',
         basePrice: 15000,
-        icon: 'S',
       },
       {
         id: 'business',
         name: 'Бизнес',
         description: '20 объявлений + продвижение',
         basePrice: 35000,
-        icon: 'B',
       },
       {
         id: 'premium',
         name: 'Премиум',
         description: '50 объявлений + VIP поддержка',
         basePrice: 70000,
-        icon: 'P',
       },
     ],
   },
@@ -123,21 +113,18 @@ export const serviceCategories: ServiceCategory[] = [
         name: 'Массовый подбор',
         description: 'Линейный персонал (от 10 человек)',
         basePrice: 50000,
-        icon: 'M',
       },
       {
         id: 'it',
         name: 'IT рекрутинг',
         description: 'Подбор IT специалистов',
         basePrice: 80000,
-        icon: 'IT',
       },
       {
         id: 'top',
         name: 'Top Management',
         description: 'Подбор руководителей',
         basePrice: 150000,
-        icon: 'T',
       },
     ],
   },
@@ -283,12 +270,9 @@ export default function ServicesCalculator() {
                         }
                       `}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{service.icon}</span>
-                        <div>
-                          <div className="font-medium">{service.name}</div>
-                          <div className="text-sm text-white/60">{service.description}</div>
-                        </div>
+                      <div>
+                        <div className="font-medium">{service.name}</div>
+                        <div className="text-sm text-white/60">{service.description}</div>
                       </div>
                     </motion.button>
                   ))}
