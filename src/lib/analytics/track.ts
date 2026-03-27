@@ -4,17 +4,27 @@ import { AnalyticsEvent, FormSubmitEvent, FormErrorEvent, ModalOpenEvent, ModalC
 
 export function trackEvent(event: AnalyticsEvent) {
   if (typeof window === 'undefined') return;
-  
+
+  // Получаем ID счётчиков из переменных окружения
+  const yandexCounterId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+  const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID;
+
   // Отправка в Яндекс.Метрику
-  if (window.ym) {
-    window.ym(98765432, 'reachGoal', event.type, event);
+  if (window.ym && yandexCounterId) {
+    const counterId = parseInt(yandexCounterId, 10);
+    if (!isNaN(counterId)) {
+      window.ym(counterId, 'reachGoal', event.type, event);
+    }
   }
-  
+
   // Отправка в Google Analytics
-  if (window.gtag) {
-    window.gtag('event', event.type, event);
+  if (window.gtag && googleAnalyticsId) {
+    window.gtag('event', event.type, {
+      ...event,
+      send_to: googleAnalyticsId,
+    });
   }
-  
+
   // Логирование в development
   if (process.env.NODE_ENV === 'development') {
     console.log('[Analytics Event]', event);

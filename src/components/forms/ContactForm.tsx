@@ -2,10 +2,11 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { trackFormSubmit, trackFormError } from '@/lib/analytics/track';
+import { useUTM } from '@/lib/hooks/use-utm';
 
 interface FormData {
   name: string;
@@ -29,6 +30,9 @@ export function ContactForm({ formName = 'contact_form', serviceName }: ContactF
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  
+  // Получаем UTM метки из хука
+  const utm = useUTM();
 
   const {
     register,
@@ -36,6 +40,13 @@ export function ContactForm({ formName = 'contact_form', serviceName }: ContactF
     formState: { errors },
     reset,
   } = useForm<FormData>();
+
+  // Обновляем скрытые поля UTM метками
+  useEffect(() => {
+    if (utm.utm_source || utm.utm_medium || utm.utm_campaign) {
+      // UTM метки доступны, можно обновить форму
+    }
+  }, [utm]);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
@@ -48,6 +59,10 @@ export function ContactForm({ formName = 'contact_form', serviceName }: ContactF
         form_name: formName,
         service: serviceName,
         timestamp: new Date().toISOString(),
+        // Добавляем UTM метки из хука
+        utm_source: utm.utm_source || data.utm_source || '',
+        utm_medium: utm.utm_medium || data.utm_medium || '',
+        utm_campaign: utm.utm_campaign || data.utm_campaign || '',
       };
 
       const response = await fetch('/api/submit-lead', {

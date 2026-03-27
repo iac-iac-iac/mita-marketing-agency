@@ -257,6 +257,16 @@ export async function POST(request: NextRequest) {
     // 7. Отправка в Bitrix24 (если настроен webhook)
     if (process.env.BITRIX24_WEBHOOK_URL) {
       try {
+        // Валидация URL webhook
+        let webhookUrl: string;
+        try {
+          webhookUrl = process.env.BITRIX24_WEBHOOK_URL.trim();
+          new URL(webhookUrl); // Проверяем валидность URL
+        } catch (urlError) {
+          console.error('Bitrix24 webhook URL is invalid:', urlError);
+          throw new Error('Некорректный URL Bitrix24 webhook');
+        }
+
         const bitrixPayload = {
           fields: {
             TITLE: `Заявка с сайта: ${data.form_name}`,
@@ -272,19 +282,31 @@ export async function POST(request: NextRequest) {
           params: { REGISTER_SON_EVENT: 'Y' },
         };
 
-        const response = await fetch(process.env.BITRIX24_WEBHOOK_URL, {
+        // Создаём AbortController для timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 секунд timeout
+
+        const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(bitrixPayload),
+          signal: controller.signal,
         });
 
+        clearTimeout(timeoutId);
+
         if (!response.ok) {
-          console.error('Bitrix24 API error:', await response.text());
+          const errorText = await response.text();
+          console.error('Bitrix24 API error:', response.status, errorText);
         } else {
           console.log('Lead sent to Bitrix24 successfully');
         }
       } catch (bitrixError) {
-        console.error('Failed to send lead to Bitrix24:', bitrixError);
+        if (bitrixError instanceof Error && bitrixError.name === 'AbortError') {
+          console.error('Bitrix24 request timeout (5s)');
+        } else {
+          console.error('Failed to send lead to Bitrix24:', bitrixError);
+        }
       }
     } else {
       console.log('Bitrix24 webhook not configured (BITRIX24_WEBHOOK_URL)');
