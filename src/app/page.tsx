@@ -4,12 +4,12 @@ import MainHeader from '@/components/layout/MainHeader'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/blocks/Hero'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
-import FeatureGroup from '@/components/blocks/FeatureGroup'
-import ProcessSteps from '@/components/blocks/ProcessSteps'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
 import BlogPreview from '@/components/blocks/BlogPreview'
 import CasePreview from '@/components/blocks/CasePreview'
 import ClosingCta from '@/components/blocks/ClosingCta'
+import ServicesSection, { defaultServices } from '@/components/blocks/ServicesSection'
+import WorkProcessSection, { defaultWorkProcess } from '@/components/blocks/WorkProcessSection'
 
 export default function HomePage() {
   return (
@@ -44,80 +44,11 @@ export default function HomePage() {
           ]}
         />
 
-        {/* Feature Group - Услуги */}
-        <div id="services">
-          <FeatureGroup
-            groupTitle="Наши услуги"
-            groupIntro="Комплексный подход к решению ваших маркетинговых задач. Четыре направления, которые работают как единый механизм для роста вашего бизнеса."
-            items={[
-              {
-                name: 'Лидогенерация',
-                label: 'Флагманский продукт',
-                description: 'IT-сервис для поиска номеров телефонов людей, интересующихся продуктами клиента + первичный обзвон для отбора «живых» лидов.',
-                icon: '/images/icons/service_icon/1_service_icon_Lead_generation.png',
-                ctaLabel: 'Подробнее',
-                ctaUrl: '/services/leadgen',
-              },
-              {
-                name: 'Call-центр',
-                label: 'Профессиональный обзвон',
-                description: 'Обзвон номеров клиента для получения горячих лидов. Холодные и тёплые звонки, обработка входящих заявок, скрипты продаж.',
-                icon: '/images/icons/service_icon/2_service_icon_Call_center.png',
-                ctaLabel: 'Подробнее',
-                ctaUrl: '/services/call-center',
-              },
-              {
-                name: 'Авито',
-                label: 'Бюджетный канал',
-                description: 'Продвижение на платформе Авито. Публикация объявлений, ведение аккаунта, оптимизация под поисковые запросы.',
-                icon: '/images/icons/service_icon/3_service_icon_Classified_ads.png',
-                ctaLabel: 'Подробнее',
-                ctaUrl: '/services/avito',
-              },
-              {
-                name: 'Рекрутинг',
-                label: 'Подбор персонала',
-                description: 'Поиск, привлечение, отбор и наём сотрудников. Массовый подбор с использованием call-центра для быстрого результата.',
-                icon: '/images/icons/service_icon/4_service_icon_Recruiting.png',
-                ctaLabel: 'Подробнее',
-                ctaUrl: '/services/recruiting',
-              },
-            ]}
-            groupCtaLabel="Смотреть все услуги"
-            groupCtaUrl="/#services"
-          />
-        </div>
+        {/* Services секция */}
+        <ServicesSection items={defaultServices} />
 
-        {/* Process Steps секция */}
-        <ProcessSteps
-          title="Как мы работаем"
-          steps={[
-            {
-              number: 1,
-              title: 'Аудит и стратегия',
-              description: 'Проводим глубокий анализ вашей текущей ситуации, определяем точки роста и разрабатываем персонализированную стратегию продвижения.',
-              kpi: '1-2 недели',
-            },
-            {
-              number: 2,
-              title: 'Настройка и запуск',
-              description: 'Настраиваем все необходимые инструменты, создаём рекламные кампании, интегрируем CRM и системы аналитики.',
-              kpi: '2-3 недели',
-            },
-            {
-              number: 3,
-              title: 'Привлечение лидов',
-              description: 'Запускаем рекламные кампании, начинаем привлекать потенциальных клиентов и передаём их в обработку.',
-              kpi: 'Постоянно',
-            },
-            {
-              number: 4,
-              title: 'Оптимизация и масштабирование',
-              description: 'Анализируем результаты, оптимизируем рекламные каналы и масштабируем успешные решения для максимального роста.',
-              kpi: 'Ежемесячно',
-            },
-          ]}
-        />
+        {/* Work Process секция */}
+        <WorkProcessSection steps={defaultWorkProcess} />
 
         {/* Testimonials секция */}
         <TestimonialsSection
