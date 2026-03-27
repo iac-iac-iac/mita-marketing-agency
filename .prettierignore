@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.pnp/
+
+# Next.js
+.next/
+/out/
+/build/
+
+# Production
+/dist/
+
+# Testing
+/coverage/
+/test-results/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+
+# Build artifacts
+*.tsbuildinfo
+
+# Storybook
+storybook-static/
+
+# Vercel
+.vercel/
