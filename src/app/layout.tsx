@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
 import ScrollToTop from '@/components/ui/ScrollToTop'
+import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
+import ServiceWorkerRegistration from '@/components/ui/ServiceWorkerRegistration'
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -27,6 +29,13 @@ export const metadata: Metadata = {
     icon: '/images/icons/Favicon.ico',
     shortcut: '/images/icons/Favicon.ico',
     apple: '/images/icons/Favicon.ico',
+  },
+  manifest: '/manifest.json',
+  themeColor: '#7274B3',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Direct-line',
   },
   robots: {
     index: true,
@@ -65,6 +74,8 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <ScrollToTop />
+        <PWAInstallPrompt />
+        <ServiceWorkerRegistration />
       </body>
     </html>
   )
