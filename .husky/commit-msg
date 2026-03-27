@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
-# Commit-msg hook для проверки формата сообщений
+# Commit-msg hook для проверки формата сообщений (Husky v9)
 # Требует Conventional Commits формат
 
 echo "📝 Validating commit message format..."
