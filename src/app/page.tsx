@@ -10,6 +10,8 @@ import CasePreview from '@/components/blocks/CasePreview'
 import ClosingCta from '@/components/blocks/ClosingCta'
 import ServicesSection, { defaultServices } from '@/components/blocks/ServicesSection'
 import WorkProcessSection, { defaultWorkProcess } from '@/components/blocks/WorkProcessSection'
+import ServicesCalculator from '@/components/blocks/ServicesCalculator'
+import ChatWidget from '@/components/ui/ChatWidget'
 
 export default function HomePage() {
   return (
@@ -46,6 +48,9 @@ export default function HomePage() {
 
         {/* Services секция */}
         <ServicesSection items={defaultServices} />
+
+        {/* Калькулятор услуг */}
+        <ServicesCalculator />
 
         {/* Work Process секция */}
         <WorkProcessSection steps={defaultWorkProcess} />
@@ -144,6 +149,9 @@ export default function HomePage() {
       </main>
 
       <Footer />
+
+      {/* Онлайн-чат виджет */}
+      <ChatWidget />
     </>
   )
 }
