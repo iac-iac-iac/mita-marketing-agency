@@ -1,8 +1,11 @@
-import fs from 'fs';
 import path from 'path';
-import { serialize } from 'next-mdx-remote/serialize';
-import type { Case, CaseFrontmatter, CaseStats, CaseTestimonial, ContentMeta } from '@/types/content';
-import { extractFrontmatter, removeFrontmatter } from './shared';
+import type { Case, CaseFrontmatter, ContentMeta } from '@/types/content';
+import {
+  getMdxFiles,
+  readMdxFile,
+  getSerializedContent,
+  sortByDate,
+} from './utils';
 
 const casesDirectory = path.join(process.cwd(), 'src/content/cases');
 
@@ -10,45 +13,30 @@ const casesDirectory = path.join(process.cwd(), 'src/content/cases');
  * Получить все кейсы (метаданные)
  */
 export function getAllCases(): ContentMeta[] {
-  try {
-    if (!fs.existsSync(casesDirectory)) {
-      console.error('Cases directory not found:', casesDirectory);
-      return [];
+  const files = getMdxFiles(casesDirectory);
+
+  const cases = files.map((file) => {
+    const slug = file.replace('.mdx', '');
+    const filePath = path.join(casesDirectory, file);
+    const result = readMdxFile(filePath);
+
+    if (!result) {
+      return null;
     }
 
-    const files = fs.readdirSync(casesDirectory).filter((file) =>
-      file.endsWith('.mdx')
-    );
+    const frontmatter = result.frontmatter as unknown as CaseFrontmatter;
 
-    console.log('Case files:', files);
+    return {
+      slug,
+      title: String(frontmatter.title) || slug,
+      excerpt: String(frontmatter.excerpt) || '',
+      publishedAt: String(frontmatter.publishedAt) || new Date().toISOString(),
+      coverImage: frontmatter.coverImage ? String(frontmatter.coverImage) : undefined,
+    } satisfies ContentMeta;
+  }).filter(Boolean);
 
-    const cases = files.map((file) => {
-      const slug = file.replace('.mdx', '');
-      const filePath = path.join(casesDirectory, file);
-      const content = fs.readFileSync(filePath, 'utf-8');
-
-      // Извлекаем frontmatter из начала файла
-      const frontmatter = extractFrontmatter(content);
-
-      console.log('Case frontmatter:', { slug, frontmatter });
-
-      return {
-        slug,
-        title: String(frontmatter.title) || slug,
-        excerpt: String(frontmatter.excerpt) || '',
-        publishedAt: String(frontmatter.publishedAt) || new Date().toISOString(),
-        coverImage: frontmatter.coverImage ? String(frontmatter.coverImage) : undefined,
-      };
-    });
-
-    // Сортируем по дате публикации (новые сначала)
-    return cases.sort((a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
-  } catch (error) {
-    console.error('Error getting cases:', error);
-    return [];
-  }
+  // Сортируем по дате
+  return sortByDate(cases);
 }
 
 /**
@@ -56,20 +44,19 @@ export function getAllCases(): ContentMeta[] {
  */
 export async function getCaseBySlug(slug: string): Promise<Case | null> {
   const filePath = path.join(casesDirectory, `${slug}.mdx`);
-  
-  if (!fs.existsSync(filePath)) {
+  const result = readMdxFile(filePath);
+
+  if (!result) {
     return null;
   }
 
-  const content = fs.readFileSync(filePath, 'utf-8');
-  const frontmatter = extractFrontmatter(content);
-  const mainContent = removeFrontmatter(content);
+  const frontmatter = result.frontmatter as unknown as CaseFrontmatter;
 
   return {
     slug,
     title: String(frontmatter.title) || slug,
     excerpt: String(frontmatter.excerpt) || '',
-    content: mainContent,
+    content: result.content,
     publishedAt: String(frontmatter.publishedAt),
     updatedAt: frontmatter.updatedAt ? String(frontmatter.updatedAt) : undefined,
     client: String(frontmatter.client) || '',
@@ -87,23 +74,24 @@ export async function getCaseBySlug(slug: string): Promise<Case | null> {
 }
 
 /**
- * Получить serialized контент для MDX
+ * Получить serialized контент для MDX с кэшированием
  */
 export async function getSerializedCase(slug: string) {
   const caseItem = await getCaseBySlug(slug);
-  
+
   if (!caseItem) {
     return null;
   }
 
-  const mdxSource = await serialize(caseItem.content, {
-    mdxOptions: {
-      development: process.env.NODE_ENV === 'development',
-    },
-  });
+  try {
+    const mdxSource = await getSerializedContent(caseItem.content, `case-${slug}`);
 
-  return {
-    ...caseItem,
-    mdxSource,
-  };
+    return {
+      ...caseItem,
+      mdxSource,
+    };
+  } catch (error) {
+    console.error('Error serializing case:', error);
+    return null;
+  }
 }
