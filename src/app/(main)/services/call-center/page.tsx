@@ -43,42 +43,6 @@ export default function CallCenterPage() {
         videoPoster="/images/hero-banner/Hero-banner_Call-Center.png"
       />
 
-      {/* Статистика звонков */}
-      <CallStatistics
-        title="Наши результаты в цифрах"
-        description="Показатели эффективности нашего call-центра"
-        stats={[
-          {
-            label: 'Звонков в день',
-            value: 85,
-            suffix: '',
-            icon: 'C1',
-            description: 'В среднем на оператора',
-          },
-          {
-            label: 'Конверсия в продажу',
-            value: 12,
-            suffix: '%',
-            icon: '📈',
-            description: 'Средний показатель по проектам',
-          },
-          {
-            label: 'NPS клиентов',
-            value: 72,
-            suffix: '',
-            icon: '⭐',
-            description: 'Индекс лояльности',
-          },
-          {
-            label: 'Среднее время звонка',
-            value: 4,
-            suffix: ' мин',
-            icon: 'C2',
-            description: 'Оптимальная длительность',
-          },
-        ]}
-      />
-
       {/* Примеры скриптов */}
       <ScriptExamples
         title="Примеры скриптов"
@@ -189,7 +153,7 @@ export default function CallCenterPage() {
           {
             title: 'Обучение',
             description: 'Непрерывное развитие навыков команды',
-            icon: '📚',
+            icon: 'Q3',
             features: [
               'Вводное обучение для новых операторов',
               'Регулярные тренинги по продуктам',
@@ -228,11 +192,6 @@ export default function CallCenterPage() {
             icon: 'C6',
           },
           {
-            name: "Контроль качества",
-            description: "Запись всех разговоров, анализ эффективности, обратная связь операторам",
-            icon: "🎧",
-          },
-          {
             name: "Отчёты в CRM",
             description: "Полная интеграция с Битрикс24. Все звонки фиксируются, результаты видны в реальном времени",
             icon: 'C7',
@@ -245,7 +204,7 @@ export default function CallCenterPage() {
           {
             name: "Масштабирование",
             description: "4 отдела КЦ, ~70-80 сотрудников. Быстро увеличим количество операторов под ваш проект",
-            icon: "📈",
+            icon: 'C9',
           },
         ]}
       />

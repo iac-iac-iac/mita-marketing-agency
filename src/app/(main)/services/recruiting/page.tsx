@@ -44,78 +44,6 @@ export default function RecruitingPage() {
           videoPoster="/images/hero-banner/Hero-banner_recruiting.png"
         />
 
-        {/* Скорость подбора */}
-        <SpeedMetrics
-          metrics={[
-            {
-              label: 'Дней на закрытие вакансии',
-              value: 14,
-              suffix: ' дней',
-              icon: 'R1',
-              description: 'Средний срок подбора',
-            },
-            {
-              label: 'Звонков в день',
-              value: 200,
-              suffix: '',
-              icon: 'R2',
-              description: 'На одного рекрутера',
-            },
-            {
-              label: 'Собеседований в неделю',
-              value: 50,
-              suffix: '',
-              icon: 'R3',
-              description: 'С квалифицированными кандидатами',
-            },
-          ]}
-          title="Скорость подбора"
-          description="Наши показатели эффективности"
-        />
-
-        {/* Воронка кандидатов */}
-        <RecruitmentFunnel
-          stages={[
-            {
-              number: 1,
-              name: 'Заявок получено',
-              count: 1000,
-              conversion: 100,
-              description: 'Первичный контакт',
-            },
-            {
-              number: 2,
-              name: 'Дозвонились',
-              count: 650,
-              conversion: 65,
-              description: 'Установлен контакт',
-            },
-            {
-              number: 3,
-              name: 'Заинтересовались',
-              count: 400,
-              conversion: 40,
-              description: 'Выразили интерес к вакансии',
-            },
-            {
-              number: 4,
-              name: 'Прошли собеседование',
-              count: 200,
-              conversion: 20,
-              description: 'Успешное интервью',
-            },
-            {
-              number: 5,
-              name: 'Вышли на работу',
-              count: 100,
-              conversion: 10,
-              description: 'Трудоустроены',
-            },
-          ]}
-          title="Воронка кандидатов"
-          description="Прозрачный процесс подбора от звонка до выхода на работу"
-        />
-
         {/* Кейсы по вакансиям */}
         <VacancyCases
           cases={[
@@ -131,7 +59,7 @@ export default function RecruitingPage() {
               position: 'Оператор станка ЧПУ',
               deadline: '21 день',
               result: '18 кандидатов',
-              icon: '🏭',
+              icon: 'P1',
             },
             {
               niche: 'Ритейл',
@@ -145,7 +73,7 @@ export default function RecruitingPage() {
               position: 'Водитель-экспедитор',
               deadline: '7 дней',
               result: '12 кандидатов',
-              icon: '🚚',
+              icon: 'P2',
             },
           ]}
           title="Закрытые вакансии"
@@ -164,18 +92,16 @@ export default function RecruitingPage() {
             {
               title: 'Возврат денег',
               description: 'Если не закроем вакансию в срок, вернём 100% предоплаты без вопросов',
-              icon: '💰',
+              icon: 'G1',
               color: 'green',
             },
             {
               title: 'Соблюдение сроков',
               description: 'Гарантируем передачу кандидатов точно в оговоренные даты по договору',
-              icon: '⏰',
+              icon: 'G2',
               color: 'purple',
             },
           ]}
-          title="Наши гарантии"
-          description="Работаем по договору с полной ответственностью за результат"
         />
 
         {/* Проблемы */}
@@ -196,11 +122,6 @@ export default function RecruitingPage() {
           title="Как мы решаем проблемы"
           features={[
             {
-              name: "Воронка кандидатов",
-              description: "Построение полноценной воронки: от первичного контакта до выхода на работу. Контроль на каждом этапе",
-              icon: 'R7',
-            },
-            {
               name: "Массовый обзвон",
               description: "Call-центр делает сотни звонков потенциальным кандидатам. Быстрый охват большой аудитории",
               icon: 'R8',
@@ -213,7 +134,7 @@ export default function RecruitingPage() {
             {
               name: "Адаптация",
               description: "Сопровождение новых сотрудников на испытательном сроке. Снижение текучести",
-              icon: "🤝",
+              icon: 'R11',
             },
             {
               name: "Составление сценария",
@@ -223,7 +144,7 @@ export default function RecruitingPage() {
             {
               name: "Интеграция с CRM",
               description: "Все кандидаты вносятся в Битрикс24. Прозрачная статистика и отчётность",
-              icon: "🔗",
+              icon: 'R12',
             },
           ]}
         />
