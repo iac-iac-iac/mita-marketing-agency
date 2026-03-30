@@ -1,5 +1,9 @@
 {
   "/page": "app/page.js",
+  "/(main)/services/recruiting/page": "app/(main)/services/recruiting/page.js",
   "/(main)/services/call-center/page": "app/(main)/services/call-center/page.js",
-  "/(main)/services/recruiting/page": "app/(main)/services/recruiting/page.js"
+  "/(main)/services/avito/page": "app/(main)/services/avito/page.js",
+  "/about/page": "app/about/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/(main)/services/leadgen/page": "app/(main)/services/leadgen/page.js"
 }
