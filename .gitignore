@@ -57,3 +57,10 @@ test-results/
 
 # storybook
 storybook-static/
+
+# clinerules
+.clinerules-architect
+.clinerules-ask
+.clinerules-code
+.clinerules-debug
+.clinerules-test
