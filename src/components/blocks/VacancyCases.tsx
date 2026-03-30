@@ -8,7 +8,6 @@ interface VacancyCase {
   position: string
   deadline: string
   result: string
-  icon: string
 }
 
 interface VacancyCasesProps {
@@ -62,11 +61,6 @@ export default function VacancyCases({
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass p-6 rounded-2xl hover:bg-white/5 transition-colors"
             >
-              {/* Иконка */}
-              <div className="text-4xl mb-4">
-                {caseItem.icon}
-              </div>
-
               {/* Ниша */}
               <div className="inline-block px-3 py-1 rounded-full bg-direct-primary/20 text-direct-primary text-sm font-medium mb-4">
                 {caseItem.niche}

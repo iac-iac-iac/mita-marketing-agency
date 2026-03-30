@@ -56,11 +56,6 @@ export default function SpeedMetrics({
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="glass p-6 rounded-2xl text-center hover:bg-white/5 transition-colors"
             >
-              {/* Иконка */}
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-direct-primary/20 flex items-center justify-center text-3xl">
-                {metric.icon}
-              </div>
-
               {/* Значение с Counter */}
               <div className="mb-3">
                 <span className="text-4xl md:text-5xl font-bold text-direct-primary">

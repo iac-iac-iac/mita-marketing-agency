@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 interface Guarantee {
   title: string
   description: string
-  icon: string
   color?: 'blue' | 'green' | 'purple' | 'red' | 'orange'
 }
 
@@ -15,20 +14,11 @@ interface GuaranteeSectionProps {
   description?: string
 }
 
-export default function GuaranteeSection({ 
-  guarantees, 
+export default function GuaranteeSection({
+  guarantees,
   title = 'Наши гарантии',
-  description 
+  description
 }: GuaranteeSectionProps) {
-  // Цветовые схемы для иконок
-  const colorClasses = {
-    blue: 'bg-blue-500/20 text-blue-400',
-    green: 'bg-green-500/20 text-green-400',
-    purple: 'bg-direct-primary/20 text-direct-primary',
-    red: 'bg-red-500/20 text-red-400',
-    orange: 'bg-orange-500/20 text-orange-400',
-  }
-
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -63,13 +53,6 @@ export default function GuaranteeSection({
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="glass p-6 rounded-2xl hover:bg-white/5 transition-colors"
             >
-              {/* Иконка */}
-              <div className={`w-16 h-16 mb-4 rounded-full flex items-center justify-center text-3xl ${
-                colorClasses[guarantee.color || 'purple']
-              }`}>
-                {guarantee.icon}
-              </div>
-
               {/* Заголовок гарантии */}
               <h3 className="text-xl font-semibold mb-3">
                 {guarantee.title}

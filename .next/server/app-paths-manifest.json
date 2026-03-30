@@ -1,4 +1,5 @@
 {
-  "/(main)/services/recruiting/page": "app/(main)/services/recruiting/page.js",
-  "/(main)/services/call-center/page": "app/(main)/services/call-center/page.js"
+  "/page": "app/page.js",
+  "/(main)/services/call-center/page": "app/(main)/services/call-center/page.js",
+  "/(main)/services/recruiting/page": "app/(main)/services/recruiting/page.js"
 }

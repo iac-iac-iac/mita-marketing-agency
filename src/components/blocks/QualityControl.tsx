@@ -6,7 +6,6 @@ import Image from 'next/image'
 interface ControlLevel {
   title: string
   description: string
-  icon: string
   features: string[]
 }
 
@@ -61,11 +60,6 @@ export default function QualityControl({
               }}
               className="glass p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105 group"
             >
-              {/* Иконка */}
-              <div className="w-16 h-16 mb-6 rounded-xl bg-direct-primary/20 flex items-center justify-center overflow-hidden group-hover:bg-direct-primary/30 transition-colors">
-                <span className="text-3xl">{level.icon}</span>
-              </div>
-
               {/* Заголовок */}
               <h3 className="text-xl font-bold text-direct-light mb-3">
                 {level.title}

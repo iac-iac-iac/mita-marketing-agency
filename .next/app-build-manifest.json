@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/(main)/services/recruiting/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(main)/services/recruiting/page.js"
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -20,6 +20,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(main)/services/call-center/page.js"
+    ],
+    "/(main)/services/recruiting/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/services/recruiting/page.js"
+    ],
+    "/(main)/services/avito/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(main)/services/avito/page.js"
     ]
   }
 }
