@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
@@ -17,8 +17,11 @@ if (process.env.NODE_ENV === 'development') {
   logEnvValidation()
 }
 
+export const viewport: Viewport = {
+  themeColor: '#7274B3',
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://direct-line.ru'),
   title: 'Direct-line — Маркетинговое IT-агентство полного цикла',
   description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков. Call-центр, продвижение на Авито, рекрутинг. Все модули работают как единый механизм.',
   keywords: ['маркетинговое агентство', 'лидогенерация', 'call-центр', 'авито', 'рекрутинг', 'продвижение бизнеса'],
@@ -31,7 +34,6 @@ export const metadata: Metadata = {
     apple: '/images/icons/Favicon.ico',
   },
   manifest: '/manifest.json',
-  themeColor: '#7274B3',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
