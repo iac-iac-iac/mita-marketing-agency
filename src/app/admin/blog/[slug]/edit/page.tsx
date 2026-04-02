@@ -1,24 +1,40 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { saveBlogPost, generateSlug } from '@/lib/cms/storage';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { getBlogPostBySlug, saveBlogPost, type BlogPost } from '@/lib/cms/storage';
 
-export default function AdminBlogNewPage() {
+export default function AdminBlogEditPage() {
+  const params = useParams();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
-
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<BlogPost>({
+    slug: '',
     title: '',
     excerpt: '',
     content: '',
     author: '',
+    publishedAt: '',
     category: 'Общее',
     tags: '',
     coverImage: '',
-    status: 'draft' as 'draft' | 'published',
+    status: 'draft',
   });
+
+  useEffect(() => {
+    const decodedSlug = decodeURIComponent(params.slug as string);
+    const post = getBlogPostBySlug(decodedSlug);
+    
+    if (post) {
+      setFormData(post);
+    } else {
+      setError('Статья не найдена');
+    }
+    
+    setIsLoading(false);
+  }, [params.slug]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -35,13 +51,10 @@ export default function AdminBlogNewPage() {
     setIsSaving(true);
 
     try {
-      const newPost = {
-        slug: generateSlug(formData.title),
+      saveBlogPost({
         ...formData,
-        publishedAt: new Date().toISOString(),
-      };
-
-      saveBlogPost(newPost);
+        updatedAt: new Date().toISOString(),
+      });
       router.push('/admin/blog');
     } catch (err) {
       setError('Ошибка сохранения');
@@ -50,15 +63,42 @@ export default function AdminBlogNewPage() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-direct-dark flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-direct-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white">Загрузка...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error && !formData.slug) {
+    return (
+      <div className="min-h-screen bg-direct-dark flex items-center justify-center pt-20">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Статья не найдена</h1>
+          <button
+            onClick={() => router.push('/admin/blog')}
+            className="px-6 py-3 bg-direct-primary hover:bg-direct-primary/90 text-white rounded-xl transition-colors"
+          >
+            ← Назад к списку
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">
-          Новая статья
+          Редактирование статьи
         </h1>
         <p className="text-gray-400">
-          Создайте новую запись в блоге
+          {formData.title}
         </p>
       </div>
 
@@ -77,7 +117,6 @@ export default function AdminBlogNewPage() {
             value={formData.title}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-            placeholder="Введите заголовок статьи"
           />
         </div>
 
@@ -94,7 +133,6 @@ export default function AdminBlogNewPage() {
             value={formData.excerpt}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all resize-none"
-            placeholder="Краткое описание статьи (2-3 предложения)"
           />
         </div>
 
@@ -111,11 +149,7 @@ export default function AdminBlogNewPage() {
             value={formData.content}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all resize-none font-mono text-sm"
-            placeholder="Текст статьи в формате Markdown..."
           />
-          <p className="mt-2 text-xs text-gray-400">
-            💡 Поддерживается Markdown: # Заголовок, **жирный**, *курсив*, - списки
-          </p>
         </div>
 
         {/* Author & Category */}
@@ -132,7 +166,6 @@ export default function AdminBlogNewPage() {
               value={formData.author}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-              placeholder="Имя автора"
             />
           </div>
 
@@ -171,7 +204,6 @@ export default function AdminBlogNewPage() {
             value={formData.tags}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-            placeholder="тег1, тег2, тег3"
           />
         </div>
 
@@ -187,7 +219,6 @@ export default function AdminBlogNewPage() {
             value={formData.coverImage}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-            placeholder="/images/blog/cover.jpg"
           />
         </div>
 
@@ -226,7 +257,7 @@ export default function AdminBlogNewPage() {
           </button>
           <button
             type="button"
-            onClick={() => router.back()}
+            onClick={() => router.push('/admin/blog')}
             className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all"
           >
             Отмена
