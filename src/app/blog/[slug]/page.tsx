@@ -122,34 +122,32 @@ export default function BlogPostPage() {
 
         {/* Article Content */}
         <article className="max-w-4xl mx-auto px-4 py-12">
-          <div className="prose prose-invert prose-lg max-w-none">
-            {/* Краткое описание */}
-            {post?.excerpt && (
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                {post.excerpt}
-              </p>
-            )}
+          {/* Краткое описание */}
+          {post?.excerpt && (
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              {post.excerpt}
+            </p>
+          )}
 
-            {/* Содержимое */}
-            <div className="text-gray-300 prose prose-invert prose-lg max-w-none
-              prose-headings:text-white prose-headings:font-bold
-              prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
-              prose-p:leading-relaxed prose-p:mb-4
-              prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4
-              prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4
-              prose-strong:text-direct-primary prose-strong:font-bold
-              prose-em:text-gray-300 prose-em:italic
-              prose-a:text-direct-primary prose-a:underline
-              prose-blockquote:border-l-4 prose-blockquote:border-direct-primary
-              prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-400
-              prose-code:bg-white/10 prose-code:px-2 prose-code:py-1
-              prose-code:rounded prose-code:text-direct-primary
-              prose-pre:bg-white/5 prose-pre:p-4 prose-pre:rounded-xl
-              prose-pre:overflow-x-auto">
-              <ReactMarkdown>
-                {post?.content || 'Содержимое статьи...'}
-              </ReactMarkdown>
-            </div>
+          {/* Содержимое */}
+          <div className="prose prose-invert prose-lg max-w-none
+            prose-headings:text-white prose-headings:font-bold
+            prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
+            prose-p:leading-relaxed prose-p:mb-4
+            prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4
+            prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4
+            prose-strong:text-direct-primary prose-strong:font-bold
+            prose-em:text-gray-300 prose-em:italic
+            prose-a:text-direct-primary prose-a:underline
+            prose-blockquote:border-l-4 prose-blockquote:border-direct-primary
+            prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-400
+            prose-code:bg-white/10 prose-code:px-2 prose-code:py-1
+            prose-code:rounded prose-code:text-direct-primary
+            prose-pre:bg-white/5 prose-pre:p-4 prose-pre:rounded-xl
+            prose-pre:overflow-x-auto">
+            <ReactMarkdown>
+              {post?.content || 'Содержимое статьи...'}
+            </ReactMarkdown>
           </div>
 
           {/* Кнопка назад */}
