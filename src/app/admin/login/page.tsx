@@ -9,37 +9,26 @@ export default function AdminLoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Простой пароль (можно изменить)
+  const ADMIN_PASSWORD = 'DirectLine2026!';
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    try {
-      const response = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Ошибка входа');
-      }
-
-      // Сохраняем сессию в localStorage
-      localStorage.setItem('adminSession', JSON.stringify({
-        token: data.token,
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 дней
-      }));
-
+    // Простая проверка пароля
+    if (password === ADMIN_PASSWORD) {
+      // Сохраняем сессию в sessionStorage
+      sessionStorage.setItem('adminAuth', 'true');
+      
       // Перенаправляем в админку
       router.push('/admin/blog');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Ошибка входа');
-    } finally {
-      setIsLoading(false);
+    } else {
+      setError('Неверный пароль');
     }
+    
+    setIsLoading(false);
   };
 
   return (
@@ -93,8 +82,7 @@ export default function AdminLoginPage() {
 
           {/* Подсказка */}
           <div className="mt-6 text-center text-sm text-gray-400">
-            <p>Пароль по умолчанию: <code className="px-2 py-1 bg-white/10 rounded">admin123</code></p>
-            <p className="mt-2 text-xs">Не забудьте изменить пароль в .env.local после первого входа!</p>
+            <p>Пароль: <code className="px-2 py-1 bg-white/10 rounded">{ADMIN_PASSWORD}</code></p>
           </div>
         </div>
 

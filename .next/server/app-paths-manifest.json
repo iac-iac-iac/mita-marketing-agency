@@ -1,7 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/(main)/services/leadgen/page": "app/(main)/services/leadgen/page.js",
-  "/(main)/services/avito/page": "app/(main)/services/avito/page.js",
-  "/(main)/services/recruiting/page": "app/(main)/services/recruiting/page.js",
-  "/(main)/services/call-center/page": "app/(main)/services/call-center/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/login/page": "app/admin/login/page.js"
 }

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { checkAdminSession, logout } from '@/lib/admin/auth';
 
 export default function AdminLayout({
   children,
@@ -16,20 +15,20 @@ export default function AdminLayout({
 
   useEffect(() => {
     // Проверяем сессию
-    const isValid = checkAdminSession();
-
-    if (!isValid && pathname !== '/admin/login') {
+    const auth = sessionStorage.getItem('adminAuth');
+    
+    if (auth !== 'true' && pathname !== '/admin/login') {
       router.push('/admin/login');
       return;
     }
 
-    setIsAuthenticated(isValid);
+    setIsAuthenticated(auth === 'true');
     setIsLoading(false);
   }, [pathname, router]);
 
   // Выход из админки
   const handleLogout = () => {
-    logout();
+    sessionStorage.removeItem('adminAuth');
     router.push('/admin/login');
   };
 
