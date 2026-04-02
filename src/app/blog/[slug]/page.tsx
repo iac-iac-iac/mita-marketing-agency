@@ -131,11 +131,14 @@ export default function BlogPostPage() {
 
           {/* Содержимое */}
           <div className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-white prose-headings:font-bold
-            prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
-            prose-p:leading-relaxed prose-p:mb-4
-            prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4
-            prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4
+            prose-headings:text-white prose-headings:font-bold prose-headings:mt-6 prose-headings:mb-4
+            prose-h1:text-4xl 
+            prose-h2:text-3xl 
+            prose-h3:text-2xl
+            prose-p:leading-relaxed prose-p:mb-4 prose-p:text-gray-300
+            prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4 prose-ul:text-gray-300
+            prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4 prose-ol:text-gray-300
+            prose-li:mb-2
             prose-strong:text-direct-primary prose-strong:font-bold
             prose-em:text-gray-300 prose-em:italic
             prose-a:text-direct-primary prose-a:underline

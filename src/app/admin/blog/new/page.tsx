@@ -33,9 +33,12 @@ export default function AdminBlogNewPage() {
     setIsSaving(true);
 
     try {
+      // Логируем formData для отладки
+      console.log('Form data:', formData);
+      
       // Пока просто сохраняем в localStorage для демонстрации
       const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-      
+
       const newPost = {
         ...formData,
         slug: formData.title
@@ -50,8 +53,12 @@ export default function AdminBlogNewPage() {
         status: 'published',
       };
 
+      console.log('New post:', newPost);
+
       posts.push(newPost);
       localStorage.setItem('blogPosts', JSON.stringify(posts));
+      
+      console.log('Saved to localStorage');
 
       // Перенаправляем в список
       router.push('/admin/blog');
