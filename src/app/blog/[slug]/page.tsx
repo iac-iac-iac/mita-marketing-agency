@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
 import Header from '@/components/layout/Header';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
@@ -121,8 +122,26 @@ export default function BlogPostPage() {
             )}
 
             {/* Содержимое */}
-            <div className="text-gray-300 leading-relaxed whitespace-pre-wrap">
-              {post?.content || 'Содержимое статьи...'}
+            <div className="text-gray-300">
+              <ReactMarkdown
+                className="prose prose-invert prose-lg max-w-none
+                  prose-headings:text-white prose-headings:font-bold
+                  prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
+                  prose-p:leading-relaxed prose-p:mb-4
+                  prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-4
+                  prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-4
+                  prose-strong:text-direct-primary prose-strong:font-bold
+                  prose-em:text-gray-300 prose-em:italic
+                  prose-a:text-direct-primary prose-a:underline
+                  prose-blockquote:border-l-4 prose-blockquote:border-direct-primary
+                  prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-400
+                  prose-code:bg-white/10 prose-code:px-2 prose-code:py-1
+                  prose-code:rounded prose-code:text-direct-primary
+                  prose-pre:bg-white/5 prose-pre:p-4 prose-pre:rounded-xl
+                  prose-pre:overflow-x-auto"
+              >
+                {post?.content || 'Содержимое статьи...'}
+              </ReactMarkdown>
             </div>
           </div>
 
