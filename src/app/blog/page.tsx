@@ -23,6 +23,9 @@ export default function BlogPage() {
         publishedAt: '2026-03-20',
         author: 'Алексей Иванов',
         category: 'Лидогенерация',
+        content: 'Полный текст статьи...',
+        tags: 'лиды, конверсия, маркетинг',
+        coverImage: '',
       },
       {
         slug: 'trendy-digital-marketinga-2026',
@@ -31,6 +34,9 @@ export default function BlogPage() {
         publishedAt: '2026-03-15',
         author: 'Мария Петрова',
         category: 'Маркетинг',
+        content: 'Полный текст статьи...',
+        tags: 'маркетинг, тренды, 2026',
+        coverImage: '',
       },
     ];
 

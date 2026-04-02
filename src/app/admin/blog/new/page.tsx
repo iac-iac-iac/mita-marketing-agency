@@ -38,9 +38,9 @@ export default function AdminBlogNewPage() {
       
       const newPost = {
         ...formData,
-        slug: formData.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+        slug: formData.title.toLowerCase().replace(/[^a-z0-9а-яё]+/gi, '-').replace(/^-|-$/g, ''),
         publishedAt: new Date().toISOString(),
-        status: 'draft',
+        status: 'published', // Публикуем сразу
       };
 
       posts.push(newPost);
