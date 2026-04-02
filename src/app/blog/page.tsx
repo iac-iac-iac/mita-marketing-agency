@@ -1,4 +1,6 @@
-import { getAllBlogPosts } from '@/lib/cms/blog';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { BlogIndex } from '@/components/blog/BlogIndex';
 import BlogCategories from '@/components/blog/BlogCategories';
 import Header from '@/components/layout/Header';
@@ -9,10 +11,37 @@ export const metadata = {
   description: 'Полезные статьи о маркетинге, разработке и продвижении бизнеса',
 };
 
-export default async function BlogPage() {
-  const posts = getAllBlogPosts();
+export default function BlogPage() {
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  console.log('Blog posts:', posts);
+  useEffect(() => {
+    // Загружаем посты из localStorage
+    const storedPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+    
+    // Если нет записей, используем заглушку
+    const posts = storedPosts.length > 0 ? storedPosts : [
+      {
+        slug: 'kak-uvelichit-konversiyu-lidov',
+        title: 'Как увеличить конверсию лидов на 30%',
+        excerpt: 'Разбираем проверенные техники повышения конверсии лидов в продажи',
+        publishedAt: '2026-03-20',
+        author: 'Алексей Иванов',
+        category: 'Лидогенерация',
+      },
+      {
+        slug: 'trendy-digital-marketinga-2026',
+        title: 'Тренды digital-маркетинга 2026',
+        excerpt: 'Обзор ключевых трендов и инструментов, которые будут определять рынок в этом году',
+        publishedAt: '2026-03-15',
+        author: 'Мария Петрова',
+        category: 'Маркетинг',
+      },
+    ];
+
+    setPosts(posts);
+    setIsLoading(false);
+  }, []);
 
   return (
     <>

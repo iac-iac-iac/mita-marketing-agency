@@ -16,8 +16,11 @@ export default function AdminBlogPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Загружаем список постов (пока заглушка)
-    const mockPosts: BlogPost[] = [
+    // Загружаем список постов из localStorage
+    const storedPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+    
+    // Если нет записей в localStorage, используем заглушку
+    const posts: BlogPost[] = storedPosts.length > 0 ? storedPosts : [
       {
         slug: 'kak-uvelichit-konversiyu-lidov',
         title: 'Как увеличить конверсию лидов на 30%',
@@ -32,7 +35,7 @@ export default function AdminBlogPage() {
       },
     ];
 
-    setPosts(mockPosts);
+    setPosts(posts);
     setIsLoading(false);
   }, []);
 
