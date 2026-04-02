@@ -1,1 +1,7 @@
-{}
+{
+  "/about/page": "app/about/page.js",
+  "/(main)/services/call-center/page": "app/(main)/services/call-center/page.js",
+  "/page": "app/page.js",
+  "/(main)/services/leadgen/page": "app/(main)/services/leadgen/page.js",
+  "/(main)/services/avito/page": "app/(main)/services/avito/page.js"
+}

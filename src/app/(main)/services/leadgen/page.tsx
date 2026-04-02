@@ -81,8 +81,6 @@ export default function LeadgenPage() {
         subtitle="IT-сервис для поиска номеров телефонов людей, интересующихся продуктами клиента, с последующей обработкой колл-центром для отбора живых лидов"
         primaryCtaLabel="Заказать тест"
         primaryCtaUrl="/contact"
-        secondaryCtaLabel="Узнать подробнее"
-        secondaryCtaUrl="#process"
         mediaSrc="/images/hero-banner/Hero-banner_LeadGeneration.mp4"
         mediaType="video"
         videoPoster="/images/hero-banner/Hero-banner_LeadGeneration.png"
@@ -395,8 +393,6 @@ export default function LeadgenPage() {
         description="Оставьте заявку на бесплатную консультацию — расскажем, как применить нашу систему для вашей воронки продаж."
         primaryCtaLabel="Оставить заявку"
         primaryCtaUrl="/contact"
-        secondaryCtaLabel="Платный тест за 10 000 ₽"
-        secondaryCtaUrl="#test"
       />
       </main>
     </>

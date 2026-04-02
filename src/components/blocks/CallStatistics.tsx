@@ -7,7 +7,6 @@ interface StatItem {
   label: string
   value: number
   suffix?: string
-  icon: string
   description?: string
 }
 
@@ -64,11 +63,6 @@ export default function CallStatistics({
               }}
               className="glass p-6 rounded-2xl text-center hover:bg-white/10 transition-all duration-300 hover:scale-105 group"
             >
-              {/* Иконка */}
-              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-direct-primary/20 flex items-center justify-center overflow-hidden group-hover:bg-direct-primary/30 transition-colors">
-                <span className="text-3xl">{stat.icon}</span>
-              </div>
-
               {/* Значение с Counter */}
               <div className="text-4xl md:text-5xl font-bold text-direct-primary mb-2">
                 <Counter value={stat.value} duration={2.5} />

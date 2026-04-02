@@ -36,8 +36,6 @@ export default function CallCenterPage() {
         subtitle="Профессиональный обзвон клиентов для бизнеса. Опытные операторы, готовые скрипты, полная интеграция с CRM"
         primaryCtaLabel="Заказать обзвон"
         primaryCtaUrl="/contact"
-        secondaryCtaLabel="Узнать подробнее"
-        secondaryCtaUrl="#process"
         mediaSrc="/images/hero-banner/Hero-banner_Call-Center.mp4"
         mediaType="video"
         videoPoster="/images/hero-banner/Hero-banner_Call-Center.png"

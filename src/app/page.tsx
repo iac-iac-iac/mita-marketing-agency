@@ -142,8 +142,6 @@ export default function HomePage() {
             description="Оставьте заявку сейчас и получите бесплатную консультацию по стратегии лидогенерации для вашего бизнеса."
             primaryCtaLabel="Оставить заявку"
             primaryCtaUrl="#contact"
-            secondaryCtaLabel="Платный тест за 10 000 ₽"
-            secondaryCtaUrl="/contact"
           />
         </div>
       </main>

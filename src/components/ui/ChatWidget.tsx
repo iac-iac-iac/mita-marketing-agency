@@ -41,9 +41,20 @@ export default function ChatWidget({
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [hasBeenClosed, setHasBeenClosed] = useState(false);
 
-  // Авто-открытие через 10 секунд
+  // Проверка: закрывал ли пользователь чат
   useEffect(() => {
+    const closed = localStorage.getItem('chatClosed');
+    if (closed === 'true') {
+      setHasBeenClosed(true);
+    }
+  }, []);
+
+  // Авто-открытие через 10 секунд (только если чат не был закрыт)
+  useEffect(() => {
+    if (hasBeenClosed) return; // Не открывать, если пользователь закрыл
+
     const timer = setTimeout(() => {
       if (!isOpen) {
         setIsOpen(true);
@@ -51,7 +62,14 @@ export default function ChatWidget({
     }, 10000);
 
     return () => clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, hasBeenClosed]);
+
+  // Обработка закрытия чата
+  const handleCloseChat = () => {
+    setIsOpen(false);
+    localStorage.setItem('chatClosed', 'true');
+    setHasBeenClosed(true);
+  };
 
   // Отправка сообщения
   const handleSendMessage = async () => {
@@ -128,7 +146,13 @@ export default function ChatWidget({
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (isOpen) {
+            handleCloseChat();
+          } else {
+            setIsOpen(true);
+          }
+        }}
         className={`
           fixed ${positionClasses} z-50
           w-14 h-14 rounded-full

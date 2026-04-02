@@ -33,8 +33,6 @@ export default function AvitoPage() {
           subtitle="Бюджетный канал привлечения клиентов через платформу Авито. Упаковка, ведение и масштабирование объявлений"
           primaryCtaLabel="Заказать продвижение"
           primaryCtaUrl="/contact"
-          secondaryCtaLabel="Узнать подробнее"
-          secondaryCtaUrl="#pricing"
           mediaSrc="/images/hero-banner/Hero-banner_Avito.mp4"
           mediaType="video"
           videoPoster="/images/hero-banner/Hero-banner_Avito.png"
