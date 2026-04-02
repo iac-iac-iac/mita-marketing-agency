@@ -6,11 +6,6 @@ import BlogCategories from '@/components/blog/BlogCategories';
 import Header from '@/components/layout/Header';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
-export const metadata = {
-  title: 'Блог | Direct-line',
-  description: 'Полезные статьи о маркетинге, разработке и продвижении бизнеса',
-};
-
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
