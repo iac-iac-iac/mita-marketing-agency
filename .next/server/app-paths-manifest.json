@@ -1,4 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/admin/login/page": "app/admin/login/page.js"
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/blog/page": "app/admin/blog/page.js"
 }

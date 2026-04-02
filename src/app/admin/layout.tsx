@@ -14,21 +14,32 @@ export default function AdminLayout({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Проверяем сессию
-    const auth = sessionStorage.getItem('adminAuth');
+    // Проверяем токен
+    const token = sessionStorage.getItem('adminToken');
+    const expires = sessionStorage.getItem('adminTokenExpires');
     
-    if (auth !== 'true' && pathname !== '/admin/login') {
+    // Проверяем срок действия
+    if (expires && Date.now() > parseInt(expires)) {
+      // Токен истёк
+      sessionStorage.removeItem('adminToken');
+      sessionStorage.removeItem('adminTokenExpires');
       router.push('/admin/login');
       return;
     }
 
-    setIsAuthenticated(auth === 'true');
+    if (!token && pathname !== '/admin/login') {
+      router.push('/admin/login');
+      return;
+    }
+
+    setIsAuthenticated(!!token);
     setIsLoading(false);
   }, [pathname, router]);
 
   // Выход из админки
   const handleLogout = () => {
-    sessionStorage.removeItem('adminAuth');
+    sessionStorage.removeItem('adminToken');
+    sessionStorage.removeItem('adminTokenExpires');
     router.push('/admin/login');
   };
 
