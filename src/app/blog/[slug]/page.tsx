@@ -27,7 +27,16 @@ export default function BlogPostPage() {
   useEffect(() => {
     // Загружаем пост из localStorage
     const storedPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-    const foundPost = storedPosts.find((p: BlogPost) => p.slug === params.slug);
+    
+    // Декодируем slug из URL (может быть в кодировке)
+    const decodedSlug = decodeURIComponent(params.slug as string);
+    
+    // Ищем пост по slug (сравниваем с декодированным)
+    const foundPost = storedPosts.find((p: BlogPost) => {
+      const postSlug = p.slug || '';
+      return postSlug === decodedSlug || 
+             decodeURIComponent(postSlug) === decodedSlug;
+    });
 
     if (foundPost) {
       setPost(foundPost);

@@ -38,9 +38,16 @@ export default function AdminBlogNewPage() {
       
       const newPost = {
         ...formData,
-        slug: formData.title.toLowerCase().replace(/[^a-z0-9а-яё]+/gi, '-').replace(/^-|-$/g, ''),
+        slug: formData.title
+          .toLowerCase()
+          .replace(/[^a-z0-9а-яё\s-]/gi, '') // Удаляем спецсимволы
+          .replace(/\s+/g, '-') // Пробелы на дефисы
+          .replace(/ё/g, 'е') // Ё на Е
+          .replace(/[^a-z0-9а-яё-]/g, '') // Оставляем только буквы и дефисы
+          .replace(/-+/g, '-') // Удаляем повторяющиеся дефисы
+          .replace(/^-|-$/g, ''), // Удаляем дефисы по краям
         publishedAt: new Date().toISOString(),
-        status: 'published', // Публикуем сразу
+        status: 'published',
       };
 
       posts.push(newPost);
