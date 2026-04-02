@@ -336,3 +336,105 @@ ul, ol {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
 }
+
+/* =============================================================================
+   MARKDOWN СТИЛИ (для блога и кейсов)
+   ============================================================================= */
+
+.markdown-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-content p {
+  color: #d1d5db;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #d1d5db;
+  margin-bottom: 1rem;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  color: #d1d5db;
+  margin-bottom: 1rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content strong {
+  color: #7274B3;
+  font-weight: 700;
+}
+
+.markdown-content em {
+  color: #d1d5db;
+  font-style: italic;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #7274B3;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #9ca3af;
+  margin: 1rem 0;
+}
+
+.markdown-content code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  color: #7274B3;
+  font-family: monospace;
+}
+
+.markdown-content pre {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #d1d5db;
+}
+
+.markdown-content a {
+  color: #7274B3;
+  text-decoration: underline;
+}
+
+.markdown-content hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
