@@ -8,8 +8,8 @@ export interface ServiceHeroProps {
   subtitle: string;
   primaryCtaLabel: string;
   primaryCtaUrl: string;
-  secondaryCtaLabel: string;
-  secondaryCtaUrl: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaUrl?: string;
   mediaSrc: string;
   mediaType?: 'image' | 'video';
   videoPoster?: string;
@@ -103,13 +103,15 @@ export default function ServiceHero({
               {primaryCtaLabel}
             </CtaButton>
 
-            <CtaButton
-              variant="secondary"
-              size="lg"
-              href={secondaryCtaUrl}
-            >
-              {secondaryCtaLabel}
-            </CtaButton>
+            {secondaryCtaLabel && secondaryCtaUrl && (
+              <CtaButton
+                variant="secondary"
+                size="lg"
+                href={secondaryCtaUrl}
+              >
+                {secondaryCtaLabel}
+              </CtaButton>
+            )}
           </div>
         </div>
       </div>

@@ -37,8 +37,6 @@ export default function RecruitingPage() {
           subtitle="Профессиональный поиск и подбор персонала. Массовый рекрутинг с использованием call-центра для быстрого результата"
           primaryCtaLabel="Заказать подбор"
           primaryCtaUrl="/contact"
-          secondaryCtaLabel="Узнать подробнее"
-          secondaryCtaUrl="#process"
           mediaSrc="/images/hero-banner/Hero-banner_recruiting.mp4"
           mediaType="video"
           videoPoster="/images/hero-banner/Hero-banner_recruiting.png"
