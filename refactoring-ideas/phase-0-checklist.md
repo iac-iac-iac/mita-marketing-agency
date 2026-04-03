@@ -1,4 +1,4 @@
-# Direct-line: Фаза 0 — Детальный чек-лист подготовки
+﻿# М.И.Т.А.: Фаза 0 — Детальный чек-лист подготовки
 
 **Дата создания:** 27 марта 2026  
 **Длительность:** 1-2 дня  
@@ -44,7 +44,7 @@
 - [ ] **Заполнить обязательные переменные**
   ```bash
   # Обязательные переменные
-  NEXT_PUBLIC_SITE_URL=https://direct-line.ru
+  NEXT_PUBLIC_SITE_URL=https://mita.ru
   
   # Bitrix24 integration
   BITRIX24_WEBHOOK_URL=https://your-company.bitrix24.ru/rest/1/your-webhook/
@@ -64,8 +64,8 @@
   SMTP_PORT=587
   SMTP_USER=
   SMTP_PASSWORD=
-  EMAIL_FROM=info@direct-line.ru
-  EMAIL_TO=leads@direct-line.ru
+  EMAIL_FROM=info@mita.ru
+  EMAIL_TO=leads@mita.ru
   
   # API security
   NEXT_PUBLIC_API_KEY=
@@ -100,7 +100,7 @@
 #### Ожидаемый результат:
 ```bash
 # .env.local существует и содержит:
-NEXT_PUBLIC_SITE_URL=https://direct-line.ru
+NEXT_PUBLIC_SITE_URL=https://mita.ru
 BITRIX24_WEBHOOK_URL=https://...
 ```
 
@@ -130,7 +130,7 @@ BITRIX24_WEBHOOK_URL=https://...
 
 ```bash
 # =============================================================================
-# DIRECT-LINE SITE CONFIGURATION
+# М.И.Т.А. SITE CONFIGURATION
 # =============================================================================
 # Скопируйте этот файл в .env.local и заполните значениями
 # Команда: cp .env.local.example .env.local
@@ -141,7 +141,7 @@ BITRIX24_WEBHOOK_URL=https://...
 # -----------------------------------------------------------------------------
 
 # URL сайта (production или development)
-# Примеры: http://localhost:3000, https://direct-line.ru
+# Примеры: http://localhost:3000, https://mita.ru
 NEXT_PUBLIC_SITE_URL=
 
 # Bitrix24 webhook URL для интеграции с CRM
@@ -182,8 +182,8 @@ SMTP_USER=
 SMTP_PASSWORD=
 
 # Адреса для email уведомлений
-EMAIL_FROM=info@direct-line.ru
-EMAIL_TO=leads@direct-line.ru
+EMAIL_FROM=info@mita.ru
+EMAIL_TO=leads@mita.ru
 
 # -----------------------------------------------------------------------------
 # БЕЗОПАСНОСТЬ

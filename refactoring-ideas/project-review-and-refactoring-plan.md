@@ -1,4 +1,4 @@
-# Direct-line Project Review & Refactoring Plan
+﻿# М.И.Т.А. Project Review & Refactoring Plan
 
 **Дата анализа:** 27 марта 2026  
 **Аналитик:** AI Code Reviewer  
@@ -10,7 +10,7 @@
 
 ### Общее состояние проекта
 
-Проект **Direct-line** — это современный сайт маркетингового IT-агентства на Next.js 14 с TypeScript, Tailwind CSS и Framer Motion. Проект находится в production-ready состоянии с работающим функционалом.
+Проект **М.И.Т.А.** — это современный сайт маркетингового IT-агентства на Next.js 14 с TypeScript, Tailwind CSS и Framer Motion. Проект находится в production-ready состоянии с работающим функционалом.
 
 **Положительные аспекты:**
 - ✅ Чёткая структура проекта с правильным разделением на слои

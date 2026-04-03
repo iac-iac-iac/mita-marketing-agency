@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+﻿import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
@@ -22,12 +22,12 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Direct-line — Маркетинговое IT-агентство полного цикла',
+  title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
   description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков. Call-центр, продвижение на Авито, рекрутинг. Все модули работают как единый механизм.',
   keywords: ['маркетинговое агентство', 'лидогенерация', 'call-центр', 'авито', 'рекрутинг', 'продвижение бизнеса'],
-  authors: [{ name: 'Direct-line' }],
-  creator: 'Direct-line',
-  publisher: 'Direct-line',
+  authors: [{ name: 'М.И.Т.А.' }],
+  creator: 'М.И.Т.А.',
+  publisher: 'М.И.Т.А.',
   icons: {
     icon: '/images/icons/Favicon.ico',
     shortcut: '/images/icons/Favicon.ico',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Direct-line',
+    title: 'М.И.Т.А.',
   },
   robots: {
     index: true,
@@ -46,22 +46,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://direct-line.ru',
-    siteName: 'Direct-line',
-    title: 'Direct-line — Маркетинговое IT-агентство полного цикла',
+    url: 'https://mita.ru',
+    siteName: 'М.И.Т.А.',
+    title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
     description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков.',
     images: [
       {
         url: '/images/icons/Favicon.ico',
         width: 512,
         height: 512,
-        alt: 'Direct-line OG Image',
+        alt: 'М.И.Т.А. OG Image',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Direct-line — Маркетинговое IT-агентство полного цикла',
+    title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
     description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков.',
   },
 }

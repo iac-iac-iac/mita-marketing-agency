@@ -1,10 +1,10 @@
-import Header from '@/components/layout/Header'
+﻿import Header from '@/components/layout/Header'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Политика конфиденциальности | Direct-line',
-  description: 'Защита и обработка персональных данных в Direct-line.',
+  title: 'Политика конфиденциальности | М.И.Т.А.',
+  description: 'Защита и обработка персональных данных в М.И.Т.А.',
 }
 
 export default function PrivacyPage() {
@@ -32,9 +32,9 @@ export default function PrivacyPage() {
           <div className="mb-12 p-8 rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
             <h2 className="text-2xl font-bold text-white mb-6">1. Общие положения</h2>
             <div className="space-y-4 text-gray-300">
-              <p>1.1. Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сайта Direct-line.</p>
+              <p>1.1. Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сайта М.И.Т.А.</p>
               <p>1.2. Политика разработана в соответствии с Федеральным законом №152-ФЗ «О персональных данных».</p>
-              <p>1.3. Используя сайт и услуги Direct-line, вы соглашаетесь с условиями Политики.</p>
+              <p>1.3. Используя сайт и услуги М.И.Т.А., вы соглашаетесь с условиями Политики.</p>
             </div>
           </div>
 

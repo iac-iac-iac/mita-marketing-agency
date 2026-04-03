@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -59,7 +59,7 @@ export default function PWAInstallPrompt() {
               {/* Контент */}
               <div className="flex-1">
                 <h3 className="font-semibold mb-1">
-                  Установите приложение Direct-line
+                  Установите приложение М.И.Т.А.
                 </h3>
                 <p className="text-sm text-white/70 mb-3">
                   Быстрый доступ к нашим услугам прямо с рабочего стола

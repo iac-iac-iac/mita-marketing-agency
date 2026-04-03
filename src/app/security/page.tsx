@@ -1,13 +1,13 @@
-import Header from '@/components/layout/Header'
+﻿import Header from '@/components/layout/Header'
 import { Metadata } from 'next'
 import SecurityPageLayout from '@/components/security/SecurityPageLayout'
 
 export const metadata: Metadata = {
-  title: 'Безопасность данных | Direct-line',
-  description: 'Защита информации и конфиденциальность клиентов — приоритет Direct-line.',
+  title: 'Безопасность данных | М.И.Т.А.',
+  description: 'Защита информации и конфиденциальность клиентов — приоритет М.И.Т.А.',
   openGraph: {
-    title: 'Безопасность данных | Direct-line',
-    description: 'Защита информации и конфиденциальность клиентов — приоритет Direct-line.',
+    title: 'Безопасность данных | М.И.Т.А.',
+    description: 'Защита информации и конфиденциальность клиентов — приоритет М.И.Т.А.',
     type: 'website',
     locale: 'ru_RU',
   },
@@ -95,11 +95,11 @@ export default function SecurityPage() {
       <Header showBackButton showHamburgerMenu />
       <SecurityPageLayout
         title="Безопасность данных"
-        subtitle="Защита информации и конфиденциальность клиентов — приоритет Direct-line"
+        subtitle="Защита информации и конфиденциальность клиентов — приоритет М.И.Т.А."
         sections={sections}
         faqItems={faqItems}
         ctaTitle="Готовы обеспечить постоянный поток клиентов?"
-        ctaSubtitle="Узнайте больше о наших услугах и начните работу с Direct-line уже сегодня."
+        ctaSubtitle="Узнайте больше о наших услугах и начните работу с М.И.Т.А. уже сегодня."
         ctaButtonLabel="Заказать консультацию"
         ctaButtonUrl="/contact"
       />

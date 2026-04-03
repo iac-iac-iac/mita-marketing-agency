@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
         {/* Заголовок */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">
-            Direct-line Admin
+            М.И.Т.А. Admin
           </h1>
           <p className="text-gray-400">
             Введите пароль для доступа к админ-панели

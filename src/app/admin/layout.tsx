@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -67,7 +67,7 @@ export default function AdminLayout({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <h1 className="text-xl font-bold text-white">
-                  Direct-line Admin
+                  М.И.Т.А. Admin
                 </h1>
                 <nav className="hidden md:flex items-center gap-4">
                   <a

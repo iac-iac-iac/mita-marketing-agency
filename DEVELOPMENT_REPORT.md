@@ -1,8 +1,8 @@
-# Direct-line Company Site — Проект разработки сайта
+﻿# М.И.Т.А. Company Site — Проект разработки сайта
 
 ## 📋 О проекте
 
-**Компания:** Direct-line — маркетинговое IT-агентство полного цикла  
+**Компания:** М.И.Т.А. — маркетинговое IT-агентство полного цикла  
 **Период разработки:** Март 2026  
 **Технологии:** Next.js 14, TypeScript, Tailwind CSS, Framer Motion, Magic UI  
 **Стиль:** 3D Glass Design
@@ -11,7 +11,7 @@
 
 ## 🎯 Цель проекта
 
-Создание современной системы сайтов для Direct-line с:
+Создание современной системы сайтов для М.И.Т.А. с:
 - Главным лендингом (продуктовая система)
 - 4 лендингами услуг (Лидогенерация, Call-центр, Авито, Рекрутинг)
 - Блогом и кейсами (CMS на MDX)
@@ -147,7 +147,7 @@ company_site/
 ├── docs/                         # Документация
 │   ├── about_company/            # О компании
 │   ├── plan/                     # План разработки
-│   └── analysis_kero_directline.md
+│   └── analysis_kero_mita.md
 │
 ├── images/                       # Исходные изображения
 ├── next.config.js
@@ -168,7 +168,7 @@ company_site/
 - Инициализация Next.js 14 проекта с TypeScript и Tailwind CSS
 - Настройка App Router
 - Настройка алиасов импортов (`@/*`, `@components/*`, `@lib/*`)
-- Настройка цветовой палитры Direct-line в Tailwind config
+- Настройка цветовой палитры М.И.Т.А. в Tailwind config
 - Создание базовой структуры папок
 - Настройка глобальных стилей с 3D Glass эффектами
 
@@ -217,7 +217,7 @@ company_site/
 10. `ClosingCta.tsx` — финальный CTA
 
 **Функционал:**
-- Продуктовая система Direct-line
+- Продуктовая система М.И.Т.А.
 - Scroll-reveal анимации
 - 3D Glass Design
 - Magic UI компоненты (Animated Gradient Text)
@@ -244,7 +244,7 @@ company_site/
 
 **Функционал:**
 - Уникальный контент для каждой услуги
-- Цены из документации Direct-line
+- Цены из документации М.И.Т.А.
 - Scroll-reveal анимации
 - Адаптивность
 
@@ -490,7 +490,7 @@ npm run type-check
 ## 📝 Документация
 
 ### Внутренняя документация
-- `docs/analysis_kero_directline.md` — анализ референса Kero
+- `docs/analysis_kero_mita.md` — анализ референса Kero
 - `docs/about_company/` — документация компании
 - `docs/plan/implementation-plan.md` — план разработки
 

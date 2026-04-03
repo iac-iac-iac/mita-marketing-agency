@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import MainHeader from '@/components/layout/MainHeader'
 import Footer from '@/components/layout/Footer'
@@ -71,7 +71,7 @@ export default function HomePage() {
               name: 'Дмитрий Соколов',
               role: 'Руководитель отдела продаж',
               company: 'ТехноСтарт',
-              quote: 'Рекрутинг от Direct-line помог нам закрыть 50 вакансий за 2 месяца. Быстро, качественно, с гарантией.',
+              quote: 'Рекрутинг от М.И.Т.А. помог нам закрыть 50 вакансий за 2 месяца. Быстро, качественно, с гарантией.',
             },
             {
               name: 'Елена Волкова',

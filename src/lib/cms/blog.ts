@@ -1,4 +1,4 @@
-import path from 'path';
+﻿import path from 'path';
 import type { BlogPost, BlogPostFrontmatter, ContentMeta } from '@/types/content';
 import {
   getMdxFiles,
@@ -60,7 +60,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     content: result.content,
     publishedAt: String(frontmatter.publishedAt),
     updatedAt: frontmatter.updatedAt ? String(frontmatter.updatedAt) : undefined,
-    author: String(frontmatter.author) || 'Direct-line',
+    author: String(frontmatter.author) || 'М.И.Т.А.',
     category: String(frontmatter.category) || 'Общее',
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags as string[] : [],
     coverImage: frontmatter.coverImage ? String(frontmatter.coverImage) : undefined,

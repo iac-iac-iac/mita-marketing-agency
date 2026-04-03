@@ -1,4 +1,4 @@
-# Каталог изображений Direct-line
+﻿# Каталог изображений М.И.Т.А.
 
 **Дата обновления:** 24 марта 2026  
 **Стиль:** 3D Glass Design  
@@ -278,7 +278,7 @@ import Image from 'next/image';
 // Hero-баннер
 <Image
   src="/images/hero-banner/Hero-banner_main_link.png"
-  alt="Direct-line funnel visualization"
+  alt="М.И.Т.А. funnel visualization"
   fill
   className="object-cover"
   priority
@@ -305,5 +305,5 @@ import Image from 'next/image';
 
 **Все изображения сгенерированы! Готово к началу разработки.** 🎉
 
-**Владелец документа:** IT-отдел Direct-line  
+**Владелец документа:** IT-отдел М.И.Т.А.  
 **Статус:** Актуально

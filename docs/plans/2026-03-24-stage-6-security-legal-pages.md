@@ -1,8 +1,8 @@
-# Этап 6 — Безопасность и юридические страницы Implementation Plan
+﻿# Этап 6 — Безопасность и юридические страницы Implementation Plan
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Создать страницы безопасности, юридических документов и контактов для сайта Direct-line с 3D Glass Design и scroll-reveal анимациями.
+**Goal:** Создать страницы безопасности, юридических документов и контактов для сайта М.И.Т.А. с 3D Glass Design и scroll-reveal анимациями.
 
 **Architecture:** 
 - Компоненты Layout для переиспользования структуры страниц (SecurityPageLayout, LegalPageLayout)
@@ -101,7 +101,7 @@ git commit -m "feat: add ContactPage component with contact form"
 
 **Step 1: Write content**
 
-Написать контент на основе документации Direct-line:
+Написать контент на основе документации М.И.Т.А.:
 - Описание процессов обработки данных
 - Информация о CRM (Битрикс24)
 - Юридические гарантии

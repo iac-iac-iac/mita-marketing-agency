@@ -1,4 +1,4 @@
-import ServiceHero from '@/components/blocks/ServiceHero'
+﻿import ServiceHero from '@/components/blocks/ServiceHero'
 import CallStatistics from '@/components/blocks/CallStatistics'
 import ScriptExamples from '@/components/blocks/ScriptExamples'
 import QualityControl from '@/components/blocks/QualityControl'
@@ -13,11 +13,11 @@ import Header from '@/components/layout/Header'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Call-центр | Direct-line',
+  title: 'Call-центр | М.И.Т.А.',
   description: 'Профессиональный обзвон клиентов для бизнеса. Опытные операторы, готовые скрипты, полная интеграция с CRM. Холодные и тёплые звонки.',
   keywords: ['call-центр', 'обзвон клиентов', 'холодные звонки', 'тёплые звонки', 'продажи', 'операторы'],
   openGraph: {
-    title: 'Call-центр | Direct-line',
+    title: 'Call-центр | М.И.Т.А.',
     description: 'Call-центр, который превращает лидов в продажи. Профессиональный обзвон для вашего бизнеса.',
     type: 'website',
     locale: 'ru_RU',
@@ -85,7 +85,7 @@ export default function CallCenterPage() {
             dialog: [
               {
                 speaker: 'Оператор',
-                text: 'Добрый день, меня зовут Анна, компания Direct-line. Подскажите, я могу поговорить с директором по маркетингу?',
+                text: 'Добрый день, меня зовут Анна, компания М.И.Т.А. Подскажите, я могу поговорить с директором по маркетингу?',
               },
               {
                 speaker: 'Клиент',
@@ -108,7 +108,7 @@ export default function CallCenterPage() {
             dialog: [
               {
                 speaker: 'Оператор',
-                text: 'Здравствуйте, Ольга! Меня зовут Максим, компания Direct-line. Вы оставили заявку на нашем сайте по поводу продвижения на Авито. Удобно сейчас поговорить?',
+                text: 'Здравствуйте, Ольга! Меня зовут Максим, компания М.И.Т.А. Вы оставили заявку на нашем сайте по поводу продвижения на Авито. Удобно сейчас поговорить?',
               },
               {
                 speaker: 'Клиент',
@@ -127,7 +127,7 @@ export default function CallCenterPage() {
             dialog: [
               {
                 speaker: 'Оператор',
-                text: 'Добрый день, Сергей Петрович! Это Анна, Direct-line. Вы получили наше коммерческое предложение на прошлой неделе. Удалось ознакомиться?',
+                text: 'Добрый день, Сергей Петрович! Это Анна, М.И.Т.А. Вы получили наше коммерческое предложение на прошлой неделе. Удалось ознакомиться?',
               },
               {
                 speaker: 'Клиент',
@@ -270,7 +270,7 @@ export default function CallCenterPage() {
             name: "Дмитрий Соколов",
             role: "Руководитель отдела продаж",
             company: "Автосалон",
-            quote: "После передачи обзвона в Direct-line конверсия в встречу выросла с 5% до 12%. Операторы грамотно работают с возражениями, клиенты довольны.",
+            quote: "После передачи обзвона в М.И.Т.А. конверсия в встречу выросла с 5% до 12%. Операторы грамотно работают с возражениями, клиенты довольны.",
           },
           {
             name: "Елена Козлова",

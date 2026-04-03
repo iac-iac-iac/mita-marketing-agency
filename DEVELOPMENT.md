@@ -1,6 +1,6 @@
-# Development Guide — Direct-line
+﻿# Development Guide — М.И.Т.А.
 
-Полное руководство по разработке проекта Direct-line.
+Полное руководство по разработке проекта М.И.Т.А.
 
 ## 📋 Содержание
 
@@ -136,8 +136,8 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASSWORD=your-password
-EMAIL_FROM=noreply@direct-line.ru
-EMAIL_TO=info@direct-line.ru
+EMAIL_FROM=noreply@mita.ru
+EMAIL_TO=info@mita.ru
 
 # Sentry (error tracking)
 NEXT_PUBLIC_SENTRY_DSN=https://...@o....ingest.sentry.io/...
@@ -363,7 +363,7 @@ npm run dev:staging
 
 ---
 
-**Direct-line** — Маркетинговое IT-агентство полного цикла
+**М.И.Т.А.** — Маркетинговое IT-агентство полного цикла
 
 📍 Адрес: г. Саратов, Астраханская ул., 87В
-🌐 Сайт: https://direct-line.ru
+🌐 Сайт: https://mita.ru

@@ -1,4 +1,4 @@
-import ServiceHero from '@/components/blocks/ServiceHero'
+﻿import ServiceHero from '@/components/blocks/ServiceHero'
 import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
 import ClosingCta from '@/components/blocks/ClosingCta'
@@ -9,11 +9,11 @@ import Header from '@/components/layout/Header'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Продвижение на Авито | Direct-line',
+  title: 'Продвижение на Авито | М.И.Т.А.',
   description: 'Бюджетный канал привлечения клиентов через платформу Авито. Упаковка, ведение и масштабирование объявлений в любом количестве регионов.',
   keywords: ['авито', 'продвижение на авито', 'объявления', 'лиды с авито', 'маркетинг', 'реклама'],
   openGraph: {
-    title: 'Продвижение на Авито | Direct-line',
+    title: 'Продвижение на Авито | М.И.Т.А.',
     description: 'Поток заявок с Авито под ключ. Работа в любом количестве регионов от 1 до 50+.',
     type: 'website',
     locale: 'ru_RU',

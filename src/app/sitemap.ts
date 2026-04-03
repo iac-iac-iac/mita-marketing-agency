@@ -1,8 +1,8 @@
-import { MetadataRoute } from 'next'
+﻿import { MetadataRoute } from 'next'
 import { getAllBlogPosts } from '@/lib/cms/blog'
 import { getAllCases } from '@/lib/cms/cases'
 
-const baseUrl = 'https://direct-line.ru'
+const baseUrl = 'https://mita.ru'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Статические страницы

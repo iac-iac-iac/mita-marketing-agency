@@ -1,8 +1,8 @@
-# Формы и интеграции с CRM Implementation Plan
+﻿# Формы и интеграции с CRM Implementation Plan
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Создать систему форм (ContactForm, LeadForm), модальные окна, API для отправки заявок и аналитику событий для Direct-line.
+**Goal:** Создать систему форм (ContactForm, LeadForm), модальные окна, API для отправки заявок и аналитику событий для М.И.Т.А.
 
 **Architecture:** Компонентный подход с разделением на UI компоненты (Modal), формы (ContactForm, LeadForm), утилиты аналитики и API routes. Валидация через React Hook Form, стилизация через Tailwind CSS с 3D Glass Design.
 
@@ -940,7 +940,7 @@ export default function ContactPage() {
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
-            <p className="text-white/70">info@direct-line.ru</p>
+            <p className="text-white/70">info@mita.ru</p>
           </div>
 
           <div className="text-center">

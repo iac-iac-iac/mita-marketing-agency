@@ -1,4 +1,4 @@
-# Staging Environment Guide
+﻿# Staging Environment Guide
 
 ## 📋 Обзор
 
@@ -48,7 +48,7 @@ npm run start:staging
 
 | Переменная | Описание | Пример |
 |------------|----------|--------|
-| `NEXT_PUBLIC_SITE_URL` | Staging URL | `https://staging.direct-line.ru` |
+| `NEXT_PUBLIC_SITE_URL` | Staging URL | `https://staging.М.И.Т.А.ru` |
 | `BITRIX24_WEBHOOK_URL` | Test webhook | (тестовый webhook) |
 | `NEXT_PUBLIC_DEBUG` | Режим отладки | `true` |
 | `NEXT_PUBLIC_STAGING_WATERMARK` | Показывать watermark | `true` |
@@ -178,4 +178,4 @@ NEXT_PUBLIC_STAGING_WATERMARK=true
 
 ---
 
-**Direct-line** — Маркетинговое IT-агентство полного цикла
+**М.И.Т.А.** — Маркетинговое IT-агентство полного цикла

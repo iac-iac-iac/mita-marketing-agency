@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -31,10 +31,10 @@ export default function MainHeader() {
           <Link href="/" className="flex items-center gap-3 group">
             <img
               src="/images/icons/Favicon.ico"
-              alt="Direct-line"
+              alt="М.И.Т.А."
               className="w-8 h-8"
             />
-            <span className="text-xl font-bold text-white">Direct-line</span>
+            <span className="text-xl font-bold text-white">М.И.Т.А.</span>
           </Link>
 
           {/* Десктоп навигация */}

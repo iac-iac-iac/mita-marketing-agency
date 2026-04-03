@@ -1,9 +1,9 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Direct-line цветовая палитра */
+  /* М.И.Т.А. цветовая палитра */
   --color-primary: #7274B3;
   --color-secondary: #293349;
   --color-accent: #5A4D7A;

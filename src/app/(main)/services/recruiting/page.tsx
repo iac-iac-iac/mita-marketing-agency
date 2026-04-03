@@ -1,4 +1,4 @@
-import ServiceHero from '@/components/blocks/ServiceHero'
+﻿import ServiceHero from '@/components/blocks/ServiceHero'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
 import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
@@ -14,11 +14,11 @@ import Header from '@/components/layout/Header'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Рекрутинг | Direct-line',
+  title: 'Рекрутинг | М.И.Т.А.',
   description: 'Профессиональный поиск и подбор персонала. Массовый рекрутинг с использованием call-центра. Воронка кандидатов от первичного контакта до выхода на работу.',
   keywords: ['рекрутинг', 'подбор персонала', 'найм сотрудников', 'массовый подбор', 'HR', 'вакансии'],
   openGraph: {
-    title: 'Рекрутинг | Direct-line',
+    title: 'Рекрутинг | М.И.Т.А.',
     description: 'Команда продаж, которая вывезет объем лидов. Профессиональный подбор персонала с гарантией.',
     type: 'website',
     locale: 'ru_RU',
@@ -250,7 +250,7 @@ export default function RecruitingPage() {
               name: "Наталья Федорова",
               role: "HR-директор",
               company: "Ритейл",
-              quote: "Заказывали массовый подбор линейного персонала. Direct-line закрыли 50 вакансий за месяц. Текучка на испытательном сроке минимальная.",
+              quote: "Заказывали массовый подбор линейного персонала. М.И.Т.А. закрыли 50 вакансий за месяц. Текучка на испытательном сроке минимальная.",
             },
           ]}
         />

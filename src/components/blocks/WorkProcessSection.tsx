@@ -1,4 +1,4 @@
-import ProcessSteps from './ProcessSteps'
+﻿import ProcessSteps from './ProcessSteps'
 
 export interface ProcessStep {
   number: number;
@@ -29,7 +29,7 @@ export default function WorkProcessSection({
 }
 
 /**
- * Стандартные шаги работы Direct-line
+ * Стандартные шаги работы М.И.Т.А.
  */
 export const defaultWorkProcess: ProcessStep[] = [
   {

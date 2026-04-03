@@ -1,8 +1,8 @@
-# QWEN.md — Direct-line Company Site
+﻿# QWEN.md — М.И.Т.А. Company Site
 
 ## 📋 Project Overview
 
-**Direct-line** — современный сайт маркетингового IT-агентства полного цикла, разработанный на **Next.js 14** с использованием **TypeScript**, **Tailwind CSS** и **Framer Motion**.
+**М.И.Т.А.** — современный сайт маркетингового IT-агентства полного цикла, разработанный на **Next.js 14** с использованием **TypeScript**, **Tailwind CSS** и **Framer Motion**.
 
 **Статус:** ✅ Production-ready (март 2026)
 
@@ -268,7 +268,7 @@ cp .env.local.example .env.local
 
 | Переменная | Описание | Required |
 |------------|----------|----------|
-| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://direct-line.ru`) | ✅ |
+| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://mita.ru`) | ✅ |
 | `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 | ✅ |
 | `BITRIX24_CRM_ID` | ID воронки в Bitrix24 | ❌ |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics ID | ❌ |
@@ -524,9 +524,9 @@ chore: изменение конфигурации
 
 ---
 
-**Direct-line** — Маркетинговое IT-агентство полного цикла
+**М.И.Т.А.** — Маркетинговое IT-агентство полного цикла
 
 📍 Адрес: г. Саратов, Астраханская ул., 87В
-🌐 Сайт: https://direct-line.ru
+🌐 Сайт: https://mita.ru
 
 **Статус:** ✅ Production-ready (март 2026)

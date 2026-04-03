@@ -1,4 +1,4 @@
-import FeatureGroup from './FeatureGroup'
+﻿import FeatureGroup from './FeatureGroup'
 
 export interface ServiceItem {
   name: string;
@@ -44,7 +44,7 @@ export default function ServicesSection({
 }
 
 /**
- * Стандартные услуги Direct-line
+ * Стандартные услуги М.И.Т.А.
  */
 export const defaultServices: ServiceItem[] = [
   {

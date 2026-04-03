@@ -1,4 +1,4 @@
-import ServiceHero from '@/components/blocks/ServiceHero'
+﻿import ServiceHero from '@/components/blocks/ServiceHero'
 import FeatureGroup from '@/components/blocks/FeatureGroup'
 import ProcessSteps from '@/components/blocks/ProcessSteps'
 import ToolsSection from '@/components/blocks/ToolsSection'
@@ -7,11 +7,11 @@ import Header from '@/components/layout/Header'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Услуги | Direct-line',
+  title: 'Услуги | М.И.Т.А.',
   description: 'Комплексные маркетинговые решения для роста вашего бизнеса. Лидогенерация, call-центр, продвижение на Авито и рекрутинг.',
   keywords: ['услуги', 'лидогенерация', 'call-центр', 'авито', 'рекрутинг', 'маркетинг', 'продажи'],
   openGraph: {
-    title: 'Услуги | Direct-line',
+    title: 'Услуги | М.И.Т.А.',
     description: 'Четыре направления для стабильного роста вашего бизнеса. От лидогенерации до подбора персонала.',
     type: 'website',
     locale: 'ru_RU',

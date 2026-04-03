@@ -1,9 +1,9 @@
-/**
- * Service Worker для Direct-line PWA
+﻿/**
+ * Service Worker для М.И.Т.А. PWA
  * Кэширование ресурсов и offline режим
  */
 
-const CACHE_NAME = 'direct-line-v1';
+const CACHE_NAME = 'М.И.Т.А.-v1';
 const STATIC_CACHE = 'static-v1';
 const DYNAMIC_CACHE = 'dynamic-v1';
 

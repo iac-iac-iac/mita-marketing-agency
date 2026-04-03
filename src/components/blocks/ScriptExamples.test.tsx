@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+﻿import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import ScriptExamples from './ScriptExamples'
 
 // Мок для framer-motion
@@ -20,7 +20,7 @@ describe('ScriptExamples', () => {
       dialog: [
         {
           speaker: 'Оператор' as const,
-          text: 'Добрый день, меня зовут Анна, компания Direct-line. Подскажите, я могу поговорить с директором по маркетингу?',
+          text: 'Добрый день, меня зовут Анна, компания М.И.Т.А. Подскажите, я могу поговорить с директором по маркетингу?',
         },
         {
           speaker: 'Клиент' as const,
@@ -43,7 +43,7 @@ describe('ScriptExamples', () => {
       dialog: [
         {
           speaker: 'Оператор' as const,
-          text: 'Здравствуйте, Ольга! Меня зовут Максим, компания Direct-line. Вы оставили заявку на нашем сайте по поводу продвижения на Авито. Удобно сейчас поговорить?',
+          text: 'Здравствуйте, Ольга! Меня зовут Максим, компания М.И.Т.А. Вы оставили заявку на нашем сайте по поводу продвижения на Авито. Удобно сейчас поговорить?',
         },
         {
           speaker: 'Клиент' as const,
@@ -62,7 +62,7 @@ describe('ScriptExamples', () => {
       dialog: [
         {
           speaker: 'Оператор' as const,
-          text: 'Добрый день, Сергей Петрович! Это Анна, Direct-line. Вы получили наше коммерческое предложение на прошлой неделе. Удалось ознакомиться?',
+          text: 'Добрый день, Сергей Петрович! Это Анна, М.И.Т.А. Вы получили наше коммерческое предложение на прошлой неделе. Удалось ознакомиться?',
         },
         {
           speaker: 'Клиент' as const,

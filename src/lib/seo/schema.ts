@@ -1,5 +1,5 @@
-/**
- * Schema.org микроразметка для Direct-line
+﻿/**
+ * Schema.org микроразметка для М.И.Т.А.
  * JSON-LD формат для SEO оптимизации
  */
 
@@ -136,9 +136,9 @@ export function createOrganizationSchema(): OrganizationSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Direct-line',
-    url: 'https://direct-line.ru',
-    logo: 'https://direct-line.ru/images/icons/Favicon.ico',
+    name: 'М.И.Т.А.',
+    url: 'https://mita.ru',
+    logo: 'https://mita.ru/images/icons/Favicon.ico',
     description: 'Маркетинговое IT-агентство полного цикла. Комплексная система лидогенерации: от привлечения клиентов до обработки звонков.',
     address: {
       '@type': 'LocalBusiness',
@@ -154,8 +154,8 @@ export function createOrganizationSchema(): OrganizationSchema {
       },
     ],
     sameAs: [
-      'https://vk.com/directline',
-      'https://t.me/directline',
+      'https://vk.com/mita',
+      'https://t.me/mita',
     ],
   };
 }
@@ -167,9 +167,9 @@ export function createLocalBusinessSchema(): LocalBusinessSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Direct-line',
-    image: 'https://direct-line.ru/images/hero-banner/Hero-banner_main_link.png',
-    url: 'https://direct-line.ru',
+    name: 'М.И.Т.А.',
+    image: 'https://mita.ru/images/hero-banner/Hero-banner_main_link.png',
+    url: 'https://mita.ru',
     telephone: '+7 (XXX) XXX-XX-XX',
     address: {
       '@type': 'PostalAddress',
@@ -202,7 +202,7 @@ export function createServiceSchema(
     description: serviceDescription,
     provider: {
       '@type': 'Organization',
-      name: 'Direct-line',
+      name: 'М.И.Т.А.',
     },
     areaServed: {
       '@type': 'Country',
@@ -234,10 +234,10 @@ export function createArticleSchema(
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Direct-line',
+      name: 'М.И.Т.А.',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://direct-line.ru/images/icons/Favicon.ico',
+        url: 'https://mita.ru/images/icons/Favicon.ico',
       },
     },
   };
@@ -258,11 +258,11 @@ export function createCaseStudySchema(
     '@type': 'CaseStudy',
     name: title,
     description: description,
-    url: `https://direct-line.ru/cases/${title.toLowerCase().replace(/\s+/g, '-')}`,
+    url: `https://mita.ru/cases/${title.toLowerCase().replace(/\s+/g, '-')}`,
     image: imageUrl,
     author: {
       '@type': 'Organization',
-      name: 'Direct-line',
+      name: 'М.И.Т.А.',
     },
     datePublished: publishedAt,
     about: {
@@ -285,7 +285,7 @@ export function createBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `https://direct-line.ru${item.url}`,
+      item: `https://mita.ru${item.url}`,
     })),
   };
 }

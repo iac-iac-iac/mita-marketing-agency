@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "company_site",
   "version": "1.0.0",
-  "description": "Direct-line — Маркетинговое IT-агентство полного цикла",
+  "description": "М.И.Т.А. — Маркетинговое IT-агентство полного цикла",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -24,9 +24,9 @@
     "nextjs",
     "tailwindcss",
     "typescript",
-    "direct-line"
+    "М.И.Т.А."
   ],
-  "author": "Direct-line",
+  "author": "М.И.Т.А.",
   "license": "ISC",
   "type": "module",
   "dependencies": {

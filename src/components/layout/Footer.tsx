@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import type { ReactNode } from 'react'
 
 export default function Footer() {
@@ -30,9 +30,9 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { label: 'Telegram', url: 'https://t.me/directline', icon: 'telegram' },
-    { label: 'WhatsApp', url: 'https://wa.me/directline', icon: 'whatsapp' },
-    { label: 'VK', url: 'https://vk.com/directline', icon: 'vk' },
+    { label: 'Telegram', url: 'https://t.me/mita', icon: 'telegram' },
+    { label: 'WhatsApp', url: 'https://wa.me/mita', icon: 'whatsapp' },
+    { label: 'VK', url: 'https://vk.com/mita', icon: 'vk' },
   ]
 
   return (
@@ -45,10 +45,10 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-4">
               <img
                 src="/images/icons/Favicon.ico"
-                alt="Direct-line"
+                alt="М.И.Т.А."
                 className="w-8 h-8"
               />
-              <span className="text-xl font-bold text-white">Direct-line</span>
+              <span className="text-xl font-bold text-white">М.И.Т.А.</span>
             </Link>
             <p className="text-gray-400 text-sm mb-4">
               Маркетинговое IT-агентство полного цикла. Комплексная система лидогенерации для вашего бизнеса.
@@ -129,7 +129,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Копирайт */}
             <p className="text-gray-500 text-sm">
-              © {currentYear} Direct-line. Все права защищены.
+              © {currentYear} М.И.Т.А. Все права защищены.
             </p>
 
             {/* Соцсети */}

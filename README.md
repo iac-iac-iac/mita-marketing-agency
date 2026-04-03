@@ -1,4 +1,4 @@
-# Direct-line — Сайт маркетингового IT-агентства
+﻿# М.И.Т.А. — Сайт маркетингового IT-агентства
 
 Современный сайт для маркетингового IT-агентства полного цикла, построенный на Next.js 14 с использованием Tailwind CSS, TypeScript и 3D Glass Design.
 
@@ -228,7 +228,7 @@ cp .env.local.example .env.local
 
 | Переменная | Описание |
 |------------|----------|
-| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://direct-line.ru`) |
+| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://mita.ru`) |
 | `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics ID |
 | `NEXT_PUBLIC_YANDEX_METRIKA_ID` | Яндекс.Метрика ID |
@@ -420,9 +420,9 @@ chore: изменение конфигурации
 
 ---
 
-**Direct-line** — Маркетинговое IT-агентство полного цикла
+**М.И.Т.А.** — Маркетинговое IT-агентство полного цикла
 
 📍 Адрес: г. Саратов, Астраханская ул., 87В
-🌐 Сайт: https://direct-line.ru
+🌐 Сайт: https://mita.ru
 
 **Статус:** ✅ Production-ready (март 2026)

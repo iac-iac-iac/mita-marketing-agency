@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { CaseCard } from './CaseCard';
@@ -52,7 +52,7 @@ export function CasesIndex({ cases, title = 'Кейсы', showAll = false }: Cas
                 excerpt={caseItem.excerpt}
                 publishedAt={caseItem.publishedAt}
                 coverImage={caseItem.coverImage}
-                client="Direct-line"
+                client="М.И.Т.А."
                 industry="Маркетинг"
               />
             </motion.div>

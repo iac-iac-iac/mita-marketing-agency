@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -25,7 +25,7 @@ export interface ChatWidgetProps {
  * так как справа находится кнопка ScrollToTop
  */
 export default function ChatWidget({
-  botName = 'Ассистент Direct-line',
+  botName = 'Ассистент М.И.Т.А.',
   botAvatar = 'A',
   greetingMessage = 'Здравствуйте! Чем можем помочь?',
   position = 'bottom-left', // По умолчанию слева, чтобы не конфликтовать с ScrollToTop

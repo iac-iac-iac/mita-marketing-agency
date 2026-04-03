@@ -1,4 +1,4 @@
-import Image from 'next/image'
+﻿import Image from 'next/image'
 import Link from 'next/link'
 import CtaButton from '@/components/ui/CtaButton'
 
@@ -56,7 +56,7 @@ export default function Hero({
         <div className="absolute inset-0 z-0">
           <Image
             src={mediaSrc}
-            alt="Direct-line Hero Background"
+            alt="М.И.Т.А. Hero Background"
             fill
             className="object-cover"
             priority

@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+﻿/** @type {import('next').NextConfig} */
 
 import { withSentryConfig } from '@sentry/nextjs';
 import withBundleAnalyzer from '@next/bundle-analyzer';
@@ -87,7 +87,7 @@ export default withSentryConfig(
     silent: true,
 
     org: 'your-org',
-    project: 'direct-line',
+    project: 'М.И.Т.А.',
 
     // Only print logs for uploading source maps in CI
     sourcemaps: {

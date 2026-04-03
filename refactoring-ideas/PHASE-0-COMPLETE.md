@@ -1,4 +1,4 @@
-# ✅ Фаза 0: Подготовка — Отчёт о выполнении
+﻿# ✅ Фаза 0: Подготовка — Отчёт о выполнении
 
 **Дата выполнения:** 27 марта 2026
 **Статус:** ✅ Завершено
@@ -47,8 +47,8 @@ SMTP_HOST=
 SMTP_PORT=587
 SMTP_USER=
 SMTP_PASSWORD=
-EMAIL_FROM=info@direct-line.ru
-EMAIL_TO=leads@direct-line.ru
+EMAIL_FROM=info@mita.ru
+EMAIL_TO=leads@mita.ru
 NEXT_PUBLIC_API_KEY=
 NEXT_PUBLIC_CHAT_WIDGET_ID=
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=

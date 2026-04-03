@@ -1,5 +1,5 @@
-# robots.txt для Direct-line
-# https://direct-line.ru
+﻿# robots.txt для М.И.Т.А.
+# https://mita.ru
 
 User-agent: *
 Allow: /
@@ -10,7 +10,7 @@ Disallow: /_next/
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://direct-line.ru/sitemap.xml
+Sitemap: https://mita.ru/sitemap.xml
 
 # Хост
-Host: https://direct-line.ru
+Host: https://mita.ru

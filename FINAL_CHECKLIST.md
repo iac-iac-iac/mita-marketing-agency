@@ -1,4 +1,4 @@
-# ✅ Финальный чеклист готовности — Direct-line Website
+﻿# ✅ Финальный чеклист готовности — М.И.Т.А. Website
 
 ## 📋 Статус проекта: ГОТОВО ✅
 
@@ -32,7 +32,7 @@
   - User-agent: *
   - Allow: /
   - Disallow: /api/, /_next/, /admin/
-  - Sitemap: https://direct-line.ru/sitemap.xml
+  - Sitemap: https://mita.ru/sitemap.xml
   
 - [x] `src/app/sitemap.ts` — создан
   - Статические страницы (главная, контакты, безопасность, юридические)

@@ -1,19 +1,19 @@
-import Header from '@/components/layout/Header'
+﻿import Header from '@/components/layout/Header'
 import TeamCarousel from '@/components/ui/TeamCarousel'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'О компании | Direct-line',
-  description: 'Команда профессионалов Direct-line — маркетинговое IT-агентство полного цикла',
+  title: 'О компании | М.И.Т.А.',
+  description: 'Команда профессионалов М.И.Т.А. — маркетинговое IT-агентство полного цикла',
   openGraph: {
-    title: 'О компании | Direct-line',
-    description: 'Команда профессионалов Direct-line — маркетинговое IT-агентство полного цикла',
+    title: 'О компании | М.И.Т.А.',
+    description: 'Команда профессионалов М.И.Т.А. — маркетинговое IT-агентство полного цикла',
     type: 'website',
     locale: 'ru_RU',
     images: [
       {
         url: '/images/OG_image/OG_image_Blog_and_case_studies.png',
-        alt: 'Direct-line команда',
+        alt: 'М.И.Т.А. команда',
       },
     ],
   },

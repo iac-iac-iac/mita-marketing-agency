@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import Counter from '@/components/ui/Counter'
@@ -59,7 +59,7 @@ export default function AnalyticsDashboard({
             <div className="w-3 h-3 rounded-full bg-green-500" />
           </div>
           <div className="text-sm text-gray-400 font-mono">
-            analytics.direct-line.ru
+            analytics.М.И.Т.А.ru
           </div>
           <div className="w-20" />
         </div>

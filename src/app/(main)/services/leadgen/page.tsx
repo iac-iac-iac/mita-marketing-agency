@@ -1,4 +1,4 @@
-import ServiceHero from '@/components/blocks/ServiceHero'
+﻿import ServiceHero from '@/components/blocks/ServiceHero'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
 import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
@@ -58,11 +58,11 @@ const icons = {
 }
 
 export const metadata: Metadata = {
-  title: 'Лидогенерация | Direct-line',
+  title: 'Лидогенерация | М.И.Т.А.',
   description: 'IT-сервис для поиска номеров телефонов людей, интересующихся продуктами клиента, с последующей обработкой колл-центром. Постоянный поток качественных лидов.',
   keywords: ['лидогенерация', 'поиск клиентов', 'лиды', 'продажи', 'call-центр', 'CRM'],
   openGraph: {
-    title: 'Лидогенерация | Direct-line',
+    title: 'Лидогенерация | М.И.Т.А.',
     description: 'Предсказуемый поток лидов для вашего бизнеса. IT-сервис + колл-центр для отбора живых лидов.',
     type: 'website',
     locale: 'ru_RU',

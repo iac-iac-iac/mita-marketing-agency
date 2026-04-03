@@ -1,10 +1,10 @@
-import Header from '@/components/layout/Header'
+﻿import Header from '@/components/layout/Header'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Условия оказания услуг | Direct-line',
-  description: 'Публичная оферта на услуги Direct-line.',
+  title: 'Условия оказания услуг | М.И.Т.А.',
+  description: 'Публичная оферта на услуги М.И.Т.А.',
 }
 
 export default function TermsPage() {
@@ -19,7 +19,7 @@ export default function TermsPage() {
             Условия оказания услуг
           </h1>
           <p className="text-xl text-gray-400 mb-2">
-            Публичная оферта на услуги Direct-line
+            Публичная оферта на услуги М.И.Т.А.
           </p>
           <p className="text-sm text-gray-500">
             Последнее обновление: 24 марта 2026
@@ -32,7 +32,7 @@ export default function TermsPage() {
           <div className="mb-12 p-8 rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
             <h2 className="text-2xl font-bold text-white mb-6">1. Общие положения</h2>
             <div className="space-y-4 text-gray-300">
-              <p>1.1. Настоящая публичная оферта (далее — «Оферта») является официальным предложением компании Direct-line (далее — «Исполнитель») заключить договор на оказание маркетинговых и консультационных услуг.</p>
+              <p>1.1. Настоящая публичная оферта (далее — «Оферта») является официальным предложением компании М.И.Т.А. (далее — «Исполнитель») заключить договор на оказание маркетинговых и консультационных услуг.</p>
               <p>1.2. Оферта адресована любому физическому или юридическому лицу (далее — «Заказчик») и определяет условия оказания услуг.</p>
               <p>1.3. Полная и безоговорочная акцептация Оферты (принятие условий) осуществляется путем оплаты Заказчиком услуг Исполнителя.</p>
               <p>1.4. Дата акцепта Оферты — дата поступления денежных средств на расчетный счет Исполнителя.</p>

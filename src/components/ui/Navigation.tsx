@@ -1,4 +1,4 @@
-export interface NavItem {
+﻿export interface NavItem {
   label: string;
   href: string;
   children?: NavItem[];
@@ -96,7 +96,7 @@ export default function Navigation({
 }
 
 /**
- * Стандартные элементы навигации Direct-line
+ * Стандартные элементы навигации М.И.Т.А.
  */
 export const defaultNavItems: NavItem[] = [
   {

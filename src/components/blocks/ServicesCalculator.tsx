@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
@@ -152,7 +152,7 @@ function formatPrice(price: number): string {
 }
 
 /**
- * Калькулятор услуг Direct-line
+ * Калькулятор услуг М.И.Т.А.
  */
 export default function ServicesCalculator() {
   const [selectedCategory, setSelectedCategory] = useState<string>('leadgen');

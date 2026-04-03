@@ -1,4 +1,4 @@
-# Pre-commit Hooks Guide
+﻿# Pre-commit Hooks Guide
 
 ## 📋 Обзор
 
@@ -227,4 +227,4 @@ git config --global core.eol lf
 
 ---
 
-**Direct-line** — Маркетинговое IT-агентство полного цикла
+**М.И.Т.А.** — Маркетинговое IT-агентство полного цикла
