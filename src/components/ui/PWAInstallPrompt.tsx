@@ -4,34 +4,46 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import usePWA from '@/lib/hooks/usePWA';
 
+const STORAGE_KEY = 'pwa-install-dismissed';
+
 /**
  * Компонент кнопки установки PWA
+ * - Показывается через 30 секунд
+ * - Если пользователь закрыл или нажал "Позже" — больше не появляется
  */
 export default function PWAInstallPrompt() {
   const { canInstall, install, isInstalled } = usePWA();
   const [isVisible, setIsVisible] = useState(false);
 
-  // Показываем кнопку через 30 секунд
+  // Проверяем, закрывал ли пользователь уведомление ранее
+  const isDismissed = typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY);
+
+  // Показываем кнопку через 30 секунд (только если не закрывалось ранее)
   useEffect(() => {
-    if (canInstall && !isInstalled) {
+    if (canInstall && !isInstalled && !isDismissed) {
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 30000);
 
       return () => clearTimeout(timer);
     }
-  }, [canInstall, isInstalled]);
+  }, [canInstall, isInstalled, isDismissed]);
 
-  const handleClose = () => {
+  const dismiss = () => {
+    localStorage.setItem(STORAGE_KEY, 'true');
     setIsVisible(false);
   };
 
   const handleInstall = () => {
     install();
-    handleClose();
+    dismiss();
   };
 
-  if (!canInstall || isInstalled) return null;
+  const handleLater = () => {
+    dismiss();
+  };
+
+  if (!canInstall || isInstalled || isDismissed) return null;
 
   return (
     <AnimatePresence>
@@ -44,9 +56,6 @@ export default function PWAInstallPrompt() {
         >
           <div className="glass p-4 rounded-2xl shadow-2xl">
             <div className="flex items-start gap-3">
-              {/* Иконка */}
-              <div className="text-3xl">📥</div>
-
               {/* Контент */}
               <div className="flex-1">
                 <h3 className="font-semibold mb-1">
@@ -65,7 +74,7 @@ export default function PWAInstallPrompt() {
                     Установить
                   </button>
                   <button
-                    onClick={handleClose}
+                    onClick={handleLater}
                     className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition-colors"
                   >
                     Позже
@@ -75,11 +84,11 @@ export default function PWAInstallPrompt() {
 
               {/* Кнопка закрытия */}
               <button
-                onClick={handleClose}
+                onClick={dismiss}
                 className="text-white/60 hover:text-white transition-colors"
-                >
+              >
                 ×
-                </button>
+              </button>
             </div>
           </div>
         </motion.div>

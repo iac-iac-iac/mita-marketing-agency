@@ -65,6 +65,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/admin/cases/page.js"
+    ],
+    "/admin/cases/new/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/cases/new/page.js"
+    ],
+    "/cases/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/cases/[slug]/page.js"
     ]
   }
 }
