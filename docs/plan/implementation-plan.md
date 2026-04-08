@@ -882,90 +882,303 @@ No text. Consistent gold glass style across all 4 icons.
 
 ---
 
-### Промт 7: Process Steps (5 шагов)
+### Промт 7: Process Steps — Шаг 1: Аудит
 
 ```
-3D gold glass design 5-step process diagram for marketing agency workflow.
-Horizontal or vertical flow with numbered translucent gold glass icons:
-1. Audit - gold glass magnifying glass
-2. Setup - gold glass gear/settings icon
-3. Launch - gold glass rocket icon
-4. Scale - gold glass growth chart icon
-5. Recruit - gold glass team icon
+3D gold glass magnifying glass icon for marketing agency process diagram.
+Translucent gold glass audit symbol with light refraction.
+Color palette: #D4A84B (gold glass), #0A0A0A (black background), #B8892E (dark gold accents).
+Style: 3D glass, gold-tinted translucent surface, volumetric lighting, depth of field.
+Format: square icon 256x256. No text.
+```
 
-Connected by flowing gold glass tubes or light streams showing progression.
+**Формат:** 256x256
+**Использование:** Шаг 1 — "Аудит и стратегия"
+
+---
+
+### Промт 8: Process Steps — Шаг 2: Настройка
+
+```
+3D gold glass gear/settings icon for marketing agency process diagram.
+Translucent gold glass setup symbol with light refraction.
 Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, volumetric lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Шаг 2 — "Настройка и запуск"
+
+---
+
+### Промт 9: Process Steps — Шаг 3: Запуск
+
+```
+3D gold glass rocket icon for marketing agency process diagram.
+Translucent gold glass launch symbol with light refraction, subtle motion blur.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, volumetric lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Шаг 3 — "Привлечение лидов"
+
+---
+
+### Промт 10: Process Steps — Шаг 4: Масштабирование
+
+```
+3D gold glass growth chart icon for marketing agency process diagram.
+Translucent gold glass scaling symbol with upward arrow, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, volumetric lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Шаг 4 — "Масштабирование"
+
+---
+
+### Промт 11: Process Steps — Шаг 5: Рекрутинг
+
+```
+3D gold glass team/people icon for marketing agency process diagram.
+Translucent gold glass recruiting symbol with multiple figures, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, volumetric lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Шаг 5 — "Рекрутинг"
+
+---
+
+### Промт 12: Stats Block — Рост лидов
+
+```
+3D gold glass upward arrow icon for growth metric display.
+Translucent gold glass arrow pointing up with light refraction.
+Color palette: #D4A84B (gold glass), #0A0A0A (black), #FFFFFF (highlights).
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Метрика "Рост лидов"
+
+---
+
+### Промт 13: Stats Block — Конверсия
+
+```
+3D gold glass percentage symbol icon for conversion rate metric.
+Translucent gold glass percent sign with light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Метрика "Конверсия"
+
+---
+
+### Промт 14: Stats Block — Время/Скорость
+
+```
+3D gold glass clock icon for time/speed metric display.
+Translucent gold glass clock face with light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Метрика "Время отклика"
+
+---
+
+### Промт 15: Stats Block — Цели
+
+```
+3D gold glass target with bullseye icon for goal metric display.
+Translucent gold glass target with center dot, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Метрика "Достигнутые цели"
+
+---
+
+### Промт 16: Stats Block — Команда
+
+```
+3D gold glass people/team icon for recruitment metric display.
+Translucent gold glass multiple figures with light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Метрика "Найм сотрудников"
+
+---
+
+### Промт 17: Stats Block — Выручка/ROI
+
+```
+3D gold glass coin/dollar sign icon for revenue metric display.
+Translucent gold glass coin with currency symbol, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Метрика "ROI/Выручка"
+
+---
+
+### Промт 18: Обложка блога — Лидогенерация
+
+```
+3D gold glass blog category cover for lead generation articles.
+Translucent gold glass funnel with flowing gold particles representing lead flow.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
 Style: 3D glass, gold-tinted translucent surfaces, volumetric lighting, depth of field.
-Format: wide or tall (depending on layout). No text.
+Format: 16:9 banner 1200x675. No text, suitable as article header.
 ```
 
-**Формат:** 1200x600 (горизонтальный) или 600x1200 (вертикальный)
-**Использование:** Секция «Как работает система»
+**Формат:** 1200x675
+**Использование:** Категория блога "Лидогенерация"
 
 ---
 
-### Промт 8: Stats Block иконки
+### Промт 19: Обложка блога — Call-центр
 
 ```
-Set of 6 3D gold glass icons for statistics/metrics display:
-1. Growth/upward arrow - gold glass arrow pointing up
-2. Percentage/conversion rate - gold glass percentage symbol
-3. Clock/time - gold glass clock icon
-4. Target/goal - gold glass target with bullseye
-5. Team/people - gold glass people icon
-6. Money/revenue - gold glass coin or dollar sign
-
-Style: 3D glass design, gold-tinted translucent surfaces, light refraction.
-Colors: #D4A84B (primary gold glass), #FFFFFF (light), #0A0A0A (dark).
-Format: individual icons 128x128 or unified sheet.
-No text, clean gold glass design with warm edge lighting.
+3D gold glass blog category cover for call center articles.
+Translucent gold glass headset with communication waves, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surfaces, volumetric lighting.
+Format: 16:9 banner 1200x675. No text, suitable as article header.
 ```
 
-**Формат:** 128x128 каждая
-**Использование:** Кейсы, главная, лендинги услуг
+**Формат:** 1200x675
+**Использование:** Категория блога "Call-центр"
 
 ---
 
-### Промт 9: Обложки для блога (5 категорий)
+### Промт 20: Обложка блога — Авито/Классифайды
 
 ```
-Set of 5 3D gold glass blog category cover images:
-
-1. Lead generation - translucent gold glass funnel with particles flow
-2. Call center - gold glass headset with communication waves
-3. Avito/classifieds - grid of floating gold glass cards/listings
-4. Recruiting - gold glass people icons with selection funnel
-5. CRM/Analytics - gold glass dashboard with charts
-
-Style: 3D glass design, consistent gold-tinted glass across all 5.
-Colors: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
-Format: 16:9 banners, volumetric lighting, subsurface scattering.
-No text, suitable as article headers.
+3D gold glass blog category cover for classified ads articles.
+Grid of floating translucent gold glass cards/listings with light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surfaces, isometric perspective optional.
+Format: 16:9 banner 1200x675. No text, suitable as article header.
 ```
 
-**Формат:** 1200x675 каждая
-**Использование:** /blog, категории статей
+**Формат:** 1200x675
+**Использование:** Категория блога "Продвижение на Авито"
 
 ---
 
-### Промт 10: Иконки безопасности (4 штуки)
+### Промт 21: Обложка блога — Рекрутинг
 
 ```
-Set of 4 3D gold glass security/protection icons:
-
-1. Data protection - gold glass shield with lock
-2. Encryption/VPN - gold glass lock with circuit lines
-3. Role-based access - gold glass key/user icon
-4. Backups/storage - gold glass cloud with arrows
-
-Style: 3D glass design, gold-tinted translucent surfaces, light refraction.
-Colors: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
-Format: 256x256 each, consistent gold glass style.
-No text, clean professional gold glass look with warm edge lighting.
+3D gold glass blog category cover for recruiting articles.
+Translucent gold glass people icons with selection funnel, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surfaces, volumetric lighting.
+Format: 16:9 banner 1200x675. No text, suitable as article header.
 ```
 
-**Формат:** 256x256 каждая
-**Использование:** /security страница
+**Формат:** 1200x675
+**Использование:** Категория блога "Рекрутинг"
+
+---
+
+### Промт 22: Обложка блога — CRM/Аналитика
+
+```
+3D gold glass blog category cover for CRM/analytics articles.
+Translucent gold glass dashboard with charts and graphs, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surfaces, volumetric lighting.
+Format: 16:9 banner 1200x675. No text, suitable as article header.
+```
+
+**Формат:** 1200x675
+**Использование:** Категория блога "CRM/Аналитика"
+
+---
+
+### Промт 23: Иконка безопасности — Защита данных
+
+```
+3D gold glass shield with lock icon for data protection.
+Translucent gold glass security shield with keyhole, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Страница безопасности — "Защита данных"
+
+---
+
+### Промт 24: Иконка безопасности — Шифрование
+
+```
+3D gold glass lock with circuit lines icon for encryption.
+Translucent gold glass lock with digital circuit pattern, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Страница безопасности — "Шифрование/VPN"
+
+---
+
+### Промт 25: Иконка безопасности — Контроль доступа
+
+```
+3D gold glass key/user icon for role-based access control.
+Translucent gold glass key with user silhouette, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Страница безопасности — "Ролевой доступ"
+
+---
+
+### Промт 26: Иконка безопасности — Бэкапы
+
+```
+3D gold glass cloud with arrows icon for backups/storage.
+Translucent gold glass cloud with up/down arrows, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 256x256. No text.
+```
+
+**Формат:** 256x256
+**Использование:** Страница безопасности — "Резервное копирование"
 
 ---
 
@@ -1001,26 +1214,93 @@ Style: 3D glass, clean luxury aesthetic, soft warm lighting.
 
 ---
 
-### Промт 12: Иконки инструментов/интеграций
+### Промт 28: Иконка инструмента — CRM
 
 ```
-Set of 6 3D gold glass tool/integration icons for case studies:
-
-1. CRM - gold glass database/people icon
-2. Telephony - gold glass phone/handset
-3. Advertising - gold glass megaphone/target
-4. Analytics - gold glass chart/graph
-5. Messaging - gold glass chat bubble
-6. Storage/Database - gold glass cylinder/cloud
-
-Style: 3D glass design, consistent with other gold glass icons.
-Colors: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
-Format: 128x128 each. No text, no brand logos.
-Gold-tinted translucent surfaces with light refraction.
+3D gold glass database/people icon for CRM integration.
+Translucent gold glass database cylinder with user figures, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
 ```
 
-**Формат:** 128x128 каждая
-**Использование:** Кейсы, блок «Инструменты и интеграции»
+**Формат:** 128x128
+**Использование:** Кейсы — "CRM интеграция"
+
+---
+
+### Промт 29: Иконка инструмента — Телефония
+
+```
+3D gold glass phone handset icon for telephony integration.
+Translucent gold glass phone receiver with call waves, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Кейсы — "Телефония"
+
+---
+
+### Промт 30: Иконка инструмента — Реклама
+
+```
+3D gold glass megaphone/target icon for advertising integration.
+Translucent gold glass megaphone with target bullseye, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Кейсы — "Рекламные кампании"
+
+---
+
+### Промт 31: Иконка инструмента — Аналитика
+
+```
+3D gold glass chart/graph icon for analytics integration.
+Translucent gold glass bar chart with upward trend, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Кейсы — "Аналитика"
+
+---
+
+### Промт 32: Иконка инструмента — Сообщения
+
+```
+3D gold glass chat bubble icon for messaging integration.
+Translucent gold glass speech bubble with notification dot, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Кейсы — "Мессенджеры"
+
+---
+
+### Промт 33: Иконка инструмента — Хранилище
+
+```
+3D gold glass cloud/cylinder icon for database storage.
+Translucent gold glass cloud with data arrows, light refraction.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surface, warm edge lighting.
+Format: square icon 128x128. No text.
+```
+
+**Формат:** 128x128
+**Использование:** Кейсы — "Хранение данных"
 
 ---
 
