@@ -3,6 +3,7 @@
    Применить к странице /test-gold
    ============================================================================= */
 
+/* CSS Variables */
 .gold-theme {
   --gold-primary: #D4A84B;
   --gold-light: #F2D07A;
@@ -18,7 +19,7 @@
   --glow-gold: rgba(212, 168, 75, 0.3);
 }
 
-/* Замена цветов для основной темы */
+/* Glass эффекты */
 .gold-theme .glass,
 .gold-theme .glass-strong {
   background: var(--glass-gold) !important;
@@ -26,9 +27,13 @@
   border: 1px solid var(--border-gold) !important;
 }
 
-.gold-theme .text-direct-primary,
-.gold-theme .text-white {
+/* Текст */
+.gold-theme .text-direct-primary {
   color: var(--gold-primary) !important;
+}
+
+.gold-theme .text-white {
+  color: var(--text-primary) !important;
 }
 
 .gold-theme .text-gray-300,
@@ -40,6 +45,7 @@
   color: var(--text-muted) !important;
 }
 
+/* Фоны */
 .gold-theme .bg-direct-dark,
 .gold-theme .bg-direct-secondary {
   background-color: var(--black-secondary) !important;
@@ -47,20 +53,6 @@
 
 .gold-theme .bg-direct-primary {
   background-color: var(--gold-primary) !important;
-}
-
-.gold-theme .hover\:bg-direct-primary:hover,
-.gold-theme .hover\:bg-direct-primary\/90:hover {
-  background-color: var(--gold-light) !important;
-}
-
-.gold-theme .hover\:text-white:hover {
-  color: var(--gold-light) !important;
-}
-
-.gold-theme .border-direct-primary,
-.gold-theme .border-white\/10 {
-  border-color: var(--border-gold) !important;
 }
 
 .gold-theme .bg-direct-secondary\/50 {
@@ -71,6 +63,7 @@
   background-color: rgba(42, 42, 42, 0.3) !important;
 }
 
+/* Градиенты */
 .gold-theme .from-direct-dark,
 .gold-theme .from-direct-secondary,
 .gold-theme .from-direct-purple {
@@ -94,31 +87,31 @@
   ) !important;
 }
 
-/* Кнопки */
-.gold-theme button,
-.gold-theme .btn-gold {
-  background: var(--gold-primary) !important;
-  color: var(--black-primary) !important;
-  font-weight: 600 !important;
-  transition: all 0.3s ease !important;
+/* Hover */
+.gold-theme .hover\:bg-direct-primary:hover,
+.gold-theme .hover\:bg-direct-primary\/90:hover {
+  background-color: var(--gold-light) !important;
 }
 
-.gold-theme button:hover,
-.gold-theme .btn-gold:hover {
-  background: var(--gold-light) !important;
-  box-shadow: 0 0 30px rgba(212, 168, 75, 0.4) !important;
-  transform: translateY(-2px) !important;
+.gold-theme .hover\:text-white:hover {
+  color: var(--gold-light) !important;
 }
 
-/* Заголовки */
+/* Границы */
+.gold-theme .border-direct-primary,
+.gold-theme .border-white\/10 {
+  border-color: var(--border-gold) !important;
+}
+
+/* Заголовки с градиентом */
 .gold-theme h1,
 .gold-theme h2,
 .gold-theme h3,
 .gold-theme h4 {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Ссылки */
@@ -130,24 +123,54 @@
   color: var(--gold-light) !important;
 }
 
-/* Тени и свечение */
-.gold-theme .shadow-gold {
-  box-shadow: 0 0 20px var(--glow-gold) !important;
+/* Кнопки */
+.gold-theme button {
+  background: var(--gold-primary) !important;
+  color: var(--black-primary) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
 }
 
-/* Градиентные карточки */
-.gold-theme .card-gold {
-  background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.8),
-    rgba(42, 42, 42, 0.6)
-  ) !important;
-  border: 1px solid var(--border-gold) !important;
-  backdrop-filter: blur(12px) !important;
+.gold-theme button:hover {
+  background: var(--gold-light) !important;
+  box-shadow: 0 0 30px rgba(212, 168, 75, 0.4) !important;
+  transform: translateY(-2px) !important;
 }
 
-/* Анимации */
-.gold-theme @keyframes goldPulse {
+/* Разделители */
+.gold-theme hr {
+  border-color: var(--border-gold) !important;
+}
+
+/* Header */
+.gold-theme header {
+  background: rgba(10, 10, 10, 0.9) !important;
+  border-bottom: 1px solid var(--border-gold) !important;
+}
+
+/* Навигация */
+.gold-theme nav a {
+  color: var(--text-secondary) !important;
+}
+
+.gold-theme nav a:hover {
+  color: var(--gold-primary) !important;
+}
+
+/* Footer */
+.gold-theme footer {
+  background: var(--black-secondary) !important;
+  border-top: 1px solid var(--border-gold) !important;
+}
+
+/* Фон страницы */
+.gold-theme {
+  background-color: var(--black-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Анимация пульсации */
+@keyframes goldPulse {
   0%, 100% {
     box-shadow: 0 0 20px rgba(212, 168, 75, 0.2);
   }
@@ -158,41 +181,4 @@
 
 .gold-theme .animate-gold-pulse {
   animation: goldPulse 3s ease-in-out infinite;
-}
-
-/* Фон страницы */
-.gold-theme {
-  background-color: var(--black-primary) !important;
-  color: var(--text-primary) !important;
-}
-
-/* Футер */
-.gold-theme footer {
-  background: var(--black-secondary) !important;
-  border-top: 1px solid var(--border-gold) !important;
-}
-
-/* Header */
-.gold-theme header {
-  background: rgba(10, 10, 10, 0.9) !important;
-  border-bottom: 1px solid var(--border-gold) !important;
-}
-
-/* Ссылки навигации */
-.gold-theme nav a {
-  color: var(--text-secondary) !important;
-}
-
-.gold-theme nav a:hover {
-  color: var(--gold-primary) !important;
-}
-
-/* Иконки */
-.gold-theme .icon-gold {
-  color: var(--gold-primary) !important;
-}
-
-/* Разделители */
-.gold-theme hr {
-  border-color: var(--border-gold) !important;
 }

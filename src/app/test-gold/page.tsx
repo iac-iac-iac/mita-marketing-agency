@@ -13,7 +13,6 @@ import BlogPreview from '@/components/blocks/BlogPreview'
 import CasePreview from '@/components/blocks/CasePreview'
 import ClosingCta from '@/components/blocks/ClosingCta'
 import ServicesSection, { defaultServices } from '@/components/blocks/ServicesSection'
-import WorkProcessSection, { defaultWorkProcess } from '@/components/blocks/WorkProcessSection'
 import ServicesCalculator from '@/components/blocks/ServicesCalculator'
 
 import '@/styles/gold-theme.css'
@@ -53,9 +52,6 @@ export default function TestGoldPage() {
 
         {/* Services секция */}
         <ServicesSection items={defaultServices} />
-
-        {/* Work Process секция */}
-        <WorkProcessSection items={defaultWorkProcess} />
 
         {/* Calculator секция */}
         <ServicesCalculator />
