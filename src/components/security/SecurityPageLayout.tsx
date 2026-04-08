@@ -25,6 +25,51 @@ export interface SecurityPageLayoutProps {
   ctaButtonUrl: string;
 }
 
+/**
+ * Отдельный компонент для секции с scroll reveal
+ * Чтобы использовать hook внутри .map()
+ */
+function SecuritySection({ section, index }: { section: SecurityPageLayoutProps['sections'][0]; index: number }) {
+  const ref = useScrollReveal()
+
+  return (
+    <section
+      id={section.id}
+      className="scroll-reveal"
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div ref={ref} className="glass p-8 md:p-10">
+        <div className="flex items-start gap-6">
+          {section.icon && (
+            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-direct-primary/20 flex items-center justify-center overflow-hidden">
+              {typeof section.icon === 'string' ? (
+                <Image
+                  src={section.icon}
+                  alt={`${section.title} icon`}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 object-contain"
+                />
+              ) : (
+                section.icon
+              )}
+            </div>
+          )}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              {section.title}
+            </h2>
+            <div
+              className="text-gray-300 leading-relaxed prose prose-invert max-w-none"
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function SecurityPageLayout({
   title,
   subtitle,
@@ -65,41 +110,11 @@ export default function SecurityPageLayout({
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto space-y-16">
           {sections.map((section, index) => (
-            <section
+            <SecuritySection
               key={section.id}
-              id={section.id}
-              className="scroll-reveal"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div ref={useScrollReveal()} className="glass p-8 md:p-10">
-                <div className="flex items-start gap-6">
-                  {section.icon && (
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-direct-primary/20 flex items-center justify-center overflow-hidden">
-                      {typeof section.icon === 'string' ? (
-                        <Image
-                          src={section.icon}
-                          alt={`${section.title} icon`}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 object-contain"
-                        />
-                      ) : (
-                        section.icon
-                      )}
-                    </div>
-                  )}
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                      {section.title}
-                    </h2>
-                    <div
-                      className="text-gray-300 leading-relaxed prose prose-invert max-w-none"
-                      dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
+              section={section}
+              index={index}
+            />
           ))}
         </div>
       </div>
