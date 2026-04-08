@@ -47,8 +47,8 @@ export default function Hero({
           </video>
           {/* Лёгкий градиент поверх видео */}
           <div className="absolute inset-0 bg-gradient-to-br from-direct-dark/50 via-transparent to-transparent" />
-          {/* 20% затемнение */}
-          <div className="absolute inset-0 bg-black/20" />
+          {/* 30% затемнение */}
+          <div className="absolute inset-0 bg-black/30" />
         </div>
       )}
 
@@ -64,8 +64,8 @@ export default function Hero({
           />
           {/* Лёгкий градиент поверх изображения */}
           <div className="absolute inset-0 bg-gradient-to-br from-direct-dark/50 via-transparent to-transparent" />
-          {/* 20% затемнение */}
-          <div className="absolute inset-0 bg-black/20" />
+          {/* 30% затемнение */}
+          <div className="absolute inset-0 bg-black/30" />
           {/* Нижний градиент для плавного перехода */}
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-direct-dark to-transparent" />
         </div>
