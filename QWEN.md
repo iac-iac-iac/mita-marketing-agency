@@ -103,13 +103,16 @@ company_site/
 
 | Название | Hex | Использование |
 |----------|-----|---------------|
-| `direct-primary` | `#7274B3` | Основные акценты, CTA |
-| `direct-secondary` | `#293349` | Вторичные элементы, фон |
-| `direct-accent` | `#5A4D7A` | Акценты, градиенты |
-| `direct-dark` | `#090909` | Глубокий чёрный фон |
-| `direct-light` | `#EDECED` | Светлый текст |
-| `direct-gray` | `#323131` | Вторичный текст |
-| `direct-purple` | `#3C3353` | Дополнительные элементы |
+| `direct-primary` | `#D4A84B` | Золотой primary, CTA, акценты |
+| `direct-gold` | `#F2D07A` | Светлое золото (hover, подсветка) |
+| `direct-accent` | `#B8892E` | Тёмное золото (дополнительный) |
+| `direct-dark` | `#0A0A0A` | Глубокий чёрный фон |
+| `direct-secondary` | `#1A1A1A` | Вторичный фон (поверхности) |
+| `direct-gray` | `#2A2A2A` | Карточки, surface |
+| `direct-purple` | `#2A2A2A` | Alias для gray (совместимость) |
+| `direct-light` | `#FFFFFF` | Белый текст |
+| `direct-text-secondary` | `#B0B0B0` | Вторичный текст |
+| `direct-muted` | `#707070` | Приглушённый текст |
 
 ### Анимации
 

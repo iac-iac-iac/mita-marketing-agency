@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 :root {
-  /* М.И.Т.А. цветовая палитра */
-  --color-primary: #7274B3;
-  --color-secondary: #293349;
-  --color-accent: #5A4D7A;
-  --color-dark: #090909;
-  --color-light: #EDECED;
-  --color-gray: #323131;
-  --color-purple: #3C3353;
+  /* М.И.Т.А. цветовая палитра — Чёрное Золото */
+  --color-primary: #D4A84B;
+  --color-secondary: #1A1A1A;
+  --color-accent: #B8892E;
+  --color-dark: #0A0A0A;
+  --color-light: #FFFFFF;
+  --color-gray: #2A2A2A;
+  --color-purple: #2A2A2A;
+  --color-gold: #F2D07A;
+  --color-muted: #707070;
+  --color-text-secondary: #B0B0B0;
 }
 
 * {
@@ -94,33 +97,33 @@ ul, ol {
 
 /* Базовые утилиты для 3D Glass эффекта */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(26, 26, 26, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 168, 75, 0.2);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .glass:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(114, 116, 179, 0.15);
+  background: rgba(42, 42, 42, 0.7);
+  border-color: rgba(212, 168, 75, 0.35);
+  box-shadow: 0 8px 32px rgba(212, 168, 75, 0.15);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(212, 168, 75, 0.3);
   border-radius: 24px;
   transition: all 0.3s ease;
 }
 
 .glass-strong:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 12px 48px rgba(114, 116, 179, 0.2);
+  background: rgba(42, 42, 42, 0.85);
+  border-color: rgba(212, 168, 75, 0.45);
+  box-shadow: 0 12px 48px rgba(212, 168, 75, 0.2);
 }
 
 /* Градиентные фоны */
@@ -175,10 +178,10 @@ ul, ol {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(114, 116, 179, 0.3);
+    box-shadow: 0 0 20px rgba(212, 168, 75, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(114, 116, 179, 0.6);
+    box-shadow: 0 0 40px rgba(212, 168, 75, 0.6);
   }
 }
 
@@ -274,7 +277,7 @@ ul, ol {
 
 /* Стили для Header */
 .header-glass {
-  background: rgba(9, 9, 9, 0.8);
+  background: rgba(10, 10, 10, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -316,7 +319,7 @@ ul, ol {
 
 .footer-social-link:hover {
   transform: translateY(-3px);
-  background: rgba(114, 116, 179, 0.2);
+  background: rgba(212, 168, 75, 0.2);
 }
 
 /* Улучшенные стили для скроллбара */
@@ -334,7 +337,7 @@ ul, ol {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  background: var(--color-gold);
 }
 
 /* =============================================================================
@@ -390,7 +393,7 @@ ul, ol {
 }
 
 .markdown-content strong {
-  color: #7274B3;
+  color: #D4A84B;
   font-weight: 700;
 }
 
@@ -400,7 +403,7 @@ ul, ol {
 }
 
 .markdown-content blockquote {
-  border-left: 4px solid #7274B3;
+  border-left: 4px solid #D4A84B;
   padding-left: 1rem;
   font-style: italic;
   color: #9ca3af;
@@ -411,7 +414,7 @@ ul, ol {
   background: rgba(255, 255, 255, 0.1);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  color: #7274B3;
+  color: #D4A84B;
   font-family: monospace;
 }
 
@@ -430,7 +433,7 @@ ul, ol {
 }
 
 .markdown-content a {
-  color: #7274B3;
+  color: #D4A84B;
   text-decoration: underline;
 }
 

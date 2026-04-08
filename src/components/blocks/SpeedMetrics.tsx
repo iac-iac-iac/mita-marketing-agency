@@ -7,7 +7,7 @@ interface Metric {
   label: string
   value: number
   suffix?: string
-  icon: string
+  icon?: string
   description?: string
 }
 

@@ -15,14 +15,12 @@ import ClosingCta from '@/components/blocks/ClosingCta'
 import ServicesSection, { defaultServices } from '@/components/blocks/ServicesSection'
 import ServicesCalculator from '@/components/blocks/ServicesCalculator'
 
-import '@/styles/gold-theme.css'
-
 export default function TestGoldPage() {
   return (
     <>
       <MainHeader />
 
-      <main className="gold-theme animate-fade-in-up">
+      <main className="animate-fade-in-up">
         {/* Hero секция */}
         <Hero
           eyebrow="Маркетинговое IT-агентство"
@@ -97,9 +95,9 @@ export default function TestGoldPage() {
         <div id="contact">
           <ClosingCta
             title="Готовы к росту продаж?"
-            subtitle="Оставьте заявку — и мы рассчитаем стоимость привлечения клиентов для вашего бизнеса"
-            ctaLabel="Получить консультацию"
-            ctaUrl="#contact"
+            description="Оставьте заявку — и мы рассчитаем стоимость привлечения клиентов для вашего бизнеса"
+            primaryCtaLabel="Получить консультацию"
+            primaryCtaUrl="#contact"
           />
         </div>
       </main>

@@ -9,13 +9,16 @@ export default {
     extend: {
       colors: {
         direct: {
-          primary: '#7274B3',
-          secondary: '#293349',
-          accent: '#5A4D7A',
-          dark: '#090909',
-          light: '#EDECED',
-          gray: '#323131',
-          purple: '#3C3353',
+          primary: '#D4A84B',
+          secondary: '#1A1A1A',
+          accent: '#B8892E',
+          dark: '#0A0A0A',
+          light: '#FFFFFF',
+          gray: '#2A2A2A',
+          purple: '#2A2A2A',
+          gold: '#F2D07A',
+          muted: '#707070',
+          'text-secondary': '#B0B0B0',
         },
       },
       fontFamily: {

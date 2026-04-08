@@ -64,11 +64,11 @@ export default function LegalPageLayout({
     <main className="min-h-screen" style={{ background: '#f5f5f7' }}>
       {/* Hero секция */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, rgba(114,116,179,0.1) 0%, rgba(245,245,247,1) 50%, rgba(90,77,122,0.1) 100%)' }} />
+        <div className="absolute inset-0 z-0" style={{ background: 'linear-gradient(135deg, rgba(212,168,75,0.1) 0%, rgba(245,245,247,1) 50%, rgba(184,137,46,0.1) 100%)' }} />
 
         {/* Декоративные элементы */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-float" style={{ background: 'rgba(114, 116, 179, 0.15)' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl animate-float" style={{ background: 'rgba(90, 77, 122, 0.15)', animationDelay: '1s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-float" style={{ background: 'rgba(212, 168, 75, 0.15)' }} />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl animate-float" style={{ background: 'rgba(184, 137, 46, 0.15)', animationDelay: '1s' }} />
 
         <div ref={heroRef} className="scroll-reveal container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: '#1d1d1f' }}>
@@ -89,7 +89,7 @@ export default function LegalPageLayout({
           <button
             onClick={() => setIsTableOfContentsOpen(!isTableOfContentsOpen)}
             className="lg:hidden w-full px-6 py-3 flex items-center justify-between rounded-xl"
-            style={{ background: 'rgba(114, 116, 179, 0.1)', border: '1px solid rgba(114, 116, 179, 0.2)', color: '#1d1d1f' }}
+            style={{ background: 'rgba(212, 168, 75, 0.1)', border: '1px solid rgba(212, 168, 75, 0.2)', color: '#1d1d1f' }}
           >
             <span className="font-semibold">Оглавление</span>
             <svg className={`w-5 h-5 transition-transform ${isTableOfContentsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#1d1d1f' }}>
@@ -105,8 +105,8 @@ export default function LegalPageLayout({
                   onClick={() => scrollToSection(section.id)}
                   className="block w-full text-left px-4 py-2 rounded-lg transition-colors"
                   style={{ 
-                    color: activeSection === section.id ? '#7274B3' : '#1d1d1f',
-                    background: activeSection === section.id ? 'rgba(114, 116, 179, 0.15)' : 'transparent'
+                    color: activeSection === section.id ? '#D4A84B' : '#1d1d1f',
+                    background: activeSection === section.id ? 'rgba(212, 168, 75, 0.15)' : 'transparent'
                   }}
                 >
                   {section.title}
@@ -123,7 +123,7 @@ export default function LegalPageLayout({
                 className="px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors"
                 style={{ 
                   color: activeSection === section.id ? '#ffffff' : '#424245',
-                  background: activeSection === section.id ? '#7274B3' : 'transparent'
+                  background: activeSection === section.id ? '#D4A84B' : 'transparent'
                 }}
               >
                 {section.title}
@@ -161,7 +161,7 @@ export default function LegalPageLayout({
                 {section.subsections && section.subsections.length > 0 && (
                   <div className="space-y-6 mt-8">
                     {section.subsections.map((subsection) => (
-                      <div key={subsection.id} className="pl-6" style={{ borderLeft: '2px solid rgba(114, 116, 179, 0.3)' }}>
+                      <div key={subsection.id} className="pl-6" style={{ borderLeft: '2px solid rgba(212, 168, 75, 0.3)' }}>
                         <h3 className="text-xl md:text-2xl font-semibold mb-3" style={{ color: '#1d1d1f' }}>
                           {subsection.title}
                         </h3>

@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#7274B3',
+  themeColor: '#D4A84B',
 }
 
 export const metadata: Metadata = {
