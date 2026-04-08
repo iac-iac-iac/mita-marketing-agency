@@ -759,11 +759,14 @@ company_site/
 ## 🎨 Промты для генерации изображений
 
 ### Цветовая палитра для использования в промтах:
-- **Основной акцент:** `#7274B3` (мягкий сине-фиолетовый)
-- **Тёмный фон:** `#293349`, `#090909` (глубокий синий, чёрный)
-- **Вторичные:** `#5A4D7A`, `#3C3353` (фиолетовые оттенки)
-- **Светлый текст/фон:** `#EDECED` (светло-серый)
-- **Нейтральный:** `#323131` (тёмно-серый)
+- **Основной акцент:** `#D4A84B` (золото, тёплое)
+- **Светлое золото:** `#F2D07A` (hover, светлые элементы)
+- **Тёмное золото:** `#B8892E` (дополнительный акцент)
+- **Глубокий чёрный:** `#0A0A0A`, `#000000` (фон)
+- **Чёрный поверхностей:** `#1A1A1A` (карточки, поверхности)
+- **Чёрный для элементов:** `#2A2A2A` (вторичные элементы)
+- **Белый текст:** `#FFFFFF` (основной текст, светлые элементы)
+- **Серый текст:** `#B0B0B0` (вторичный текст)
 
 ### Стиль: 3D Glass Design
 **Характеристики стиля:**
@@ -781,16 +784,16 @@ company_site/
 **Для:** Veo 3.1
 
 ```
-3D glass design funnel visualization for marketing IT agency homepage hero section. 
-Flow from lead generation → calls → sales → recruiting as connected translucent 
-glass geometric shapes with light refraction. Color palette: #7274B3 (accent glass), 
-#293349 (dark background), #5A4D7A, #EDECED (light elements). Modern glass morphism, 
-volumetric lighting, subtle subsurface scattering, depth of field. Wide banner 16:9. 
-Style: 3D glass, translucent surfaces, soft gradients, light bloom on edges. 
-No text, no people.
+3D glass design funnel visualization for marketing IT agency homepage hero section.
+Flow from lead generation → calls → sales → recruiting as connected translucent
+gold glass geometric shapes with light refraction. Color palette: #D4A84B (gold accent glass),
+#0A0A0A (deep black background), #B8892E (dark gold accents), #FFFFFF (light elements).
+Modern glass morphism, volumetric lighting, subtle subsurface scattering, depth of field.
+Wide banner 16:9. Style: 3D glass, translucent gold-tinted surfaces, soft gradients,
+warm light bloom on edges. No text, no people.
 ```
 
-**Формат:** 1920x1080 или 1600x900  
+**Формат:** 1920x1080 или 1600x900
 **Использование:** Главная страница, Hero-секция
 
 ---
@@ -798,15 +801,15 @@ No text, no people.
 ### Промт 2: Hero-баннер Лидогенерация
 
 ```
-3D glass visualization of digital lead flow for service landing page. 
-Abstract representation of incoming leads as flowing translucent glass particles 
-or streams converging into a glass funnel. Color palette: #7274B3 (primary glass), 
-#090909 (dark background), #EDECED (highlights). Modern glass morphism, volumetric 
-lighting, refraction, subtle motion blur. Wide banner 16:9. Style: 3D glass design, 
-translucent surfaces with light bloom. No text, no people.
+3D gold glass visualization of digital lead flow for service landing page.
+Abstract representation of incoming leads as flowing translucent gold glass particles
+or streams converging into a glass funnel. Color palette: #D4A84B (primary gold glass),
+#0A0A0A (deep black background), #FFFFFF (highlights). Modern glass morphism, volumetric
+lighting, refraction, subtle motion blur. Wide banner 16:9. Style: 3D glass design,
+translucent gold surfaces with warm light bloom. No text, no people.
 ```
 
-**Формат:** 1920x1080  
+**Формат:** 1920x1080
 **Использование:** /services/leadgen, Hero-секция
 
 ---
@@ -814,15 +817,15 @@ translucent surfaces with light bloom. No text, no people.
 ### Промт 3: Hero-баннер Call-центр
 
 ```
-3D glass design illustration of call center operators. Abstract translucent glass 
-silhouettes with headsets, geometric glass style. CRM interface as floating glass 
-panels with soft glow. Color palette: #7274B3, #293349, #5A4D7A, #EDECED. 
-Modern glass morphism, volumetric lighting, depth of field. Wide banner 16:9. 
-Style: 3D glass, translucent surfaces, soft edge lighting. No detailed faces, 
+3D gold glass design illustration of call center operators. Abstract translucent gold glass
+silhouettes with headsets, geometric glass style. CRM interface as floating glass
+panels with warm gold glow. Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Modern glass morphism, volumetric lighting, depth of field. Wide banner 16:9.
+Style: 3D glass, gold-tinted translucent surfaces, warm edge lighting. No detailed faces,
 stylized glass representation. No text.
 ```
 
-**Формат:** 1920x1080  
+**Формат:** 1920x1080
 **Использование:** /services/call-center, Hero-секция
 
 ---
@@ -830,14 +833,14 @@ stylized glass representation. No text.
 ### Промт 4: Hero-баннер Авито
 
 ```
-3D glass visualization of classified ads platform. Abstract floating glass cards 
-or listings in grid, translucent with light refraction. Color palette: #7274B3 
-(accent glass), #293349, #3C3353, #EDECED. Modern glass morphism, volumetric 
-lighting, depth of field. Wide banner 16:9. Style: 3D glass design, translucent 
-surfaces, soft gradients, isometric perspective optional. No text, no logos.
+3D gold glass visualization of classified ads platform. Abstract floating gold glass cards
+or listings in grid, translucent with light refraction. Color palette: #D4A84B
+(accent gold glass), #0A0A0A, #1A1A1A, #FFFFFF. Modern glass morphism, volumetric
+lighting, depth of field. Wide banner 16:9. Style: 3D glass design, gold-tinted
+translucent surfaces, warm gradients, isometric perspective optional. No text, no logos.
 ```
 
-**Формат:** 1920x1080  
+**Формат:** 1920x1080
 **Использование:** /services/avito, Hero-секция
 
 ---
@@ -845,14 +848,14 @@ surfaces, soft gradients, isometric perspective optional. No text, no logos.
 ### Промт 5: Hero-баннер Рекрутинг
 
 ```
-3D glass design illustration of recruitment process. Abstract translucent glass 
-funnel with candidate selection flow, glass people icons, interview panels. 
-Color palette: #7274B3, #5A4D7A, #293349, #EDECED. Modern glass morphism, 
-volumetric lighting, subsurface scattering. Wide banner 16:9. Style: 3D glass, 
-translucent surfaces with light bloom. No detailed faces, stylized glass. No text.
+3D gold glass design illustration of recruitment process. Abstract translucent gold
+funnel with candidate selection flow, glass people icons, interview panels.
+Color palette: #D4A84B, #B8892E, #0A0A0A, #FFFFFF. Modern glass morphism,
+volumetric lighting, subsurface scattering. Wide banner 16:9. Style: 3D glass,
+gold-tinted translucent surfaces with warm light bloom. No detailed faces, stylized glass. No text.
 ```
 
-**Формат:** 1920x1080  
+**Формат:** 1920x1080
 **Использование:** /services/recruiting, Hero-секция
 
 ---
@@ -862,19 +865,19 @@ translucent surfaces with light bloom. No detailed faces, stylized glass. No tex
 **Для:** Nano Banana 2
 
 ```
-Set of 4 3D glass service icons for marketing agency website:
-1. Lead generation - translucent glass funnel with incoming glass particles/arrows
-2. Call center - glass headset with sound waves
-3. Classified ads (Avito) - grid of translucent glass cards/listings
-4. Recruiting - glass person icon with checkmark/selection
+Set of 4 3D gold glass service icons for marketing agency website:
+1. Lead generation - translucent gold glass funnel with incoming gold particles/arrows
+2. Call center - gold glass headset with sound waves
+3. Classified ads (Avito) - grid of translucent gold glass cards/listings
+4. Recruiting - gold glass person icon with checkmark/selection
 
-Style: 3D glass design, translucent surfaces, light refraction, volumetric lighting.
-Colors: #7274B3 (primary glass), #293349, #5A4D7A, #EDECED (accents).
-Format: square icons, soft gradients, edge lighting, subsurface scattering.
-No text. Consistent glass style across all 4 icons.
+Style: 3D glass design, gold-tinted translucent surfaces, light refraction, volumetric lighting.
+Colors: #D4A84B (primary gold glass), #0A0A0A, #B8892E, #FFFFFF (accents).
+Format: square icons, warm gradients, edge lighting, subsurface scattering.
+No text. Consistent gold glass style across all 4 icons.
 ```
 
-**Формат:** 512x512 каждая (или единым спрайтом 1024x512)  
+**Формат:** 512x512 каждая (или единым спрайтом 1024x512)
 **Использование:** FeatureGroup карточки, меню, навигация
 
 ---
@@ -882,21 +885,21 @@ No text. Consistent glass style across all 4 icons.
 ### Промт 7: Process Steps (5 шагов)
 
 ```
-3D glass design 5-step process diagram for marketing agency workflow. 
-Horizontal or vertical flow with numbered translucent glass icons:
-1. Audit - glass magnifying glass
-2. Setup - glass gear/settings icon
-3. Launch - glass rocket icon
-4. Scale - glass growth chart icon
-5. Recruit - glass team icon
+3D gold glass design 5-step process diagram for marketing agency workflow.
+Horizontal or vertical flow with numbered translucent gold glass icons:
+1. Audit - gold glass magnifying glass
+2. Setup - gold glass gear/settings icon
+3. Launch - gold glass rocket icon
+4. Scale - gold glass growth chart icon
+5. Recruit - gold glass team icon
 
-Connected by flowing glass tubes or light streams showing progression.
-Color palette: #7274B3, #293349, #5A4D7A, #EDECED.
-Style: 3D glass, translucent surfaces, volumetric lighting, depth of field.
+Connected by flowing gold glass tubes or light streams showing progression.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Style: 3D glass, gold-tinted translucent surfaces, volumetric lighting, depth of field.
 Format: wide or tall (depending on layout). No text.
 ```
 
-**Формат:** 1200x600 (горизонтальный) или 600x1200 (вертикальный)  
+**Формат:** 1200x600 (горизонтальный) или 600x1200 (вертикальный)
 **Использование:** Секция «Как работает система»
 
 ---
@@ -904,21 +907,21 @@ Format: wide or tall (depending on layout). No text.
 ### Промт 8: Stats Block иконки
 
 ```
-Set of 6 3D glass icons for statistics/metrics display:
-1. Growth/upward arrow - glass arrow pointing up
-2. Percentage/conversion rate - glass percentage symbol
-3. Clock/time - glass clock icon
-4. Target/goal - glass target with bullseye
-5. Team/people - glass people icon
-6. Money/revenue - glass coin or dollar sign
+Set of 6 3D gold glass icons for statistics/metrics display:
+1. Growth/upward arrow - gold glass arrow pointing up
+2. Percentage/conversion rate - gold glass percentage symbol
+3. Clock/time - gold glass clock icon
+4. Target/goal - gold glass target with bullseye
+5. Team/people - gold glass people icon
+6. Money/revenue - gold glass coin or dollar sign
 
-Style: 3D glass design, translucent surfaces, light refraction.
-Colors: #7274B3 (primary glass), #EDECED (light), #293349 (dark).
+Style: 3D glass design, gold-tinted translucent surfaces, light refraction.
+Colors: #D4A84B (primary gold glass), #FFFFFF (light), #0A0A0A (dark).
 Format: individual icons 128x128 or unified sheet.
-No text, clean glass design with edge lighting.
+No text, clean gold glass design with warm edge lighting.
 ```
 
-**Формат:** 128x128 каждая  
+**Формат:** 128x128 каждая
 **Использование:** Кейсы, главная, лендинги услуг
 
 ---
@@ -926,21 +929,21 @@ No text, clean glass design with edge lighting.
 ### Промт 9: Обложки для блога (5 категорий)
 
 ```
-Set of 5 3D glass blog category cover images:
+Set of 5 3D gold glass blog category cover images:
 
-1. Lead generation - translucent glass funnel with particles flow
-2. Call center - glass headset with communication waves
-3. Avito/classifieds - grid of floating glass cards/listings
-4. Recruiting - glass people icons with selection funnel
-5. CRM/Analytics - glass dashboard with charts
+1. Lead generation - translucent gold glass funnel with particles flow
+2. Call center - gold glass headset with communication waves
+3. Avito/classifieds - grid of floating gold glass cards/listings
+4. Recruiting - gold glass people icons with selection funnel
+5. CRM/Analytics - gold glass dashboard with charts
 
-Style: 3D glass design, consistent across all 5.
-Colors: #7274B3, #293349, #5A4D7A, #3C3353, #EDECED.
+Style: 3D glass design, consistent gold-tinted glass across all 5.
+Colors: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
 Format: 16:9 banners, volumetric lighting, subsurface scattering.
 No text, suitable as article headers.
 ```
 
-**Формат:** 1200x675 каждая  
+**Формат:** 1200x675 каждая
 **Использование:** /blog, категории статей
 
 ---
@@ -948,20 +951,20 @@ No text, suitable as article headers.
 ### Промт 10: Иконки безопасности (4 штуки)
 
 ```
-Set of 4 3D glass security/protection icons:
+Set of 4 3D gold glass security/protection icons:
 
-1. Data protection - glass shield with lock
-2. Encryption/VPN - glass lock with circuit lines
-3. Role-based access - glass key/user icon
-4. Backups/storage - glass cloud with arrows
+1. Data protection - gold glass shield with lock
+2. Encryption/VPN - gold glass lock with circuit lines
+3. Role-based access - gold glass key/user icon
+4. Backups/storage - gold glass cloud with arrows
 
-Style: 3D glass design, translucent surfaces, light refraction.
-Colors: #7274B3, #293349, #5A4D7A, #EDECED.
-Format: 256x256 each, consistent glass style.
-No text, clean professional glass look with edge lighting.
+Style: 3D glass design, gold-tinted translucent surfaces, light refraction.
+Colors: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Format: 256x256 each, consistent gold glass style.
+No text, clean professional gold glass look with warm edge lighting.
 ```
 
-**Формат:** 256x256 каждая  
+**Формат:** 256x256 каждая
 **Использование:** /security страница
 
 ---
@@ -971,29 +974,29 @@ No text, clean professional glass look with edge lighting.
 **A. Тёмный фон (Hero, Pricing, Closing CTA)**
 
 ```
-3D glass dark background pattern for website sections. 
-Subtle geometric glass shapes with gradient from #293349 to #090909. 
-Translucent glass overlay pattern with soft light refraction. 
-Should be non-distracting, suitable for overlaying white/light text. 
-Format: seamless tileable pattern or large background 1920x1080. 
-Style: 3D glass, corporate tech aesthetic, volumetric lighting.
+3D gold glass dark background pattern for website sections.
+Subtle geometric gold glass shapes with gradient from #0A0A0A to #000000.
+Translucent gold glass overlay pattern with soft light refraction.
+Should be non-distracting, suitable for overlaying white/light text.
+Format: seamless tileable pattern or large background 1920x1080.
+Style: 3D glass, luxury tech aesthetic, volumetric lighting.
 ```
 
-**Формат:** 1920x1080 (tileable)  
+**Формат:** 1920x1080 (tileable)
 **Использование:** Hero, Pricing, Closing CTA секции
 
 **B. Светлый фон (Problem, Features, Testimonials)**
 
 ```
-3D glass light background pattern for website sections. 
-Subtle translucent glass geometric pattern on #EDECED base. 
-Light gray glass accents (#323131 at low opacity). 
-Clean, non-distracting, suitable for overlaying dark text. 
-Format: seamless tileable or large background 1920x1080. 
-Style: 3D glass, clean corporate aesthetic, soft lighting.
+3D gold glass light background pattern for website sections.
+Subtle translucent gold glass geometric pattern on #1A1A1A base.
+Gold glass accents (#D4A84B at low opacity).
+Clean, non-distracting, suitable for overlaying white text.
+Format: seamless tileable or large background 1920x1080.
+Style: 3D glass, clean luxury aesthetic, soft warm lighting.
 ```
 
-**Формат:** 1920x1080 (tileable)  
+**Формат:** 1920x1080 (tileable)
 **Использование:** Problem, Features, Testimonials секции
 
 ---
@@ -1001,22 +1004,22 @@ Style: 3D glass, clean corporate aesthetic, soft lighting.
 ### Промт 12: Иконки инструментов/интеграций
 
 ```
-Set of 6 3D glass tool/integration icons for case studies:
+Set of 6 3D gold glass tool/integration icons for case studies:
 
-1. CRM - glass database/people icon
-2. Telephony - glass phone/handset
-3. Advertising - glass megaphone/target
-4. Analytics - glass chart/graph
-5. Messaging - glass chat bubble
-6. Storage/Database - glass cylinder/cloud
+1. CRM - gold glass database/people icon
+2. Telephony - gold glass phone/handset
+3. Advertising - gold glass megaphone/target
+4. Analytics - gold glass chart/graph
+5. Messaging - gold glass chat bubble
+6. Storage/Database - gold glass cylinder/cloud
 
-Style: 3D glass design, consistent with other icons.
-Colors: #7274B3, #293349, #5A4D7A, #EDECED.
+Style: 3D glass design, consistent with other gold glass icons.
+Colors: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
 Format: 128x128 each. No text, no brand logos.
-Translucent surfaces with light refraction.
+Gold-tinted translucent surfaces with light refraction.
 ```
 
-**Формат:** 128x128 каждая  
+**Формат:** 128x128 каждая
 **Использование:** Кейсы, блок «Инструменты и интеграции»
 
 ---
@@ -1024,15 +1027,14 @@ Translucent surfaces with light refraction.
 ### Промт 13: 404 страница
 
 ```
-3D glass design 404 error page illustration. Large translucent glass "404" 
-numbers floating in space, broken glass shard effect (not actually broken, 
-just artistic). Color palette: #7274B3, #293349, #5A4D7A, #EDECED. 
-Modern glass morphism, volumetric lighting, depth of field. 
-Style: 3D glass, translucent surfaces, soft edge lighting. 
+3D gold glass design 404 error page illustration. Large translucent gold glass "404"
+numbers floating in space, artistic glass shard effect. Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Modern glass morphism, volumetric lighting, depth of field.
+Style: 3D glass, gold-tinted translucent surfaces, warm edge lighting.
 Can include subtle "page not found" concept visually. No text.
 ```
 
-**Формат:** 800x600 или 1200x800  
+**Формат:** 800x600 или 1200x800
 **Использование:** /404 страница
 
 ---
@@ -1040,15 +1042,15 @@ Can include subtle "page not found" concept visually. No text.
 ### Промт 14: Favicon (упрощённая иконка)
 
 ```
-3D glass favicon icon for marketing agency. Single translucent glass 
-abstract symbol (funnel or geometric shape representing lead generation). 
-Color palette: #7274B3 (primary glass), #293349 or #090909 (dark background). 
-Style: 3D glass, clean simple shape suitable for small sizes. 
-Format: square icon, works at 16x16, 32x32, 64x64. 
-No text, minimalistic glass design.
+3D gold glass favicon icon for marketing agency. Single translucent gold glass
+abstract symbol (funnel or geometric shape representing lead generation).
+Color palette: #D4A84B (primary gold glass), #0A0A0A (black background).
+Style: 3D glass, clean simple shape suitable for small sizes.
+Format: square icon, works at 16x16, 32x32, 64x64.
+No text, minimalistic gold glass design.
 ```
 
-**Формат:** 512x512 (масштабируется до 16x16, 32x32, 64x64)  
+**Формат:** 512x512 (масштабируется до 16x16, 32x32, 64x64)
 **Использование:** Favicon сайта
 
 ---
@@ -1058,40 +1060,40 @@ No text, minimalistic glass design.
 **A. Главная страница**
 
 ```
-3D glass design social media OG image for marketing agency homepage. 
-Abstract translucent glass funnel visualization with modern glass morphism. 
-Color palette: #7274B3, #293349, #5A4D7A, #EDECED. Wide banner with 
-space for text overlay. Style: 3D glass, volumetric lighting, 
-professional tech aesthetic. No text.
+3D gold glass design social media OG image for marketing agency homepage.
+Abstract translucent gold glass funnel visualization with modern glass morphism.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF. Wide banner with
+space for text overlay. Style: 3D gold glass, volumetric lighting,
+luxury tech aesthetic. No text.
 ```
 
-**Формат:** 1200x630 (Open Graph standard)  
+**Формат:** 1200x630 (Open Graph standard)
 **Использование:** Соцсети (VK, Telegram, WhatsApp) при шеринге главной
 
 **B. Лендинги услуг**
 
 ```
-3D glass design social media OG image for service landing pages. 
-Abstract glass service icon (funnel/headset/cards/people) with 
-modern glass morphism. Color palette: #7274B3, #293349, #5A4D7A, #EDECED. 
-Wide banner with space for text overlay. Style: 3D glass, 
+3D gold glass design social media OG image for service landing pages.
+Abstract gold glass service icon (funnel/headset/cards/people) with
+modern glass morphism. Color palette: #D4A84B, #0A0A0A, #B8892E, #FFFFFF.
+Wide banner with space for text overlay. Style: 3D gold glass,
 volumetric lighting. No text.
 ```
 
-**Формат:** 1200x630  
+**Формат:** 1200x630
 **Использование:** Соцсети при шеринге страниц услуг
 
 **C. Блог и кейсы**
 
 ```
-3D glass design social media OG image for blog posts and case studies. 
-Abstract glass dashboard/analytics visualization with modern glass morphism. 
-Color palette: #7274B3, #293349, #5A4D7A, #3C3353, #EDECED. 
-Wide banner with space for text overlay. Style: 3D glass, 
+3D gold glass design social media OG image for blog posts and case studies.
+Abstract gold glass dashboard/analytics visualization with modern glass morphism.
+Color palette: #D4A84B, #0A0A0A, #B8892E, #1A1A1A, #FFFFFF.
+Wide banner with space for text overlay. Style: 3D gold glass,
 volumetric lighting, professional look. No text.
 ```
 
-**Формат:** 1200x630  
+**Формат:** 1200x630
 **Использование:** Соцсети при шеринге статей и кейсов
 
 ---
