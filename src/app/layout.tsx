@@ -1,27 +1,12 @@
 ﻿import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
 import ServiceWorkerRegistration from '@/components/ui/ServiceWorkerRegistration'
 
-// Используем системные шрифты вместо Google Fonts (проблемы с загрузкой)
-const inter = localFont({
-  src: [],
-  variable: '--font-inter',
-  display: 'swap',
-  fallback: [
-    'Inter',
-    'system-ui',
-    '-apple-system',
-    'Segoe UI',
-    'Roboto',
-    'Arial',
-    'sans-serif',
-  ],
-  preload: false,
-})
+// Используем системные шрифты (без загрузки из Google Fonts)
+const fontClassName = 'font-sans'
 
 // Валидация переменных окружения при старте (только в development)
 if (process.env.NODE_ENV === 'development') {
@@ -83,8 +68,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru" className={inter.variable}>
-      <body className={inter.className}>
+    <html lang="ru" className={fontClassName}>
+      <body className={fontClassName}>
         {children}
         <ScrollToTop />
         <PWAInstallPrompt />
