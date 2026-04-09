@@ -2,7 +2,7 @@
 import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { useState } from 'react'
+import FaqItem from '@/components/security/FaqItem'
 
 export const metadata: Metadata = {
   title: 'Безопасность данных | М.И.Т.А.',
@@ -233,36 +233,5 @@ export default function SecurityPage() {
 
       <Footer />
     </>
-  )
-}
-
-/**
- * Компонент FAQ аккордеона
- */
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <div className="glass rounded-2xl overflow-hidden animate-fade-in" style={{ animationDelay: `${0.1 + index * 0.05}s` }}>
-      <button
-        className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-white/5 transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className="font-semibold text-lg">{question}</span>
-        <svg
-          className={`w-6 h-6 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className="px-6 pb-4 text-gray-300 leading-relaxed animate-slide-up">
-          {answer}
-        </div>
-      )}
-    </div>
   )
 }
