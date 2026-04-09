@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
 import CtaButton from '@/components/ui/CtaButton'
-import { sanitizeHtml } from '@/lib/utils/sanitize'
 
 export interface SecurityPageLayoutProps {
   title: string;
@@ -60,8 +59,8 @@ function SecuritySection({ section, index }: { section: SecurityPageLayoutProps[
               {section.title}
             </h2>
             <div
-              className="text-gray-300 leading-relaxed prose prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }}
+              className="text-gray-300 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: section.content }}
             />
           </div>
         </div>
