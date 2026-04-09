@@ -6,6 +6,7 @@ import CompactPricing from '@/components/blocks/CompactPricing'
 import AdExamples from '@/components/blocks/AdExamples'
 import RegionMap from '@/components/blocks/RegionMap'
 import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -254,6 +255,8 @@ export default function AvitoPage() {
           primaryCtaUrl="/contact"
         />
       </main>
+
+      <Footer />
     </>
   )
 }

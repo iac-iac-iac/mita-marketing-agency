@@ -11,6 +11,7 @@ import RecruitmentFunnel from '@/components/blocks/RecruitmentFunnel'
 import VacancyCases from '@/components/blocks/VacancyCases'
 import GuaranteeSection from '@/components/blocks/GuaranteeSection'
 import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -366,6 +367,8 @@ export default function RecruitingPage() {
           primaryCtaUrl="/contact"
         />
       </main>
+
+      <Footer />
     </>
   )
 }

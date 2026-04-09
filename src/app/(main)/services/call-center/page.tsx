@@ -10,6 +10,7 @@ import PricingSection from '@/components/blocks/PricingSection'
 import FaqSection from '@/components/blocks/FaqSection'
 import ClosingCta from '@/components/blocks/ClosingCta'
 import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -390,6 +391,8 @@ export default function CallCenterPage() {
         primaryCtaUrl="/contact"
       />
       </main>
+
+      <Footer />
     </>
   )
 }

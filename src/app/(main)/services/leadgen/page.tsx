@@ -10,6 +10,7 @@ import TechnologyStack from '@/components/blocks/TechnologyStack'
 import AnalyticsDashboard from '@/components/blocks/AnalyticsDashboard'
 import LeadExamples from '@/components/blocks/LeadExamples'
 import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 // Иконки для TechnologyStack
@@ -395,6 +396,8 @@ export default function LeadgenPage() {
         primaryCtaUrl="/contact"
       />
       </main>
+
+      <Footer />
     </>
   )
 }
