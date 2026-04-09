@@ -25,7 +25,7 @@ export default function HomePage() {
           title="Постоянный поток клиентов для вашего бизнеса"
           subtitle="Комплексные маркетинговые решения и IT-сервисы для стабильного роста продаж. От лидогенерации до рекрутинга — всё в одном месте."
           primaryCtaLabel="Оставить заявку"
-          primaryCtaUrl="#contact"
+          primaryCtaUrl="/contact"
           secondaryCtaLabel="Узнать больше"
           secondaryCtaUrl="#services"
           mediaSrc="/images/hero-banner/Hero-banner_main_link.mp4"
@@ -95,14 +95,12 @@ export default function HomePage() {
         />
 
         {/* Closing CTA секция */}
-        <div id="contact">
-          <ClosingCta
-            title="Готовы увеличить поток клиентов?"
-            description="Оставьте заявку сейчас и получите бесплатную консультацию по стратегии лидогенерации для вашего бизнеса."
-            primaryCtaLabel="Оставить заявку"
-            primaryCtaUrl="#contact"
-          />
-        </div>
+        <ClosingCta
+          title="Готовы увеличить поток клиентов?"
+          description="Оставьте заявку сейчас и получите бесплатную консультацию по стратегии лидогенерации для вашего бизнеса."
+          primaryCtaLabel="Оставить заявку"
+          primaryCtaUrl="/contact"
+        />
       </main>
 
       <Footer />
