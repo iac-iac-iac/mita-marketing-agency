@@ -2,6 +2,7 @@
 
 import CtaButton from '@/components/ui/CtaButton'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import { motion } from 'framer-motion'
 
 export interface PricingSectionProps {
@@ -25,7 +26,7 @@ export default function PricingSection({
   plans,
 }: PricingSectionProps) {
   const titleRef = useScrollReveal()
-  const planRefs = plans.map(() => useScrollReveal())
+  const { setRef } = useScrollRevealMulti<HTMLDivElement>(plans.length)
 
   return (
     <section className="py-20 md:py-28 relative">
@@ -56,7 +57,7 @@ export default function PricingSection({
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              ref={planRefs[index]}
+              ref={setRef(index)}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}

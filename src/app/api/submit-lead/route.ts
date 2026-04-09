@@ -101,6 +101,18 @@ const leadSchema = z.object({
     .max(200, 'Некорректная UTM кампания')
     .optional()
     .or(z.literal('')),
+
+  utm_content: z
+    .string()
+    .max(200, 'Некорректный UTM контент')
+    .optional()
+    .or(z.literal('')),
+
+  utm_term: z
+    .string()
+    .max(200, 'Некорректный UTM термин')
+    .optional()
+    .or(z.literal('')),
   
   form_name: z
     .string()
@@ -224,34 +236,27 @@ export async function POST(request: NextRequest) {
 
     const data = validationResult.data;
 
-    // 5. Логирование (в production можно убрать)
-    console.log('=== NEW LEAD ===');
-    console.log(`Form: ${data.form_name}`);
-    console.log(`Name: ${data.name}`);
-    console.log(`Phone: ${data.phone}`);
-    console.log(`Email: ${data.email}`);
-    if (data.company) console.log(`Company: ${data.company}`);
-    if (data.message) console.log(`Message: ${data.message}`);
-    if (data.service) console.log(`Service: ${data.service}`);
-    if (data.utm_source) console.log(`UTM Source: ${data.utm_source}`);
-    if (data.utm_medium) console.log(`UTM Medium: ${data.utm_medium}`);
-    if (data.utm_campaign) console.log(`UTM Campaign: ${data.utm_campaign}`);
-    console.log('================');
-
-    // 6. Сохранение в файл (для development)
-    if (process.env.NODE_ENV === 'development') {
-      try {
-        const leadsDir = join(process.cwd(), 'leads');
-        await mkdir(leadsDir, { recursive: true });
-
-        const fileName = `lead_${Date.now()}.json`;
-        const filePath = join(leadsDir, fileName);
-
-        await writeFile(filePath, JSON.stringify(data, null, 2));
-        console.log(`Lead saved to: ${filePath}`);
-      } catch (fileError) {
-        console.error('Failed to save lead to file:', fileError);
-      }
+    // 5. Сохранение в SQLite
+    let leadId: number | null = null;
+    try {
+      const { createLead } = await import('@/lib/cms/db-leads');
+      const lead = createLead({
+        form_name: data.form_name,
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        company: data.company,
+        message: data.message,
+        service: data.service,
+        utm_source: data.utm_source,
+        utm_medium: data.utm_medium,
+        utm_campaign: data.utm_campaign,
+        utm_content: data.utm_content,
+        utm_term: data.utm_term,
+      });
+      leadId = lead.id;
+    } catch (dbError) {
+      console.error('Failed to save lead to database:', dbError);
     }
 
     // 7. Отправка в Bitrix24 (если настроен webhook)

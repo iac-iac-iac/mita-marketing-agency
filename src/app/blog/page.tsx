@@ -1,32 +1,15 @@
-﻿'use client';
-
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+﻿import Link from 'next/link';
+import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
-import { getAllBlogPosts, type BlogPost } from '@/lib/cms/storage';
+import { getPublishedPosts } from '@/lib/cms/db-blog';
+
+export const metadata: Metadata = {
+  title: 'Блог М.И.Т.А. — Статьи о маркетинге и digital',
+  description: 'Экспертные материалы о digital-маркетинге, лидогенерации, веб-разработке и продвижении бизнеса',
+};
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loaded = getAllBlogPosts().filter(p => p.status === 'published');
-    // Сортируем по дате (новые сверху)
-    loaded.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    setPosts(loaded);
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-direct-dark flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-direct-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white">Загрузка...</p>
-        </div>
-      </div>
-    );
-  }
+  const posts = getPublishedPosts();
 
   return (
     <>
@@ -60,11 +43,11 @@ export default function BlogPage() {
                   className="glass rounded-3xl overflow-hidden group hover:scale-105 transition-transform duration-300"
                 >
                   {/* Cover */}
-                  {post.coverImage ? (
+                  {post.cover_image ? (
                     <div className="h-48 overflow-hidden">
                       <div
                         className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                        style={{ backgroundImage: `url(${post.coverImage})` }}
+                        style={{ backgroundImage: `url(${post.cover_image})` }}
                       />
                     </div>
                   ) : (
@@ -93,7 +76,7 @@ export default function BlogPage() {
                     {/* Meta */}
                     <div className="flex items-center justify-between text-xs text-gray-400">
                       <span>
-                        {new Date(post.publishedAt).toLocaleDateString('ru-RU', {
+                        {new Date(post.published_at).toLocaleDateString('ru-RU', {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',

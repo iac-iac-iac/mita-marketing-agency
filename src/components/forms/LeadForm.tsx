@@ -87,7 +87,7 @@ export function LeadForm({ formName = 'lead_form', serviceName, onSuccess }: Lea
           id="lead-name"
           type="text"
           {...register('name', { required: 'Имя обязательно' })}
-          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
           placeholder="Ваше имя"
         />
         {errors.name && (
@@ -110,7 +110,7 @@ export function LeadForm({ formName = 'lead_form', serviceName, onSuccess }: Lea
               message: 'Некорректный формат телефона',
             },
           })}
-          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
           placeholder="+7 (___) ___-__-__"
         />
         {errors.phone && (
@@ -133,7 +133,7 @@ export function LeadForm({ formName = 'lead_form', serviceName, onSuccess }: Lea
               message: 'Некорректный формат email',
             },
           })}
-          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
           placeholder="example@mail.ru"
         />
         {errors.email && (
@@ -166,7 +166,7 @@ export function LeadForm({ formName = 'lead_form', serviceName, onSuccess }: Lea
         whileTap={{ scale: 0.98 }}
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+        className="w-full py-4 bg-gradient-to-r from-direct-primary to-direct-accent hover:from-direct-primary/90 hover:to-direct-accent/90 text-white font-semibold rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
       >
         {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
       </motion.button>

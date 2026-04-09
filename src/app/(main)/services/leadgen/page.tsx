@@ -3,6 +3,7 @@ import ProblemStatement from '@/components/blocks/ProblemStatement'
 import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
+import { getAllTestimonials } from '@/lib/cms/db-testimonials'
 import PricingSection from '@/components/blocks/PricingSection'
 import FaqSection from '@/components/blocks/FaqSection'
 import ClosingCta from '@/components/blocks/ClosingCta'
@@ -71,6 +72,7 @@ export const metadata: Metadata = {
 }
 
 export default function LeadgenPage() {
+  const testimonials = getAllTestimonials('leadgen')
   return (
     <>
       <Header showBackButton showHamburgerMenu />
@@ -291,24 +293,13 @@ export default function LeadgenPage() {
       />
 
       {/* Отзывы */}
-      <TestimonialsSection
-        title="Клиенты о лидогенерации"
-        layout="wide"
-        items={[
-          {
-            name: "Алексей Петров",
-            role: "Коммерческий директор",
-            company: "Автосалон «АвтоПремиум»",
-            quote: "За 3 месяца получили 500+ лидов. Конверсия в продажу — 15%. Это лучший результат, что у нас был.",
-          },
-          {
-            name: "Мария Иванова",
-            role: "РОП",
-            company: "Строительная компания «СтройМастер»",
-            quote: "Наконец-то менеджеры не тратят время на холодные контакты. Лиды качественные, с высокой конверсией.",
-          },
-        ]}
-      />
+      {testimonials.length > 0 && (
+        <TestimonialsSection
+          title="Что говорят клиенты"
+          layout="wide"
+          items={testimonials.map(t => ({ name: t.name, role: t.role, company: t.company, quote: t.quote }))}
+        />
+      )}
 
       {/* Тарифы */}
       <PricingSection

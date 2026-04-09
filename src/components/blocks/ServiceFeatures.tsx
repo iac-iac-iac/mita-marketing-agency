@@ -1,6 +1,7 @@
 'use client'
 
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 
 export interface ServiceFeaturesProps {
   title: string;
@@ -16,7 +17,7 @@ export default function ServiceFeatures({
   features,
 }: ServiceFeaturesProps) {
   const titleRef = useScrollReveal()
-  const featureRefs = features.map(() => useScrollReveal())
+  const { setRef } = useScrollRevealMulti<HTMLDivElement>(features.length)
 
   return (
     <section className="py-20 md:py-28 relative">
@@ -36,7 +37,7 @@ export default function ServiceFeatures({
           {features.map((feature, index) => (
             <div
               key={index}
-              ref={featureRefs[index]}
+              ref={setRef(index)}
               className="glass p-8 rounded-3xl hover:bg-white/10 transition-all duration-700 scroll-reveal"
               style={{ transitionDelay: `${100 + index * 100}ms` }}
             >

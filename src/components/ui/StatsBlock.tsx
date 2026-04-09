@@ -77,7 +77,7 @@ export function StatsBlock({ stats, className }: StatsBlockProps) {
             {/* Before/After Comparison */}
             {stat.before && (
               <div className="flex items-center gap-2 text-sm mb-2">
-                <span className="text-gray-500 line-through">{stat.before}</span>
+                <span className="text-gray-400 line-through">{stat.before}</span>
                 <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
@@ -95,7 +95,7 @@ export function StatsBlock({ stats, className }: StatsBlockProps) {
             )}
 
             {/* Label */}
-            <p className="text-gray-400 text-sm mt-3">{stat.label}</p>
+            <p className="text-gray-300 text-sm mt-3">{stat.label}</p>
           </div>
 
           {/* Decorative Elements */}

@@ -15,19 +15,38 @@ export default function ContactSection() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Имитация отправки
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setSubmitted(true)
-    setFormData({ name: '', phone: '', email: '', company: '', message: '' })
-    
-    setTimeout(() => setSubmitted(false), 5000)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          form_name: 'contact_page',
+          timestamp: new Date().toISOString(),
+        }),
+      })
+
+      if (!response.ok) {
+        const errData = await response.json()
+        throw new Error(errData.error || 'Ошибка отправки формы')
+      }
+
+      setSubmitted(true)
+      setFormData({ name: '', phone: '', email: '', company: '', message: '' })
+
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Произошла ошибка')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -266,6 +285,18 @@ export default function ContactSection() {
                       'Отправить заявку'
                     )}
                   </button>
+
+                  {error && (
+                    <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl text-red-300 text-sm text-center">
+                      {error}
+                    </div>
+                  )}
+
+                  {submitted && (
+                    <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-xl text-green-300 text-sm text-center">
+                      ✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+                    </div>
+                  )}
 
                   <p className="text-xs text-gray-500 text-center">
                     Нажимая кнопку, вы соглашаетесь с{' '}

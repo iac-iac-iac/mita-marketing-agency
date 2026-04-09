@@ -1,7 +1,7 @@
 ﻿import type { Metadata, Viewport } from 'next'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
-import ScrollToTop from '@/components/ui/ScrollToTop'
+import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
 import ServiceWorkerRegistration from '@/components/ui/ServiceWorkerRegistration'
 
@@ -71,7 +71,7 @@ export default function RootLayout({
     <html lang="ru" className={fontClassName}>
       <body className={fontClassName}>
         {children}
-        <ScrollToTop />
+        <ScrollToTopButton />
         <PWAInstallPrompt />
         <ServiceWorkerRegistration />
       </body>

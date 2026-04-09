@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import Link from 'next/link'
 import TextLinkCta from '@/components/ui/TextLinkCta'
 import { motion } from 'framer-motion'
@@ -29,7 +30,7 @@ export default function FeatureGroup({
   groupCtaUrl,
 }: FeatureGroupProps) {
   const titleRef = useScrollReveal()
-  const cardRefs = items.map(() => useScrollReveal())
+  const { setRef } = useScrollRevealMulti<HTMLDivElement>(items.length)
   const ctaRef = useScrollReveal()
 
   return (
@@ -55,7 +56,7 @@ export default function FeatureGroup({
           {items.map((item, index) => (
             <motion.div
               key={index}
-              ref={cardRefs[index]}
+              ref={setRef(index)}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, y: 0 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}

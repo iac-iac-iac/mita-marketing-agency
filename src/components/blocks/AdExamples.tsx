@@ -29,7 +29,6 @@ export default function AdExamples({
   examples,
 }: AdExamplesProps) {
   const titleRef = useScrollReveal()
-  const exampleRefs = examples.map(() => useScrollReveal())
 
   return (
     <section className="py-16 md:py-20 relative">
@@ -54,7 +53,6 @@ export default function AdExamples({
           {examples.map((example, index) => (
             <motion.div
               key={index}
-              ref={exampleRefs[index]}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}

@@ -2,6 +2,7 @@
 
 import CtaButton from '@/components/ui/CtaButton'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import { motion } from 'framer-motion'
 
 export interface CompactPricingProps {
@@ -29,7 +30,7 @@ export default function CompactPricing({
   plans,
 }: CompactPricingProps) {
   const titleRef = useScrollReveal()
-  const planRefs = plans.map(() => useScrollReveal())
+  const { setRef } = useScrollRevealMulti<HTMLDivElement>(plans.length)
 
   return (
     <section className="py-16 md:py-20 relative">
@@ -54,14 +55,14 @@ export default function CompactPricing({
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              ref={planRefs[index]}
+              ref={setRef(index)}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className={`glass p-6 md:p-8 rounded-2xl transition-all duration-700 scroll-reveal hover:scale-[1.02] ${
-                plan.isHighlighted 
-                  ? 'border-direct-primary/50 shadow-xl shadow-direct-primary/20' 
+                plan.isHighlighted
+                  ? 'border-direct-primary/50 shadow-xl shadow-direct-primary/20'
                   : 'border-white/10'
               }`}
             >

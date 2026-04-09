@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { saveBlogPost, generateSlug } from '@/lib/cms/storage';
+import { createBlogPostAction, type BlogFormInput } from '../actions';
 
 export default function AdminBlogNewPage() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function AdminBlogNewPage() {
     author: '',
     category: 'Общее',
     tags: '',
-    coverImage: '',
+    cover_image: '',
     status: 'draft' as 'draft' | 'published',
   });
 
@@ -35,15 +35,9 @@ export default function AdminBlogNewPage() {
     setIsSaving(true);
 
     try {
-      const newPost = {
-        slug: generateSlug(formData.title),
-        ...formData,
-        publishedAt: new Date().toISOString(),
-      };
-
-      saveBlogPost(newPost);
+      await createBlogPostAction(formData as BlogFormInput);
       router.push('/admin/blog');
-    } catch (err) {
+    } catch (_err) {
       setError('Ошибка сохранения');
     } finally {
       setIsSaving(false);
@@ -58,12 +52,12 @@ export default function AdminBlogNewPage() {
           Новая статья
         </h1>
         <p className="text-gray-400">
-          Создайте новую запись в блоге
+          Создание новой статьи блога
         </p>
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="max-w-4xl space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
         {/* Title */}
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-white/90 mb-2">
@@ -73,9 +67,9 @@ export default function AdminBlogNewPage() {
             id="title"
             name="title"
             type="text"
-            required
             value={formData.title}
             onChange={handleChange}
+            required
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
             placeholder="Введите заголовок статьи"
           />
@@ -89,61 +83,55 @@ export default function AdminBlogNewPage() {
           <textarea
             id="excerpt"
             name="excerpt"
-            required
-            rows={3}
             value={formData.excerpt}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all resize-none"
-            placeholder="Краткое описание статьи (2-3 предложения)"
+            required
+            rows={3}
+            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
+            placeholder="Краткое содержание статьи"
           />
         </div>
 
         {/* Content */}
         <div>
           <label htmlFor="content" className="block text-sm font-medium text-white/90 mb-2">
-            Содержимое *
+            Содержание * (Markdown)
           </label>
           <textarea
             id="content"
             name="content"
-            required
-            rows={15}
             value={formData.content}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all resize-none font-mono text-sm"
-            placeholder="Текст статьи в формате Markdown..."
+            required
+            rows={12}
+            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all font-mono text-sm"
+            placeholder="# Заголовок\n\nТекст статьи..."
           />
-          <p className="mt-2 text-xs text-gray-400">
-            💡 Поддерживается Markdown: # Заголовок, **жирный**, *курсив*, - списки
-          </p>
         </div>
 
-        {/* Author & Category */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Author + Category */}
+        <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="author" className="block text-sm font-medium text-white/90 mb-2">
-              Автор *
+              Автор
             </label>
             <input
               id="author"
               name="author"
               type="text"
-              required
               value={formData.author}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-              placeholder="Имя автора"
+              placeholder="М.И.Т.А."
             />
           </div>
-
           <div>
             <label htmlFor="category" className="block text-sm font-medium text-white/90 mb-2">
-              Категория *
+              Категория
             </label>
             <select
               id="category"
               name="category"
-              required
               value={formData.category}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
@@ -154,7 +142,7 @@ export default function AdminBlogNewPage() {
               <option value="Авито">Авито</option>
               <option value="Рекрутинг">Рекрутинг</option>
               <option value="Маркетинг">Маркетинг</option>
-              <option value="Кейсы">Кейсы</option>
+              <option value="Разработка">Разработка</option>
             </select>
           </div>
         </div>
@@ -162,7 +150,7 @@ export default function AdminBlogNewPage() {
         {/* Tags */}
         <div>
           <label htmlFor="tags" className="block text-sm font-medium text-white/90 mb-2">
-            Теги
+            Теги (через запятую)
           </label>
           <input
             id="tags"
@@ -171,23 +159,23 @@ export default function AdminBlogNewPage() {
             value={formData.tags}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-            placeholder="тег1, тег2, тег3"
+            placeholder="маркетинг, лиды, реклама"
           />
         </div>
 
         {/* Cover Image */}
         <div>
-          <label htmlFor="coverImage" className="block text-sm font-medium text-white/90 mb-2">
+          <label htmlFor="cover_image" className="block text-sm font-medium text-white/90 mb-2">
             URL обложки
           </label>
           <input
-            id="coverImage"
-            name="coverImage"
+            id="cover_image"
+            name="cover_image"
             type="text"
-            value={formData.coverImage}
+            value={formData.cover_image}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-            placeholder="/images/blog/cover.jpg"
+            placeholder="https://..."
           />
         </div>
 
@@ -210,24 +198,24 @@ export default function AdminBlogNewPage() {
 
         {/* Error */}
         {error && (
-          <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl text-red-300">
+          <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl text-red-300 text-sm">
             {error}
           </div>
         )}
 
-        {/* Buttons */}
-        <div className="flex gap-4 pt-4">
+        {/* Submit */}
+        <div className="flex gap-4">
           <button
             type="submit"
             disabled={isSaving}
-            className="flex-1 py-4 bg-gradient-to-r from-direct-primary to-direct-accent hover:from-direct-primary/90 hover:to-direct-accent/90 text-white font-semibold rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="px-8 py-3 bg-gradient-to-r from-direct-primary to-direct-accent hover:from-direct-primary/90 hover:to-direct-accent/90 text-white font-semibold rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
-            {isSaving ? 'Сохранение...' : 'Сохранить'}
+            {isSaving ? 'Сохранение...' : 'Создать статью'}
           </button>
           <button
             type="button"
             onClick={() => router.back()}
-            className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all"
+            className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl transition-colors"
           >
             Отмена
           </button>

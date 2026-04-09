@@ -1,6 +1,7 @@
 'use client'
 
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import { motion } from 'framer-motion'
 
 export interface TestimonialsSectionProps {
@@ -22,7 +23,7 @@ export default function TestimonialsSection({
   layout = 'default',
 }: TestimonialsSectionProps) {
   const titleRef = useScrollReveal()
-  const itemRefs = items.map(() => useScrollReveal())
+  const { setRef } = useScrollRevealMulti<HTMLDivElement>(items.length)
 
   return (
     <section className="py-20 md:py-28 relative">
@@ -57,7 +58,7 @@ export default function TestimonialsSection({
           {items.map((item, index) => (
             <motion.div
               key={index}
-              ref={itemRefs[index]}
+              ref={setRef(index)}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}

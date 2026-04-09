@@ -1,6 +1,4 @@
-﻿'use client'
-
-import MainHeader from '@/components/layout/MainHeader'
+﻿import MainHeader from '@/components/layout/MainHeader'
 import Footer from '@/components/layout/Footer'
 import Hero from '@/components/blocks/Hero'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
@@ -12,8 +10,34 @@ import ServicesSection, { defaultServices } from '@/components/blocks/ServicesSe
 import WorkProcessSection, { defaultWorkProcess } from '@/components/blocks/WorkProcessSection'
 import ServicesCalculator from '@/components/blocks/ServicesCalculator'
 import ChatWidget from '@/components/ui/ChatWidget'
+import { getPublishedPosts } from '@/lib/cms/db-blog'
+import { getPublishedCases } from '@/lib/cms/db-cases'
+import { getAllTestimonials } from '@/lib/cms/db-testimonials'
 
 export default function HomePage() {
+  // Читаем из SQLite на сервере
+  const allPosts = getPublishedPosts()
+  const allCases = getPublishedCases()
+  const allTestimonials = getAllTestimonials()
+
+  // Берём последние 3 поста и 2 кейса
+  const posts = allPosts.slice(0, 3).map(p => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    category: p.category,
+    author: p.author,
+    published_at: p.published_at,
+  }))
+
+  const cases = allCases.slice(0, 2).map(c => ({
+    slug: c.slug,
+    title: c.title,
+    excerpt: c.excerpt,
+    client: c.client,
+    industry: c.industry,
+  }))
+
   return (
     <>
       <MainHeader />
@@ -33,79 +57,66 @@ export default function HomePage() {
           videoPoster="/images/hero-banner/Hero-banner_main_link.png"
         />
 
-        {/* Problem Statement секция */}
-        <ProblemStatement
-          title="Знакомые проблемы?"
-          description="Большинство бизнесов сталкиваются с одними и теми же вызовами в маркетинге и продажах:"
-          painPoints={[
-            'Недостаточно качественных лидов для отдела продаж',
-            'Высокая стоимость привлечения клиента в контекстной рекламе',
-            'Менеджеры тратят время на «холодные» и нецелевые контакты',
-            'Нет прозрачной аналитики и понимания ROI маркетинга',
-            'Сложно масштабировать продажи без потери качества',
-          ]}
-        />
-
-        {/* Services секция */}
+        {/* Услуги */}
         <ServicesSection items={defaultServices} />
 
-        {/* Калькулятор услуг */}
-        <ServicesCalculator />
-
-        {/* Work Process секция */}
+        {/* Процесс работы */}
         <WorkProcessSection steps={defaultWorkProcess} />
 
-        {/* Testimonials секция */}
-        <TestimonialsSection
-          title="Что говорят клиенты"
-          intro="Наши клиенты довольны результатами работы и рекомендуют нас партнёрам"
-          layout="wide"
-          items={[
-            {
-              name: 'Алексей Петров',
-              role: 'Коммерческий директор',
-              company: 'Автосалон «АвтоПремиум»',
-              quote: 'За 3 месяца получили 500+ лидов. Конверсия в продажу — 15%. Это лучший результат, что у нас был.',
-            },
-            {
-              name: 'Дмитрий Соколов',
-              role: 'Руководитель отдела продаж',
-              company: 'ТехноСтарт',
-              quote: 'Рекрутинг от М.И.Т.А. помог нам закрыть 50 вакансий за 2 месяца. Быстро, качественно, с гарантией.',
-            },
-            {
-              name: 'Елена Волкова',
-              role: 'Маркетинг директор',
-              company: 'СтройМастер',
-              quote: 'Продвижение на Авито дало нам на 40% больше заявок при том же бюджете. Отличная работа!',
-            },
+        {/* Калькулятор */}
+        <ServicesCalculator />
+
+        {/* Проблема */}
+        <ProblemStatement
+          title="Знакомы проблемы?"
+          description="Мы знаем как решить каждый из них"
+          painPoints={[
+            'Лиды дорогие и их мало',
+            'Рекламный бюджет сливается впустую',
+            'Call-центр не обрабатывает входящие заявки',
+            'Сотрудники не справляются с объёмом звонков',
+            'Нет системы аналитики — непонятно что работает',
           ]}
         />
 
-        {/* Blog Preview секция */}
-        <BlogPreview
-          title="Последние статьи"
-          postsLimit={3}
+        {/* Отзывы */}
+        <TestimonialsSection
+          title="Что говорят клиенты"
+          items={allTestimonials.length > 0
+            ? allTestimonials.filter(t => !t.category).map(t => ({ name: t.name, role: t.role, company: t.company, quote: t.quote }))
+            : [
+                { name: 'Алексей Петров', role: 'Генеральный директор', company: 'АвтоПремиум', quote: 'Благодаря М.И.Т.А. мы получили +147% лидов за первый квартал. Система работает как часы.' },
+                { name: 'Мария Козлова', role: 'Руководитель отдела продаж', company: 'СтройМастер', quote: 'Call-центр от М.И.Т.А. обработал 3000+ звонков за месяц. Качество на высоте.' },
+              ]
+          }
         />
 
-        {/* Case Preview секция */}
-        <CasePreview
-          title="Наши кейсы"
-          casesLimit={2}
-        />
+        {/* Блог — показываем только если есть посты */}
+        {posts.length > 0 && (
+          <BlogPreview
+            title="Последние статьи"
+            posts={posts}
+          />
+        )}
 
-        {/* Closing CTA секция */}
+        {/* Кейсы — показываем только если есть кейсы */}
+        {cases.length > 0 && (
+          <CasePreview
+            title="Наши кейсы"
+            cases={cases}
+          />
+        )}
+
+        {/* CTA */}
         <ClosingCta
-          title="Готовы увеличить поток клиентов?"
-          description="Оставьте заявку сейчас и получите бесплатную консультацию по стратегии лидогенерации для вашего бизнеса."
+          title="Готовы к росту?"
+          description="Оставьте заявку и мы свяжемся с вами в ближайшее время"
           primaryCtaLabel="Оставить заявку"
           primaryCtaUrl="/contact"
         />
       </main>
 
       <Footer />
-
-      {/* Онлайн-чат виджет */}
       <ChatWidget />
     </>
   )

@@ -4,8 +4,8 @@
   "description": "Комплексная система лидогенерации: от привлечения клиентов до обработки звонков",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#090909",
-  "theme_color": "#7274B3",
+  "background_color": "#0A0A0A",
+  "theme_color": "#D4A84B",
   "orientation": "portrait-primary",
   "icons": [
     {

@@ -3,6 +3,7 @@ import ProblemStatement from '@/components/blocks/ProblemStatement'
 import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
+import { getAllTestimonials } from '@/lib/cms/db-testimonials'
 import PricingSection from '@/components/blocks/PricingSection'
 import FaqSection from '@/components/blocks/FaqSection'
 import ClosingCta from '@/components/blocks/ClosingCta'
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 }
 
 export default function RecruitingPage() {
+  const testimonials = getAllTestimonials('recruiting')
   return (
     <>
       <Header showBackButton showHamburgerMenu />
@@ -237,24 +239,13 @@ export default function RecruitingPage() {
         />
 
         {/* Отзывы */}
-        <TestimonialsSection
-          title="Что говорят клиенты"
-          layout="wide"
-          items={[
-            {
-              name: "Сергей Волков",
-              role: "Руководитель отдела продаж",
-              company: "Телеком-компания",
-              quote: "За 2 недели нам подобрали 15 менеджеров по продажам. 12 вышли на работу, 10 прошли испытательный срок. Отличный результат!",
-            },
-            {
-              name: "Наталья Федорова",
-              role: "HR-директор",
-              company: "Ритейл",
-              quote: "Заказывали массовый подбор линейного персонала. М.И.Т.А. закрыли 50 вакансий за месяц. Текучка на испытательном сроке минимальная.",
-            },
-          ]}
-        />
+        {testimonials.length > 0 && (
+          <TestimonialsSection
+            title="Что говорят клиенты"
+            layout="wide"
+            items={testimonials.map(t => ({ name: t.name, role: t.role, company: t.company, quote: t.quote }))}
+          />
+        )}
 
         {/* Тарифы */}
         <PricingSection

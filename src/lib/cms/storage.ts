@@ -16,35 +16,35 @@ export interface BlogPost {
   publishedAt: string;
   updatedAt?: string;
   category: string;
-  tags: string;
+  tags: string[]; // Массив тегов (соответствует types/content.ts)
   coverImage: string;
   status: 'draft' | 'published';
 }
 
 /**
- * Получить все записи блога
+ * Получить все записи блога из localStorage
  */
-export function getAllBlogPosts(): BlogPost[] {
+export function getAllBlogPostsFromStorage(): BlogPost[] {
   if (typeof window === 'undefined') return [];
   const data = localStorage.getItem('cms_blog_posts');
   return data ? JSON.parse(data) : [];
 }
 
 /**
- * Получить запись по slug
+ * Получить запись по slug из localStorage
  */
-export function getBlogPostBySlug(slug: string): BlogPost | null {
-  const posts = getAllBlogPosts();
+export function getBlogPostBySlugFromStorage(slug: string): BlogPost | null {
+  const posts = getAllBlogPostsFromStorage();
   return posts.find(p => p.slug === slug) || null;
 }
 
 /**
- * Сохранить запись (создание или обновление)
+ * Сохранить запись блога (создание или обновление)
  */
 export function saveBlogPost(post: BlogPost): void {
-  const posts = getAllBlogPosts();
+  const posts = getAllBlogPostsFromStorage();
   const index = posts.findIndex(p => p.slug === post.slug);
-  
+
   if (index >= 0) {
     // Обновление
     posts[index] = { ...post, updatedAt: new Date().toISOString() };
@@ -52,15 +52,15 @@ export function saveBlogPost(post: BlogPost): void {
     // Создание
     posts.push(post);
   }
-  
+
   localStorage.setItem('cms_blog_posts', JSON.stringify(posts));
 }
 
 /**
- * Удалить запись по slug
+ * Удалить запись блога по slug
  */
 export function deleteBlogPost(slug: string): void {
-  const posts = getAllBlogPosts();
+  const posts = getAllBlogPostsFromStorage();
   const filtered = posts.filter(p => p.slug !== slug);
   localStorage.setItem('cms_blog_posts', JSON.stringify(filtered));
 }
@@ -85,19 +85,19 @@ export interface Case {
 }
 
 /**
- * Получить все кейсы
+ * Получить все кейсы из localStorage
  */
-export function getAllCases(): Case[] {
+export function getAllCasesFromStorage(): Case[] {
   if (typeof window === 'undefined') return [];
   const data = localStorage.getItem('cms_cases');
   return data ? JSON.parse(data) : [];
 }
 
 /**
- * Получить кейс по slug
+ * Получить кейс по slug из localStorage
  */
-export function getCaseBySlug(slug: string): Case | null {
-  const cases = getAllCases();
+export function getCaseBySlugFromStorage(slug: string): Case | null {
+  const cases = getAllCasesFromStorage();
   return cases.find(c => c.slug === slug) || null;
 }
 
@@ -105,9 +105,9 @@ export function getCaseBySlug(slug: string): Case | null {
  * Сохранить кейс (создание или обновление)
  */
 export function saveCase(caseItem: Case): void {
-  const cases = getAllCases();
+  const cases = getAllCasesFromStorage();
   const index = cases.findIndex(c => c.slug === caseItem.slug);
-  
+
   if (index >= 0) {
     // Обновление
     cases[index] = { ...caseItem, updatedAt: new Date().toISOString() };
@@ -115,7 +115,7 @@ export function saveCase(caseItem: Case): void {
     // Создание
     cases.push(caseItem);
   }
-  
+
   localStorage.setItem('cms_cases', JSON.stringify(cases));
 }
 
@@ -123,7 +123,7 @@ export function saveCase(caseItem: Case): void {
  * Удалить кейс по slug
  */
 export function deleteCase(slug: string): void {
-  const cases = getAllCases();
+  const cases = getAllCasesFromStorage();
   const filtered = cases.filter(c => c.slug !== slug);
   localStorage.setItem('cms_cases', JSON.stringify(filtered));
 }

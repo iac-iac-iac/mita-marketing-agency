@@ -97,8 +97,25 @@ export default function MainHeader() {
 
       {/* Мобильное меню */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden glass glass-strong rounded-2xl mt-4 mb-4 overflow-hidden animate-fade-in">
-          <nav className="flex flex-col py-4">
+        <>
+          {/* Затемнение фона */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          {/* Меню */}
+          <div className="lg:hidden fixed top-0 left-0 right-0 z-50 glass glass-strong rounded-b-2xl mt-0 overflow-hidden animate-fade-in shadow-2xl">
+            {/* Кнопка закрытия */}
+            <div className="flex justify-end px-4 pt-4">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white/70 hover:text-white text-2xl"
+                aria-label="Закрыть меню"
+              >
+                ✕
+              </button>
+            </div>
+          <nav className="flex flex-col py-4 px-6">
             {navItems.map((item) => (
               <Link
                 key={item.url}
@@ -140,7 +157,8 @@ export default function MainHeader() {
               </CtaButton>
             </div>
           </nav>
-        </div>
+          </div>
+        </>
       )}
     </header>
   )

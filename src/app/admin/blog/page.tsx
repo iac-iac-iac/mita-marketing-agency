@@ -1,38 +1,22 @@
-'use client';
+import Link from 'next/link';
+import { revalidatePath } from 'next/cache';
+import { getAllPosts, deletePost } from '@/lib/cms/db-blog';
+import DeleteButton from './DeleteButton';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { getAllBlogPosts, deleteBlogPost, type BlogPost } from '@/lib/cms/storage';
+// ============================================================================
+// Server Action — удаление статьи
+// ============================================================================
+async function handleDelete(formData: FormData) {
+  'use server';
+  const slug = formData.get('slug') as string;
+  if (slug) {
+    deletePost(slug);
+    revalidatePath('/admin/blog');
+  }
+}
 
 export default function AdminBlogPage() {
-  const router = useRouter();
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loaded = getAllBlogPosts();
-    loaded.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-    setPosts(loaded);
-    setIsLoading(false);
-  }, []);
-
-  const handleDelete = (slug: string) => {
-    if (confirm(`Удалить статью "${slug}"?`)) {
-      deleteBlogPost(slug);
-      setPosts(posts.filter(p => p.slug !== slug));
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-direct-dark flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-direct-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white">Загрузка...</p>
-        </div>
-      </div>
-    );
-  }
+  const posts = getAllPosts();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -46,24 +30,24 @@ export default function AdminBlogPage() {
             Создание, редактирование и удаление статей
           </p>
         </div>
-        <button
-          onClick={() => router.push('/admin/blog/new')}
+        <Link
+          href="/admin/blog/new"
           className="px-6 py-3 bg-gradient-to-r from-direct-primary to-direct-accent hover:from-direct-primary/90 hover:to-direct-accent/90 text-white font-semibold rounded-xl shadow-lg transition-all"
         >
           + Новая статья
-        </button>
+        </Link>
       </div>
 
       {/* Table */}
       {posts.length === 0 ? (
         <div className="glass p-12 rounded-2xl text-center">
           <p className="text-gray-400 mb-4">Пока нет статей</p>
-          <button
-            onClick={() => router.push('/admin/blog/new')}
+          <Link
+            href="/admin/blog/new"
             className="px-6 py-3 bg-direct-primary hover:bg-direct-primary/90 text-white font-medium rounded-xl transition-colors"
           >
             Создать первую статью
-          </button>
+          </Link>
         </div>
       ) : (
         <div className="glass rounded-2xl overflow-hidden">
@@ -89,7 +73,7 @@ export default function AdminBlogPage() {
                   </td>
                   <td className="px-6 py-4 text-gray-400">{post.author}</td>
                   <td className="px-6 py-4 text-gray-400">
-                    {new Date(post.publishedAt).toLocaleDateString('ru-RU')}
+                    {new Date(post.published_at).toLocaleDateString('ru-RU')}
                   </td>
                   <td className="px-6 py-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -102,24 +86,22 @@ export default function AdminBlogPage() {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button
-                        onClick={() => router.push(`/blog/${post.slug}`)}
+                      <Link
+                        href={`/blog/${post.slug}`}
                         className="text-blue-400 hover:text-blue-300 text-sm"
                       >
                         Просмотр
-                      </button>
-                      <button
-                        onClick={() => router.push(`/admin/blog/${post.slug}/edit`)}
+                      </Link>
+                      <Link
+                        href={`/admin/blog/${post.slug}/edit`}
                         className="text-direct-primary hover:text-direct-primary/80 text-sm"
                       >
                         Редактировать
-                      </button>
-                      <button
-                        onClick={() => handleDelete(post.slug)}
-                        className="text-red-400 hover:text-red-300 text-sm"
-                      >
-                        Удалить
-                      </button>
+                      </Link>
+                      <form action={handleDelete} className="inline">
+                        <input type="hidden" name="slug" value={post.slug} />
+                        <DeleteButton label={post.title} type="статью" />
+                      </form>
                     </div>
                   </td>
                 </tr>

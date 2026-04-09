@@ -59,7 +59,7 @@ export default function ChatWidget({
       if (!isOpen) {
         setIsOpen(true);
       }
-    }, 10000);
+    }, 30000); // 30 секунд — даём пользователю время ознакомиться с сайтом
 
     return () => clearTimeout(timer);
   }, [isOpen, hasBeenClosed]);

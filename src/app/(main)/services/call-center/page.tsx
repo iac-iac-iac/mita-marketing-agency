@@ -6,6 +6,7 @@ import ProblemStatement from '@/components/blocks/ProblemStatement'
 import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
+import { getAllTestimonials } from '@/lib/cms/db-testimonials'
 import PricingSection from '@/components/blocks/PricingSection'
 import FaqSection from '@/components/blocks/FaqSection'
 import ClosingCta from '@/components/blocks/ClosingCta'
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 }
 
 export default function CallCenterPage() {
+  const testimonials = getAllTestimonials('call-center')
   return (
     <>
       <Header showBackButton showHamburgerMenu />
@@ -263,24 +265,13 @@ export default function CallCenterPage() {
       />
 
       {/* Отзывы */}
-      <TestimonialsSection
-        title="Что говорят клиенты"
-        layout="wide"
-        items={[
-          {
-            name: "Дмитрий Соколов",
-            role: "Руководитель отдела продаж",
-            company: "Автосалон",
-            quote: "После передачи обзвона в М.И.Т.А. конверсия в встречу выросла с 5% до 12%. Операторы грамотно работают с возражениями, клиенты довольны.",
-          },
-          {
-            name: "Елена Козлова",
-            role: "Маркетинговый директор",
-            company: "Строительная компания",
-            quote: "Заказывали обзвон базы после выставки. За 5 дней обработали 2000 контактов, получили 180 горячих лидов. Отличный результат!",
-          },
-        ]}
-      />
+      {testimonials.length > 0 && (
+        <TestimonialsSection
+          title="Что говорят клиенты"
+          layout="wide"
+          items={testimonials.map(t => ({ name: t.name, role: t.role, company: t.company, quote: t.quote }))}
+        />
+      )}
 
       {/* Тарифы */}
       <PricingSection

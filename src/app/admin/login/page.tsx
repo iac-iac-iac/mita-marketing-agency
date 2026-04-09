@@ -1,10 +1,11 @@
 ﻿'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function AdminLoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -27,12 +28,10 @@ export default function AdminLoginPage() {
         throw new Error(data.error || 'Ошибка входа');
       }
 
-      // Сохраняем токен в sessionStorage
-      sessionStorage.setItem('adminToken', data.token);
-      sessionStorage.setItem('adminTokenExpires', data.expires.toString());
-      
-      // Перенаправляем в админку
-      router.push('/admin/blog');
+      // Токен теперь хранится в HTTP-only cookie (устанавливается сервером)
+      // Перенаправляем на страницу, с которой пришли, или в блог
+      const from = searchParams.get('from') || '/admin/blog';
+      router.push(from);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ошибка входа');
     } finally {

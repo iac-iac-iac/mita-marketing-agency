@@ -128,7 +128,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Копирайт */}
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-400 text-sm">
               © {currentYear} М.И.Т.А. Все права защищены.
             </p>
 
