@@ -4,7 +4,7 @@
 
 **М.И.Т.А.** — современный сайт маркетингового IT-агентства полного цикла, разработанный на **Next.js 14** с использованием **TypeScript**, **Tailwind CSS** и **Framer Motion**.
 
-**Статус:** ✅ Production-ready (март 2026)
+**Статус:** ✅ Production-ready (апрель 2026)
 
 **Дизайн-система:** 3D Glass Design с полупрозрачными поверхностями, blur-эффектами, градиентами и анимациями.
 
@@ -31,7 +31,6 @@ company_site/
 ├── src/
 │   ├── app/                        # Next.js App Router
 │   │   ├── (main)/                 # Основная группа маршрутов
-│   │   │   ├── page.tsx            # Главная страница
 │   │   │   ├── services/           # Лендинги услуг
 │   │   │   │   ├── leadgen/        # Лидогенерация
 │   │   │   │   ├── call-center/    # Call-центр
@@ -43,22 +42,30 @@ company_site/
 │   │   │   ├── legal/              # Юридические страницы
 │   │   │   │   ├── terms/          # Условия оказания услуг
 │   │   │   │   └── privacy/        # Политика конфиденциальности
-│   │   │   ├── contact/            # Контакты
-│   │   │   └── about/              # О компании + команда
+│   │   │   └── contact/            # Контакты
+│   │   ├── about/                  # О компании + команда
+│   │   ├── admin/                  # Админ-панель
+│   │   │   ├── login/              # Вход в админку
+│   │   │   ├── blog/               # Управление блогом
+│   │   │   └── cases/              # Управление кейсами
 │   │   ├── api/
-│   │   │   └── submit-lead/        # API отправки заявок
+│   │   │   ├── submit-lead/        # API отправки заявок
+│   │   │   └── admin/              # API админки
+│   │   ├── offline/                # Offline страница (PWA)
 │   │   ├── layout.tsx              # Root layout
 │   │   ├── not-found.tsx           # 404 страница (с фоном)
 │   │   └── sitemap.ts              # Генерация sitemap.xml
 │   │
 │   ├── components/
-│   │   ├── layout/                 # Header, Footer, Section
-│   │   ├── blocks/                 # Hero, Features, Pricing, Steps
-│   │   ├── blog/                   # BlogCard, BlogPostLayout
-│   │   ├── cases/                  # CaseCard, StatsBlock
+│   │   ├── layout/                 # Header, Footer, Section, MainHeader
+│   │   ├── blocks/                 # Hero, Features, Pricing, Steps, Calculator
+│   │   ├── blog/                   # BlogCard, BlogPostLayout, BlogIndex
+│   │   ├── cases/                  # CaseCard, CaseDetailLayout, CasesIndex
+│   │   ├── contact/                # ContactPageContent, ContactSection
 │   │   ├── forms/                  # ContactForm, LeadForm
-│   │   ├── ui/                     # Button, Counter, TeamCarousel
-│   │   └── security/               # Компоненты безопасности
+│   │   ├── ui/                     # Button, Counter, ChatWidget, PWA
+│   │   ├── security/               # Компоненты безопасности
+│   │   └── legal/                  # LegalPageLayout
 │   │
 │   ├── content/                    # MDX контент
 │   │   ├── blog/                   # Статьи блога
@@ -66,20 +73,16 @@ company_site/
 │   │   └── pages/                  # Статические страницы
 │   │
 │   ├── lib/
+│   │   ├── admin/                  # Утилиты админки
 │   │   ├── analytics/              # Трекинг событий
 │   │   ├── cms/                    # Функции работы с MDX
 │   │   ├── hooks/                  # Custom React hooks
-│   │   └── utils/                  # Утилиты (cn, sanitize)
+│   │   ├── seo/                    # Schema.org микроразметка
+│   │   └── utils/                  # Утилиты (cn, env, sanitize)
 │   │
 │   ├── public/
-│   │   ├── images/                 # Изображения
-│   │   │   ├── hero-banner/        # Hero баннеры (видео + фото)
-│   │   │   ├── icons/              # Иконки услуг, статистики
-│   │   │   ├── process_steps/      # Изображения шагов
-│   │   │   ├── cases/              # Изображения кейсов
-│   │   │   ├── blog/               # Изображения статей
-│   │   │   ├── error/              # 404 фон
-│   │   │   └── team/               # Фото команды
+│   │   ├── images/                 # Изображения (НЕ трогать!)
+│   │   ├── manifest.json           # PWA манифест
 │   │   └── robots.txt              # SEO robots
 │   │
 │   ├── styles/
@@ -87,12 +90,20 @@ company_site/
 │   │
 │   └── types/                      # TypeScript типы
 │
+├── docs/                           # Документация проекта
+│   ├── about_company/              # Описание компании, процессы
+│   └── plan/                       # Планы реализации
+│
+├── scripts/                        # Скрипты проекта
+├── .github/                        # GitHub Actions (CI/CD)
+├── .husky/                         # Pre-commit хуки
 ├── .env.local                      # Переменные окружения
 ├── .env.local.example              # Шаблон переменных
 ├── next.config.js                  # Next.js конфигурация
 ├── tailwind.config.js              # Tailwind конфигурация
 ├── tsconfig.json                   # TypeScript конфигурация
-└── package.json
+├── package.json
+└── sentry.*.config.ts              # Sentry error tracking
 ```
 
 ---
@@ -202,11 +213,11 @@ npm run lint
 
 ## 📄 Страницы сайта
 
-### Основные (15 контентных страниц)
+### Основные (20+ страниц)
 
 | Страница | URL | Описание |
 |----------|-----|----------|
-| Главная | `/` | Лендинг с услугами и преимуществами |
+| Главная | `/` | Лендинг с услугами, калькулятором, чатом |
 | О компании | `/about` | Команда (карусель) |
 | Лидогенерация | `/services/leadgen` | Флагманский продукт |
 | Call-центр | `/services/call-center` | Профессиональный обзвон |
@@ -220,7 +231,20 @@ npm run lint
 | Контакты | `/contact` | Форма обратной связи |
 | Условия | `/legal/terms` | Оферта |
 | Конфиденциальность | `/legal/privacy` | Политика |
+| Offline | `/offline` | Offline страница (PWA) |
 | 404 | `/_not-found` | Страница ошибки (с фоном) |
+
+### Админ-панель
+
+| Страница | URL | Описание |
+|----------|-----|----------|
+| Логин | `/admin/login` | Вход в админку |
+| Блог (список) | `/admin/blog` | Управление статьями |
+| Новая статья | `/admin/blog/new` | Создание статьи |
+| Редактирование | `/admin/blog/[slug]/edit` | Редактирование статьи |
+| Кейсы (список) | `/admin/cases` | Управление кейсами |
+| Новый кейс | `/admin/cases/new` | Создание кейса |
+| Редактирование | `/admin/cases/[slug]/edit` | Редактирование кейса |
 
 ---
 
@@ -248,6 +272,13 @@ npm run lint
 **Поддерживаемые системы:**
 - Google Analytics (`NEXT_PUBLIC_GA_ID`)
 - Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METРИКА_ID`)
+
+### Error Tracking
+
+**Sentry** — мониторинг ошибок:
+- Клиентские ошибки (`sentry.client.config.ts`)
+- Серверные ошибки (`sentry.server.config.ts`)
+- Edge ошибки (`sentry.edge.config.ts`)
 
 ### SEO
 
@@ -488,12 +519,12 @@ chore: изменение конфигурации
 
 | Категория | Количество |
 |-----------|------------|
-| Контентных страниц | 15 |
-| Технических файлов | 3 (layout, not-found, sitemap) |
-| Компонентов | 60+ |
+| Контентных страниц | 20+ (включая админку) |
+| Компонентов | 82 (.tsx файлы) |
 | MDX файлов | 7 |
-| API endpoints | 1 |
-| Внешних библиотек | 14 |
+| API endpoints | 3 (submit-lead, admin/login, test-env) |
+| Тестов | 12+ (.test.tsx файлы) |
+| Внешних библиотек | 20+ |
 
 ---
 
@@ -511,12 +542,14 @@ chore: изменение конфигурации
 - Layout по умолчанию — `layout.tsx`
 - API routes — в `src/app/api/`
 - Динамические маршруты — `[slug].tsx`
+- Route groups — `(main)/` для группировки без влияния на URL
 
 ### MDX рендеринг
 
 - Используйте `next-mdx-remote` для рендеринга
 - Контент загружается через `fs.readFileSync`
 - Компоненты передаются через `MDXRemote`
+- Кэширование в production (TTL 1 час)
 
 ### Анимации
 
