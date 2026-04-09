@@ -1,15 +1,26 @@
 ﻿import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
 import ServiceWorkerRegistration from '@/components/ui/ServiceWorkerRegistration'
 
-const inter = Inter({
-  subsets: ['latin', 'cyrillic'],
+// Используем системные шрифты вместо Google Fonts (проблемы с загрузкой)
+const inter = localFont({
+  src: [],
   variable: '--font-inter',
   display: 'swap',
+  fallback: [
+    'Inter',
+    'system-ui',
+    '-apple-system',
+    'Segoe UI',
+    'Roboto',
+    'Arial',
+    'sans-serif',
+  ],
+  preload: false,
 })
 
 // Валидация переменных окружения при старте (только в development)
