@@ -9,7 +9,6 @@ import FaqSection from '@/components/blocks/FaqSection'
 import ClosingCta from '@/components/blocks/ClosingCta'
 import TechnologyStack from '@/components/blocks/TechnologyStack'
 import AnalyticsDashboard from '@/components/blocks/AnalyticsDashboard'
-import LeadExamples from '@/components/blocks/LeadExamples'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import type { Metadata } from 'next'
@@ -172,63 +171,6 @@ export default function LeadgenPage() {
         ]}
       />
 
-      {/* Примеры лидов */}
-      <LeadExamples
-        title="Примеры лидов"
-        description="Реальные данные из наших кампаний — прозрачность каждого этапа воронки"
-        leads={[
-          {
-            id: 1,
-            niche: 'Недвижимость',
-            source: 'Яндекс.Директ',
-            cost: 1200,
-            status: 'converted',
-          },
-          {
-            id: 2,
-            niche: 'Автобизнес',
-            source: 'VK Реклама',
-            cost: 850,
-            status: 'in_progress',
-          },
-          {
-            id: 3,
-            niche: 'Образование',
-            source: 'Google Ads',
-            cost: 650,
-            status: 'converted',
-          },
-          {
-            id: 4,
-            niche: 'Строительство',
-            source: 'Авито',
-            cost: 450,
-            status: 'rejected',
-          },
-          {
-            id: 5,
-            niche: 'Финансы',
-            source: 'Таргет VK',
-            cost: 980,
-            status: 'in_progress',
-          },
-          {
-            id: 6,
-            niche: 'E-commerce',
-            source: 'Яндекс.Директ',
-            cost: 720,
-            status: 'converted',
-          },
-          {
-            id: 7,
-            niche: 'B2B услуги',
-            source: 'Контекстная реклама',
-            cost: 1500,
-            status: 'converted',
-          },
-        ]}
-      />
-
       {/* Проблемы */}
       <ProblemStatement
         title="Знакомые ситуации?"
@@ -361,7 +303,7 @@ export default function LeadgenPage() {
             answer: "Мы не работаем с проектами в сфере здоровья и красоты из-за этических ограничений и специфики регулирования рекламы медицинских услуг.",
           },
           {
-            question: "Сколько нужно бюджета на рекламу?",
+            question: "Сколько нужно бюджета на маркетинг?",
             answer: "Рекомендуемый бюджет на тестирование — от 50 000 ₽. После нахождения работающих связок бюджет масштабируется под ваши задачи.",
           },
           {

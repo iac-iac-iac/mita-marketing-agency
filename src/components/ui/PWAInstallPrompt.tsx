@@ -18,16 +18,24 @@ export default function PWAInstallPrompt() {
   // Проверяем, закрывал ли пользователь уведомление ранее
   const isDismissed = typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY);
 
+  // Проверяем что устройство мобильное
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(/Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    }
+  }, []);
+
   // Показываем кнопку через 30 секунд (только если не закрывалось ранее)
   useEffect(() => {
-    if (canInstall && !isInstalled && !isDismissed) {
+    if (canInstall && !isInstalled && !isDismissed && isMobile) {
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 30000);
 
       return () => clearTimeout(timer);
     }
-  }, [canInstall, isInstalled, isDismissed]);
+  }, [canInstall, isInstalled, isDismissed, isMobile]);
 
   const dismiss = () => {
     localStorage.setItem(STORAGE_KEY, 'true');
@@ -52,7 +60,7 @@ export default function PWAInstallPrompt() {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 100 }}
-          className="fixed bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-auto md:w-96 z-50"
+          className="fixed bottom-4 right-4 left-4 md:bottom-8 md:right-8 md:left-auto md:w-96 z-50"
         >
           <div className="glass p-4 rounded-2xl shadow-2xl">
             <div className="flex items-start gap-3">

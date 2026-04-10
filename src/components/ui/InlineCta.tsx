@@ -28,7 +28,7 @@ export function InlineCta() {
         </h3>
         <p className="text-gray-200 mb-8 max-w-2xl mx-auto">
           Оставьте заявку и получите бесплатную консультацию по настройке сквозной аналитики 
-          и оптимизации рекламных кампаний
+          и оптимизации маркетинговых кампаний
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

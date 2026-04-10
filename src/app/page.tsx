@@ -58,7 +58,7 @@ export default function HomePage() {
         />
 
         {/* Услуги */}
-        <ServicesSection items={defaultServices} />
+        <ServicesSection items={defaultServices} groupCtaLabel="" groupCtaUrl="" />
 
         {/* Процесс работы */}
         <WorkProcessSection steps={defaultWorkProcess} />
@@ -72,7 +72,7 @@ export default function HomePage() {
           description="Мы знаем как решить каждый из них"
           painPoints={[
             'Лиды дорогие и их мало',
-            'Рекламный бюджет сливается впустую',
+            'Маркетинговый бюджет сливается впустую',
             'Call-центр не обрабатывает входящие заявки',
             'Сотрудники не справляются с объёмом звонков',
             'Нет системы аналитики — непонятно что работает',

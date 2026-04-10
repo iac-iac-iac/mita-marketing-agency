@@ -159,7 +159,7 @@ export default function AdminBlogNewPage() {
             value={formData.tags}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-direct-primary/50 focus:border-transparent transition-all"
-            placeholder="маркетинг, лиды, реклама"
+            placeholder="маркетинг, лиды, каналы привлечения"
           />
         </div>
 

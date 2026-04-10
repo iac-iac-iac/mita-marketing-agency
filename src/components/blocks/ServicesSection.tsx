@@ -27,8 +27,8 @@ export default function ServicesSection({
   groupTitle = 'Наши услуги',
   groupIntro = 'Комплексный подход к решению ваших маркетинговых задач. Четыре направления, которые работают как единый механизм для роста вашего бизнеса.',
   items,
-  groupCtaLabel = 'Смотреть все услуги',
-  groupCtaUrl = '/#services',
+  groupCtaLabel = '',
+  groupCtaUrl = '',
 }: ServicesSectionProps) {
   return (
     <div id={id}>

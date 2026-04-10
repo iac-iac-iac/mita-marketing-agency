@@ -1,4 +1,5 @@
 ﻿import { Metadata } from 'next'
+import Header from '@/components/layout/Header'
 import ContactPageContent from '@/components/contact/ContactPageContent'
 
 export const metadata: Metadata = {
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
-  return <ContactPageContent />
+  return (
+    <>
+      <Header showBackButton showHamburgerMenu />
+      <ContactPageContent />
+    </>
+  )
 }

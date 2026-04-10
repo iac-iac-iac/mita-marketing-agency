@@ -34,7 +34,7 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
       {/* Кнопки слева */}
       <div className="fixed top-6 left-6 z-50 flex items-center gap-3">
         {showBackButton && <BackButton />}
-        {showHamburgerMenu && <HamburgerMenu onClick={() => setIsMobileMenuOpen(true)} />}
+        {showHamburgerMenu && <HamburgerMenu onClick={() => setIsMobileMenuOpen(true)} isOpen={isMobileMenuOpen} />}
       </div>
 
       {/* Мобильное меню с анимацией */}
@@ -56,7 +56,7 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
               initial={{ x: -320 }}
               animate={{ x: 0 }}
               exit={{ x: -320 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              transition={{ type: 'tween', duration: 0.35, ease: 'easeOut' }}
               className="fixed top-0 left-0 z-50 h-full w-80 glass glass-strong p-6 overflow-y-auto"
             >
               <div className="flex flex-col gap-2 mt-20">

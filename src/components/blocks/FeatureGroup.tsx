@@ -57,7 +57,7 @@ export default function FeatureGroup({
             <motion.div
               key={index}
               ref={setRef(index)}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, y: 0 }}
+              initial={{ opacity: 0, x: 0, y: 50 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}

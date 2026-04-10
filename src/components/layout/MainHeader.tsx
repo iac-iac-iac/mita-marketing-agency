@@ -61,7 +61,7 @@ export default function MainHeader() {
             <CtaButton
               variant="primary"
               size="md"
-              href="#contact"
+              href="/contact"
             >
               Оставить заявку
             </CtaButton>
@@ -149,7 +149,7 @@ export default function MainHeader() {
               <CtaButton
                 variant="primary"
                 size="md"
-                href="#contact"
+                href="/contact"
                 className="w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
