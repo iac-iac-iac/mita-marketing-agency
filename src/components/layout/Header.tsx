@@ -26,6 +26,7 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
     { label: 'О компании', url: '/about' },
     { label: 'Кейсы', url: '/cases' },
     { label: 'Блог', url: '/blog' },
+    { label: 'Карьера', url: '/career' },
     { label: 'Контакты', url: '/contact' },
   ]
 

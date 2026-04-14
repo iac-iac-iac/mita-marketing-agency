@@ -1,6 +1,9 @@
 ﻿import MainHeader from '@/components/layout/MainHeader'
 import Footer from '@/components/layout/Footer'
 import HeroDashboard from '@/components/blocks/HeroDashboard'
+import StatsBanner from '@/components/blocks/StatsBanner'
+import WhyChooseUs from '@/components/blocks/WhyChooseUs'
+import Accreditations from '@/components/blocks/Accreditations'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
 import BlogPreview from '@/components/blocks/BlogPreview'
@@ -57,11 +60,20 @@ export default function HomePage() {
         {/* Услуги */}
         <ServicesSection items={defaultServices} groupCtaLabel="" groupCtaUrl="" />
 
+        {/* Результаты в цифрах */}
+        <StatsBanner />
+
         {/* Процесс работы */}
         <WorkProcessSection steps={defaultWorkProcess} />
 
-        {/* Калькулятор */}
-        <ServicesCalculator />
+        {/* Почему выбирают нас */}
+        <WhyChooseUs />
+
+        {/* Калькулятор (временно отключён) */}
+        {/* <ServicesCalculator /> */}
+
+        {/* Аккредитация */}
+        <Accreditations />
 
         {/* Проблема */}
         <ProblemStatement

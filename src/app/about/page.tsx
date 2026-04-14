@@ -1,5 +1,6 @@
 ﻿import Header from '@/components/layout/Header'
 import TeamCarousel from '@/components/ui/TeamCarousel'
+import CompanyTimeline from '@/components/blocks/CompanyTimeline'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -69,6 +70,9 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Таймлайн истории компании */}
+      <CompanyTimeline />
     </>
   )
 }

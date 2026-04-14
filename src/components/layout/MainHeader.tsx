@@ -13,6 +13,7 @@ export default function MainHeader() {
     { label: 'Услуги', url: '/#services' },
     { label: 'Кейсы', url: '/cases' },
     { label: 'Блог', url: '/blog' },
+    { label: 'Карьера', url: '/career' },
     { label: 'Безопасность', url: '/security' },
   ]
 
