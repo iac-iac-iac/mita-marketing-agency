@@ -1,442 +1,257 @@
-﻿# М.И.Т.А. — Сайт маркетингового IT-агентства
+﻿# M.И.T.A. — Marketing IT Agency Website
 
-Современный сайт для маркетингового IT-агентства полного цикла, построенный на Next.js 14 с использованием Tailwind CSS, TypeScript и 3D Glass Design.
+Corporate website for a full-cycle marketing IT agency built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
 
-## 🎉 Что нового в версии 1.1.0
+Production: https://mita.top
 
-### Новые функции
-- 🧮 **Калькулятор услуг** — интерактивный расчёт стоимости
-- 💬 **Онлайн-чат** — виджет для связи с клиентами
-- 📲 **PWA** — offline режим, установка приложения
-- 🏷️ **Schema.org** — микроразметка для SEO
+## Tech Stack
 
-### Безопасность
-- 🔒 7 security headers (CSP, HSTS, X-Frame-Options)
-- ✅ Валидация webhook URL
-- ⏱️ Timeout 5s для запросов
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js 14.2 (App Router) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS 3 + custom styles |
+| Animations | Framer Motion |
+| CMS | SQLite (better-sqlite3) |
+| Auth | JWT (jose) + bcrypt |
+| Deployment | VPS + Nginx + PM2 |
 
-### Производительность
-- ⚡ Кэширование MDX (80% быстрее)
-- 🎬 Lazy loading для видео
-- 📦 Bundle Analyzer
+## Features
 
-### CI/CD
-- 🚀 GitHub Actions pipeline
-- 📦 Автоматический деплой на Vercel
-- ✅ Lint, Type Check, Tests
+### Content Management
+- Blog posts with MDX
+- Case studies
+- Testimonials with per-service categories
+- Lead tracking
+- Admin panel at /admin
 
-📖 Подробная информация в [CHANGELOG.md](CHANGELOG.md)
+### Pages
+| Page | URL | Description |
+|------|-----|-------------|
+| Home | / | Hero, services, stats, testimonials |
+| About | /about | Company info, team, timeline |
+| Career | /career | Open positions, benefits |
+| Blog | /blog | Article listing |
+| Blog Post | /blog/[slug] | Full article |
+| Cases | /cases | Case study listing |
+| Case Detail | /cases/[slug] | Full case study |
+| Leadgen | /services/leadgen | Service landing page |
+| Call Center | /services/call-center | Service landing page |
+| Avito | /services/avito | Service landing page |
+| Recruiting | /services/recruiting | Service landing page |
+| Contact | /contact | Contact form |
+| Security | /security | Data protection info |
+| Legal Terms | /legal/terms | Terms of service |
+| Legal Privacy | /legal/privacy | Privacy policy |
+| Admin Login | /admin/login | Admin authentication |
+| Admin Blog | /admin/blog | Blog management |
+| Admin Cases | /admin/cases | Case management |
+| Admin Testimonials | /admin/testimonials | Testimonial management |
 
-## 🚀 Технологический стек
+## Getting Started
 
-### Основное
-- **Framework:** Next.js 14.2 (App Router)
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS 3 + кастомные стили
-- **UI Components:** React 18 + Framer Motion
-- **Package Manager:** npm
-
-### Дизайн и анимации
-- **3D Glass Design** — полупрозрачные поверхности с blur-эффектом
-- **Framer Motion** — анимации появления, slide-in, counter
-- **Видео фон** — Hero секции с видео
-- **Градиенты и тени** для создания глубины
-
-## 📁 Структура проекта
-
-```
-company_site/
-├── src/
-│   ├── app/                        # Next.js App Router
-│   │   ├── (main)/                 # Основная группа маршрутов
-│   │   │   └── services/           # Страницы услуг
-│   │   │       ├── leadgen/        # Лидогенерация
-│   │   │       ├── call-center/    # Call-центр
-│   │   │       ├── avito/          # Продвижение на Авито
-│   │   │       └── recruiting/     # Рекрутинг
-│   │   ├── blog/                   # Блог (список + статьи)
-│   │   ├── cases/                  # Кейсы (список + детали)
-│   │   ├── contact/                # Контакты
-│   │   ├── security/               # Безопасность
-│   │   ├── legal/                  # Юридические страницы
-│   │   │   ├── privacy/            # Политика конфиденциальности
-│   │   │   └── terms/              # Условия оказания услуг
-│   │   ├── about/                  # О компании + команда
-│   │   ├── admin/                  # Админ-панель (CRUD блога/кейсов)
-│   │   ├── offline/                # Offline страница (PWA)
-│   │   ├── api/                    # API маршруты
-│   │   │   ├── submit-lead/        # Отправка заявок
-│   │   │   └── admin/              # API админки
-│   │   ├── layout.tsx              # Root layout
-│   │   ├── page.tsx                # Главная страница
-│   │   ├── not-found.tsx           # 404 страница (с фоном)
-│   │   └── sitemap.ts              # Генерация sitemap.xml
-│   ├── components/                 # React компоненты
-│   │   ├── layout/                 # Layout: Header, Footer, Section
-│   │   ├── blocks/                 # Блоки страниц: Hero, Features, Pricing
-│   │   ├── blog/                   # Компоненты блога
-│   │   ├── cases/                  # Компоненты кейсов
-│   │   ├── contact/                # Контактная страница
-│   │   ├── forms/                  # Формы: ContactForm, LeadForm
-│   │   ├── ui/                     # UI элементы: кнопки, Counter, ChatWidget, PWA
-│   │   ├── legal/                  # Layout для юридических страниц
-│   │   └── security/               # Компоненты безопасности
-│   ├── content/                    # Контент (Markdown/MDX)
-│   │   ├── blog/                   # Статьи блога
-│   │   ├── cases/                  # Кейсы
-│   │   └── pages/                  # Статические страницы
-│   ├── lib/                        # Утилиты и API
-│   │   ├── admin/                  # Утилиты админки
-│   │   ├── analytics/              # Аналитика и трекинг
-│   │   ├── cms/                    # CMS функции (blog, cases)
-│   │   ├── hooks/                  # Custom React hooks
-│   │   ├── seo/                    # Schema.org микроразметка
-│   │   └── utils/                  # Утилиты (cn, env, sanitize)
-│   ├── public/                     # Статические файлы
-│   │   ├── images/                 # Изображения
-│   │   ├── manifest.json           # PWA манифест
-│   │   └── robots.txt              # Robots.txt для SEO
-│   ├── styles/                     # Глобальные стили
-│   │   └── globals.css             # Tailwind + кастомные стили + анимации
-│   └── types/                      # TypeScript типы
-├── docs/                           # Документация проекта
-├── scripts/                        # Скрипты
-├── .github/                        # GitHub Actions (CI/CD)
-├── .husky/                         # Pre-commit хуки
-├── .env.local                      # Переменные окружения
-├── .env.local.example              # Шаблон переменных
-├── next.config.js                  # Конфигурация Next.js
-├── tailwind.config.js              # Конфигурация Tailwind
-├── tsconfig.json                   # Конфигурация TypeScript
-├── sentry.*.config.ts              # Sentry error tracking
-└── package.json
-```
-
-## 🎨 Дизайн-система
-
-### Цветовая палитра
-
-| Название | Hex | Использование |
-|----------|-----|---------------|
-| Primary | `#D4A84B` | Золотой primary, CTA, акценты |
-| Gold | `#F2D07A` | Светлое золото (hover, подсветка) |
-| Accent | `#B8892E` | Тёмное золото (дополнительный) |
-| Dark | `#0A0A0A` | Глубокий чёрный фон |
-| Secondary | `#1A1A1A` | Вторичный фон (поверхности) |
-| Gray | `#2A2A2A` | Карточки, surface |
-| Light | `#FFFFFF` | Белый текст |
-| Text Secondary | `#B0B0B0` | Вторичный текст |
-| Muted | `#707070` | Приглушённый текст |
-
-### Анимации
-
-**animate-fade-in-up** — плавное появление контента (1.2s):
-- Используется на главной и service страницах
-- Opacity 0→1 + translateY 20px→0
-
-**Counter Animation** — анимация чисел:
-- В кейсах для статистики
-- На странице /about
-
-**Slide-in анимации** — появление карточек:
-- Чередование слева/справа/снизу
-- В секциях: Услуги, Отзывы, Тарифы
-
-**Hamburger Menu** — анимация кнопки:
-- Превращение в крестик
-- Выезжающее меню слева
-
-### Стиль дизайна
-
-**3D Glass Design** — современный стиль с использованием:
-- Полупрозрачных поверхностей с blur-эффектом
-- Градиентов и теней для создания глубины
-- Стеклянных карточек и панелей
-- Плавных анимаций и переходов
-- Видео фона в Hero секциях
-
-## 🛠️ Установка и запуск
-
-### Требования
-- Node.js 18+
+### Requirements
+- Node.js 20+
 - npm 9+
 
-### Установка зависимостей
+### Install
 
 ```bash
 npm install
 ```
 
-### Запуск в режиме разработки
+### Development
 
 ```bash
 npm run dev
 ```
 
-Сайт будет доступен по адресу: http://localhost:3000
+Open http://localhost:3000
 
-### Сборка для production
+### Build
 
 ```bash
 npm run build
 npm start
 ```
 
-### Проверка типов
+### Type Check
 
 ```bash
 npm run type-check
 ```
 
-### Линтинг
+### Lint
 
 ```bash
 npm run lint
 ```
 
-## 📄 Страницы сайта
+## Environment Variables
 
-### Основные страницы
-- `/` — Главная страница с услугами, калькулятором, чатом
-- `/about` — О компании + команда (карусель)
-- `/contact` — Контакты и форма обратной связи
-- `/security` — Безопасность данных
-- `/offline` — Offline страница (PWA)
-
-### Услуги
-- `/services/leadgen` — Лидогенерация (флагманский продукт)
-- `/services/call-center` — Call-центр (профессиональный обзвон)
-- `/services/avito` — Продвижение на Авито (бюджетный канал)
-- `/services/recruiting` — Рекрутинг (подбор персонала)
-
-### Контент
-- `/blog` — Блог со статьями о маркетинге и продажах
-- `/blog/[slug]` — Отдельная статья блога
-- `/cases` — Кейсы клиентов с результатами
-- `/cases/[slug]` — Детальный кейс
-
-### Юридические
-- `/legal/terms` — Условия оказания услуг (оферта)
-- `/legal/privacy` — Политика конфиденциальности
-
-### Админ-панель
-- `/admin/login` — Вход в админку
-- `/admin/blog` — Управление статьями блога
-- `/admin/cases` — Управление кейсами
-
-### Системные
-- `/404` — Страница ошибки (с фоном)
-- `/sitemap.xml` — Карта сайта для SEO
-- `/robots.txt` — Правила для поисковых роботов
-
-## 🔐 Переменные окружения
-
-Скопируйте `.env.local.example` в `.env.local` и заполните необходимыми значениями:
+Copy the example file and fill in your values:
 
 ```bash
 cp .env.local.example .env.local
 ```
 
-Основные переменные:
+| Variable | Description | Required |
+|----------|-------------|----------|
+| NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top) | Yes |
+| ADMIN_PASSWORD | Admin panel password | Yes |
+| DATABASE_PATH | SQLite database file path | Yes |
 
-| Переменная | Описание |
-|------------|----------|
-| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://mita.ru`) |
-| `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 |
-| `NEXT_PUBLIC_GA_ID` | Google Analytics ID |
-| `NEXT_PUBLIC_YANDEX_METRIKA_ID` | Яндекс.Метрика ID |
+## Project Structure
 
-## 🛠️ Алиасы импортов
-
-В проекте настроены следующие алиасы (tsconfig.json):
-
-| Алиас | Путь |
-|-------|------|
-| `@/*` | `./src/*` |
-| `@components/*` | `./src/components/*` |
-| `@lib/*` | `./src/lib/*` |
-| `@content/*` | `./src/content/*` |
-| `@images/*` | `./public/images/*` |
-| `@styles/*` | `./src/styles/*` |
-| `@types/*` | `./src/types/*` |
-
-Пример использования:
-
-```typescript
-import { Button } from '@components/ui/CtaButton'
-import { formatDate } from '@lib/utils/format'
-import heroImage from '@images/hero-banner/main.png'
+```
+company_site/
+├── src/
+│   ├── app/                          # Next.js App Router
+│   │   ├── (main)/services/          # Service landing pages
+│   │   │   ├── leadgen/
+│   │   │   ├── call-center/
+│   │   │   ├── avito/
+│   │   │   └── recruiting/
+│   │   ├── admin/                    # Admin panel
+│   │   │   ├── blog/
+│   │   │   ├── cases/
+│   │   │   └── testimonials/
+│   │   ├── api/
+│   │   │   ├── submit-lead/          # Lead submission API
+│   │   │   └── admin/                # Admin API routes
+│   │   ├── blog/
+│   │   ├── cases/
+│   │   ├── career/                   # Career page
+│   │   ├── contact/
+│   │   ├── legal/
+│   │   ├── security/
+│   │   ├── about/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx                  # Home page
+│   │   ├── error.tsx
+│   │   └── loading.tsx
+│   ├── components/
+│   │   ├── layout/                   # Header, Footer
+│   │   ├── blocks/                   # Page sections (Hero, Stats, etc.)
+│   │   ├── forms/                    # ContactForm, LeadForm
+│   │   ├── ui/                       # Buttons, widgets
+│   │   └── contact/
+│   ├── content/                      # MDX content
+│   │   ├── blog/
+│   │   ├── cases/
+│   │   └── pages/
+│   ├── lib/
+│   │   ├── cms/                      # CMS functions (blog, cases, testimonials)
+│   │   ├── db/                       # SQLite setup and schema
+│   │   ├── hooks/                    # Custom React hooks
+│   │   ├── analytics/                # Event tracking
+│   │   ├── seo/                      # Schema.org markup
+│   │   └── utils/                    # Utilities (cn, env, sanitize)
+│   ├── public/                       # Static files
+│   ├── styles/
+│   └── types/
+├── data/                             # SQLite database (gitignored)
+├── docs/                             # Project documentation
+├── scripts/                          # Build scripts
+├── .github/                          # GitHub Actions
+├── .env.local.example
+├── next.config.mjs
+├── package.json
+└── tsconfig.json
 ```
 
-## 🎯 Ключевые компоненты
+## Design System
 
-### Layout
-- `Header` — навигация с hamburger menu (на service страницах)
-- `MainHeader` — полная навигация (на главной)
-- `Footer` — подвал с ссылками и контактами
+### Colors
 
-### UI компоненты
-- `Counter` — анимация чисел (от 0 до значения)
-- `TeamCarousel` — карусель команды (слайдер)
-- `BackButton` — кнопка "Назад" (на service страницах)
-- `HamburgerMenu` — hamburger меню с анимацией
-- `ScrollToTop` — кнопка прокрутки наверх
-- `CtaButton` — кнопка с анимацией
+| Name | Hex | Usage |
+|------|-----|-------|
+| direct-primary | #D4A84B | Primary, CTA, accents |
+| direct-gold | #F2D07A | Hover, highlights |
+| direct-accent | #B8892E | Secondary accent |
+| direct-dark | #0A0A0A | Primary background |
+| direct-secondary | #1A1A1A | Secondary surfaces |
+| direct-gray | #2A2A2A | Cards, surfaces |
+| direct-light | #FFFFFF | Text |
+| direct-text-secondary | #B0B0B0 | Secondary text |
+| direct-muted | #707070 | Muted text |
 
-### Блоки страниц
-- `Hero` — первый экран с видео/фото фоном
-- `ServiceHero` — Hero для service страниц
-- `FeatureGroup` — карточки услуг с иконками
-- `ProcessSteps` — шаги процесса (крупные карточки)
-- `TestimonialsSection` — отзывы клиентов
-- `PricingSection` — тарифные планы
-- `FaqSection` — FAQ с accordion анимацией
+### Animations
 
-## 📊 Контент (MDX)
+- **fade-in-up** — content entrance animation (opacity + translateY)
+- **slide-in** — alternating left/right card reveals
+- **counter** — number counting animation in stats blocks
+- **hamburger** — icon morph to cross on menu open
+- **parallax** — hero content fades and shifts on scroll
+- **pulse CTA** — primary button glowing shadow loop
 
-### Блог
+## CMS Architecture
 
-**Расположение:** `src/content/blog/`
+Content is stored in SQLite (data/mita.db) with four tables:
 
-Файлы:
-- `leadgen-guide.mdx` — Руководство по лидогенерации
-- `call-center-tips.mdx` — Советы по call-центру
+| Table | Purpose |
+|-------|---------|
+| blog_posts | Blog articles |
+| cases | Client case studies |
+| testimonials | Customer reviews (with per-service categories) |
+| leads | Form submissions |
 
-### Кейсы
+Admin authentication uses JWT tokens via HTTP-only cookies with bcrypt password hashing.
 
-**Расположение:** `src/content/cases/`
+## Deployment
 
-Файлы:
-- `avtopremium-case.mdx` — Автосалон (+147% лидов)
-- `stroymaster-case.mdx` — Строительная компания (+220% продаж)
+The site is deployed on a VPS (Ubuntu 24.04) with:
 
-## 🔌 Интеграции
+- Nginx as reverse proxy with SSL (Let's Encrypt)
+- PM2 for process management
+- Node.js 20
 
-### Формы
-- **API:** `/api/submit-lead` — обработка заявок
-- **Валидация:** Zod схема
-- **Безопасность:** CSRF защита, rate limiting (10 запросов/мин)
-- **Интеграция:** Bitrix24 webhook
+Auto-renewing SSL certificate via Certbot.
 
-### Аналитика
-- **События:** form_submit, form_error, modal_open, modal_close, cta_click
-- **Поддержка:** Яндекс.Метрика, Google Analytics
+## Conventions
 
-### SEO
-- **Metadata:** Title, description, Open Graph на всех страницах
-- **Sitemap:** Автоматическая генерация через `sitemap.ts`
-- **Robots.txt:** Настроен в `/public/robots.txt`
-- **Canonical URLs:** Настроены для всех страниц
-- **Favicon:** `/images/icons/Favicon.ico`
+### Commits
 
-## ♿ Доступность (A11y)
-
-- Семантическая HTML-разметка
-- ARIA-атрибуты для интерактивных элементов
-- Keyboard navigation (Tab, Enter, Esc)
-- Focus states для всех интерактивных элементов
-- Контрастность текста соответствует WCAG
-
-## 📈 Performance
-
-### Оптимизация
-- **Code splitting** на уровне страниц
-- **Tree shaking** для unused кода
-- **Минификация** CSS и JavaScript
-- **Lazy loading** для изображений ниже fold
-- **Image optimization** через Next.js Image component
-
-### Bundle size
-- First Load JS: ~87-152 KB
-- Статические страницы предрендерятся при сборке
-- Динамические страницы рендерятся на сервере (SSR)
-
-## 🚀 Деплой
-
-### Рекомендуемые платформы
-
-1. **Vercel** — оптимально для Next.js
-   ```bash
-   npm i -g vercel
-   vercel deploy
-   ```
-
-2. **Netlify** — альтернативный вариант
-
-3. **Docker** — для самостоятельного хостинга
-
-### Переменные окружения на production
-
-Обязательно настройте:
-- `NEXT_PUBLIC_SITE_URL` — домен сайта
-- `BITRIX24_WEBHOOK_URL` — webhook Bitrix24
-- Аналитика (GA, Яндекс.Метрика)
-
-## 📝 Conventions
-
-### Структура коммитов
 ```
-feat: добавление новой функции
-fix: исправление ошибки
-docs: обновление документации
-style: изменение стиля
-refactor: рефакторинг кода
-test: добавление тестов
-chore: изменение конфигурации
+feat: new feature
+fix: bug fix
+docs: documentation update
+style: style change
+refactor: code refactoring
+test: test addition
+chore: config change
 ```
 
-### Ветки
-- `main` — production версия
-- `develop` — ветка разработки
-- `feature/*` — новые функции
-- `fix/*` — исправления
+### Branches
 
-### Именование файлов
-- **Компоненты:** PascalCase (`ContactForm.tsx`)
-- **Утилиты:** camelCase (`formatDate.ts`)
-- **Стили:** kebab-case (`globals.css`)
-- **Контент:** kebab-case (`leadgen-guide.mdx`)
+- main — production
+- develop — development
+- feature/* — features
+- fix/* — fixes
 
-## 📊 Статистика проекта
+### Naming
 
-| Категория | Количество |
-|-----------|------------|
-| Страниц | 20+ (включая админку) |
-| Компонентов | 82 (.tsx файлы) |
-| MDX файлов | 7 |
+- Components: PascalCase (ContactForm.tsx)
+- Utilities: camelCase (formatDate.ts)
+- Styles: kebab-case (globals.css)
+- Content: kebab-case (leadgen-guide.mdx)
+
+## Project Stats
+
+| Category | Count |
+|----------|-------|
+| Pages | 20+ |
+| Components | 90+ .tsx files |
 | API endpoints | 3 |
-| Тестов | 12+ |
-| Внешних библиотек | 20+ |
+| External libraries | 20+ |
 
-## ⚠️ Важные заметки
+## License
 
-### Windows-совместимость
-- Используйте `move` вместо `mv` для перемещения файлов
-- Пути должны использовать обратные слеши или быть абсолютными
-- Команды shell могут требовать PowerShell синтаксиса
+MIT
 
-### Next.js особенности
-- Все страницы должны быть в `src/app/`
-- Layout по умолчанию — `layout.tsx`
-- API routes — в `src/app/api/`
-- Динамические маршруты — `[slug].tsx`
+M.I.T.A. — Full-cycle Marketing IT Agency
 
-### MDX рендеринг
-- Используйте `next-mdx-remote` для рендеринга
-- Контент загружается через `fs.readFileSync`
-- Компоненты передаются через `MDXRemote`
+Address: Saratov, Astrakhanskaya st., 87V
+Website: https://mita.top
 
-### Анимации
-- `animate-fade-in-up` — плавное появление (1.2s)
-- Counter animation — анимация чисел в статистике
-- Slide-in — чередование слева/справа для карточек
-- Hamburger — превращение в крестик
-
----
-
-**М.И.Т.А.** — Маркетинговое IT-агентство полного цикла
-
-📍 Адрес: г. Саратов, Астраханская ул., 87В
-🌐 Сайт: https://mita.ru
-
-**Статус:** ✅ Production-ready (апрель 2026)
+Status: Production-ready (April 2026)
