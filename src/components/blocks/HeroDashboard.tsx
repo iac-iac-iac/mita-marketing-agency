@@ -90,6 +90,10 @@ export default function HeroDashboard({
           muted
           loop
           playsInline
+          onEnded={(e) => {
+            (e.target as HTMLVideoElement).currentTime = 0
+            ;(e.target as HTMLVideoElement).play()
+          }}
           className="absolute inset-0 w-full h-full object-cover"
           poster={videoPoster}
         >
