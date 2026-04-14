@@ -84,7 +84,7 @@ export default function HeroDashboard({
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden">
       {/* Видео-фон — фиксированный, без параллакса */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <video
           autoPlay
           muted
@@ -94,7 +94,8 @@ export default function HeroDashboard({
             (e.target as HTMLVideoElement).currentTime = 0
             ;(e.target as HTMLVideoElement).play()
           }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ transform: 'scale(1.1)' }}
           poster={videoPoster}
         >
           <source src={mediaSrc} type="video/mp4" />
