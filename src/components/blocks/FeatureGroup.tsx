@@ -4,8 +4,88 @@ import Image from 'next/image'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
 import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import TextLinkCta from '@/components/ui/TextLinkCta'
 import { motion } from 'framer-motion'
+
+// Отдельный компонент карточки — avoids nested <a> by using useRouter
+function ServiceCard({
+  item,
+  index,
+  setRef,
+}: {
+  item: {
+    name: string;
+    label: string;
+    description: string;
+    icon?: string | React.ReactNode;
+    ctaLabel?: string;
+    ctaUrl?: string;
+  };
+  index: number;
+  setRef: (index: number) => (node: HTMLDivElement | null) => void;
+}) {
+  const router = useRouter()
+  const hasLink = !!item.ctaUrl
+
+  return (
+    <motion.div
+      ref={setRef(index)}
+      initial={{ opacity: 0, x: 0, y: 50 }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className={`glass p-6 rounded-2xl hover:bg-white/10 transition-all duration-500 scroll-reveal ${
+        hasLink ? 'cursor-pointer hover:scale-[1.02] hover:shadow-xl hover:shadow-direct-primary/10' : ''
+      }`}
+      onClick={() => hasLink && router.push(item.ctaUrl!)}
+    >
+      {/* Иконка — пульсация при появлении */}
+      {item.icon && (
+        <motion.div
+          className="mb-4"
+          initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.4,
+            delay: index * 0.1 + 0.2,
+            type: 'spring',
+            stiffness: 200,
+            damping: 10,
+          }}
+        >
+          {typeof item.icon === 'string' && item.icon.startsWith('/') ? (
+            <Image
+              src={item.icon}
+              alt={`${item.name} icon`}
+              width={64}
+              height={64}
+              className="w-16 h-16 object-contain"
+            />
+          ) : (
+            <span className="text-4xl">{item.icon}</span>
+          )}
+        </motion.div>
+      )}
+
+      <h3 className="text-xl font-semibold mb-2 hover:text-direct-primary transition-colors">
+        {item.name}
+      </h3>
+      <p className="text-direct-primary font-medium text-sm mb-3">
+        {item.label}
+      </p>
+      <p className="text-gray-300 leading-relaxed">
+        {item.description}
+      </p>
+      {item.ctaLabel && item.ctaUrl && (
+        <div className="mt-4">
+          <TextLinkCta label={item.ctaLabel} href={item.ctaUrl} />
+        </div>
+      )}
+    </motion.div>
+  )
+}
 
 export interface FeatureGroupProps {
   groupTitle: string;
@@ -54,47 +134,7 @@ export default function FeatureGroup({
         {/* Карточки фичей */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
           {items.map((item, index) => (
-            <motion.div
-              key={index}
-              ref={setRef(index)}
-              initial={{ opacity: 0, x: 0, y: 50 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass p-6 rounded-2xl hover:bg-white/10 transition-all duration-500 scroll-reveal"
-            >
-              {/* Иконка */}
-              {item.icon && (
-                <div className="mb-4">
-                  {typeof item.icon === 'string' && item.icon.startsWith('/') ? (
-                    <Image
-                      src={item.icon}
-                      alt={`${item.name} icon`}
-                      width={64}
-                      height={64}
-                      className="w-16 h-16 object-contain"
-                    />
-                  ) : (
-                    <span className="text-4xl">{item.icon}</span>
-                  )}
-                </div>
-              )}
-              
-              <h3 className="text-xl font-semibold mb-2">
-                {item.name}
-              </h3>
-              <p className="text-direct-primary font-medium text-sm mb-3">
-                {item.label}
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                {item.description}
-              </p>
-              {item.ctaLabel && item.ctaUrl && (
-                <div className="mt-4">
-                  <TextLinkCta label={item.ctaLabel} href={item.ctaUrl} />
-                </div>
-              )}
-            </motion.div>
+            <ServiceCard key={index} item={item} index={index} setRef={setRef} />
           ))}
         </div>
 

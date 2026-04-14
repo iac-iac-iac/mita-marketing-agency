@@ -1,6 +1,6 @@
 ﻿import MainHeader from '@/components/layout/MainHeader'
 import Footer from '@/components/layout/Footer'
-import Hero from '@/components/blocks/Hero'
+import HeroDashboard from '@/components/blocks/HeroDashboard'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
 import BlogPreview from '@/components/blocks/BlogPreview'
@@ -44,7 +44,7 @@ export default function HomePage() {
 
       <main className="animate-fade-in-up">
         {/* Hero секция */}
-        <Hero
+        <HeroDashboard
           eyebrow="Маркетинговое IT-агентство"
           title="Постоянный поток клиентов для вашего бизнеса"
           subtitle="Комплексные маркетинговые решения и IT-сервисы для стабильного роста продаж. От лидогенерации до рекрутинга — всё в одном месте."
@@ -52,9 +52,6 @@ export default function HomePage() {
           primaryCtaUrl="/contact"
           secondaryCtaLabel="Узнать больше"
           secondaryCtaUrl="#services"
-          mediaSrc="/images/hero-banner/Hero-banner_main_link.mp4"
-          mediaType="video"
-          videoPoster="/images/hero-banner/Hero-banner_main_link.png"
         />
 
         {/* Услуги */}
