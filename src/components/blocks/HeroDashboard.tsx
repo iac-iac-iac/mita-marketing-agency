@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import CtaButton from '@/components/ui/CtaButton'
 
@@ -16,13 +16,6 @@ interface HeroDashboardProps {
   videoPoster?: string
 }
 
-// Анимированные счётчики
-const counters = [
-  { label: 'лидов сегодня', value: 247, suffix: '' },
-  { label: 'звонков обработано', value: 1843, suffix: '' },
-  { label: 'средняя конверсия', value: 34, suffix: '%' },
-]
-
 // Золотые частицы — генерируются один раз (не через Math.random на верхнем уровне)
 function generateParticles(count: number) {
   return Array.from({ length: count }, (_, i) => ({
@@ -36,29 +29,6 @@ function generateParticles(count: number) {
 }
 
 const particles = generateParticles(12)
-
-function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    const duration = 2000
-    const steps = 60
-    const increment = target / steps
-    let current = 0
-    const timer = setInterval(() => {
-      current += increment
-      if (current >= target) {
-        setCount(target)
-        clearInterval(timer)
-      } else {
-        setCount(Math.floor(current))
-      }
-    }, duration / steps)
-    return () => clearInterval(timer)
-  }, [target])
-
-  return <>{count.toLocaleString('ru-RU')}{suffix}</>
-}
 
 export default function HeroDashboard({
   eyebrow = 'Маркетинговое IT-агентство',
@@ -151,24 +121,6 @@ export default function HeroDashboard({
           <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
             {subtitle}
           </p>
-
-          {/* Счётчики */}
-          <div className="flex flex-wrap gap-6 mb-10">
-            {counters.map((counter, i) => (
-              <motion.div
-                key={counter.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.15 }}
-                className="glass rounded-xl px-5 py-3 border border-direct-primary/10"
-              >
-                <div className="text-2xl md:text-3xl font-bold text-direct-primary">
-                  <AnimatedCounter target={counter.value} suffix={counter.suffix} />
-                </div>
-                <div className="text-xs text-gray-400 mt-1">{counter.label}</div>
-              </motion.div>
-            ))}
-          </div>
 
           {/* CTA кнопки — "дышащая" главная кнопка */}
           <div className="flex flex-wrap gap-4">
