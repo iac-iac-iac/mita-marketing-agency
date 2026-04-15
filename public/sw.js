@@ -1,40 +1,36 @@
 ﻿/**
- * Service Worker для М.И.Т.А. PWA
- * Кэширование ресурсов и offline режим
+ * Service Worker for M.I.T.A. PWA
+ * Resource caching and offline mode
  */
 
-const CACHE_NAME = 'М.И.Т.А.-v1';
+const CACHE_NAME = 'mita-v1';
 const STATIC_CACHE = 'static-v1';
 const DYNAMIC_CACHE = 'dynamic-v1';
 
-// Ресурсы для кэширования при установке
 const STATIC_ASSETS = [
   '/',
   '/offline',
   '/manifest.json',
-  '/images/icons/Favicon.ico',
 ];
 
-// Установка Service Worker
-self.addEventListener('install', (event: ExtendableEvent) => {
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => {
-      console.log('[SW] Кэширование статических ресурсов');
+    caches.open(STATIC_CACHE).then(function(cache) {
       return cache.addAll(STATIC_ASSETS);
     })
   );
   self.skipWaiting();
 });
 
-// Активация Service Worker
-self.addEventListener('activate', (event: ExtendableEvent) => {
+self.addEventListener('activate', function(event) {
   event.waitUntil(
-    caches.keys().then((keys) => {
+    caches.keys().then(function(keys) {
       return Promise.all(
         keys
-          .filter((key) => key !== STATIC_CACHE && key !== DYNAMIC_CACHE)
-          .map((key) => {
-            console.log('[SW] Удаление старого кэша:', key);
+          .filter(function(key) {
+            return key !== STATIC_CACHE && key !== DYNAMIC_CACHE;
+          })
+          .map(function(key) {
             return caches.delete(key);
           })
       );
@@ -43,54 +39,48 @@ self.addEventListener('activate', (event: ExtendableEvent) => {
   self.clients.claim();
 });
 
-// Перехват запросов
-self.addEventListener('fetch', (event: FetchEvent) => {
-  const { request } = event;
-  const url = new URL(request.url);
+self.addEventListener('fetch', function(event) {
+  var request = event.request;
+  var url = new URL(request.url);
 
-  // Только для same-origin запросов
   if (url.origin !== location.origin) {
     return;
   }
 
   event.respondWith(
-    caches.match(request).then((cachedResponse) => {
+    caches.match(request).then(function(cachedResponse) {
       if (cachedResponse) {
-        // Возвращаем из кэша
         return cachedResponse;
       }
 
-      // Загружаем из сети
-      return fetch(request).then((networkResponse) => {
-        // Кэшируем успешные ответы
+      return fetch(request).then(function(networkResponse) {
         if (networkResponse && networkResponse.status === 200) {
-          const responseClone = networkResponse.clone();
-          caches.open(DYNAMIC_CACHE).then((cache) => {
+          var responseClone = networkResponse.clone();
+          caches.open(DYNAMIC_CACHE).then(function(cache) {
             cache.put(request, responseClone);
           });
         }
         return networkResponse;
-      }).catch(() => {
-        // Offline: возвращаем offline страницу для навигации
+      }).catch(function() {
         if (request.mode === 'navigate') {
           return caches.match('/offline');
         }
-        // Для остальных ресурсов возвращаем пустой ответ
         return new Response('Offline', { status: 503 });
       });
     })
   );
 });
 
-// Обработка push-уведомлений
-self.addEventListener('push', (event: PushEvent) => {
-  const data = event.data?.json() ?? {};
-  const { title, body, icon } = data;
+self.addEventListener('push', function(event) {
+  var data = event.data ? event.data.json() : {};
+  var title = data.title || 'M.I.T.A.';
+  var body = data.body || '';
+  var icon = data.icon || '/images/icons/Favicon.ico';
 
   event.waitUntil(
     self.registration.showNotification(title, {
-      body,
-      icon,
+      body: body,
+      icon: icon,
       badge: '/images/icons/Favicon.ico',
       vibrate: [100, 50, 100],
       data: {
@@ -101,8 +91,7 @@ self.addEventListener('push', (event: PushEvent) => {
   );
 });
 
-// Обработка клика по уведомлению
-self.addEventListener('notificationclick', (event: ExtendableEvent) => {
+self.addEventListener('notificationclick', function(event) {
   event.waitUntil(
     self.clients.openWindow('/')
   );
