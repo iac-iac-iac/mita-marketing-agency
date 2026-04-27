@@ -1,36 +1,32 @@
 ﻿/**
  * Service Worker for M.I.T.A. PWA
- * Resource caching and offline mode
+ * Offline shell only: precache /, /offline, manifest. All other requests use the
+ * browser default (no interception) so Next.js RSC prefetch, images, and assets
+ * never hit the old cache-first + synthetic 503 path.
  */
 
-const CACHE_NAME = 'mita-v1';
-const STATIC_CACHE = 'static-v1';
-const DYNAMIC_CACHE = 'dynamic-v1';
+const STATIC_CACHE = 'static-v4';
 
-const STATIC_ASSETS = [
-  '/',
-  '/offline',
-  '/manifest.json',
-];
+const STATIC_ASSETS = ['/', '/offline', '/manifest.json'];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then(function(cache) {
+    caches.open(STATIC_CACHE).then(function (cache) {
       return cache.addAll(STATIC_ASSETS);
     })
   );
   self.skipWaiting();
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', function (event) {
   event.waitUntil(
-    caches.keys().then(function(keys) {
+    caches.keys().then(function (keys) {
       return Promise.all(
         keys
-          .filter(function(key) {
-            return key !== STATIC_CACHE && key !== DYNAMIC_CACHE;
+          .filter(function (key) {
+            return key !== STATIC_CACHE;
           })
-          .map(function(key) {
+          .map(function (key) {
             return caches.delete(key);
           })
       );
@@ -39,7 +35,7 @@ self.addEventListener('activate', function(event) {
   self.clients.claim();
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function (event) {
   var request = event.request;
   var url = new URL(request.url);
 
@@ -47,31 +43,18 @@ self.addEventListener('fetch', function(event) {
     return;
   }
 
-  event.respondWith(
-    caches.match(request).then(function(cachedResponse) {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+  if (request.mode !== 'navigate') {
+    return;
+  }
 
-      return fetch(request).then(function(networkResponse) {
-        if (networkResponse && networkResponse.status === 200) {
-          var responseClone = networkResponse.clone();
-          caches.open(DYNAMIC_CACHE).then(function(cache) {
-            cache.put(request, responseClone);
-          });
-        }
-        return networkResponse;
-      }).catch(function() {
-        if (request.mode === 'navigate') {
-          return caches.match('/offline');
-        }
-        return new Response('Offline', { status: 503 });
-      });
+  event.respondWith(
+    fetch(request).catch(function () {
+      return caches.match('/offline');
     })
   );
 });
 
-self.addEventListener('push', function(event) {
+self.addEventListener('push', function (event) {
   var data = event.data ? event.data.json() : {};
   var title = data.title || 'M.I.T.A.';
   var body = data.body || '';
@@ -91,8 +74,6 @@ self.addEventListener('push', function(event) {
   );
 });
 
-self.addEventListener('notificationclick', function(event) {
-  event.waitUntil(
-    self.clients.openWindow('/')
-  );
+self.addEventListener('notificationclick', function (event) {
+  event.waitUntil(self.clients.openWindow('/'));
 });
