@@ -19,11 +19,12 @@ Production: https://mita.top
 ## Features
 
 ### Content Management
-- Blog posts with MDX
-- Case studies
+- Blog and cases: **SQLite** (`data/mita.db` by default); body text is rendered with **next-mdx-remote** (MDX/Markdown from DB fields)
+- Static legal/security copy: MDX in `src/content/pages/`
+- Optional MDX samples in `src/content/blog/` and `src/content/cases/` (file-based helpers in `lib/cms/blog.ts` and `lib/cms/cases.ts` are not used for public routes)
 - Testimonials with per-service categories
 - Lead tracking
-- Admin panel at /admin
+- Admin panel at `/admin`
 
 ### Pages
 | Page | URL | Description |
@@ -97,67 +98,52 @@ cp .env.local.example .env.local
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top) | Yes |
-| ADMIN_PASSWORD | Admin panel password | Yes |
-| DATABASE_PATH | SQLite database file path | Yes |
+| NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top); also used for sitemap base | Yes |
+| BITRIX24_WEBHOOK_URL | Bitrix24 inbound webhook for leads | Yes |
+| ADMIN_PASSWORD or ADMIN_PASSWORD_HASH | Admin login at `/admin` | Yes for admin |
+| DATABASE_PATH | SQLite file path | No (defaults to `data/mita.db`) |
+
+See `.env.local.example` for the full list (analytics, SMTP, etc.).
 
 ## Project Structure
 
 ```
 company_site/
+├── public/                           # Static assets (images, manifest, robots.txt, sw.js)
+├── data/                             # SQLite database (gitignored by default)
 ├── src/
 │   ├── app/                          # Next.js App Router
-│   │   ├── (main)/services/          # Service landing pages
+│   │   ├── (main)/services/          # /services hub + service landings
+│   │   │   ├── page.tsx
 │   │   │   ├── leadgen/
 │   │   │   ├── call-center/
 │   │   │   ├── avito/
 │   │   │   └── recruiting/
-│   │   ├── admin/                    # Admin panel
-│   │   │   ├── blog/
-│   │   │   ├── cases/
-│   │   │   └── testimonials/
+│   │   ├── admin/                    # Admin (blog, cases, testimonials)
 │   │   ├── api/
-│   │   │   ├── submit-lead/          # Lead submission API
-│   │   │   └── admin/                # Admin API routes
-│   │   ├── blog/
-│   │   ├── cases/
-│   │   ├── career/                   # Career page
-│   │   ├── contact/
-│   │   ├── legal/
-│   │   ├── security/
-│   │   ├── about/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx                  # Home page
-│   │   ├── error.tsx
-│   │   └── loading.tsx
+│   │   │   ├── submit-lead/
+│   │   │   └── admin/                # login, logout
+│   │   ├── about/, blog/, cases/, career/, contact/, legal/, offline/, security/
+│   │   ├── layout.tsx, page.tsx      # Root layout + home
+│   │   ├── not-found.tsx, error.tsx, sitemap.ts
+│   │   └── ...
 │   ├── components/
-│   │   ├── layout/                   # Header, Footer
-│   │   ├── blocks/                   # Page sections (Hero, Stats, etc.)
-│   │   ├── forms/                    # ContactForm, LeadForm
-│   │   ├── ui/                       # Buttons, widgets
-│   │   └── contact/
-│   ├── content/                      # MDX content
-│   │   ├── blog/
-│   │   ├── cases/
-│   │   └── pages/
+│   │   ├── layout/, blocks/, blog/, cases/, forms/, ui/, contact/, legal/, security/
+│   ├── content/                      # MDX (pages/ + sample blog/ & cases/)
 │   ├── lib/
-│   │   ├── cms/                      # CMS functions (blog, cases, testimonials)
-│   │   ├── db/                       # SQLite setup and schema
-│   │   ├── hooks/                    # Custom React hooks
-│   │   ├── analytics/                # Event tracking
-│   │   ├── seo/                      # Schema.org markup
-│   │   └── utils/                    # Utilities (cn, env, sanitize)
-│   ├── public/                       # Static files
+│   │   ├── cms/                      # db-blog, db-cases, db-testimonials, db-leads, storage, utils
+│   │   ├── db/                       # SQLite client + schema
+│   │   ├── analytics/, hooks/, seo/, utils/
+│   │   └── navigation.ts
+│   ├── middleware.ts
 │   ├── styles/
 │   └── types/
-├── data/                             # SQLite database (gitignored)
-├── docs/                             # Project documentation
-├── scripts/                          # Build scripts
-├── .github/                          # GitHub Actions
+├── docs/
+├── scripts/
+├── .github/
+├── eslint.config.js, tailwind.config.js, postcss.config.cjs, tsconfig.json, package.json
 ├── .env.local.example
-├── next.config.mjs
-├── package.json
-└── tsconfig.json
+└── (optional) next.config.mjs / next.config.js — if absent, Next.js defaults apply
 ```
 
 ## Design System
@@ -187,7 +173,7 @@ company_site/
 
 ## CMS Architecture
 
-Content is stored in SQLite (data/mita.db) with four tables:
+Published blog posts and cases are read from **SQLite** (default path `data/mita.db`) and rendered on the server with **MDX Remote**. The sitemap uses the same published rows so URLs stay in sync with `/blog` and `/cases`.
 
 | Table | Purpose |
 |-------|---------|

@@ -2,15 +2,14 @@
 import Footer from '@/components/layout/Footer'
 import HeroDashboard from '@/components/blocks/HeroDashboard'
 import StatsBanner from '@/components/blocks/StatsBanner'
-import WhyChooseUs from '@/components/blocks/WhyChooseUs'
-import Accreditations from '@/components/blocks/Accreditations'
+import WhyAccreditationsSplit from '@/components/blocks/WhyAccreditationsSplit'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
 import BlogPreview from '@/components/blocks/BlogPreview'
 import CasePreview from '@/components/blocks/CasePreview'
-import ClosingCta from '@/components/blocks/ClosingCta'
 import ServicesSection, { defaultServices } from '@/components/blocks/ServicesSection'
-import WorkProcessSection, { defaultWorkProcess } from '@/components/blocks/WorkProcessSection'
+import ProcessTimelineSection from '@/components/blocks/ProcessTimelineSection'
+import { defaultWorkProcess } from '@/components/blocks/WorkProcessSection'
 import ServicesCalculator from '@/components/blocks/ServicesCalculator'
 import ChatWidget from '@/components/ui/ChatWidget'
 import { getPublishedPosts } from '@/lib/cms/db-blog'
@@ -55,6 +54,9 @@ export default function HomePage() {
           primaryCtaUrl="/contact"
           secondaryCtaLabel="Узнать больше"
           secondaryCtaUrl="#services"
+          videoOverlayClassName="bg-gradient-to-br from-[#0D0D0D]/80 via-[#0D0D0D]/55 to-[#0D0D0D]/80"
+          bottomSectionFadeClassName="from-[#0D0D0D]"
+          subtitleClassName="text-xl md:text-2xl text-white/60 mb-8 leading-relaxed"
         />
 
         {/* Услуги */}
@@ -63,17 +65,13 @@ export default function HomePage() {
         {/* Результаты в цифрах */}
         <StatsBanner />
 
-        {/* Процесс работы */}
-        <WorkProcessSection steps={defaultWorkProcess} />
+        {/* Процесс работы — таймлайн как на превью */}
+        <ProcessTimelineSection steps={defaultWorkProcess} />
 
-        {/* Почему выбирают нас */}
-        <WhyChooseUs />
+        <WhyAccreditationsSplit />
 
         {/* Калькулятор (временно отключён) */}
         {/* <ServicesCalculator /> */}
-
-        {/* Аккредитация */}
-        <Accreditations />
 
         {/* Проблема */}
         <ProblemStatement
@@ -116,13 +114,6 @@ export default function HomePage() {
           />
         )}
 
-        {/* CTA */}
-        <ClosingCta
-          title="Готовы к росту?"
-          description="Оставьте заявку и мы свяжемся с вами в ближайшее время"
-          primaryCtaLabel="Оставить заявку"
-          primaryCtaUrl="/contact"
-        />
       </main>
 
       <Footer />

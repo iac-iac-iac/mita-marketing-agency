@@ -1,5 +1,7 @@
 ﻿# План реализации системы сайтов М.И.Т.А.
 
+> **Актуально на апрель 2026:** основной функционал реализован в репозитории сайта (`src/app/`, CMS на SQLite, админка). Этот файл — продуктовая спецификация и исторический план; чеклисты этапов в части 2 не отражают текущее состояние кода. Актуальная структура и стек — в корневых `README.md` и `QWEN.md`.
+
 ## Часть 1 — Архитектура и маршруты
 
 ### 1.1. Обзор системы
@@ -35,7 +37,11 @@
 | **Контакты** | `/contact` | Статичная | Форма связи и реквизиты |
 | **Условия (Terms)** | `/legal/terms` | Статичная | Условия оказания услуг |
 | **Конфиденциальность** | `/legal/privacy` | Статичная | Политика конфиденциальности |
-| **404** | `/404` | Системная | Страница ошибки |
+| **О компании** | `/about` | Статичная | Команда, таймлайн |
+| **Карьера** | `/career` | Статичная | Вакансии |
+| **Услуги (хаб)** | `/services` | Лендинг | Обзор направлений |
+| **Offline (PWA)** | `/offline` | Системная | Страница офлайн |
+| **404** | обработчик `not-found` (App Router) | Системная | Кастомная страница «не найдено» |
 
 ---
 
@@ -486,141 +492,24 @@ await mcp.email.send({
 
 ---
 
-### 3.2. Структура проекта (высокоуровневая)
+### 3.2. Структура проекта (актуальный ориентир)
 
-```
-company_site/
-├── app/                          # Next.js App Router
-│   ├── (main)/                   # Основная layout-группа
-│   │   ├── page.tsx              # Главная страница
-│   │   ├── services/
-│   │   │   ├── leadgen/
-│   │   │   │   └── page.tsx      # Лендинг Лидогенерации
-│   │   │   ├── call-center/
-│   │   │   │   └── page.tsx      # Лендинг Call-центра
-│   │   │   ├── avito/
-│   │   │   │   └── page.tsx      # Лендинг Авито
-│   │   │   └── recruiting/
-│   │   │       └── page.tsx      # Лендинг Рекрутинга
-│   │   ├── cases/
-│   │   │   ├── page.tsx          # Индекс кейсов
-│   │   │   └── [slug]/
-│   │   │       └── page.tsx      # Детальная страница кейса
-│   │   ├── blog/
-│   │   │   ├── page.tsx          # Индекс блога
-│   │   │   └── [slug]/
-│   │   │       └── page.tsx      # Детальная страница статьи
-│   │   ├── security/
-│   │   │   └── page.tsx          # Страница безопасности
-│   │   ├── contact/
-│   │   │   └── page.tsx          # Страница контактов
-│   │   └── legal/
-│   │       ├── terms/
-│   │       │   └── page.tsx      # Условия оказания услуг
-│   │       └── privacy/
-│   │           └── page.tsx      # Политика конфиденциальности
-│   ├── layout.tsx                # Root layout
-│   └── not-found.tsx             # 404 страница
-│
-├── components/
-│   ├── layout/
-│   │   ├── Layout.tsx            # Базовая обёртка
-│   │   ├── Header.tsx            # Header с dropdown
-│   │   ├── Footer.tsx            # Footer с колонками
-│   │   └── Section.tsx           # Контейнер секции
-│   ├── blocks/
-│   │   ├── Hero.tsx
-│   │   ├── ProblemStatement.tsx
-│   │   ├── FeatureGroup.tsx
-│   │   ├── ProcessSteps.tsx
-│   │   ├── TestimonialsSection.tsx
-│   │   ├── PricingSection.tsx
-│   │   ├── PlanFeaturesMatrix.tsx
-│   │   ├── BlogPreview.tsx
-│   │   ├── CasePreview.tsx
-│   │   └── ClosingCta.tsx
-│   ├── cards/
-│   │   ├── FeatureCard.tsx
-│   │   ├── TestimonialCard.tsx
-│   │   ├── PricingCard.tsx
-│   │   ├── BlogCard.tsx
-│   │   └── CaseCard.tsx
-│   ├── forms/
-│   │   ├── ContactForm.tsx
-│   │   ├── LeadForm.tsx          # Универсальная форма лида
-│   │   └── Modal.tsx
-│   ├── ui/
-│   │   ├── CtaButton.tsx
-│   │   ├── TextLinkCta.tsx
-│   │   ├── DropdownMenu.tsx
-│   │   ├── FaqSection.tsx
-│   │   ├── StatsBlock.tsx
-│   │   └── ToolsList.tsx
-│   └── cms/
-│       ├── BlogIndex.tsx
-│       ├── BlogPostLayout.tsx
-│       ├── CasesIndex.tsx
-│       ├── CaseDetailLayout.tsx
-│       ├── SecurityPageLayout.tsx
-│       └── LegalPageLayout.tsx
-│
-├── content/
-│   ├── blog/
-│   │   ├── _index.mdx            # Мета-данные блога
-│   │   ├── leadgen-guide.mdx
-│   │   └── ...                   # Статьи блога
-│   ├── cases/
-│   │   ├── _index.mdx            # Мета-данные кейсов
-│   │   ├── autoschool-case.mdx
-│   │   └── ...                   # Кейсы
-│   └── pages/
-│       ├── security.mdx          # Контент страницы безопасности
-│       ├── terms.mdx             # Условия
-│       └── privacy.mdx           # Конфиденциальность
-│
-├── lib/
-│   ├── api/
-│   │   ├── crm.ts                # Bitrix24 API client
-│   │   ├── analytics.ts          # Аналитика events
-│   │   └── forms.ts              # Обработка форм
-│   ├── cms/
-│   │   ├── blog.ts               # Функции для блога
-│   │   └── cases.ts              # Функции для кейсов
-│   ├── utils/
-│   │   ├── cn.ts                 # className utility
-│   │   └── format.ts             # Форматирование данных
-│   └── config/
-│       ├── navigation.ts         # Конфигурация меню
-│       ├── services.ts           # Конфигуание услуг
-│       └── site.ts               # Общие настройки сайта
-│
-├── public/
-│   ├── images/
-│   │   ├── hero/
-│   │   ├── services/
-│   │   ├── cases/
-│   │   └── blog/
-│   ├── icons/
-│   │   └── ...                   # SVG иконки
-│   └── files/
-│       └── ...                   # PDF, презентации
-│
-├── styles/
-│   └── globals.css               # Глобальные стили + Tailwind
-│
-├── types/
-│   ├── blog.ts                   # TypeScript типы для блога
-│   ├── cases.ts                  # Типы для кейсов
-│   ├── forms.ts                  # Типы для форм
-│   └── services.ts               # Типы для услуг
-│
-├── .env.local                    # Переменные окружения
-├── next.config.js
-├── tailwind.config.js
-├── tsconfig.json
-├── package.json
-└── README.md
-```
+Репозиторий сайта: каталог **`src/`** (App Router), **`public/`** (статика в корне, не внутри `src/`), **`data/`** (SQLite, по умолчанию `mita.db`).
+
+| Область | Назначение |
+|---------|------------|
+| `src/app/` | Маршруты: `page.tsx` (главная), `(main)/services/`, `about/`, `blog/`, `cases/`, `career/`, `contact/`, `legal/`, `security/`, `offline/`, `admin/`, `api/`, `sitemap.ts`, `not-found.tsx` |
+| `src/components/` | `layout/`, `blocks/`, `blog/`, `cases/`, `forms/`, `ui/`, `contact/`, `legal/`, `security/` |
+| `src/lib/cms/` | Доступ к контенту: **`db-blog.ts`**, **`db-cases.ts`**, **`db-testimonials.ts`**, **`db-leads.ts`**, плюс утилиты и наследие **`blog.ts`** / **`cases.ts`** (чтение MDX с диска) |
+| `src/lib/db/` | Подключение SQLite и схема |
+| `src/content/` | MDX: в первую очередь `pages/`; примеры в `blog/` и `cases/` |
+| `src/middleware.ts` | Промежуточная логика при необходимости |
+
+Конфигурация в корне: `package.json`, `tsconfig.json`, `tailwind.config.js`, `eslint.config.js`, `postcss.config.cjs`. Файл **`next.config.*`** может отсутствовать — тогда действуют настройки Next.js по умолчанию.
+
+Подробное дерево — в **`README.md`** / **`QWEN.md`**.
+
+**CMS:** опубликованный блог и кейсы на сайте и в `sitemap` идут из **одной SQLite**; тело материала рендерится через **next-mdx-remote**.
 
 ---
 

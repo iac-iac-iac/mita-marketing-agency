@@ -1,6 +1,7 @@
 ﻿import Header from '@/components/layout/Header'
 import TeamCarousel from '@/components/ui/TeamCarousel'
 import CompanyTimeline from '@/components/blocks/CompanyTimeline'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -73,6 +74,27 @@ export default function AboutPage() {
 
       {/* Таймлайн истории компании */}
       <CompanyTimeline />
+
+      {/* Сертификат */}
+      <section className="py-16 md:py-24 relative">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Наши документы</h2>
+            <div className="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl">
+              <Image
+                src="/images/about/certificate-direct-line.png"
+                alt="Сертификат ООО МИТА ДИРЕКТ-ЛАЙН"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            <p className="text-gray-300 mt-6 text-lg">
+              Работаем официально — ООО «МИТА ДИРЕКТ-ЛАЙН»
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

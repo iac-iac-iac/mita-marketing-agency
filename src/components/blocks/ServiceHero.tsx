@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import CtaButton from '@/components/ui/CtaButton'
+import { mitaCtaGradient } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 export interface ServiceHeroProps {
   eyebrow: string;
@@ -37,16 +38,13 @@ export default function ServiceHero({
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
             poster={videoPoster}
           >
             <source src={mediaSrc} type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
-          {/* Лёгкий градиент поверх видео */}
-          <div className="absolute inset-0 bg-gradient-to-br from-direct-dark/50 via-transparent to-transparent" />
-          {/* 30% затемнение */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D0D0D]/80 via-[#0D0D0D]/55 to-[#0D0D0D]/80" />
         </div>
       )}
 
@@ -60,12 +58,8 @@ export default function ServiceHero({
             priority
             sizes="100vw"
           />
-          {/* Лёгкий градиент поверх изображения */}
-          <div className="absolute inset-0 bg-gradient-to-br from-direct-dark/50 via-transparent to-transparent" />
-          {/* 30% затемнение */}
-          <div className="absolute inset-0 bg-black/30" />
-          {/* Нижний градиент для плавного перехода */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-direct-dark to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D0D0D]/80 via-[#0D0D0D]/55 to-[#0D0D0D]/80" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
         </div>
       )}
 
@@ -74,7 +68,7 @@ export default function ServiceHero({
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-direct-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
 
       {/* Нижнее затемнение для плавного перехода */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-direct-dark to-transparent z-10 pointer-events-none" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-48 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl animate-fade-in">
@@ -89,16 +83,15 @@ export default function ServiceHero({
           </h1>
 
           {/* Подзаголовок */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+          <p className="mb-8 text-xl leading-relaxed text-white/60 md:text-2xl">
             {subtitle}
           </p>
 
-          {/* CTA кнопки */}
           <div className="flex flex-wrap gap-4">
             <CtaButton
-              variant="primary"
-              size="lg"
               href={primaryCtaUrl}
+              size="lg"
+              className={cn(mitaCtaGradient, 'hover:!opacity-90')}
             >
               {primaryCtaLabel}
             </CtaButton>
@@ -108,6 +101,7 @@ export default function ServiceHero({
                 variant="secondary"
                 size="lg"
                 href={secondaryCtaUrl}
+                className="!border !border-white/12 !bg-white/[0.06] !from-transparent !to-transparent !text-white/90 !shadow-none hover:!bg-white/10"
               >
                 {secondaryCtaLabel}
               </CtaButton>

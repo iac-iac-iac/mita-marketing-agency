@@ -2,6 +2,13 @@
 
 Все изменения в проекте М.И.Т.А.
 
+## [1.2.1] - 2026-04-27
+
+### Документация и SEO
+
+- Актуализированы `README.md`, `QWEN.md`, `docs/plan/implementation-plan.md`, `docs/about_company/tech-stack.md` под фактическую структуру `src/`, CMS на SQLite и переменные окружения.
+- `src/app/sitemap.ts`: URL блога и кейсов строятся из опубликованных записей в БД (как публичные страницы); базовый URL берётся из `NEXT_PUBLIC_SITE_URL` (fallback `https://mita.top`); добавлены маршруты `/about`, `/career`, `/services`, `/offline`.
+
 ## [1.2.0] - 2026-04-09
 
 ### 🧹 Очистка проекта

@@ -3,19 +3,27 @@
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
 import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import { motion } from 'framer-motion'
+import { mitaGoldText } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 export interface TestimonialsSectionProps {
-  title: string;
-  intro?: string; // Опционально — для главной страницы
+  title: string
+  intro?: string
   items: {
-    name: string;
-    role: string;
-    company: string;
-    quote: string;
-  }[];
-  layout?: 'default' | 'wide'; // default = 2 колонки, wide = 3 колонки
+    name: string
+    role: string
+    company: string
+    quote: string
+  }[]
+  layout?: 'default' | 'wide'
 }
 
+const cardClass =
+  'rounded-2xl border border-[#D4A84B]/20 bg-white/[0.05] backdrop-blur-[10px] p-5 shadow-lg transition duration-300 hover:border-[#D4A84B]/40 hover:shadow-[0_0_15px_rgba(212,168,75,0.15)]'
+
+/**
+ * Сетка и карточки как в превью (Why/Accred): 2 колонки, иконка, подпись с border-b
+ */
 export default function TestimonialsSection({
   title,
   intro,
@@ -26,67 +34,60 @@ export default function TestimonialsSection({
   const { setRef } = useScrollRevealMulti<HTMLDivElement>(items.length)
 
   return (
-    <section className="py-20 md:py-28 relative">
-      {/* Фоновый градиент */}
-      <div className="absolute inset-0 bg-gradient-to-b from-direct-dark via-direct-primary/20 to-direct-dark" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Заголовок и вступление */}
+    <section className="py-16 md:py-24">
+      <div className="container relative z-10 mx-auto px-4">
         <div ref={titleRef} className="scroll-reveal">
           {intro ? (
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <div className="mb-8 text-center">
+              <h2
+                className={cn(
+                  mitaGoldText,
+                  'mb-4 text-2xl font-bold md:mb-6 md:text-3xl lg:text-4xl'
+                )}
+              >
                 {title}
               </h2>
-              <p className="text-xl text-gray-300">
-                {intro}
-              </p>
+              <p className="text-sm text-white/60 md:text-base">{intro}</p>
             </div>
           ) : (
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">
+            <h2
+              className={cn(
+                mitaGoldText,
+                'mb-8 text-center text-2xl font-bold md:mb-10 md:text-3xl lg:text-4xl'
+              )}
+            >
               {title}
             </h2>
           )}
         </div>
 
-        {/* Карточки отзывов */}
-        <div className={`grid gap-6 ${
-          layout === 'wide' 
-            ? 'md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto' 
-            : 'md:grid-cols-2 max-w-4xl mx-auto'
-        }`}>
+        <div
+          className={cn(
+            'grid grid-cols-1 gap-4 sm:grid-cols-2',
+            layout === 'wide' ? 'mx-auto max-w-6xl lg:grid-cols-3' : 'mx-auto max-w-5xl'
+          )}
+        >
           {items.map((item, index) => (
             <motion.div
               key={index}
               ref={setRef(index)}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass p-8 rounded-3xl transition-all duration-700 scroll-reveal hover:bg-white/10"
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
+              className={cn(cardClass, 'scroll-reveal')}
             >
-              {/* Цитата */}
-              <div className="mb-6">
-                <svg className="w-10 h-10 text-direct-primary/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <div className="mb-3 text-[#D4A84B]" aria-hidden>
+                <svg className="h-8 w-8 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-5.999c0-3.228 2.228-5.999 5.999-5.999 1.666 0 3.001 1.334 3.001 3.001 0 1.665-1.335 2.999-3.001 2.999v-2.999c-1.665 0-2.999 1.334-2.999 2.999v5.999h-3zm-11.017 0v-5.999c0-3.228 2.228-5.999 5.999-5.999 1.666 0 3.001 1.334 3.001 3.001 0 1.665-1.335 2.999-3.001 2.999v-2.999c-1.665 0-2.999 1.334-2.999 2.999v5.999h-3z" />
                 </svg>
-                <p className="text-gray-200 leading-relaxed italic">
-                  "{item.quote}"
-                </p>
               </div>
-
-              {/* Автор */}
-              <div className="border-t border-white/10 pt-4">
-                <p className="font-semibold text-white mb-1">
-                  {item.name}
-                </p>
-                <p className="text-sm text-direct-primary">
-                  {item.role}
-                </p>
-                <p className="text-sm text-gray-400">
-                  {item.company}
-                </p>
-              </div>
+              <p className="mb-3 text-sm leading-relaxed text-white/60 md:text-base">{item.quote}</p>
+              <h3 className="mb-2 border-b border-white/[0.08] pb-2 text-base font-semibold text-[#D4A84B]">
+                {item.name}
+              </h3>
+              <p className="text-sm text-white/60">{item.role}</p>
+              <p className="text-sm text-white/45">{item.company}</p>
             </motion.div>
           ))}
         </div>

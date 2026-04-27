@@ -19,7 +19,7 @@ describe('AnalyticsDashboard Component', () => {
     },
     {
       label: 'CPL',
-      value: 450,
+      value: 1480,
       suffix: '₽',
       description: 'Стоимость лида',
       trend: 'down',

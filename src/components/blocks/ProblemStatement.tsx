@@ -1,6 +1,8 @@
 'use client'
 
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { mitaGoldText } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 export interface ProblemStatementProps {
   title: string;
@@ -20,34 +22,38 @@ export default function ProblemStatement({
   const listRef = useScrollReveal()
 
   return (
-    <section className="py-20 md:py-28 relative">
-      {/* Фоновый градиент */}
-      <div className="absolute inset-0 bg-gradient-to-b from-direct-dark via-direct-secondary/50 to-direct-dark" />
+    <section className="relative py-20 md:py-28">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D] via-[#0D0D0D] to-[#0D0D0D]/95" />
 
       <div className={`container mx-auto ${fullBleed ? 'px-0' : 'px-4'} relative z-10`}>
         <div className="max-w-4xl mx-auto">
           {/* H2 заголовок */}
           <div ref={titleRef} className="scroll-reveal">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
+            <h2
+              className={cn(
+                mitaGoldText,
+                'mb-8 text-center text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl'
+              )}
+            >
               {title}
             </h2>
           </div>
 
           {/* Описание проблемы */}
           <div ref={descRef} className="scroll-reveal scroll-reveal-delay-1">
-            <p className="text-xl text-gray-300 text-center mb-12 leading-relaxed">
+            <p className="mb-12 text-center text-xl leading-relaxed text-white/60">
               {description}
             </p>
           </div>
 
           {/* Список болей */}
           <div ref={listRef} className="scroll-reveal scroll-reveal-delay-2">
-            <div className="glass p-8 md:p-10 rounded-3xl">
+            <div className="glass rounded-3xl border border-white/8 p-8 md:p-10">
               <ul className="space-y-4">
                 {painPoints.map((point, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-4 text-lg text-gray-200 transition-all duration-500 hover:bg-white/5 hover:rounded-lg hover:p-2 -m-2 p-2"
+                    className="-m-2 flex items-start gap-4 p-2 text-lg text-white/80 transition-all duration-500 hover:rounded-lg hover:bg-white/5"
                   >
                     {/* Иконка крестика */}
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mt-0.5">

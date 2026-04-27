@@ -58,9 +58,9 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
               animate={{ x: 0 }}
               exit={{ x: -320 }}
               transition={{ type: 'tween', duration: 0.35, ease: 'easeOut' }}
-              className="fixed top-0 left-0 z-50 h-full w-80 glass glass-strong p-6 overflow-y-auto"
+              className="fixed left-0 top-0 z-50 h-full w-80 overflow-y-auto border-r border-white/10 bg-[#0D0D0D]/95 p-6 shadow-2xl backdrop-blur-md"
             >
-              <div className="flex flex-col gap-2 mt-20">
+              <div className="mt-20 flex flex-col gap-2">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.url}
@@ -70,7 +70,7 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
                   >
                     <Link
                       href={item.url}
-                      className="px-4 py-3 text-lg text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors duration-200"
+                      className="rounded-xl px-4 py-3 text-lg text-white/70 transition-colors duration-200 hover:bg-[#D4A84B]/10 hover:text-white"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -80,9 +80,7 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
 
                 <div className="my-4 border-t border-white/10" />
 
-                <span className="text-gray-400 text-sm uppercase tracking-wider px-4 mb-2">
-                  Услуги
-                </span>
+                <span className="mb-2 px-4 text-xs font-medium uppercase tracking-wider text-white/45">Услуги</span>
                 {servicesItems.map((item, index) => (
                   <motion.div
                     key={item.url}
@@ -92,7 +90,7 @@ export default function Header({ showBackButton = false, showHamburgerMenu = fal
                   >
                     <Link
                       href={item.url}
-                      className="px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors duration-200"
+                      className="rounded-xl px-4 py-3 text-lg text-white/60 transition-colors duration-200 hover:bg-[#D4A84B]/10 hover:text-white"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}

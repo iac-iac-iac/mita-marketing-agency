@@ -12,7 +12,7 @@ export default function BackButton() {
       onClick={handleBack}
       whileHover={{ scale: 1.05, x: -4 }}
       whileTap={{ scale: 0.95 }}
-      className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass hover:bg-white/15 transition-colors duration-300 text-gray-300 hover:text-white"
+      className="inline-flex items-center gap-2 rounded-full border border-white/10 glass px-4 py-2 text-white/70 transition-colors duration-300 hover:bg-white/10 hover:text-white"
       aria-label="Вернуться назад"
     >
       <svg

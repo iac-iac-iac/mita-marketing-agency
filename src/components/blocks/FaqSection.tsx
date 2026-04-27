@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { mitaGoldText } from '@/lib/mita-landing-styles';
+import { cn } from '@/lib/utils/cn';
 
 interface FaqItem {
   question: string;
@@ -46,14 +48,19 @@ export default function FaqSection({ items, title, subtitle }: FaqSectionProps) 
   };
 
   return (
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        {/* Заголовок */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+    <section className="relative py-20 md:py-28">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D] via-[#0D0D0D] to-[#0D0D0D]" />
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="mb-16 text-center">
+          <h2
+            className={cn(
+              mitaGoldText,
+              'mb-6 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl'
+            )}
+          >
             {title || 'Часто задаваемые вопросы'}
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-xl text-white/60">
             {subtitle || 'Ответы на популярные вопросы о наших услугах и процессе работы'}
           </p>
         </div>
@@ -67,18 +74,18 @@ export default function FaqSection({ items, title, subtitle }: FaqSectionProps) 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass rounded-2xl overflow-hidden"
+              className="glass overflow-hidden rounded-2xl border border-white/8"
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-white/5"
                 aria-expanded={openIndex === index}
               >
-                <span className="text-lg font-semibold text-white pr-4">
+                <span className="pr-4 text-lg font-semibold text-white">
                   {faq.question}
                 </span>
                 <svg
-                  className={`w-6 h-6 text-direct-primary flex-shrink-0 transition-transform duration-300 ${
+                  className={`h-6 w-6 flex-shrink-0 text-[#D4A84B] transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                   fill="none"
@@ -97,7 +104,7 @@ export default function FaqSection({ items, title, subtitle }: FaqSectionProps) 
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 pb-5 text-gray-300 leading-relaxed">
+                    <div className="px-6 pb-5 leading-relaxed text-white/60">
                       {faq.answer}
                     </div>
                   </motion.div>

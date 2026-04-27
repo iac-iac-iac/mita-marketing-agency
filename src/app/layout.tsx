@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
+import CookieBanner from '@/components/ui/CookieBanner'
 // Используем системные шрифты (без загрузки из Google Fonts)
 const fontClassName = 'font-sans'
 
@@ -71,6 +72,7 @@ export default function RootLayout({
         {children}
         <ScrollToTopButton />
         <PWAInstallPrompt />
+        <CookieBanner />
       </body>
     </html>
   )

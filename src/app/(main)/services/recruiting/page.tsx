@@ -1,6 +1,5 @@
 ﻿import ServiceHero from '@/components/blocks/ServiceHero'
 import ProblemStatement from '@/components/blocks/ProblemStatement'
-import ServiceFeatures from '@/components/blocks/ServiceFeatures'
 import ServiceProcess from '@/components/blocks/ServiceProcess'
 import TestimonialsSection from '@/components/blocks/TestimonialsSection'
 import { getAllTestimonials } from '@/lib/cms/db-testimonials'
@@ -151,17 +150,18 @@ export default function RecruitingPage() {
           guarantees={[
             {
               title: 'Замена кандидата',
-              description: 'Если кандидат не прошёл испытательный срок, найдём замену бесплатно в течение 14 дней',
+              description:
+                'Если кандидат не подходит по согласованным ранее критериям, то мы заменяем его',
               color: 'blue',
             },
             {
               title: 'Возврат денег',
-              description: 'Если не закроем вакансию в срок, вернём 100% предоплаты без вопросов',
+              description: 'Если мы не предоставим 10 кандидатов, вернём 100% предоплаты без вопросов',
               color: 'green',
             },
             {
               title: 'Соблюдение сроков',
-              description: 'Гарантируем передачу кандидатов точно в оговоренные даты по договору',
+              description: 'Гарантируем передачу целевых кандидатов',
               color: 'purple',
             },
           ]}
@@ -177,33 +177,6 @@ export default function RecruitingPage() {
             "Нет системы — хаотичный поиск без результата",
             "HR не справляются с массовым подбором",
             "Кандидаты не выходят на работу после собеседования",
-          ]}
-        />
-
-        {/* Фичи услуги */}
-        <ServiceFeatures
-          title="Как мы решаем проблемы"
-          features={[
-          {
-          name: "Массовый обзвон",
-          description: "Call-центр делает сотни звонков потенциальным кандидатам. Быстрый охват большой аудитории",
-          },
-          {
-            name: "Тестовые задания",
-          description: "Проверка навыков кандидатов перед передачей клиенту. Только квалифицированные специалисты",
-          },
-          {
-            name: "Адаптация",
-            description: "Сопровождение новых сотрудников на испытательном сроке. Снижение текучести",
-          },
-          {
-          name: "Составление сценария",
-            description: "Разработка скриптов для обзвона кандидатов. Адаптация под конкретную вакансию",
-          },
-          {
-          name: "Интеграция с CRM",
-          description: "Все кандидаты вносятся в Битрикс24. Прозрачная статистика и отчётность",
-          },
           ]}
         />
 
@@ -341,7 +314,8 @@ export default function RecruitingPage() {
             },
             {
               question: "Что если кандидат не выйдет на работу?",
-              answer: "Мы передаём вам базу отобранных кандидатов, которые согласились на вакансию. Дальнейшее трудоустройство — ваша зона ответственности. При заказе тарифа Премиум возможна гарантия замены.",
+              answer:
+                "Мы передаём вам базу отобранных кандидатов, которые согласились на вакансию. Дальнейшее трудоустройство — ваша зона ответственности.",
             },
             {
               question: "Как происходит оплата?",

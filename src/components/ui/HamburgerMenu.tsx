@@ -9,7 +9,7 @@ export default function HamburgerMenu({ onClick, isOpen = false }: { onClick?: (
       whileTap={{ scale: 0.9 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.2 }}
-      className="w-10 h-10 rounded-full glass hover:bg-white/15 transition-colors duration-300 flex items-center justify-center"
+      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 glass transition-colors duration-300 hover:border-[#D4A84B]/30 hover:bg-white/10"
       aria-label="Меню"
     >
       <div className="w-5 h-5 flex flex-col justify-center items-center gap-1.5">

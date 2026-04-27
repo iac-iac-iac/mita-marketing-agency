@@ -20,7 +20,7 @@
 | **Language** | TypeScript 5 |
 | **Styling** | Tailwind CSS 3 + кастомные стили |
 | **UI/Animations** | React 18 + Framer Motion |
-| **CMS** | MDX (next-mdx-remote) |
+| **CMS** | SQLite (better-sqlite3) + рендер тел статей/кейсов через **next-mdx-remote** |
 | **Forms** | React Hook Form + Zod |
 | **Package Manager** | npm |
 
@@ -28,82 +28,29 @@
 
 ```
 company_site/
+├── public/                         # Статика: images/, manifest, robots.txt, sw.js
+├── data/                           # SQLite (gitignore), по умолчанию mita.db
 ├── src/
-│   ├── app/                        # Next.js App Router
-│   │   ├── (main)/                 # Основная группа маршрутов
-│   │   │   ├── services/           # Лендинги услуг
-│   │   │   │   ├── leadgen/        # Лидогенерация
-│   │   │   │   ├── call-center/    # Call-центр
-│   │   │   │   ├── avito/          # Продвижение на Авито
-│   │   │   │   └── recruiting/     # Рекрутинг
-│   │   │   ├── blog/               # Блог (список + [slug])
-│   │   │   ├── cases/              # Кейсы (список + [slug])
-│   │   │   ├── security/           # Безопасность данных
-│   │   │   ├── legal/              # Юридические страницы
-│   │   │   │   ├── terms/          # Условия оказания услуг
-│   │   │   │   └── privacy/        # Политика конфиденциальности
-│   │   │   └── contact/            # Контакты
-│   │   ├── about/                  # О компании + команда
-│   │   ├── admin/                  # Админ-панель
-│   │   │   ├── login/              # Вход в админку
-│   │   │   ├── blog/               # Управление блогом
-│   │   │   └── cases/              # Управление кейсами
-│   │   ├── api/
-│   │   │   ├── submit-lead/        # API отправки заявок
-│   │   │   └── admin/              # API админки
-│   │   ├── offline/                # Offline страница (PWA)
-│   │   ├── layout.tsx              # Root layout
-│   │   ├── not-found.tsx           # 404 страница (с фоном)
-│   │   └── sitemap.ts              # Генерация sitemap.xml
-│   │
+│   ├── app/
+│   │   ├── (main)/services/        # /services и лендинги услуг
+│   │   ├── about/, blog/, cases/, career/, contact/, legal/, offline/, security/
+│   │   ├── admin/                  # login, blog, cases, testimonials
+│   │   ├── api/submit-lead/, api/admin/   # login, logout
+│   │   ├── layout.tsx, page.tsx, not-found.tsx, error.tsx, sitemap.ts
+│   │   └── ...
 │   ├── components/
-│   │   ├── layout/                 # Header, Footer, Section, MainHeader
-│   │   ├── blocks/                 # Hero, Features, Pricing, Steps, Calculator
-│   │   ├── blog/                   # BlogCard, BlogPostLayout, BlogIndex
-│   │   ├── cases/                  # CaseCard, CaseDetailLayout, CasesIndex
-│   │   ├── contact/                # ContactPageContent, ContactSection
-│   │   ├── forms/                  # ContactForm, LeadForm
-│   │   ├── ui/                     # Button, Counter, ChatWidget, PWA
-│   │   ├── security/               # Компоненты безопасности
-│   │   └── legal/                  # LegalPageLayout
-│   │
-│   ├── content/                    # MDX контент
-│   │   ├── blog/                   # Статьи блога
-│   │   ├── cases/                  # Кейсы клиентов
-│   │   └── pages/                  # Статические страницы
-│   │
+│   │   ├── layout/, blocks/, blog/, cases/, contact/, forms/, ui/, legal/, security/
+│   ├── content/                    # MDX: pages/ + примеры blog/, cases/
 │   ├── lib/
-│   │   ├── admin/                  # Утилиты админки
-│   │   ├── analytics/              # Трекинг событий
-│   │   ├── cms/                    # Функции работы с MDX
-│   │   ├── hooks/                  # Custom React hooks
-│   │   ├── seo/                    # Schema.org микроразметка
-│   │   └── utils/                  # Утилиты (cn, env, sanitize)
-│   │
-│   ├── public/
-│   │   ├── images/                 # Изображения (НЕ трогать!)
-│   │   ├── manifest.json           # PWA манифест
-│   │   └── robots.txt              # SEO robots
-│   │
-│   ├── styles/
-│   │   └── globals.css             # Глобальные стили + анимации
-│   │
-│   └── types/                      # TypeScript типы
-│
-├── docs/                           # Документация проекта
-│   ├── about_company/              # Описание компании, процессы
-│   └── plan/                       # Планы реализации
-│
-├── scripts/                        # Скрипты проекта
-├── .github/                        # GitHub Actions (CI/CD)
-├── .husky/                         # Pre-commit хуки
-├── .env.local                      # Переменные окружения
-├── .env.local.example              # Шаблон переменных
-├── next.config.js                  # Next.js конфигурация
-├── tailwind.config.js              # Tailwind конфигурация
-├── tsconfig.json                   # TypeScript конфигурация
-├── package.json
-└── sentry.*.config.ts              # Sentry error tracking
+│   │   ├── cms/                    # db-blog, db-cases, db-testimonials, db-leads, …
+│   │   ├── db/, analytics/, hooks/, seo/, utils/
+│   │   └── navigation.ts
+│   ├── middleware.ts
+│   ├── styles/, types/
+├── docs/, scripts/, .github/
+├── eslint.config.js, tailwind.config.js, tsconfig.json, package.json
+├── .env.local.example
+└── (опционально) next.config.mjs / next.config.js
 ```
 
 ---
@@ -175,7 +122,7 @@ company_site/
 
 ### Требования
 
-- **Node.js:** 18+
+- **Node.js:** 20+
 - **npm:** 9+
 
 ### Установка
@@ -219,6 +166,7 @@ npm run lint
 |----------|-----|----------|
 | Главная | `/` | Лендинг с услугами, калькулятором, чатом |
 | О компании | `/about` | Команда (карусель) |
+| Карьера | `/career` | Вакансии и условия |
 | Лидогенерация | `/services/leadgen` | Флагманский продукт |
 | Call-центр | `/services/call-center` | Профессиональный обзвон |
 | Авито | `/services/avito` | Бюджетный канал лидов |
@@ -232,7 +180,7 @@ npm run lint
 | Условия | `/legal/terms` | Оферта |
 | Конфиденциальность | `/legal/privacy` | Политика |
 | Offline | `/offline` | Offline страница (PWA) |
-| 404 | `/_not-found` | Страница ошибки (с фоном) |
+| 404 | `not-found.tsx` (маршрут Next.js) | Кастомная страница «не найдено» |
 
 ### Админ-панель
 
@@ -245,6 +193,7 @@ npm run lint
 | Кейсы (список) | `/admin/cases` | Управление кейсами |
 | Новый кейс | `/admin/cases/new` | Создание кейса |
 | Редактирование | `/admin/cases/[slug]/edit` | Редактирование кейса |
+| Отзывы | `/admin/testimonials` | Управление отзывами |
 
 ---
 
@@ -271,19 +220,16 @@ npm run lint
 
 **Поддерживаемые системы:**
 - Google Analytics (`NEXT_PUBLIC_GA_ID`)
-- Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METРИКА_ID`)
+- Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METRIKA_ID`)
 
 ### Error Tracking
 
-**Sentry** — мониторинг ошибок:
-- Клиентские ошибки (`sentry.client.config.ts`)
-- Серверные ошибки (`sentry.server.config.ts`)
-- Edge ошибки (`sentry.edge.config.ts`)
+Зависимость **`@sentry/nextjs`** в `package.json` есть; отдельные `sentry.*.config.ts` в репозитории не зафиксированы — при необходимости подключите по [документации Sentry для Next.js](https://docs.sentry.io/platforms/javascript/guides/nextjs/).
 
 ### SEO
 
 - **Metadata:** Title, description, Open Graph на всех страницах
-- **Sitemap:** Автоматическая генерация через `sitemap.ts`
+- **Sitemap:** `src/app/sitemap.ts` — публичные URL блога и кейсов берутся из **той же SQLite**, что и страницы `/blog` и `/cases`; базовый домен — `NEXT_PUBLIC_SITE_URL` (fallback `https://mita.top`)
 - **Robots.txt:** Настроен в `/public/robots.txt`
 - **Canonical URLs:** Настроены для всех страниц
 - **Favicon:** `/images/icons/Favicon.ico`
@@ -306,7 +252,9 @@ cp .env.local.example .env.local
 | `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 | ✅ |
 | `BITRIX24_CRM_ID` | ID воронки в Bitrix24 | ❌ |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics ID | ❌ |
-| `NEXT_PUBLIC_YANDEX_METРИКА_ID` | Яндекс.Метрика ID | ❌ |
+| `NEXT_PUBLIC_YANDEX_METRIKA_ID` | Яндекс.Метрика ID | ❌ |
+| `ADMIN_PASSWORD` / `ADMIN_PASSWORD_HASH` | Вход в админку | ✅ для `/admin` |
+| `DATABASE_PATH` | Путь к SQLite | ❌ (по умолчанию `data/mita.db`) |
 | `SMTP_HOST` | SMTP сервер для email | ❌ |
 | `SMTP_PORT` | SMTP порт | ❌ |
 | `SMTP_USER` | SMTP пользователь | ❌ |
@@ -342,10 +290,10 @@ import { Counter } from '@components/ui/Counter'
 import { cn } from '@lib/utils/cn'
 import { sanitizeHtml } from '@lib/utils/sanitize'
 
-// Контент
-import blogPosts from '@content/blog/posts.json'
+// Сервер: опубликованные посты из БД
+import { getPublishedPosts } from '@lib/cms/db-blog'
 
-// Изображения
+// Изображения из public/
 import heroVideo from '@images/hero-banner/video.mp4'
 ```
 
@@ -382,7 +330,7 @@ import heroVideo from '@images/hero-banner/video.mp4'
 | `TeamCarousel` | Карусель команды (слайдер) |
 | `BackButton` | Кнопка "Назад" (на service страницах) |
 | `HamburgerMenu` | Hamburger меню с анимацией |
-| `ScrollToTop` | Кнопка прокрутки наверх |
+| `ScrollToTopButton` | Кнопка прокрутки наверх |
 | `CtaButton` | Кнопка с анимацией |
 
 ### Формы
@@ -394,32 +342,18 @@ import heroVideo from '@images/hero-banner/video.mp4'
 
 ---
 
-## 📊 Контент (MDX)
+## 📊 Контент и CMS
 
-### Блог
+### Публичный блог и кейсы
 
-**Расположение:** `src/content/blog/`
+**Источник данных:** таблицы `blog_posts` и `cases` в SQLite (`lib/cms/db-blog.ts`, `db-cases.ts`). Текст хранится в полях и отдаётся на страницы через `next-mdx-remote` (`MDXRemote`).
 
-Файлы:
-- `leadgen-guide.mdx` — Руководство по лидогенерации
-- `call-center-tips.mdx` — Советы по call-центру
+### MDX на диске
 
-### Кейсы
+- **`src/content/pages/`** — юридические и прочие статичные тексты (`security.mdx`, `terms.mdx`, `privacy.mdx`), если страницы их подключают.
+- **`src/content/blog/`**, **`src/content/cases/`** — примеры/наследие; модуль **`lib/cms/blog.ts`** и **`lib/cms/cases.ts`** читает файлы с диска (для публичных маршрутов основной источник — БД).
 
-**Расположение:** `src/content/cases/`
-
-Файлы:
-- `avtopremium-case.mdx` — Автосалон (+147% лидов)
-- `stroymaster-case.mdx` — Строительная компания (+220% продаж)
-
-### Страницы
-
-**Расположение:** `src/content/pages/`
-
-Файлы:
-- `security.mdx` — Безопасность данных
-- `terms.mdx` — Условия оказания услуг
-- `privacy.mdx` — Политика конфиденциальности
+Примеры файлов: `leadgen-guide.mdx`, `call-center-tips.mdx`, `avtopremium-case.mdx`, `stroymaster-case.mdx`.
 
 ---
 
@@ -509,9 +443,9 @@ chore: изменение конфигурации
 | Файл | Описание |
 |------|----------|
 | `README.md` | Основная документация проекта |
-| `QUICK_START.md` | Краткий гид по быстрому старту |
-| `DEVELOPMENT_REPORT.md` | Подробный отчёт о разработке |
-| `FINAL_CHECKLIST.md` | Чек-лист перед релизом |
+| `CHANGELOG.md` | История изменений |
+| `docs/about_company/` | Материалы о компании (не путать со стеком репозитория) |
+| `docs/plan/implementation-plan.md` | Продуктовый план и спецификация |
 
 ---
 
@@ -520,10 +454,10 @@ chore: изменение конфигурации
 | Категория | Количество |
 |-----------|------------|
 | Контентных страниц | 20+ (включая админку) |
-| Компонентов | 82 (.tsx файлы) |
-| MDX файлов | 7 |
-| API endpoints | 3 (submit-lead, admin/login, test-env) |
-| Тестов | 12+ (.test.tsx файлы) |
+| Компонентов | ~90+ `.tsx` в `src/components/` (ориентир) |
+| MDX файлов | 7 в `src/content/` |
+| API (app router) | 3 маршрута: `submit-lead`, `admin/login`, `admin/logout` |
+| Тестов | 13+ файлов `*.test.tsx` |
 | Внешних библиотек | 20+ |
 
 ---
@@ -541,15 +475,13 @@ chore: изменение конфигурации
 - Все страницы должны быть в `src/app/`
 - Layout по умолчанию — `layout.tsx`
 - API routes — в `src/app/api/`
-- Динамические маршруты — `[slug].tsx`
+- Динамические сегменты — папки `[slug]/page.tsx`
 - Route groups — `(main)/` для группировки без влияния на URL
 
 ### MDX рендеринг
 
-- Используйте `next-mdx-remote` для рендеринга
-- Контент загружается через `fs.readFileSync`
-- Компоненты передаются через `MDXRemote`
-- Кэширование в production (TTL 1 час)
+- Публичные статьи и кейсы: строка контента из SQLite → `MDXRemote` (RSC) в `blog/[slug]/page.tsx` и `cases/[slug]/page.tsx`
+- Файловый MDX: `lib/cms/utils.ts` (`readMdxFile` и др.) для контента из `src/content/`
 
 ### Анимации
 
@@ -563,6 +495,6 @@ chore: изменение конфигурации
 **М.И.Т.А.** — Маркетинговое IT-агентство полного цикла
 
 📍 Адрес: г. Саратов, Астраханская ул., 87В
-🌐 Сайт: https://mita.ru
+🌐 Сайт: https://mita.top
 
-**Статус:** ✅ Production-ready (март 2026)
+**Статус:** ✅ Production-ready (апрель 2026)

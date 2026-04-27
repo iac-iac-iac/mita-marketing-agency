@@ -16,6 +16,8 @@ export interface ServicesSectionProps {
   items: ServiceItem[];
   groupCtaLabel?: string;
   groupCtaUrl?: string;
+  /** Карточки услуг с TiltCard (стиль превью) */
+  tilt?: boolean;
 }
 
 /**
@@ -29,6 +31,7 @@ export default function ServicesSection({
   items,
   groupCtaLabel = '',
   groupCtaUrl = '',
+  tilt = true,
 }: ServicesSectionProps) {
   return (
     <div id={id}>
@@ -38,6 +41,7 @@ export default function ServicesSection({
         items={items}
         groupCtaLabel={groupCtaLabel}
         groupCtaUrl={groupCtaUrl}
+        tilt={tilt}
       />
     </div>
   )

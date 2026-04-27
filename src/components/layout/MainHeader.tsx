@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import CtaButton from '../ui/CtaButton'
 import DropdownMenu from '../ui/DropdownMenu'
+import { mitaHeaderBar, mitaCtaGradient, mitaGoldGrad } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 export default function MainHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -25,26 +27,26 @@ export default function MainHeader() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass glass-strong border-b border-white/10">
+    <header className={cn('fixed left-0 right-0 top-0 z-50', mitaHeaderBar)}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Логотип */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <img
-              src="/images/icons/Favicon.ico"
-              alt="М.И.Т.А."
-              className="w-8 h-8"
-            />
-            <span className="text-xl font-bold text-white">М.И.Т.А.</span>
-          </Link>
+        <div className="flex h-20 items-center">
+          <div className="flex min-w-0 flex-1 justify-start">
+            <Link href="/" className="group flex items-center gap-3">
+              <img
+                src="/images/icons/Favicon.ico"
+                alt="М.И.Т.А."
+                className="h-8 w-8"
+              />
+              <span className={cn('text-xl font-bold tracking-tight', mitaGoldGrad)}>М.И.Т.А.</span>
+            </Link>
+          </div>
 
-          {/* Десктоп навигация */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden flex-1 items-center justify-center gap-6 lg:flex xl:gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.url}
                 href={item.url}
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+                className="whitespace-nowrap font-medium text-white/60 transition-colors duration-300 hover:text-white/90"
               >
                 {item.label}
               </Link>
@@ -57,21 +59,19 @@ export default function MainHeader() {
             />
           </nav>
 
-          {/* CTA кнопка */}
-          <div className="hidden lg:block">
-            <CtaButton
-              variant="primary"
-              size="md"
-              href="/contact"
-            >
-              Оставить заявку
-            </CtaButton>
-          </div>
-
-          {/* Мобильное бургер-меню */}
+          <div className="flex flex-1 items-center justify-end gap-2">
+            <div className="hidden lg:block">
+              <CtaButton
+                href="/contact"
+                size="md"
+                className={cn(mitaCtaGradient, 'hover:!opacity-90')}
+              >
+                Оставить заявку
+              </CtaButton>
+            </div>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
+            className="p-2 text-white/60 transition-colors hover:text-white lg:hidden"
             aria-label="Меню"
             aria-expanded={isMobileMenuOpen}
           >
@@ -93,6 +93,7 @@ export default function MainHeader() {
               />
             </div>
           </button>
+          </div>
         </div>
       </div>
 
@@ -105,7 +106,7 @@ export default function MainHeader() {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           {/* Меню */}
-          <div className="lg:hidden fixed top-0 left-0 right-0 z-50 glass glass-strong rounded-b-2xl mt-0 overflow-hidden animate-fade-in shadow-2xl">
+          <div className="fixed left-0 right-0 top-0 z-50 mt-0 max-h-[85vh] overflow-y-auto overflow-x-hidden rounded-b-2xl border-b border-white/10 bg-[#0D0D0D]/95 shadow-2xl backdrop-blur-md animate-fade-in lg:hidden">
             {/* Кнопка закрытия */}
             <div className="flex justify-end px-4 pt-4">
               <button
@@ -121,7 +122,7 @@ export default function MainHeader() {
               <Link
                 key={item.url}
                 href={item.url}
-                className="px-6 py-3 text-gray-300 hover:text-white hover:bg-direct-primary/20 transition-colors duration-200"
+                className="px-6 py-3 text-white/80 transition-colors duration-200 hover:bg-[#D4A84B]/12 hover:text-white"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
@@ -129,15 +130,15 @@ export default function MainHeader() {
             ))}
 
             <div className="px-6 py-3">
-              <span className="text-gray-400 text-sm uppercase tracking-wider mb-2 block">
+              <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/45">
                 Услуги
               </span>
-              <div className="flex flex-col gap-1 ml-2">
+              <div className="ml-2 flex flex-col gap-1">
                 {servicesItems.map((item) => (
                   <Link
                     key={item.url}
                     href={item.url}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 py-1"
+                    className="py-1 text-white/60 transition-colors duration-200 hover:text-white"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -146,12 +147,11 @@ export default function MainHeader() {
               </div>
             </div>
 
-            <div className="px-6 pt-4 mt-2 border-t border-white/10">
+            <div className="mt-2 border-t border-white/10 px-6 pt-4 lg:hidden">
               <CtaButton
-                variant="primary"
-                size="md"
                 href="/contact"
-                className="w-full"
+                size="md"
+                className={cn(mitaCtaGradient, 'w-full hover:!opacity-90')}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Оставить заявку

@@ -1,6 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { mitaGoldText } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 interface PrincipleItem {
   icon: React.ReactNode
@@ -60,9 +62,8 @@ export default function WhyChooseUs({
   subtitle = 'Четыре принципа, которые отличают М.И.Т.А. от других агентств',
 }: WhyChooseUsProps) {
   return (
-    <section className="py-20 md:py-28 relative">
-      {/* Фоновый градиент */}
-      <div className="absolute inset-0 bg-gradient-to-b from-direct-dark via-direct-primary/5 to-direct-dark" />
+    <section className="relative py-20 md:py-28">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D] via-[#0D0D0D] to-[#0D0D0D]/95" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Заголовок */}
@@ -73,8 +74,15 @@ export default function WhyChooseUs({
           transition={{ duration: 0.5 }}
           className="max-w-4xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{title}</h2>
-          <p className="text-xl text-gray-300 leading-relaxed">{subtitle}</p>
+          <h2
+            className={cn(
+              mitaGoldText,
+              'mb-6 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl'
+            )}
+          >
+            {title}
+          </h2>
+          <p className="text-xl leading-relaxed text-white/60">{subtitle}</p>
         </motion.div>
 
         {/* Принципы */}
@@ -86,11 +94,10 @@ export default function WhyChooseUs({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-500"
+              className="glass rounded-2xl border border-white/8 p-8 transition-all duration-500 hover:bg-white/10"
             >
-              {/* Иконка */}
               <motion.div
-                className="w-16 h-16 rounded-xl bg-direct-primary/20 flex items-center justify-center mb-6 text-direct-primary"
+                className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl border border-[#D4A84B]/25 bg-[#D4A84B]/10 text-[#D4A84B]"
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
@@ -99,8 +106,8 @@ export default function WhyChooseUs({
                 {principle.icon}
               </motion.div>
 
-              <h3 className="text-xl font-semibold mb-3">{principle.title}</h3>
-              <p className="text-gray-300 leading-relaxed">{principle.description}</p>
+              <h3 className="mb-3 text-xl font-semibold text-white">{principle.title}</h3>
+              <p className="leading-relaxed text-white/60">{principle.description}</p>
             </motion.div>
           ))}
         </div>

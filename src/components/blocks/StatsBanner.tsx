@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { mitaGoldText } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 interface StatItem {
   value: number
@@ -37,9 +39,12 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
     return () => clearInterval(timer)
   }, [isInView, target])
 
+  const formatted = count.toLocaleString('ru-RU').replace(/\s/g, '\u00A0')
+
   return (
-    <span ref={ref}>
-      {count.toLocaleString('ru-RU')}{suffix}
+    <span ref={ref} className="whitespace-nowrap">
+      {formatted}
+      {suffix}
     </span>
   )
 }
@@ -56,9 +61,8 @@ export default function StatsBanner({
   title = 'Результаты в цифрах',
 }: StatsBannerProps) {
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden">
-      {/* Фоновый градиент */}
-      <div className="absolute inset-0 bg-gradient-to-r from-direct-primary/5 via-transparent to-direct-primary/5" />
+    <section className="relative overflow-hidden py-16 md:py-20">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#D4A84B]/6 via-transparent to-[#D4A84B]/6" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Заголовок */}
@@ -67,7 +71,7 @@ export default function StatsBanner({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className={cn(mitaGoldText, 'mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl')}
         >
           {title}
         </motion.h2>
@@ -83,10 +87,10 @@ export default function StatsBanner({
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-direct-primary mb-2">
+              <div className="mb-2 text-4xl font-bold text-[#D4A84B] md:text-5xl lg:text-6xl">
                 <AnimatedNumber target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-gray-400 text-sm md:text-base">{stat.label}</div>
+              <div className="text-sm text-white/60 md:text-base">{stat.label}</div>
             </motion.div>
           ))}
         </div>

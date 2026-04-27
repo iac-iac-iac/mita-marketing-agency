@@ -14,6 +14,12 @@ interface HeroDashboardProps {
   secondaryCtaUrl?: string
   mediaSrc?: string
   videoPoster?: string
+  /** Затемнение поверх видео (по умолчанию direct-dark) */
+  videoOverlayClassName?: string
+  /** Нижний градиент к фону страницы */
+  bottomSectionFadeClassName?: string
+  /** Классы подзаголова (например приглушённый текст) */
+  subtitleClassName?: string
 }
 
 // Золотые частицы — генерируются один раз (не через Math.random на верхнем уровне)
@@ -40,6 +46,9 @@ export default function HeroDashboard({
   secondaryCtaUrl = '#services',
   mediaSrc = '/images/hero-banner/Hero-banner_main_link.mp4',
   videoPoster = '/images/hero-banner/Hero-banner_main_link.png',
+  videoOverlayClassName = 'bg-gradient-to-br from-direct-dark/70 via-direct-dark/50 to-direct-dark/70',
+  bottomSectionFadeClassName = 'from-direct-dark',
+  subtitleClassName = 'text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed',
 }: HeroDashboardProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -71,7 +80,7 @@ export default function HeroDashboard({
           <source src={mediaSrc} type="video/mp4" />
         </video>
         {/* Затемнение поверх видео */}
-        <div className="absolute inset-0 bg-gradient-to-br from-direct-dark/70 via-direct-dark/50 to-direct-dark/70" />
+        <div className={`absolute inset-0 ${videoOverlayClassName}`} />
       </div>
 
       {/* Золотые частицы — лёгкий параллакс */}
@@ -118,7 +127,7 @@ export default function HeroDashboard({
           </h1>
 
           {/* Подзаголовок */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+          <p className={subtitleClassName}>
             {subtitle}
           </p>
 
@@ -158,7 +167,9 @@ export default function HeroDashboard({
       </motion.div>
 
       {/* Градиент снизу — плавный переход к следующей секции */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-direct-dark to-transparent z-10 pointer-events-none" />
+      <div
+        className={`absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t to-transparent z-10 pointer-events-none ${bottomSectionFadeClassName}`}
+      />
     </section>
   )
 }

@@ -15,8 +15,8 @@ describe('TechnologyStack Component', () => {
       icon: mockIcon,
     },
     {
-      name: 'Колл-трекинг',
-      description: 'Отслеживание источников звонков',
+      name: 'Сценарии касаний',
+      description: 'Цепочки касаний в мессенджерах и по email',
       icon: mockIcon,
     },
     {
@@ -50,7 +50,7 @@ describe('TechnologyStack Component', () => {
     )
 
     expect(screen.getByText('CRM Интеграция')).toBeInTheDocument()
-    expect(screen.getByText('Колл-трекинг')).toBeInTheDocument()
+    expect(screen.getByText('Сценарии касаний')).toBeInTheDocument()
     expect(screen.getByText('Веб-аналитика')).toBeInTheDocument()
   })
 
@@ -66,7 +66,7 @@ describe('TechnologyStack Component', () => {
       screen.getByText('Автоматическая синхронизация с вашей CRM')
     ).toBeInTheDocument()
     expect(
-      screen.getByText('Отслеживание источников звонков')
+      screen.getByText('Цепочки касаний в мессенджерах и по email')
     ).toBeInTheDocument()
     expect(
       screen.getByText('Глубокая аналитика поведения пользователей')

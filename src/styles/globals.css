@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 :root {
-  /* М.И.Т.А. цветовая палитра — Чёрное Золото */
+  /* М.И.Т.А. цветовая палитра — Чёрное Золото (согласовано с превью-лендингом) */
   --color-primary: #D4A84B;
   --color-secondary: #1A1A1A;
   --color-accent: #B8892E;
-  --color-dark: #0A0A0A;
+  --color-dark: #0D0D0D;
   --color-light: #FFFFFF;
   --color-gray: #2A2A2A;
   --color-purple: #2A2A2A;
   --color-gold: #F2D07A;
+  --color-gold-highlight: #F5E1A4;
   --color-muted: #707070;
   --color-text-secondary: #B0B0B0;
 }

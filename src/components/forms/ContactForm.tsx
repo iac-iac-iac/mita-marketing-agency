@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { trackFormSubmit, trackFormError } from '@/lib/analytics/track';
 import { useUTM } from '@/lib/hooks/use-utm';
+import Link from 'next/link';
 
 interface FormData {
   name: string;
@@ -19,6 +20,7 @@ interface FormData {
   utm_campaign?: string;
   form_name: string;
   timestamp: string;
+  consent_pd: boolean;
 }
 
 interface ContactFormProps {
@@ -39,7 +41,11 @@ export function ContactForm({ formName = 'contact_form', serviceName }: ContactF
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      consent_pd: false,
+    },
+  });
 
   // Обновляем скрытые поля UTM метками
   useEffect(() => {
@@ -190,6 +196,31 @@ export function ContactForm({ formName = 'contact_form', serviceName }: ContactF
         <input type="hidden" {...register('utm_campaign')} defaultValue="" />
         <input type="hidden" {...register('form_name')} value={formName} />
         <input type="hidden" {...register('timestamp')} value={new Date().toISOString()} />
+
+        <div className="flex items-start gap-3">
+          <input
+            id="contact-consent-pd"
+            type="checkbox"
+            {...register('consent_pd', {
+              required: 'Подтвердите согласие на обработку персональных данных',
+            })}
+            className="mt-1 h-4 w-4 rounded border-white/20 bg-white/10 text-direct-primary focus:ring-direct-primary"
+          />
+          <label htmlFor="contact-consent-pd" className="text-sm text-gray-300 leading-relaxed">
+            Я согласен(на) на{' '}
+            <Link href="/legal/personal-data-consent" className="text-direct-primary hover:underline">
+              обработку персональных данных
+            </Link>
+            . Ознакомлен(а) с{' '}
+            <Link href="/legal/privacy" className="text-direct-primary hover:underline">
+              Политикой конфиденциальности
+            </Link>
+            .
+          </label>
+        </div>
+        {errors.consent_pd && (
+          <p className="text-sm text-red-400">{errors.consent_pd.message}</p>
+        )}
 
         {/* Кнопка отправки */}
         <motion.button

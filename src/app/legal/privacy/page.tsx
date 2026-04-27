@@ -132,7 +132,9 @@ export default function PrivacyPage() {
 
           {/* Секция 9 */}
           <div className="mb-12 p-8 rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <h2 className="text-2xl font-bold text-white mb-6">9. Cookies и автоматический сбор данных</h2>
+            <h2 id="cookies" className="text-2xl font-bold text-white mb-6 scroll-mt-24">
+              9. Cookies и автоматический сбор данных
+            </h2>
             <div className="space-y-4 text-gray-300">
               <p>9.1. Сайт использует cookies для улучшения качества услуг и аналитики.</p>
               <p>9.2. Вы можете отключить cookies в настройках браузера, но это может ограничить функциональность сайта.</p>

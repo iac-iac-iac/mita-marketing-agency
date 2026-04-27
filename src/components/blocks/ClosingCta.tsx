@@ -2,6 +2,8 @@
 
 import CtaButton from '@/components/ui/CtaButton'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { mitaCtaGradient, mitaGoldText } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 export interface ClosingCtaProps {
   title: string;
@@ -23,32 +25,34 @@ export default function ClosingCta({
   const contentRef = useScrollReveal()
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Фоновый градиент */}
-      <div className="absolute inset-0 bg-gradient-to-br from-direct-primary/30 via-direct-dark/80 to-direct-accent/30" />
+    <section className="relative overflow-hidden py-20 md:py-28">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0D0D0D] via-[#0D0D0D] to-[#0D0D0D]/95" />
+      <div className="absolute top-1/4 left-1/4 h-96 w-96 animate-float rounded-full bg-[#D4A84B]/10 blur-3xl" />
+      <div
+        className="absolute right-1/4 bottom-1/4 h-64 w-64 animate-float rounded-full bg-[#D4A84B]/8 blur-3xl"
+        style={{ animationDelay: '1.5s' }}
+      />
 
-      {/* Декоративные элементы */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-direct-primary/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-direct-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div ref={contentRef} className="max-w-4xl mx-auto text-center scroll-reveal">
-          {/* H2 заголовок */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+      <div className="container relative z-10 mx-auto px-4">
+        <div ref={contentRef} className="scroll-reveal mx-auto max-w-4xl text-center">
+          <h2
+            className={cn(
+              mitaGoldText,
+              'mb-6 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl'
+            )}
+          >
             {title}
           </h2>
 
-          {/* Описание */}
-          <p className="text-xl text-gray-300 mb-10 leading-relaxed">
+          <p className="mb-10 text-xl leading-relaxed text-white/60">
             {description}
           </p>
 
-          {/* CTA кнопки */}
           <div className="flex flex-wrap justify-center gap-4">
             <CtaButton
-              variant="primary"
-              size="lg"
               href={primaryCtaUrl}
+              size="lg"
+              className={cn(mitaCtaGradient, 'hover:!opacity-90')}
             >
               {primaryCtaLabel}
             </CtaButton>
@@ -58,6 +62,7 @@ export default function ClosingCta({
                 variant="secondary"
                 size="lg"
                 href={secondaryCtaUrl}
+                className="!border !border-white/12 !bg-white/[0.06] !from-transparent !to-transparent !text-white/90 !shadow-none hover:!bg-white/10"
               >
                 {secondaryCtaLabel}
               </CtaButton>

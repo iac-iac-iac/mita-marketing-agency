@@ -1,5 +1,8 @@
 ﻿import Link from 'next/link'
 import type { ReactNode } from 'react'
+import CtaButton from '@/components/ui/CtaButton'
+import { mitaCtaGradient, mitaGlassCard, mitaGoldText } from '@/lib/mita-landing-styles'
+import { cn } from '@/lib/utils/cn'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -26,6 +29,7 @@ export default function Footer() {
 
   const legalLinks = [
     { label: 'Политика конфиденциальности', url: '/legal/privacy' },
+    { label: 'Согласие на обработку персональных данных', url: '/legal/personal-data-consent' },
     { label: 'Условия оказания услуг', url: '/legal/terms' },
   ]
 
@@ -36,34 +40,35 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-direct-dark border-t border-white/10">
+    <footer className="border-t border-white/10 bg-[#0D0D0D]">
       <div className="container mx-auto px-4 py-12">
-        {/* Основной контент */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
-          {/* О компании */}
+        <div className="mb-10 flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="min-w-0 flex-1">
+        <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-4">
+            <Link href="/" className="mb-4 flex items-center gap-3">
               <img
                 src="/images/icons/Favicon.ico"
                 alt="М.И.Т.А."
-                className="w-8 h-8"
+                className="h-8 w-8"
               />
-              <span className="text-xl font-bold text-white">М.И.Т.А.</span>
+              <span className="bg-gradient-to-b from-[#F5E1A4] via-[#D4A84B] to-[#9A7B2C] bg-clip-text text-xl font-bold text-transparent">
+                М.И.Т.А.
+              </span>
             </Link>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="mb-4 text-sm text-white/60">
               Маркетинговое IT-агентство полного цикла. Комплексная система лидогенерации для вашего бизнеса.
             </p>
           </div>
 
-          {/* О компании ссылки */}
           <div>
-            <h4 className="text-white font-semibold mb-4">О компании</h4>
+            <h4 className="mb-4 font-semibold text-white/90">О компании</h4>
             <ul className="space-y-2">
               {aboutLinks.map((link) => (
                 <li key={link.url}>
                   <Link
                     href={link.url}
-                    className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+                    className="text-sm text-white/60 transition-colors duration-200 hover:text-white/90"
                   >
                     {link.label}
                   </Link>
@@ -72,15 +77,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Услуги */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Услуги</h4>
+            <h4 className="mb-4 font-semibold text-white/90">Услуги</h4>
             <ul className="space-y-2">
               {servicesLinks.map((link) => (
                 <li key={link.url}>
                   <Link
                     href={link.url}
-                    className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+                    className="text-sm text-white/60 transition-colors duration-200 hover:text-white/90"
                   >
                     {link.label}
                   </Link>
@@ -89,15 +93,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Ресурсы */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Ресурсы</h4>
+            <h4 className="mb-4 font-semibold text-white/90">Ресурсы</h4>
             <ul className="space-y-2">
               {resourcesLinks.map((link) => (
                 <li key={link.url}>
                   <Link
                     href={link.url}
-                    className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+                    className="text-sm text-white/60 transition-colors duration-200 hover:text-white/90"
                   >
                     {link.label}
                   </Link>
@@ -106,15 +109,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Юридическое */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Юридическое</h4>
+            <h4 className="mb-4 font-semibold text-white/90">Юридическое</h4>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.url}>
                   <Link
                     href={link.url}
-                    className="text-gray-400 hover:text-white text-sm transition-colors duration-200"
+                    className="text-sm text-white/60 transition-colors duration-200 hover:text-white/90"
                   >
                     {link.label}
                   </Link>
@@ -123,14 +125,29 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+          </div>
 
-        {/* Соцсети и копирайт */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            {/* Копирайт */}
-            <p className="text-gray-400 text-sm">
-              © {currentYear} М.И.Т.А. Все права защищены.
-            </p>
+          <div className="w-full shrink-0 lg:max-w-sm">
+            <div className={cn(mitaGlassCard, 'p-6')}>
+              <h3 className={cn('text-lg font-semibold', mitaGoldText)}>Готовы к росту?</h3>
+              <p className="mt-2 text-sm text-white/60">
+                Оставьте заявку — обсудим задачу и предложим понятный план: от стратегии до лидов и метрик.
+              </p>
+              <div className="mt-4">
+                <CtaButton
+                  href="/contact"
+                  className={cn(mitaCtaGradient, 'hover:!opacity-90')}
+                >
+                  Оставить заявку
+                </CtaButton>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-white/50">© {currentYear} М.И.Т.А. Все права защищены.</p>
 
             {/* Соцсети */}
             <div className="flex items-center gap-4">
@@ -140,7 +157,7 @@ export default function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl glass flex items-center justify-center text-gray-400 hover:text-white hover:bg-direct-primary/20 transition-all duration-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl glass text-white/60 transition-all duration-300 hover:bg-direct-primary/20 hover:text-white"
                   aria-label={social.label}
                 >
                   <SocialIcon name={social.icon} />

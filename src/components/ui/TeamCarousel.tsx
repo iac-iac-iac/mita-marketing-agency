@@ -52,7 +52,7 @@ const teamMembers: TeamMember[] = [
     image: '/images/team/Hope2.png',
   },
   {
-    name: 'Венера Мефедюк',
+    name: 'Венера Мефодюк',
     role: 'Руководитель отдела тестов',
     image: '/images/team/Venera.png',
   },

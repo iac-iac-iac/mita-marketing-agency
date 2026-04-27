@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
 
 export default function ContactSection() {
@@ -16,9 +17,16 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [consentPd, setConsentPd] = useState(false)
+  const [consentError, setConsentError] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!consentPd) {
+      setConsentError(true)
+      return
+    }
+    setConsentError(false)
     setIsSubmitting(true)
     setError(null)
 
@@ -40,6 +48,7 @@ export default function ContactSection() {
 
       setSubmitted(true)
       setFormData({ name: '', phone: '', email: '', company: '', message: '' })
+      setConsentPd(false)
 
       setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
@@ -268,6 +277,36 @@ export default function ContactSection() {
                     />
                   </div>
 
+                  <div className="flex items-start gap-3">
+                    <input
+                      id="contact-section-consent-pd"
+                      type="checkbox"
+                      checked={consentPd}
+                      onChange={(e) => {
+                        setConsentPd(e.target.checked)
+                        if (e.target.checked) setConsentError(false)
+                      }}
+                      className="mt-1 h-4 w-4 rounded border-white/20 bg-white/10 text-direct-primary focus:ring-direct-primary"
+                    />
+                    <label
+                      htmlFor="contact-section-consent-pd"
+                      className="text-sm text-gray-300 leading-relaxed"
+                    >
+                      Я согласен(на) на{' '}
+                      <Link href="/legal/personal-data-consent" className="text-direct-primary hover:underline">
+                        обработку персональных данных
+                      </Link>
+                      . Ознакомлен(а) с{' '}
+                      <Link href="/legal/privacy" className="text-direct-primary hover:underline">
+                        Политикой конфиденциальности
+                      </Link>
+                      .
+                    </label>
+                  </div>
+                  {consentError && (
+                    <p className="text-sm text-red-400">Подтвердите согласие на обработку персональных данных</p>
+                  )}
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -297,13 +336,6 @@ export default function ContactSection() {
                       ✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.
                     </div>
                   )}
-
-                  <p className="text-xs text-gray-500 text-center">
-                    Нажимая кнопку, вы соглашаетесь с{' '}
-                    <a href="/legal/privacy" className="text-direct-primary hover:underline">
-                      политикой конфиденциальности
-                    </a>
-                  </p>
                 </form>
               )}
             </div>

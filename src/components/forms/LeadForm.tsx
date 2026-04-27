@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { trackFormSubmit, trackFormError } from '@/lib/analytics/track';
 
 interface FormData {
@@ -17,6 +18,7 @@ interface FormData {
   utm_campaign?: string;
   form_name: string;
   timestamp: string;
+  consent_pd: boolean;
 }
 
 interface LeadFormProps {
@@ -35,7 +37,11 @@ export function LeadForm({ formName = 'lead_form', serviceName, onSuccess }: Lea
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      consent_pd: false,
+    },
+  });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     setIsSubmitting(true);
@@ -159,6 +165,31 @@ export function LeadForm({ formName = 'lead_form', serviceName, onSuccess }: Lea
       <input type="hidden" {...register('utm_campaign')} defaultValue="" />
       <input type="hidden" {...register('form_name')} value={formName} />
       <input type="hidden" {...register('timestamp')} value={new Date().toISOString()} />
+
+      <div className="flex items-start gap-3">
+        <input
+          id="lead-consent-pd"
+          type="checkbox"
+          {...register('consent_pd', {
+            required: 'Подтвердите согласие на обработку персональных данных',
+          })}
+          className="mt-1 h-4 w-4 rounded border-white/20 bg-white/10 text-direct-primary focus:ring-direct-primary"
+        />
+        <label htmlFor="lead-consent-pd" className="text-sm text-gray-300 leading-relaxed">
+          Я согласен(на) на{' '}
+          <Link href="/legal/personal-data-consent" className="text-direct-primary hover:underline">
+            обработку персональных данных
+          </Link>
+          . Ознакомлен(а) с{' '}
+          <Link href="/legal/privacy" className="text-direct-primary hover:underline">
+            Политикой конфиденциальности
+          </Link>
+          .
+        </label>
+      </div>
+      {errors.consent_pd && (
+        <p className="text-sm text-red-400">{errors.consent_pd.message}</p>
+      )}
 
       {/* Кнопка отправки */}
       <motion.button
