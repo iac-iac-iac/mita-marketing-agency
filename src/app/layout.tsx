@@ -3,8 +3,6 @@ import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
-import ServiceWorkerRegistration from '@/components/ui/ServiceWorkerRegistration'
-
 // Используем системные шрифты (без загрузки из Google Fonts)
 const fontClassName = 'font-sans'
 
@@ -73,7 +71,6 @@ export default function RootLayout({
         {children}
         <ScrollToTopButton />
         <PWAInstallPrompt />
-        <ServiceWorkerRegistration />
       </body>
     </html>
   )
