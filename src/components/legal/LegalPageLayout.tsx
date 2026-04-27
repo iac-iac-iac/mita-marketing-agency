@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { useScrollRevealMulti } from '@/lib/hooks/use-scroll-reveal-multi'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import type { ReactNode } from 'react'
 
@@ -28,6 +29,7 @@ export default function LegalPageLayout({
   sections,
 }: LegalPageLayoutProps) {
   const heroRef = useScrollReveal()
+  const { setRef: setSectionRevealRef } = useScrollRevealMulti<HTMLDivElement>(sections.length)
   const [activeSection, setActiveSection] = useState<string>('')
   const [isTableOfContentsOpen, setIsTableOfContentsOpen] = useState(false)
 
@@ -144,7 +146,7 @@ export default function LegalPageLayout({
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div 
-                ref={useScrollReveal()} 
+                ref={setSectionRevealRef(index)} 
                 className="p-8 md:p-10 rounded-2xl shadow-lg" 
                 style={{ 
                   background: '#ffffff',
