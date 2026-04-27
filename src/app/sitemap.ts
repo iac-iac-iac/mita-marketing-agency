@@ -1,8 +1,19 @@
 ﻿import { MetadataRoute } from 'next'
-import { getAllBlogPosts } from '@/lib/cms/blog'
-import { getAllCases } from '@/lib/cms/cases'
+import { getPublishedPosts } from '@/lib/cms/db-blog'
+import { getPublishedCases } from '@/lib/cms/db-cases'
 
-const baseUrl = 'https://mita.ru'
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://mita.top').replace(
+  /\/$/,
+  ''
+)
+
+function lastModifiedOrNow(value: string | null | undefined): Date {
+  if (value == null || value === '') {
+    return new Date()
+  }
+  const d = new Date(value)
+  return Number.isFinite(d.getTime()) ? d : new Date()
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Статические страницы
@@ -12,6 +23,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/career`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/contact`,
@@ -24,6 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/offline`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.2,
     },
     {
       url: `${baseUrl}/legal/terms`,
@@ -67,20 +102,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Страницы блога
-  const blogPosts = getAllBlogPosts()
+  // Страницы блога (источник — SQLite, как и публичные страницы /blog)
+  const blogPosts = getPublishedPosts()
   const blogPages = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
+    lastModified: lastModifiedOrNow(post.updated_at || post.published_at),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
 
-  // Страницы кейсов
-  const cases = getAllCases()
+  // Страницы кейсов (источник — SQLite)
+  const cases = getPublishedCases()
   const casePages = cases.map((caseItem) => ({
     url: `${baseUrl}/cases/${caseItem.slug}`,
-    lastModified: new Date(caseItem.publishedAt),
+    lastModified: lastModifiedOrNow(caseItem.updated_at || caseItem.published_at),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
