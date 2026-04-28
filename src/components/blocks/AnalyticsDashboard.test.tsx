@@ -116,7 +116,7 @@ describe('AnalyticsDashboard Component', () => {
     expect(metricCards).toHaveLength(4)
     
     metricCards.forEach(card => {
-      expect(card).toHaveClass('glass')
+      expect(card.querySelector('.glass')).toBeInTheDocument()
     })
   })
 

@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Counter from '@/components/ui/Counter'
+import { TiltCard } from '@/components/ui/TiltCard'
+import { cn } from '@/lib/utils/cn'
 
 interface Metric {
   label: string
@@ -50,35 +52,41 @@ export default function SpeedMetrics({
           {metrics.map((metric, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="glass p-6 rounded-2xl text-center hover:bg-white/5 transition-colors"
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="h-full"
             >
-              {/* Значение с Counter */}
-              <div className="mb-3">
-                <span className="text-4xl md:text-5xl font-bold text-direct-primary">
-                  <Counter value={metric.value} duration={2.5} />
-                </span>
-                {metric.suffix && (
-                  <span className="text-2xl text-direct-primary ml-1">
-                    {metric.suffix}
-                  </span>
+              <TiltCard
+                className={cn(
+                  'glass p-6 rounded-2xl h-full text-center transition-all duration-300 hover:bg-white/5'
                 )}
-              </div>
+                effect="evade"
+                tiltLimit={12}
+                scale={1.03}
+              >
+                <div className="mb-3">
+                  <span className="text-4xl md:text-5xl font-bold text-direct-primary">
+                    <Counter value={metric.value} duration={2.5} />
+                  </span>
+                  {metric.suffix && (
+                    <span className="text-2xl text-direct-primary ml-1">
+                      {metric.suffix}
+                    </span>
+                  )}
+                </div>
 
-              {/* Label */}
-              <h3 className="text-lg font-semibold mb-2">
-                {metric.label}
-              </h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  {metric.label}
+                </h3>
 
-              {/* Description */}
-              {metric.description && (
-                <p className="text-sm text-gray-400">
-                  {metric.description}
-                </p>
-              )}
+                {metric.description && (
+                  <p className="text-sm text-gray-400">
+                    {metric.description}
+                  </p>
+                )}
+              </TiltCard>
             </motion.div>
           ))}
         </div>

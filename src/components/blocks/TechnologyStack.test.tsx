@@ -97,7 +97,7 @@ describe('TechnologyStack Component', () => {
     expect(techCards).toHaveLength(3)
     
     techCards.forEach(card => {
-      expect(card).toHaveClass('glass')
+      expect(card.querySelector('.glass')).toBeInTheDocument()
     })
   })
 

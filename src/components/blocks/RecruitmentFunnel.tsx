@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Counter from '@/components/ui/Counter'
+import { TiltCard } from '@/components/ui/TiltCard'
+import { cn } from '@/lib/utils/cn'
 
 interface FunnelStage {
   number: number
@@ -50,25 +52,28 @@ export default function RecruitmentFunnel({
           {stages.map((stage, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="relative h-full"
             >
-              {/* Карточка этапа */}
-              <div className="glass p-6 rounded-2xl text-center hover:bg-white/5 transition-colors h-full">
-                {/* Номер этапа */}
+              <TiltCard
+                className={cn(
+                  'glass p-6 rounded-2xl h-full text-center transition-all duration-300 hover:bg-white/5'
+                )}
+                effect="evade"
+                tiltLimit={12}
+                scale={1.03}
+              >
                 <div className="w-10 h-10 mx-auto mb-4 rounded-full bg-direct-primary/30 flex items-center justify-center text-white font-bold">
                   {stage.number}
                 </div>
 
-                {/* Название этапа */}
                 <h3 className="text-lg font-semibold mb-4 min-h-[3rem]">
                   {stage.name}
                 </h3>
 
-                {/* Количество кандидатов */}
                 <div className="mb-2">
                   <span className="text-3xl md:text-4xl font-bold text-direct-primary">
                     <Counter value={stage.count} duration={2} />
@@ -76,7 +81,6 @@ export default function RecruitmentFunnel({
                   <span className="text-sm text-gray-400 ml-2">кандидатов</span>
                 </div>
 
-                {/* Конверсия */}
                 <div className="mb-4">
                   <span className="text-2xl font-semibold text-direct-accent">
                     {stage.conversion}%
@@ -84,17 +88,15 @@ export default function RecruitmentFunnel({
                   <span className="text-xs text-gray-500 ml-1">конверсия</span>
                 </div>
 
-                {/* Описание */}
                 {stage.description && (
                   <p className="text-sm text-gray-400">
                     {stage.description}
                   </p>
                 )}
-              </div>
+              </TiltCard>
 
-              {/* Connector стрелка (только для desktop и не последнего элемента) */}
               {index < stages.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10 pointer-events-none">
                   <svg 
                     width="24" 
                     height="24" 

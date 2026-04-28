@@ -1,6 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { TiltCard } from '@/components/ui/TiltCard'
+import { cn } from '@/lib/utils/cn'
 
 interface Technology {
   name: string
@@ -85,25 +87,34 @@ export default function TechnologyStack({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {technologies.map((tech, index) => (
-          <motion.article
+          <motion.div
             key={tech.name}
             role="article"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105 group"
+            transition={{ duration: 0.55, delay: index * 0.08 }}
+            className="h-full"
           >
-            <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-direct-primary/20 flex items-center justify-center overflow-hidden group-hover:bg-direct-primary/30 transition-colors text-direct-primary">
-              {tech.icon}
-            </div>
-            <h3 className="text-lg font-semibold text-direct-light mb-2 text-center">
-              {tech.name}
-            </h3>
-            <p className="text-sm text-gray-400 text-center leading-relaxed">
-              {tech.description}
-            </p>
-          </motion.article>
+            <TiltCard
+              className={cn(
+                'glass p-6 rounded-2xl h-full group transition-all duration-300 hover:bg-white/10'
+              )}
+              effect="evade"
+              tiltLimit={12}
+              scale={1.03}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-direct-primary/20 flex items-center justify-center overflow-hidden group-hover:bg-direct-primary/30 transition-colors text-direct-primary">
+                {tech.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-direct-light mb-2 text-center">
+                {tech.name}
+              </h3>
+              <p className="text-sm text-gray-400 text-center leading-relaxed">
+                {tech.description}
+              </p>
+            </TiltCard>
+          </motion.div>
         ))}
       </div>
     </section>

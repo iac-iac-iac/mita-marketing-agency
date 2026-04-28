@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Counter from '@/components/ui/Counter'
+import { TiltCard } from '@/components/ui/TiltCard'
+import { cn } from '@/lib/utils/cn'
 
 interface Metric {
   label: string
@@ -67,60 +69,69 @@ export default function AnalyticsDashboard({
         {/* Metrics grid */}
         <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {metrics.map((metric, index) => (
-            <motion.article
+            <motion.div
               key={metric.label}
               role="article"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass p-6 rounded-2xl hover:bg-white/10 transition-all duration-300"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="h-full"
             >
-              <div className="flex items-start justify-between mb-4">
-                <span className="text-sm text-gray-400 font-medium">
-                  {metric.label}
-                </span>
-                {metric.trend && (
-                  <span 
-                    className={`flex items-center text-sm ${
-                      metric.trend === 'up' 
-                        ? 'text-green-400' 
-                        : metric.trend === 'down'
-                        ? 'text-red-400'
-                        : 'text-gray-400'
-                    }`}
-                    data-testid="trend-icon"
-                  >
-                    {metric.trend === 'up' ? (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                      </svg>
-                    ) : metric.trend === 'down' ? (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                    ) : (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14" />
-                      </svg>
-                    )}
-                  </span>
+              <TiltCard
+                className={cn(
+                  'glass p-6 rounded-2xl h-full transition-all duration-300 hover:bg-white/10'
                 )}
-              </div>
-              
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-4xl font-bold text-direct-primary">
-                  <Counter value={metric.value} duration={2.5} />
-                </span>
-                <span className="text-2xl font-bold text-direct-primary">
-                  {metric.suffix}
-                </span>
-              </div>
-              
-              <p className="text-xs text-gray-400 leading-relaxed">
-                {metric.description}
-              </p>
-            </motion.article>
+                effect="evade"
+                tiltLimit={12}
+                scale={1.03}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <span className="text-sm text-gray-400 font-medium">
+                    {metric.label}
+                  </span>
+                  {metric.trend && (
+                    <span 
+                      className={`flex items-center text-sm ${
+                        metric.trend === 'up' 
+                          ? 'text-green-400' 
+                          : metric.trend === 'down'
+                          ? 'text-red-400'
+                          : 'text-gray-400'
+                      }`}
+                      data-testid="trend-icon"
+                    >
+                      {metric.trend === 'up' ? (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                        </svg>
+                      ) : metric.trend === 'down' ? (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14" />
+                        </svg>
+                      )}
+                    </span>
+                  )}
+                </div>
+                
+                <div className="flex items-baseline gap-1 mb-2">
+                  <span className="text-4xl font-bold text-direct-primary">
+                    <Counter value={metric.value} duration={2.5} />
+                  </span>
+                  <span className="text-2xl font-bold text-direct-primary">
+                    {metric.suffix}
+                  </span>
+                </div>
+                
+                <p className="text-xs text-gray-400 leading-relaxed">
+                  {metric.description}
+                </p>
+              </TiltCard>
+            </motion.div>
           ))}
         </div>
 

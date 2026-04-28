@@ -20,19 +20,9 @@ const icons = {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
     </svg>
   ),
-  touchScenarios: (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-    </svg>
-  ),
   analytics: (
     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
-  ),
-  telephony: (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
     </svg>
   ),
   roi: (
@@ -99,20 +89,9 @@ export default function LeadgenPage() {
             icon: icons.crm,
           },
           {
-            name: 'Сценарии касаний',
-            description:
-              'Цепочки касаний в мессенджерах и по email: прогрев, напоминания и дожим без потери контекста',
-            icon: icons.touchScenarios,
-          },
-          {
             name: 'Веб-аналитика',
             description: 'Яндекс.Метрика, Google Analytics. Настройка целей, e-commerce, сквозная аналитика',
             icon: icons.analytics,
-          },
-          {
-            name: 'IP-телефония',
-            description: 'Интеграция с телефонией. Запись разговоров, аналитика звонков',
-            icon: icons.telephony,
           },
           {
             name: 'Сквозная аналитика',
@@ -269,11 +248,13 @@ export default function LeadgenPage() {
             price: "148 000 ₽",
             description: "Старт активных продаж",
             features: [
-              "1000 звонков",
+              "1000 определений",
               "Полная аналитика",
               "Интеграция с CRM",
               "Еженедельная отчётность",
               "Оптимизация процессов",
+              "Составление сценария",
+              "Связь с координатором",
             ],
             ctaLabel: "Заказать",
             ctaUrl: "/contact",
@@ -284,7 +265,7 @@ export default function LeadgenPage() {
             price: "405 000 ₽",
             description: "Для активных продаж",
             features: [
-              "3000 звонков",
+              "3000 определений",
               "Полная аналитика",
               "Интеграция с CRM",
               "Еженедельная отчётность",

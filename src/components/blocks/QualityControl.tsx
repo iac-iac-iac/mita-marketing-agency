@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { TiltCard } from '@/components/ui/TiltCard'
+import { cn } from '@/lib/utils/cn'
 
 interface ControlLevel {
   title: string
@@ -49,58 +50,52 @@ export default function QualityControl({
           {levels.map((level, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ 
-                duration: 0.5, 
-                delay: index * 0.15,
-                type: "spring",
-                stiffness: 100
-              }}
-              className="glass p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105 group"
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="h-full"
             >
-              {/* Заголовок */}
-              <h3 className="text-xl font-bold text-direct-light mb-3">
-                {level.title}
-              </h3>
+              <TiltCard
+                className={cn(
+                  'glass p-6 rounded-2xl h-full group transition-all duration-300 hover:bg-white/10'
+                )}
+                effect="evade"
+                tiltLimit={12}
+                scale={1.03}
+              >
+                <h3 className="text-xl font-bold text-direct-light mb-3">
+                  {level.title}
+                </h3>
 
-              {/* Описание */}
-              <p className="text-gray-400 mb-4">
-                {level.description}
-              </p>
+                <p className="text-gray-400 mb-4">
+                  {level.description}
+                </p>
 
-              {/* Список возможностей */}
-              <ul className="space-y-2">
-                {level.features.map((feature, featureIndex) => (
-                  <motion.li
-                    key={featureIndex}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ 
-                      duration: 0.3, 
-                      delay: 0.3 + (featureIndex * 0.1) 
-                    }}
-                    className="flex items-start gap-2 text-sm text-direct-light/80"
-                  >
-                    <svg
-                      className="w-5 h-5 text-direct-primary flex-shrink-0 mt-0.5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                <ul className="space-y-2">
+                  {level.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-start gap-2 text-sm text-direct-light/80"
                     >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M5 13l4 4L19 7" 
-                      />
-                    </svg>
-                    <span>{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
+                      <svg
+                        className="w-5 h-5 text-direct-primary flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M5 13l4 4L19 7" 
+                        />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

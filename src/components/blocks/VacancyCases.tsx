@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Counter from '@/components/ui/Counter'
+import { TiltCard } from '@/components/ui/TiltCard'
+import { cn } from '@/lib/utils/cn'
 
 interface VacancyCase {
   niche: string
@@ -55,42 +57,47 @@ export default function VacancyCases({
           {cases.map((caseItem, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass p-6 rounded-2xl hover:bg-white/5 transition-colors"
+              transition={{ duration: 0.55, delay: index * 0.08 }}
+              className="h-full"
             >
-              {/* Ниша */}
-              <div className="inline-block px-3 py-1 rounded-full bg-direct-primary/20 text-direct-primary text-sm font-medium mb-4">
-                {caseItem.niche}
-              </div>
+              <TiltCard
+                className={cn(
+                  'glass p-6 rounded-2xl h-full transition-all duration-300 hover:bg-white/5'
+                )}
+                effect="evade"
+                tiltLimit={12}
+                scale={1.03}
+              >
+                <div className="inline-block px-3 py-1 rounded-full bg-direct-primary/20 text-direct-primary text-sm font-medium mb-4">
+                  {caseItem.niche}
+                </div>
 
-              {/* Позиция */}
-              <h3 className="text-lg font-semibold mb-4 min-h-[3rem]">
-                {caseItem.position}
-              </h3>
+                <h3 className="text-lg font-semibold mb-4 min-h-[3rem]">
+                  {caseItem.position}
+                </h3>
 
-              {/* Срок */}
-              <div className="mb-3">
-                <span className="text-sm text-gray-400">Срок:</span>
-                <span className="ml-2 text-direct-light font-medium">
-                  {caseItem.deadline}
-                </span>
-              </div>
-
-              {/* Результат */}
-              <div>
-                <span className="text-sm text-gray-400">Результат:</span>
-                <div className="mt-1">
-                  <span className="text-2xl font-bold text-direct-primary">
-                    <Counter value={extractNumber(caseItem.result)} duration={2} />
-                  </span>
-                  <span className="text-direct-light ml-1">
-                    {caseItem.result.replace(/\d+/, '')}
+                <div className="mb-3">
+                  <span className="text-sm text-gray-400">Срок:</span>
+                  <span className="ml-2 text-direct-light font-medium">
+                    {caseItem.deadline}
                   </span>
                 </div>
-              </div>
+
+                <div>
+                  <span className="text-sm text-gray-400">Результат:</span>
+                  <div className="mt-1">
+                    <span className="text-2xl font-bold text-direct-primary">
+                      <Counter value={extractNumber(caseItem.result)} duration={2} />
+                    </span>
+                    <span className="text-direct-light ml-1">
+                      {caseItem.result.replace(/\d+/, '')}
+                    </span>
+                  </div>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
