@@ -2,7 +2,7 @@ export type BitrixLeadPayload = {
   form_name: string;
   name: string;
   phone: string;
-  email: string;
+  email?: string;
   company?: string;
   message?: string;
   utm_source?: string;
@@ -34,9 +34,12 @@ export async function sendLeadToBitrix(
     TITLE: `Заявка с сайта: ${data.form_name}`,
     NAME: data.name,
     PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
-    EMAIL: [{ VALUE: data.email, VALUE_TYPE: 'WORK' }],
     SOURCE_ID: 'WEB',
   };
+
+  if (data.email?.trim()) {
+    fields.EMAIL = [{ VALUE: data.email.trim(), VALUE_TYPE: 'WORK' }];
+  }
 
   if (assignedById && !Number.isNaN(assignedById)) {
     fields.ASSIGNED_BY_ID = assignedById;

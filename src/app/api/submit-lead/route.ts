@@ -67,8 +67,13 @@ const leadSchema = z.object({
   
   email: z
     .string()
-    .email('Некорректный формат email')
-    .max(255, 'Email слишком длинный'),
+    .max(255, 'Email слишком длинный')
+    .optional()
+    .or(z.literal(''))
+    .refine(
+      (val) => !val || z.string().email().safeParse(val).success,
+      'Некорректный формат email'
+    ),
   
   company: z
     .string()
@@ -248,7 +253,7 @@ export async function POST(request: NextRequest) {
         form_name: data.form_name,
         name: data.name,
         phone: data.phone,
-        email: data.email,
+        email: data.email || '',
         company: data.company,
         message: data.message,
         service: data.service,

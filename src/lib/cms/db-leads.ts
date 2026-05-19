@@ -10,7 +10,7 @@ export interface LeadInput {
   form_name?: string;
   name: string;
   phone: string;
-  email: string;
+  email?: string;
   company?: string;
   message?: string;
   service?: string;
@@ -26,7 +26,7 @@ export interface Lead {
   form_name: string;
   name: string;
   phone: string;
-  email: string;
+  email?: string;
   company: string;
   message: string;
   service: string;
@@ -57,7 +57,7 @@ export function createLead(input: LeadInput): Lead {
     input.form_name || 'contact_form',
     input.name,
     input.phone,
-    input.email,
+    input.email || '',
     input.company || '',
     input.message || '',
     input.service || '',

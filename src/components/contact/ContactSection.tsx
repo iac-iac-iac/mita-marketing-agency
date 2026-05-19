@@ -11,8 +11,6 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
-    company: '',
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -48,7 +46,7 @@ export default function ContactSection() {
       }
 
       setSubmitted(true)
-      setFormData({ name: '', phone: '', email: '', company: '', message: '' })
+      setFormData({ name: '', phone: '', message: '' })
       setConsentPd(false)
 
       setTimeout(() => setSubmitted(false), 5000)
@@ -243,35 +241,6 @@ export default function ContactSection() {
                         placeholder="+7 (___) ___-__-__"
                       />
                     </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl glass bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-direct-primary/50 focus:ring-2 focus:ring-direct-primary/20 transition-all"
-                      placeholder="example@mail.ru"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Компания
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl glass bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-direct-primary/50 focus:ring-2 focus:ring-direct-primary/20 transition-all"
-                      placeholder="Название компании"
-                    />
                   </div>
 
                   <div>

@@ -73,7 +73,7 @@ export function formatLeadTelegramMessage(data: {
   form_name: string;
   name: string;
   phone: string;
-  email: string;
+  email?: string;
   company?: string;
   message?: string;
   service?: string;
@@ -84,8 +84,8 @@ export function formatLeadTelegramMessage(data: {
     `Источник: ${data.form_name}`,
     `Имя: ${data.name}`,
     `Телефон: ${data.phone}`,
-    `Email: ${data.email}`,
   ];
+  if (data.email?.trim()) lines.push(`Email: ${data.email.trim()}`);
   if (data.company) lines.push(`Компания: ${data.company}`);
   if (data.service) lines.push(`Услуга: ${data.service}`);
   if (data.message) lines.push(`Сообщение: ${data.message}`);
