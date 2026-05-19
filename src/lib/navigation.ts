@@ -52,6 +52,6 @@ export const footerSections = [
 // Контакты в футере
 export const footerContacts = {
   address: 'г. Саратов, Астраханская ул., 87В',
-  email: 'info@mita.ru',
+  email: 'info@mita.top',
   phone: '+7 (XXX) XXX-XX-XX',
 };

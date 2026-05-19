@@ -5,14 +5,17 @@ import Link from 'next/link'
 import { mitaCtaGradient } from '@/lib/mita-landing-styles'
 import { cn } from '@/lib/utils/cn'
 
-const STORAGE_KEY = 'mita_cookie_consent_v1'
+import {
+  ANALYTICS_CONSENT_KEY,
+  setAnalyticsConsent,
+} from '@/lib/analytics/consent'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     try {
-      if (typeof window !== 'undefined' && !localStorage.getItem(STORAGE_KEY)) {
+      if (typeof window !== 'undefined' && !localStorage.getItem(ANALYTICS_CONSENT_KEY)) {
         setVisible(true)
       }
     } catch {
@@ -21,11 +24,7 @@ export default function CookieBanner() {
   }, [])
 
   const accept = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, '1')
-    } catch {
-      /* ignore */
-    }
+    setAnalyticsConsent()
     setVisible(false)
   }
 

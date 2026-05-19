@@ -157,6 +157,12 @@ export default function PrivacyPage() {
               <p>11.1. По вопросам обработки персональных данных обращайтесь:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Адрес: г. Саратов, Астраханская ул., 87В</li>
+                <li>
+                  Email:{' '}
+                  <a href="mailto:info@mita.top" className="text-white hover:underline">
+                    info@mita.top
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

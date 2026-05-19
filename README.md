@@ -98,12 +98,33 @@ cp .env.local.example .env.local
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top); also used for sitemap base | Yes |
+| NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top); also used for sitemap and JSON-LD | Yes |
 | BITRIX24_WEBHOOK_URL | Bitrix24 inbound webhook for leads | Yes |
 | ADMIN_PASSWORD or ADMIN_PASSWORD_HASH | Admin login at `/admin` | Yes for admin |
 | DATABASE_PATH | SQLite file path | No (defaults to `data/mita.db`) |
+| NEXT_PUBLIC_YANDEX_METRIKA_ID | Yandex Metrika counter ID (latin `METRIKA` in name) | No |
+| NEXT_PUBLIC_GA_ID | Google Analytics measurement ID | No |
+| EMAIL_FROM / EMAIL_TO | SMTP sender and lead notification inbox | No |
+
+Public contact email on the site: **info@mita.top**
 
 See `.env.local.example` for the full list (analytics, SMTP, etc.).
+
+### Analytics (Yandex Metrika)
+
+The site uses Next.js App Router (client-side navigation). Metrika is integrated as for an **SPA**:
+
+- Counter script loads after the user accepts the cookie banner (`src/components/analytics/YandexMetrika.tsx`).
+- Route changes send `ym(counterId, 'hit', url)`.
+- Custom goals use `trackEvent()` in `src/lib/analytics/track.ts`.
+
+Set in `.env.local` (variable name must be ASCII `METRIKA`, not Cyrillic):
+
+```env
+NEXT_PUBLIC_YANDEX_METRIKA_ID=109296126
+```
+
+Rebuild after changing any `NEXT_PUBLIC_*` variable.
 
 ## Project Structure
 
@@ -186,13 +207,29 @@ Admin authentication uses JWT tokens via HTTP-only cookies with bcrypt password 
 
 ## Deployment
 
-The site is deployed on a VPS (Ubuntu 24.04) with:
+Production runs on a **VPS** (Ubuntu 24.04, `193.233.88.174`):
 
-- Nginx as reverse proxy with SSL (Let's Encrypt)
-- PM2 for process management
-- Node.js 20
+| Item | Value |
+|------|--------|
+| App path | `/root/mita-marketing-agency` |
+| Process | PM2 `mita-site` (`npm start` on port 3000) |
+| Reverse proxy | Nginx → `https://mita.top` (Let's Encrypt) |
+| Node.js | 20.x |
 
-Auto-renewing SSL certificate via Certbot.
+### Deploy (manual)
+
+```bash
+ssh root@193.233.88.174
+cd /root/mita-marketing-agency
+git pull origin main
+npm ci
+npm run build
+pm2 restart mita-site
+```
+
+Ensure `/root/mita-marketing-agency/.env.local` exists on the server (not in git) and includes production values, especially `NEXT_PUBLIC_SITE_URL=https://mita.top` and `NEXT_PUBLIC_YANDEX_METRIKA_ID`.
+
+GitHub Actions (`.github/workflows/ci-cd.yml`) can deploy to Vercel if secrets are configured; the live site on mita.top uses the VPS workflow above.
 
 ## Conventions
 
@@ -237,7 +274,7 @@ MIT
 
 M.I.T.A. — Full-cycle Marketing IT Agency
 
-Address: Saratov, Astrakhanskaya st., 87V
+Email: info@mita.top  
 Website: https://mita.top
 
 Status: Production-ready (April 2026)

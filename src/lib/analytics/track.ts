@@ -97,7 +97,11 @@ function getUTMParams() {
 
 declare global {
   interface Window {
-    ym?: (counterId: number, action: string, event: string, params?: any) => void;
+    ym?: (
+      counterId: number,
+      action: 'init' | 'hit' | 'reachGoal' | string,
+      ...args: unknown[]
+    ) => void;
     gtag?: (action: string, eventName: string, params?: any) => void;
   }
 }

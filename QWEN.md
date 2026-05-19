@@ -220,7 +220,11 @@ npm run lint
 
 **Поддерживаемые системы:**
 - Google Analytics (`NEXT_PUBLIC_GA_ID`)
-- Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METRIKA_ID`)
+- Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METRIKA_ID`) — компонент `src/components/analytics/YandexMetrika.tsx`, загрузка после согласия в cookie-баннере, учёт переходов SPA через `ym(id, 'hit', url)`
+
+**Важно:** имя переменной только латиницей — `NEXT_PUBLIC_YANDEX_METRIKA_ID` (не `METРИКА` с кириллической «Р»).
+
+**Контактный email на сайте:** info@mita.top
 
 ### Error Tracking
 
@@ -248,7 +252,7 @@ cp .env.local.example .env.local
 
 | Переменная | Описание | Required |
 |------------|----------|----------|
-| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://mita.ru`) | ✅ |
+| `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://mita.top`) | ✅ |
 | `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 | ✅ |
 | `BITRIX24_CRM_ID` | ID воронки в Bitrix24 | ❌ |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics ID | ❌ |

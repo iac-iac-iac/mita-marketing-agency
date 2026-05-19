@@ -3,6 +3,12 @@
  * JSON-LD формат для SEO оптимизации
  */
 
+/** Базовый публичный URL для абсолютных ссылок в JSON-LD (совпадает с логикой sitemap). */
+export function getSiteBaseUrl(): string {
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL || 'https://mita.top').trim()
+  return raw.replace(/\/+$/, '')
+}
+
 export interface OrganizationSchema {
   '@context': string;
   '@type': string;
@@ -133,12 +139,13 @@ export function generateSchema<T>(schema: T): string {
  * Schema для Organization (главная страница, footer)
  */
 export function createOrganizationSchema(): OrganizationSchema {
+  const base = getSiteBaseUrl()
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'М.И.Т.А.',
-    url: 'https://mita.ru',
-    logo: 'https://mita.ru/images/icons/Favicon.ico',
+    url: base,
+    logo: `${base}/images/icons/Favicon.ico`,
     description: 'Маркетинговое IT-агентство полного цикла. Комплексная система лидогенерации: от привлечения клиентов до обработки звонков.',
     address: {
       '@type': 'LocalBusiness',
@@ -164,12 +171,13 @@ export function createOrganizationSchema(): OrganizationSchema {
  * Schema для LocalBusiness (страница контактов)
  */
 export function createLocalBusinessSchema(): LocalBusinessSchema {
+  const base = getSiteBaseUrl()
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'М.И.Т.А.',
-    image: 'https://mita.ru/images/hero-banner/Hero-banner_main_link.png',
-    url: 'https://mita.ru',
+    image: `${base}/images/hero-banner/Hero-banner_main_link.png`,
+    url: base,
     telephone: '+7 (XXX) XXX-XX-XX',
     address: {
       '@type': 'PostalAddress',
@@ -221,6 +229,7 @@ export function createArticleSchema(
   publishedAt: string,
   imageUrl?: string
 ): ArticleSchema {
+  const base = getSiteBaseUrl()
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -237,7 +246,7 @@ export function createArticleSchema(
       name: 'М.И.Т.А.',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://mita.ru/images/icons/Favicon.ico',
+        url: `${base}/images/icons/Favicon.ico`,
       },
     },
   };
@@ -253,12 +262,13 @@ export function createCaseStudySchema(
   publishedAt: string,
   imageUrl?: string
 ): CaseStudySchema {
+  const base = getSiteBaseUrl()
   return {
     '@context': 'https://schema.org',
     '@type': 'CaseStudy',
     name: title,
     description: description,
-    url: `https://mita.ru/cases/${title.toLowerCase().replace(/\s+/g, '-')}`,
+    url: `${base}/cases/${title.toLowerCase().replace(/\s+/g, '-')}`,
     image: imageUrl,
     author: {
       '@type': 'Organization',
@@ -278,6 +288,7 @@ export function createCaseStudySchema(
 export function createBreadcrumbSchema(
   items: { name: string; url: string }[]
 ): BreadcrumbListSchema {
+  const base = getSiteBaseUrl()
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -285,7 +296,7 @@ export function createBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `https://mita.ru${item.url}`,
+      item: `${base}${item.url}`,
     })),
   };
 }

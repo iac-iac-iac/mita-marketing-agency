@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useScrollReveal } from '@/lib/hooks/use-scroll-reveal'
+import { footerContacts } from '@/lib/navigation'
 
 export default function ContactSection() {
   const titleRef = useScrollReveal()
@@ -83,7 +84,8 @@ export default function ContactSection() {
         </svg>
       ),
       title: 'Email',
-      value: 'info@mita.ru',
+      value: footerContacts.email,
+      href: `mailto:${footerContacts.email}`,
     },
     {
       icon: (
@@ -148,7 +150,16 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400 mb-1">{item.title}</p>
-                  <p className="text-lg text-white font-medium">{item.value}</p>
+                  {'href' in item && item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-lg font-medium text-white hover:text-direct-primary transition-colors"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-lg text-white font-medium">{item.value}</p>
+                  )}
                 </div>
               </motion.div>
             ))}

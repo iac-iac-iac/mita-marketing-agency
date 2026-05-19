@@ -1,9 +1,12 @@
 ﻿import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
 import '../styles/globals.css'
 import { logEnvValidation } from '@/lib/utils/env'
+import { getSiteBaseUrl } from '@/lib/seo/schema'
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
 import CookieBanner from '@/components/ui/CookieBanner'
+import YandexMetrika from '@/components/analytics/YandexMetrika'
 // Используем системные шрифты (без загрузки из Google Fonts)
 const fontClassName = 'font-sans'
 
@@ -15,6 +18,8 @@ if (process.env.NODE_ENV === 'development') {
 export const viewport: Viewport = {
   themeColor: '#D4A84B',
 }
+
+const canonicalSiteUrl = getSiteBaseUrl()
 
 export const metadata: Metadata = {
   title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
@@ -41,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://mita.ru',
+    url: canonicalSiteUrl,
     siteName: 'М.И.Т.А.',
     title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
     description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков.',
@@ -73,6 +78,9 @@ export default function RootLayout({
         <ScrollToTopButton />
         <PWAInstallPrompt />
         <CookieBanner />
+        <Suspense fallback={null}>
+          <YandexMetrika />
+        </Suspense>
       </body>
     </html>
   )
