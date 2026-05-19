@@ -100,3 +100,20 @@ CREATE TABLE IF NOT EXISTS testimonials (
 );
 
 CREATE INDEX IF NOT EXISTS idx_testimonials_sort ON testimonials(sort_order);
+
+-- -----------------------------------------------------------------------------
+-- Прокси (для Telegram API с VPS в РФ)
+-- -----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS proxies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL DEFAULT '',
+    url TEXT NOT NULL UNIQUE,
+    is_enabled INTEGER NOT NULL DEFAULT 1,
+    priority INTEGER NOT NULL DEFAULT 0,
+    last_check_at TEXT,
+    last_check_ok INTEGER,
+    last_check_error TEXT NOT NULL DEFAULT '',
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_proxies_enabled ON proxies(is_enabled, priority DESC);

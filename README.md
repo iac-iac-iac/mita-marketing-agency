@@ -101,6 +101,8 @@ cp .env.local.example .env.local
 |----------|-------------|----------|
 | NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top); also used for sitemap and JSON-LD | Yes |
 | BITRIX24_WEBHOOK_URL | Bitrix24 inbound webhook for leads (optional) | No |
+| BITRIX24_ASSIGNED_BY_ID | Bitrix responsible user ID (`ASSIGNED_BY_ID`) | No |
+| TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID | Telegram channel notifications for new leads | No |
 | ADMIN_PASSWORD or ADMIN_PASSWORD_HASH | Admin login at `/admin` | Yes for admin |
 | DATABASE_PATH | SQLite file path | No (defaults to `data/mita.db`) |
 | NEXT_PUBLIC_YANDEX_METRIKA_ID | Yandex Metrika counter ID (latin `METRIKA` in name) | No |
@@ -111,7 +113,7 @@ Public contact email on the site: **info@mita.top**
 
 ### Lead capture (`/contact` and other forms)
 
-Submissions go to **`POST /api/submit-lead`** and are stored in SQLite (`leads` table in `data/mita.db`). View and update status in the admin panel at **`/admin/leads`**. Bitrix24 is optional (`BITRIX24_WEBHOOK_URL`); email notifications are not sent automatically.
+Submissions go to **`POST /api/submit-lead`** and are stored in SQLite (`leads` table in `data/mita.db`). View and update status at **`/admin/leads`**. Optional integrations: **Bitrix24** (`BITRIX24_WEBHOOK_URL`, `BITRIX24_ASSIGNED_BY_ID`) and **Telegram** (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`). HTTP proxies for Telegram API are managed at **`/admin/proxies`** (with a test message button). Email notifications are not sent automatically.
 
 See `.env.local.example` for the full list (analytics, SMTP, etc.).
 

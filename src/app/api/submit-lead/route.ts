@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
 import { z } from 'zod';
+import { updateBitrixId } from '@/lib/cms/db-leads';
+import { sendLeadToBitrix } from '@/lib/integrations/bitrix';
+import {
+  formatLeadTelegramMessage,
+  sendTelegramMessage,
+} from '@/lib/integrations/telegram';
 
 // Простой in-memory rate limiter (для production использовать Redis)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
@@ -259,62 +263,43 @@ export async function POST(request: NextRequest) {
       console.error('Failed to save lead to database:', dbError);
     }
 
-    // 7. Отправка в Bitrix24 (если настроен webhook)
-    if (process.env.BITRIX24_WEBHOOK_URL) {
+    // 6. Bitrix24 (не блокирует ответ пользователю)
+    const bitrixResult = await sendLeadToBitrix({
+      form_name: data.form_name,
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      company: data.company,
+      message: data.message,
+      utm_source: data.utm_source,
+      utm_medium: data.utm_medium,
+      utm_campaign: data.utm_campaign,
+    });
+    if (bitrixResult.ok && bitrixResult.bitrixId && leadId) {
       try {
-        // Валидация URL webhook
-        let webhookUrl: string;
-        try {
-          webhookUrl = process.env.BITRIX24_WEBHOOK_URL.trim();
-          new URL(webhookUrl); // Проверяем валидность URL
-        } catch (urlError) {
-          console.error('Bitrix24 webhook URL is invalid:', urlError);
-          throw new Error('Некорректный URL Bitrix24 webhook');
-        }
-
-        const bitrixPayload = {
-          fields: {
-            TITLE: `Заявка с сайта: ${data.form_name}`,
-            NAME: data.name,
-            PHONE: [{ VALUE: data.phone, VALUE_TYPE: 'WORK' }],
-            EMAIL: [{ VALUE: data.email, VALUE_TYPE: 'WORK' }],
-            COMPANY_TITLE: data.company || undefined,
-            COMMENTS: data.message || undefined,
-            UTMSOURCE: data.utm_source || undefined,
-            UTMEDIUM: data.utm_medium || undefined,
-            UTMCAMPAIGN: data.utm_campaign || undefined,
-          },
-          params: { REGISTER_SON_EVENT: 'Y' },
-        };
-
-        // Создаём AbortController для timeout
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 секунд timeout
-
-        const response = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(bitrixPayload),
-          signal: controller.signal,
-        });
-
-        clearTimeout(timeoutId);
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          console.error('Bitrix24 API error:', response.status, errorText);
-        } else {
-          console.log('Lead sent to Bitrix24 successfully');
-        }
-      } catch (bitrixError) {
-        if (bitrixError instanceof Error && bitrixError.name === 'AbortError') {
-          console.error('Bitrix24 request timeout (5s)');
-        } else {
-          console.error('Failed to send lead to Bitrix24:', bitrixError);
-        }
+        updateBitrixId(leadId, bitrixResult.bitrixId);
+      } catch {
+        /* ignore */
       }
-    } else {
-      console.log('Bitrix24 webhook not configured (BITRIX24_WEBHOOK_URL)');
+    } else if (!bitrixResult.ok && bitrixResult.error) {
+      console.error('Bitrix24:', bitrixResult.error);
+    }
+
+    // 7. Telegram (через прокси из БД при необходимости)
+    const telegramResult = await sendTelegramMessage(
+      formatLeadTelegramMessage({
+        form_name: data.form_name,
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        company: data.company,
+        message: data.message,
+        service: data.service,
+        leadId: leadId ?? undefined,
+      })
+    );
+    if (!telegramResult.ok && telegramResult.error) {
+      console.error('Telegram:', telegramResult.error);
     }
 
     // 8. Успешный ответ

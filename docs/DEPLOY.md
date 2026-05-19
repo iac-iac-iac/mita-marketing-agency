@@ -35,7 +35,11 @@ NEXT_PUBLIC_SITE_URL=https://mita.top
 NEXT_PUBLIC_YANDEX_METRIKA_ID=109296126
 EMAIL_FROM=info@mita.top
 EMAIL_TO=info@mita.top
-# BITRIX24_WEBHOOK_URL, ADMIN_PASSWORD_HASH, DATABASE_PATH, SMTP — по необходимости
+# BITRIX24_WEBHOOK_URL=https://your.bitrix24.ru/rest/.../
+# BITRIX24_ASSIGNED_BY_ID=19
+# TELEGRAM_BOT_TOKEN=...
+# TELEGRAM_CHAT_ID=3900580121
+# ADMIN_PASSWORD_HASH, DATABASE_PATH, SMTP — по необходимости
 ```
 
 Проверка имени переменной Метрики (должна быть латиница `METRIKA`):
@@ -56,7 +60,9 @@ grep YANDEX /root/mita-marketing-agency/.env.local
 - API: `POST /api/submit-lead`
 - Хранение: SQLite `data/mita.db`, таблица `leads`
 - Просмотр: `/admin/leads` (пункт «Заявки» в меню админки)
-- Bitrix24 и email-уведомления не обязательны; без `BITRIX24_WEBHOOK_URL` заявки остаются только в базе
+- Bitrix24 (`BITRIX24_WEBHOOK_URL`, `BITRIX24_ASSIGNED_BY_ID`) и Telegram (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`) — опционально
+- Прокси для Telegram: `/admin/proxies` (кнопка «Отправить тестовое сообщение»)
+- Email-уведомления пока не реализованы
 
 ## Откат
 
