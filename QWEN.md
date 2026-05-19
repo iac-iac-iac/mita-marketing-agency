@@ -221,7 +221,7 @@ npm run lint
 
 **Поддерживаемые системы:**
 - Google Analytics (`NEXT_PUBLIC_GA_ID`)
-- Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METRIKA_ID`) — компонент `src/components/analytics/YandexMetrika.tsx`, загрузка после согласия в cookie-баннере, учёт переходов SPA через `ym(id, 'hit', url)`
+- Яндекс.Метрика (`NEXT_PUBLIC_YANDEX_METRIKA_ID`) — SPA: `defer: true` + `ym(id, 'hit', url)` на каждый маршрут ([документация](https://yandex.ru/support/metrica/ru/code/counter-spa-setup.html)), компонент `src/components/analytics/YandexMetrika.tsx`
 
 **Важно:** имя переменной только латиницей — `NEXT_PUBLIC_YANDEX_METRIKA_ID` (не `METРИКА` с кириллической «Р»).
 

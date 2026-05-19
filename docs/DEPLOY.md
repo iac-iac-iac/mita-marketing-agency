@@ -51,7 +51,7 @@ grep YANDEX /root/mita-marketing-agency/.env.local
 ## Проверка после деплоя
 
 1. `curl -I https://mita.top`
-2. Открыть сайт, принять cookies, убедиться в запросе к `mc.yandex.ru` в DevTools → Network
+2. Открыть https://mita.top, в DevTools → Network найти запросы к `mc.yandex.ru` (watch/collect) после загрузки и при переходе по страницам (SPA `ym hit`)
 3. В интерфейсе Метрики: «Проверить счётчик» (данные могут появиться с задержкой)
 4. Отправить тестовую заявку на https://mita.top/contact — запись должна появиться в https://mita.top/admin/leads (нужен вход в админку)
 5. На https://mita.top/contact в блоке «Контактная информация» отображается телефон **89603488411** (источник: `src/lib/navigation.ts` → `footerContacts.phone`)

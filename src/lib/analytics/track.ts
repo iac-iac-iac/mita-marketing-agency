@@ -13,7 +13,7 @@ export function trackEvent(event: AnalyticsEvent) {
   if (window.ym && yandexCounterId) {
     const counterId = parseInt(yandexCounterId, 10);
     if (!isNaN(counterId)) {
-      window.ym(counterId, 'reachGoal', event.type, event);
+      window.ym(counterId, 'reachGoal', event.type);
     }
   }
 

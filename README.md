@@ -119,11 +119,13 @@ See `.env.local.example` for the full list (analytics, SMTP, etc.).
 
 ### Analytics (Yandex Metrika)
 
-The site uses Next.js App Router (client-side navigation). Metrika is integrated as for an **SPA**:
+The site uses Next.js App Router (client-side navigation). Integration follows the [official SPA guide](https://yandex.ru/support/metrica/ru/code/counter-spa-setup.html):
 
-- Counter script loads after the user accepts the cookie banner (`src/components/analytics/YandexMetrika.tsx`).
-- Route changes send `ym(counterId, 'hit', url)`.
-- Custom goals use `trackEvent()` in `src/lib/analytics/track.ts`.
+- `ym(id, 'init', { defer: true, ... })` — no automatic pageview on init.
+- Every route (including the first) sends `ym(id, 'hit', fullUrl, { title, referer })` from `src/components/analytics/YandexMetrika.tsx`.
+- Custom goals: `trackEvent()` → `ym(id, 'reachGoal', goalName)` in `src/lib/analytics/track.ts`.
+
+Verify in DevTools → Network: requests to `mc.yandex.ru` after navigation. In Metrika UI, disable **«Не учитывать мои визиты»** when testing your own visits.
 
 Set in `.env.local` (variable name must be ASCII `METRIKA`, not Cyrillic):
 
