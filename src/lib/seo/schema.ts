@@ -3,6 +3,8 @@
  * JSON-LD формат для SEO оптимизации
  */
 
+import { footerContacts } from '@/lib/navigation';
+
 /** Базовый публичный URL для абсолютных ссылок в JSON-LD (совпадает с логикой sitemap). */
 export function getSiteBaseUrl(): string {
   const raw = (process.env.NEXT_PUBLIC_SITE_URL || 'https://mita.top').trim()
@@ -156,7 +158,7 @@ export function createOrganizationSchema(): OrganizationSchema {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+7 (XXX) XXX-XX-XX',
+        telephone: footerContacts.phoneTel,
         contactType: 'customer service',
       },
     ],
@@ -178,7 +180,7 @@ export function createLocalBusinessSchema(): LocalBusinessSchema {
     name: 'М.И.Т.А.',
     image: `${base}/images/hero-banner/Hero-banner_main_link.png`,
     url: base,
-    telephone: '+7 (XXX) XXX-XX-XX',
+    telephone: footerContacts.phoneTel,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Астраханская ул., 87В',

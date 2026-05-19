@@ -54,6 +54,7 @@ grep YANDEX /root/mita-marketing-agency/.env.local
 2. Открыть сайт, принять cookies, убедиться в запросе к `mc.yandex.ru` в DevTools → Network
 3. В интерфейсе Метрики: «Проверить счётчик» (данные могут появиться с задержкой)
 4. Отправить тестовую заявку на https://mita.top/contact — запись должна появиться в https://mita.top/admin/leads (нужен вход в админку)
+5. На https://mita.top/contact в блоке «Контактная информация» отображается телефон **89603488411** (источник: `src/lib/navigation.ts` → `footerContacts.phone`)
 
 ## Заявки с форм
 

@@ -109,7 +109,7 @@ cp .env.local.example .env.local
 | NEXT_PUBLIC_GA_ID | Google Analytics measurement ID | No |
 | EMAIL_FROM / EMAIL_TO | Planned for SMTP notifications (not implemented yet) | No |
 
-Public contact email on the site: **info@mita.top**
+Public contacts on the site: **info@mita.top**, phone **89603488411** (canonical source: `footerContacts` in `src/lib/navigation.ts`)
 
 ### Lead capture (`/contact` and other forms)
 
@@ -281,7 +281,7 @@ MIT
 
 M.I.T.A. — Full-cycle Marketing IT Agency
 
-Email: info@mita.top  
+Email: info@mita.top · Phone: 89603488411  
 Website: https://mita.top
 
 Status: Production-ready (April 2026)

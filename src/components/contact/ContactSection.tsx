@@ -92,7 +92,8 @@ export default function ContactSection() {
         </svg>
       ),
       title: 'Телефон',
-      value: '+7 (XXX) XXX-XX-XX',
+      value: footerContacts.phone,
+      href: `tel:${footerContacts.phoneTel}`,
     },
     {
       icon: (

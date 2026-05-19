@@ -225,7 +225,7 @@ npm run lint
 
 **Важно:** имя переменной только латиницей — `NEXT_PUBLIC_YANDEX_METRIKA_ID` (не `METРИКА` с кириллической «Р»).
 
-**Контактный email на сайте:** info@mita.top
+**Контакты на сайте:** email info@mita.top, телефон 89603488411 (`footerContacts` в `src/lib/navigation.ts`)
 
 ### Error Tracking
 
