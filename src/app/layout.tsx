@@ -74,13 +74,13 @@ export default function RootLayout({
   return (
     <html lang="ru" className={fontClassName}>
       <body className={fontClassName}>
+        <Suspense fallback={null}>
+          <YandexMetrika />
+        </Suspense>
         {children}
         <ScrollToTopButton />
         <PWAInstallPrompt />
         <CookieBanner />
-        <Suspense fallback={null}>
-          <YandexMetrika />
-        </Suspense>
       </body>
     </html>
   )
