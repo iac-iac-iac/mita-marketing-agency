@@ -49,6 +49,14 @@ grep YANDEX /root/mita-marketing-agency/.env.local
 1. `curl -I https://mita.top`
 2. Открыть сайт, принять cookies, убедиться в запросе к `mc.yandex.ru` в DevTools → Network
 3. В интерфейсе Метрики: «Проверить счётчик» (данные могут появиться с задержкой)
+4. Отправить тестовую заявку на https://mita.top/contact — запись должна появиться в https://mita.top/admin/leads (нужен вход в админку)
+
+## Заявки с форм
+
+- API: `POST /api/submit-lead`
+- Хранение: SQLite `data/mita.db`, таблица `leads`
+- Просмотр: `/admin/leads` (пункт «Заявки» в меню админки)
+- Bitrix24 и email-уведомления не обязательны; без `BITRIX24_WEBHOOK_URL` заявки остаются только в базе
 
 ## Откат
 

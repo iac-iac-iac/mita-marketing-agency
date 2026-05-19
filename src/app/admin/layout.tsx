@@ -54,6 +54,7 @@ export default function AdminLayout({
                 <a href="/admin/blog" className="text-white/70 hover:text-white transition-colors">Блог</a>
                 <a href="/admin/cases" className="text-white/70 hover:text-white transition-colors">Кейсы</a>
                 <a href="/admin/testimonials" className="text-white/70 hover:text-white transition-colors">Отзывы</a>
+                <a href="/admin/leads" className="text-white/70 hover:text-white transition-colors">Заявки</a>
               </nav>
             </div>
 

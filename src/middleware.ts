@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { jwtVerify, SignJWT } from 'jose';
 
 // Пути, требующие аутентификации
-const adminPaths = ['/admin/blog', '/admin/cases', '/admin/services', '/admin/testimonials'];
+const adminPaths = ['/admin/blog', '/admin/cases', '/admin/services', '/admin/testimonials', '/admin/leads'];
 const apiAdminPaths = ['/api/admin/blog', '/api/admin/cases'];
 
 // Секрет для JWT (используем ADMIN_PASSWORD или fallback)

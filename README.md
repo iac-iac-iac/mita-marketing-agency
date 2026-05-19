@@ -48,6 +48,7 @@ Production: https://mita.top
 | Admin Blog | /admin/blog | Blog management |
 | Admin Cases | /admin/cases | Case management |
 | Admin Testimonials | /admin/testimonials | Testimonial management |
+| Admin Leads | /admin/leads | View form submissions (SQLite) |
 
 ## Getting Started
 
@@ -99,14 +100,18 @@ cp .env.local.example .env.local
 | Variable | Description | Required |
 |----------|-------------|----------|
 | NEXT_PUBLIC_SITE_URL | Site URL (e.g. https://mita.top); also used for sitemap and JSON-LD | Yes |
-| BITRIX24_WEBHOOK_URL | Bitrix24 inbound webhook for leads | Yes |
+| BITRIX24_WEBHOOK_URL | Bitrix24 inbound webhook for leads (optional) | No |
 | ADMIN_PASSWORD or ADMIN_PASSWORD_HASH | Admin login at `/admin` | Yes for admin |
 | DATABASE_PATH | SQLite file path | No (defaults to `data/mita.db`) |
 | NEXT_PUBLIC_YANDEX_METRIKA_ID | Yandex Metrika counter ID (latin `METRIKA` in name) | No |
 | NEXT_PUBLIC_GA_ID | Google Analytics measurement ID | No |
-| EMAIL_FROM / EMAIL_TO | SMTP sender and lead notification inbox | No |
+| EMAIL_FROM / EMAIL_TO | Planned for SMTP notifications (not implemented yet) | No |
 
 Public contact email on the site: **info@mita.top**
+
+### Lead capture (`/contact` and other forms)
+
+Submissions go to **`POST /api/submit-lead`** and are stored in SQLite (`leads` table in `data/mita.db`). View and update status in the admin panel at **`/admin/leads`**. Bitrix24 is optional (`BITRIX24_WEBHOOK_URL`); email notifications are not sent automatically.
 
 See `.env.local.example` for the full list (analytics, SMTP, etc.).
 
@@ -140,7 +145,7 @@ company_site/
 │   │   │   ├── call-center/
 │   │   │   ├── avito/
 │   │   │   └── recruiting/
-│   │   ├── admin/                    # Admin (blog, cases, testimonials)
+│   │   ├── admin/                    # Admin (blog, cases, testimonials, leads)
 │   │   ├── api/
 │   │   │   ├── submit-lead/
 │   │   │   └── admin/                # login, logout

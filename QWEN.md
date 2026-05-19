@@ -194,6 +194,7 @@ npm run lint
 | Новый кейс | `/admin/cases/new` | Создание кейса |
 | Редактирование | `/admin/cases/[slug]/edit` | Редактирование кейса |
 | Отзывы | `/admin/testimonials` | Управление отзывами |
+| Заявки | `/admin/leads` | Просмотр заявок из форм (SQLite) |
 
 ---
 
@@ -253,7 +254,7 @@ cp .env.local.example .env.local
 | Переменная | Описание | Required |
 |------------|----------|----------|
 | `NEXT_PUBLIC_SITE_URL` | URL сайта (например, `https://mita.top`) | ✅ |
-| `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 | ✅ |
+| `BITRIX24_WEBHOOK_URL` | Webhook для интеграции с Bitrix24 (опционально) | ❌ |
 | `BITRIX24_CRM_ID` | ID воронки в Bitrix24 | ❌ |
 | `NEXT_PUBLIC_GA_ID` | Google Analytics ID | ❌ |
 | `NEXT_PUBLIC_YANDEX_METRIKA_ID` | Яндекс.Метрика ID | ❌ |
