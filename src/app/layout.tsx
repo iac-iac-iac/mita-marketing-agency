@@ -22,6 +22,7 @@ export const viewport: Viewport = {
 const canonicalSiteUrl = getSiteBaseUrl()
 
 export const metadata: Metadata = {
+  metadataBase: new URL(canonicalSiteUrl),
   title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
   description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков. Call-центр, продвижение на Авито, рекрутинг. Все модули работают как единый механизм.',
   keywords: ['маркетинговое агентство', 'лидогенерация', 'call-центр', 'авито', 'рекрутинг', 'продвижение бизнеса'],
