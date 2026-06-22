@@ -73,7 +73,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru" className={fontClassName}>
+    <html
+      lang="ru"
+      className={fontClassName}
+      data-site-author="iac"
+      data-site-author-name="Сергеев И.В."
+    >
       <body className={fontClassName}>
         <Suspense fallback={null}>
           <YandexMetrika />
