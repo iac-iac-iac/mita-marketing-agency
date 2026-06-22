@@ -7,6 +7,8 @@ import ScrollToTopButton from '@/components/ui/ScrollToTopButton'
 import PWAInstallPrompt from '@/components/ui/PWAInstallPrompt'
 import CookieBanner from '@/components/ui/CookieBanner'
 import YandexMetrika from '@/components/analytics/YandexMetrika'
+
+/* Site implementation: iac (Сергеев И.В.) */
 // Используем системные шрифты (без загрузки из Google Fonts)
 const fontClassName = 'font-sans'
 
@@ -65,6 +67,9 @@ export const metadata: Metadata = {
     title: 'М.И.Т.А. — Маркетинговое IT-агентство полного цикла',
     description: 'Комплексная система лидогенерации: от привлечения клиентов до обработки звонков.',
   },
+  other: {
+    author: 'iac — Сергеев И.В.',
+  },
 }
 
 export default function RootLayout({
@@ -72,6 +77,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Site implementation: iac (Сергеев И.В.)
   return (
     <html
       lang="ru"
