@@ -26,11 +26,11 @@ const teamMembers: TeamMember[] = [
     role: 'Руководитель отдела Авито и Рекрутинга',
     image: '/images/team/Sergey.png',
   },
-  {
+  /* {
     name: 'Полина Дергачёва',
     role: 'HR менеджер',
     image: '/images/team/Polina.png',
-  },
+  }, */
   {
     name: 'Кристина Покусаева',
     role: 'Бизнес ассистент',
